@@ -26,7 +26,7 @@ namespace bazar.Controllers
             Session["shoptype"] = shoptype.shoptypeid;
             if (shoptype.shoptypeid == 1)
             {
-             
+             //hello
                 gets.maleGarmmentList = db.tblmaleGarments.Where(x => x.createdById == id).ToList();
             }
             else
