@@ -1,0 +1,446 @@
+﻿
+@{
+    ViewBag.Title = "viewtblfemaleGarment";
+}
+
+<h2>viewtblfemaleGarment</h2>
+
+
+
+
+
+<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+
+<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+<link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Sscripts/moment.js"></script>
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+
+
+
+
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ breadcrumb ] start -->
+                        @*<div class="page-header">
+                                <div class="page-block">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-12">
+                                            <div class="page-header-title">
+                                                <h5 class="m-b-10">Form Elements</h5>
+                                            </div>
+                                            <ul class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                                                <li class="breadcrumb-item"><a href="#!">Form Components</a></li>
+                                                <li class="breadcrumb-item"><a href="#!">Form Elements</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <!-- [ breadcrumb ] end -->
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <!-- [ form-element ] start -->
+                            <div class="col-sm-12">
+                                <div class="card">
+
+                                    <div class="card-body">
+                                        <h1>Size for Shirt form</h1>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <form  id="data" enctype="multipart/form-data" method="post">
+
+                                                    <h4>extra Small</h4>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">ClothName</label>
+                                                        <input type="text" class="form-control" name="clothname" id="clothname" placeholder="Enter waist size">
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <label for="categoryid">Select Category</label>
+
+                                                        <select name="categoryid" id="categoryid" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+
+
+
+
+                                                    <div class="form-group">
+
+                                                        <label for="shirtsizechartnameid">Select Shirt Chart</label>
+
+                                                        <select name="shirtsizechartnameid" id="shirtsizechartnameid" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label for="pantsizechartnameid">Select Pant Chart</label>
+
+                                                        <select name="pantsizechartnameid" id="pantsizechartnameid" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="row" style="padding-left:20px">
+                                                        <div class="form-group col-md-2 col-sm-1">
+                                                            @Html.CheckBox("xsmall", new { @id = "xsmall", @class = "form-check-input" })
+                                                            @*<input type="checkbox" class="form-check-input" name="xsmall" id="xsmall">*@
+                                                            <label class="form-check-label" for="xsmall">ExtraSmall</label>
+                                                        </div>
+                                                        <div class="form-group col-md-2 col-sm-1">
+                                                            @Html.CheckBox("small", new { @id = "small", @class = "form-check-input" })
+                                                            @*<input type="checkbox" class="form-check-input" name="small" id="small">*@
+                                                            <label class="form-check-label" for="xsmall">Small</label>
+                                                        </div>
+                                                        <div class="form-group col-md-2 col-sm-1">
+                                                            @Html.CheckBox("medium", new { @id = "medium", @class = "form-check-input" })
+                                                            @*<input type="checkbox" class="form-check-input" name="medium" id="medium">*@
+                                                            <label class="form-check-label" for="medium">Medium</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row" style="padding-left:20px">
+                                                        <div class="form-group col-md-2 col-sm-1">
+                                                            @Html.CheckBox("large", new { @id = "large", @class = "form-check-input" })
+                                                            @*<input type="checkbox" class="form-check-input" name="large" id="large">*@
+                                                            <label class="form-check-label" for="large">Large</label>
+                                                        </div>
+                                                        <div class="form-group col-md-2 col-sm-1">
+                                                            @Html.CheckBox("xlarge", new { @id = "xlarge", @class = "form-check-input" })
+                                                            @*<input type="checkbox" class="form-check-input" name="xlarge" id="xlarge">*@
+                                                            <label class="form-check-label" for="xlarge">Extra Large</label>
+                                                        </div>
+                                                        <div class="form-group col-md-2 col-sm-1">
+                                                            @Html.CheckBox("xxlarge", new { @id = "xxlarge", @class = "form-check-input" })
+                                                            @*<input type="checkbox" class="form-check-input" name="xxlarge" id="xxlarge">*@
+                                                            <label class="form-check-label" for="xxlarge">XXL</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="pic1">Select a file:</label>
+                                                        <input type="file" id="pic1" name="pic1">
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <label for="pic2">Select a file:</label>
+                                                        <input type="file" id="pic2" name="pic2">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="pic3">Select a file:</label>
+                                                        <input type="file" id="pic3" name="pic3">
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <label for="pic4">Select a file:</label>
+                                                        <input type="file" id="pic4" name="pic4">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="price">Price</label>
+                                                        <input type="text" class="form-control" name="price" id="price" placeholder="Enter Price">
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                            <label for="detail">Detail</label>
+                                                            <textarea class="form-control" name="detail" id="detail" rows="3"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </form>
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                                <!-- Input group -->
+
+                            </div>
+                            <!-- [ form-element ] end -->
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+<!-- Warning Section start -->
+<!-- Older IE warning message -->
+<script>
+
+    function CheckNull() {
+        debugger
+        if ($("#clothname").val() == "") { document.getElementById('clothname').style.borderColor = "red"; toastr.error('clothname  required!'); } else { document.getElementById('clothname').style.borderColor = "#ced4da"; }
+        if ($("#price").val() == "") { document.getElementById('price').style.borderColor = "red"; toastr.error('price required!');  } else { document.getElementById('price').style.borderColor = "#ced4da"; }
+        if ($("#detail").val() == "") { document.getElementById('detail').style.borderColor = "red"; toastr.error('detail required!'); } else { document.getElementById('detail').style.borderColor = "#ced4da"; }
+
+
+        if ($("#categoryid").val() == "0") { document.getElementById('categoryid').style.borderColor = "red"; toastr.error('categoryid Field  required!'); } else { document.getElementById('categoryid').style.borderColor = "#ced4da"; }
+        if ($("#categoryid").val() == "1")
+        {
+            if ($("#shirtsizechartnameid").val() == "0") { document.getElementById('shirtsizechartnameid').style.borderColor = "red"; toastr.error('shirtsizechartnameid Field  required!'); return false; } else { document.getElementById('shirtsizechartnameid').style.borderColor = "#ced4da"; }
+
+
+        }
+        if ($("#categoryid").val() == "2") {
+            if ($("#pantsizechartnameid").val() == "0") { document.getElementById('pantsizechartnameid').style.borderColor = "red"; toastr.error('pantsizechartnameid Field  required!'); return false;} else { document.getElementById('pantsizechartnameid').style.borderColor = "#ced4da"; }
+
+
+        }
+
+
+
+        if($("#clothname").val() == "" || $("#price").val() == "" || $("#detail").val() == "" || $("#categoryid").val() == "0" )
+        {
+            debugger
+            toastr.error('All Fields are required!');
+            checkingNull = false;
+            return false;
+        }
+        else {
+            checkingNull = true;
+            return true;
+        }
+    }
+    $("form#data").submit(function (e) {
+        debugger
+
+        var ch = CheckNull();
+        if (ch == false) {
+            return false;
+        }
+        if (ch == true) {
+            var inp = document.getElementById('pic1');
+            if (inp.files.length === 0) {
+
+                alert("Attachment Required");
+                inp.focus();
+
+                return false;
+            }
+
+            var inps = document.getElementById('pic2');
+            if (inps.files.length === 0) {
+
+                alert("Attachment Required");
+                inps.focus();
+
+                return false;
+            }
+
+            var inps3 = document.getElementById('pic3');
+            if (inps3.files.length === 0) {
+
+                alert("Attachment Required");
+                inps3.focus();
+
+                return false;
+            }
+
+            var inps4 = document.getElementById('pic4');
+            if (inps4.files.length === 0) {
+
+                alert("Attachment Required");
+                inps4.focus();
+
+                return false;
+            }
+        }
+        var formData = new FormData(this);
+
+
+            //alert(email+mobile+cnic);
+            $.ajax({
+                url: '@Url.Action("addtblfemaleGarment", "Create")',
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    toastr.success('Successfully Submitted');
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+
+    });
+
+
+    function getCategories() {
+
+        debugger
+        $.ajax({
+            url: '@Url.Action("getCategories", "Detail")',
+            type: 'POST',
+            data: {
+            },
+            dataType: 'json',
+            success: function (data) {
+                debugger
+                alert
+                console.log(data.CategoryTypes);
+                $('#categoryid').empty();
+
+                var s = ' <option value="0">-- Please Select --</option>';
+
+                $.each(data.CategoryTypes, function (data, value) {
+                    //$("#ddlAttributeType").append('<option value="' + value.ID + '">' + value.CategoryType1 + '</option>');
+                    s += '<option value="' + value.id + '">' + value.categoryName + '</option>';
+                });
+                $("#categoryid").append(s);
+
+            },
+            error: function (request, error) {
+                console.log(request);
+            }
+        });
+    }
+
+
+    function getSizeMaleShirtList(categoryid) {
+        $.ajax({
+            url: '@Url.Action("getSizeList", "Detail")',
+            type: 'POST',
+            data: {
+                'categoryid': categoryid
+            },
+            dataType: 'json',
+            success: function (data) {
+                var s ='<option value="0">-- Please Select --</option>';
+                $('#shirtsizechartid').empty();
+                //var s = '<option value="">--Please Select --</option>';
+                //s += '<option value="0">--Select All --</option>';
+                $.each(data.GetAllBtUserName, function (data, value) {
+                    s += '<option value="' + value.chartName + '">' + value.chartName + '</option>';
+
+                });
+
+                $("#shirtsizechartid").append(s);
+
+            },
+            error: function (request, error) {
+                $('#divLoader').hide();
+                console.log(data);
+                //alert("Request: " + JSON.stringify(request));
+            }
+        });
+    }
+
+      function getSizeMalePantList(categoryid) {
+        $.ajax({
+            url: '@Url.Action("getSizeList", "Detail")',
+            type: 'POST',
+            data: {
+                'categoryid': categoryid
+            },
+            dataType: 'json',
+            success: function (data) {
+                var s ='<option value="0">-- Please Select --</option>';
+                $('#pantsizechartid').empty();
+              //  var s = '<option value="">--Please Select --</option>';
+               // s += '<option value="0">--Select All --</option>';
+                $.each(data.GetAllBtUserName, function (data, value) {
+                    s += '<option value="' + value.chartName + '">' + value.chartName + '</option>';
+
+                });
+
+                $("#pantsizechartid").append(s);
+
+            },
+            error: function (request, error) {
+                $('#divLoader').hide();
+                console.log(data);
+                //alert("Request: " + JSON.stringify(request));
+            }
+        });
+    }
+
+
+    $("#categoryid").change(function () {
+
+        //ShowProgress();
+
+        categoryid = ($(this).val());
+        if (categoryid == 0) {
+            $("#shirtsizechartid").prop("disabled", true);
+            $("#pantsizechartid").prop("disabled", true);
+
+
+
+        }
+        if(categoryid == 1)
+        {
+            $("#shirtsizechartid").prop("disabled", false);
+            $("#pantsizechartid").prop("disabled", true);
+    //        getSizeMalePantList(0);
+            $('#pantsizechartid').empty();
+            getSizeMaleShirtList(categoryid);
+
+        }
+        if (categoryid == 2)
+        {
+            $("#pantsizechartid").prop("disabled", false);
+            $("#shirtsizechartid").prop("disabled", true);
+            $('#shirtsizechartid').empty();
+            getSizeMalePantList(categoryid);
+
+        }
+
+
+    });
+
+
+
+
+     $(document).ready(function () {
+
+
+         $("#shirtsizechartid").prop("disabled", true);
+         $("#pantsizechartid").prop("disabled", true);
+         getCategories();
+
+
+    });
+
+</script>

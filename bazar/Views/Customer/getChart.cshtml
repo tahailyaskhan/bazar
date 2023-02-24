@@ -1,0 +1,151 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link href="~/Content/c3.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/c3.min.js"></script>
+<script src="~/Scripts/d3.min.js"></script>
+<script src="~/customercontent/js/jquery.min.js"></script>
+@*<div id = "GaugeChart"> </div> <script type = "text/javascript">
+
+        $(document).ready(function () {
+
+     $.ajax({
+            type: "Post",
+            url: "/Customer/GaugeChart",
+            data: {},
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+         success: function (response) {
+             console.log(response)
+                debugger
+                successFunc(response);
+            },
+        });
+
+        function successFunc(jsondata) {
+            var chart = c3.generate({
+                bindto: '#GaugeChart',
+                data: {
+                    columns: [
+                        ['categoryid', jsondata[0].response.categoryid]
+                    ],
+                    type: 'gauge',
+                },
+
+                color: {
+                    pattern: ['#F97600'],
+                },
+            });
+            setTimeout(function() {
+                chart.load({
+                    columns: [
+                        ['id', jsondata[0].Id]
+                    ]
+                });
+            }, 1000);
+            //setTimeout(function() {
+            //    chart.load({
+            //        columns: [
+            //            ['Others', jsondata[0].Others]
+            //        ]
+            //    });
+            //}, 2000);
+        }
+    }); </script>*@
+
+<div>
+    <canvas id="myChart" style="max-width:400px;max-height:430px;"></canvas>
+</div>
+<div>
+    <canvas id="myChartss" style="max-width:400px;max-height:430px;"></canvas>
+</div>
+<script src="~/Content/chart.js"></script>
+
+<script>
+
+    const ctx = document.getElementById('myChart');
+    const ctxs = document.getElementById('myChartss');
+   
+    $(document).ready(function () {
+        $.ajax({
+            type: "Post",
+            url: "/Customer/GaugeChart",
+            data: "",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success:successFunc
+        });
+        function successFunc(data) {
+            alert(data[0][0]);
+            console.log(data[1]);
+            var _data = data;
+            var label = _data[0];
+            var chartdata = _data[1];
+            console.log(label);
+            console.log(chartdata);
+            var barcolor = ["red", "green","blue"]
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: label,
+                    datasets: [{
+                        label: '# of Votes',
+                        backgroundColor: barcolor,
+                        data: chartdata,
+                        borderWidth: 1
+                    }]
+                },
+
+                ////options: {
+                ////    rotation: 270, // start angle in degrees
+                ////    circumference: 180, // sweep angle in degrees
+                ////}
+                //options: {
+                //    scales: {
+                //        y: {
+                //            beginAtZero: true
+                //        }
+                //    }
+                //}
+            });
+            setTimeout(function () {
+                new Chart(ctxs, {
+                    type: 'pie',
+                    data: {
+                        labels: label,
+                        datasets: [{
+                            label: '# of Votes',
+                            backgroundColor: barcolor,
+                            data: chartdata,
+                            borderWidth: 1
+                        }]
+                    },
+
+                    ////options: {
+                    ////    rotation: 270, // start angle in degrees
+                    ////    circumference: 180, // sweep angle in degrees
+                    ////}
+                    //options: {
+                    //    scales: {
+                    //        y: {
+                    //            beginAtZero: true
+                    //        }
+                    //    }
+                    //}
+                }), 1000
+            });
+
+
+        }
+
+
+
+
+
+    });
+</script>

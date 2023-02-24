@@ -1,0 +1,430 @@
+﻿@model bazar.Models.tblmaleGarment
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>E-SHOP HTML Template</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/customercontent/css/bootstrap.min.css" />
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="~/customercontent/css/slick.css" />
+    <link type="text/css" rel="stylesheet" href="~/customercontent/css/slick-theme.css" />
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="~/customercontent/css/nouislider.min.css" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/customercontent/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/customercontent/css/style.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+</head>
+
+<body>
+    @{
+        Html.RenderPartial("_header");
+
+    }
+
+    <!-- NAVIGATION -->
+    <div id="navigation">
+        <!-- container -->
+        <div class="container">
+            <div id="responsive-nav">
+
+                <div class="menu-nav">
+                    <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+                    <ul class="menu-list">
+                        @*<li><a href="#">Home</a></li>
+                            <li><a href="#">Shop</a></li>
+
+
+                            <li><a href="#">Sales</a></li>*@
+                        @*<li class="dropdown default-dropdown">*@
+                        @*<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages </a>*@
+                        @foreach (var rows in Session["categories"] as List<bazar.Models.tblcategory>)
+                        {
+
+                            <li>@Html.ActionLink(rows.categoryName, "getCategorysGarment", "Customer", new { id = rows.id })</li>
+
+
+                        }
+                        @*</li>*@
+
+                    </ul>
+                </div>
+                <!-- menu nav -->
+            </div>
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /NAVIGATION -->
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!--  Product Details -->
+                <div class="product product-details clearfix">
+                    <div class="col-md-6">
+                        <div id="product-main-view">
+                            <div class="product-view">
+                                <img src="~/customercontent/img/main-product01.jpg" alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src="~/customercontent/img/main-product02.jpg" alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src="~/customercontent/img/main-product03.jpg" alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src="~/customercontent/img/main-product04.jpg" alt="">
+                            </div>
+                        </div>
+                        <div id="product-view">
+                            <div class="product-view">
+                                <img src="~/customercontent/img/thumb-product01.jpg" alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src="~/customercontent/img/thumb-product02.jpg" alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src="~/customercontent/img/thumb-product03.jpg" alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src="~/customercontent/img/thumb-product04.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product-body">
+                            <div class="product-label">
+                                <span>New</span>
+                                <span class="sale">-20%</span>
+                            </div>
+                            <h2 class="product-name">@Model.clothname</h2>
+                            <h3 class="product-price">@Model.price</h3>
+                            <div>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                                <a href="#">3 Review(s) / Add Review</a>
+                            </div>
+                            <p><strong>Availability:</strong> In Stock</p>
+                            <p><strong>Brand:</strong> E-SHOP</p>
+
+                            <p>
+                                @Model.detail
+                            </p>
+                            <form action=@Url.Action("addCart","Customer") id="data" enctype="multipart/form-data" method="post">
+                                <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.id>
+                                <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.pic1>
+                                <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.createdById>
+
+                                <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.clothname>
+                                <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.price>
+                                <div class="radios" id="bodyss">
+                                    @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
+                                        <input label="No" type="radio" id="female" name="gender" value="female">*@
+
+                                    @if (Model.xsmall == true)
+                                    {
+                                        <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
+
+                                    }
+                                    @if (Model.small == true)
+                                    {
+                                        <input label="S" type="radio" id="small" name="size" value="small">
+
+                                    }
+                                    @if (Model.medium == true)
+                                    {
+                                        <input label="M" type="radio" id="medium" name="size" value="medium">
+
+                                    }
+                                    @if (Model.large == true)
+                                    {
+                                        <input label="L" type="radio" id="large" name="size" value="large">
+
+                                    }
+                                    @if (Model.xlarge == true)
+                                    {
+                                        <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                    }
+                                </div>
+
+                                <h5>SizeChart</h5>
+                              @*<div class="card ">
+                                  
+                                    <div class="card-body table-border-style">*@
+                                        <div class="table-responsive " >
+                                        
+                                            <table style="width:10%" class="table">
+                                                <thead style="color: white; background-color: deepskyblue ">
+                                                    <tr style="font-size:10px;">
+                                                        <th>Size Name</th>
+                                                        <th>Collar</th>
+                                                        <th>chest</th>
+                                                        <th>sleevelength</th>
+                                                        <th>ShirtLength</th>
+                                                        <th>ShirtLength</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tblfloortime" >
+
+                                                    @foreach (var row in Session["getshirtchartname"] as List<bazar.Models.tblsizeShirtMale>)
+                                                    {
+                                                      
+                                                    <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
+                                                        <td>@Html.DisplayFor(modelItem => row.sizeName)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.collar)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.chest)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.sleeveLength)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.shirtLength)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.shirtLength)</td>
+
+
+
+
+                                                    </tr>
+                                                        
+                                                    }
+
+                                                    
+
+                                                </tbody>
+                                            </table>
+                                        
+                                        </div>
+                                    @*</div>
+                                </div>*@
+
+
+                                <div class="product-btns">
+                                    <div class="qty-input">
+                                        <span class="text-uppercase">QTY: </span>
+                                        <input class="input" id="quantity" name="quantity" type="number">
+                                    </div>
+                                    <button class="primary-btn add-to-cart" type="submit" id="btnadd"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /Product Details -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+
+
+
+
+    <!-- FOOTER -->
+    <footer id="footer" class="section section-grey">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <!-- /row -->
+            <hr>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <!-- footer copyright -->
+                    <div class="footer-copyright">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                    <!-- /footer copyright -->
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </footer>
+
+
+    <script>
+
+        //$(document).on('click', '#btnadd', function (e)
+        //{
+        //    debugger
+
+        //    if ($("#txtChecklistName").val() == "")
+        //	{
+        //        document.getElementById('txtChecklistName').style.borderColor = "red";
+        //        toastr.error('Checklist Name is Required!');
+        //	}
+        //	else {
+        //        document.getElementById('txtChecklistName').style.borderColor = "#ced4da";
+        //	}
+        //    if ($("#txtDescription").val() == "")
+        //	{
+        //        document.getElementById('txtDescription').style.borderColor = "red";
+        //	    toastr.error('Description is required!');
+        //	}
+        //	else {
+        //        document.getElementById('txtDescription').style.borderColor = "#ced4da";
+        //	}
+        //    if ($("#txtChecklistName").val() != "" && $("#txtDescription").val() != "") {
+        //		e.preventDefault();
+        //		AddChecklist();
+        //	}
+
+
+        //});
+
+        function AddChecklist() {
+       debugger
+        ShowProgress();
+
+        $('#divLoader').show();
+        var role = $("#ddlRoleType").val();
+        //if (role == 0 ) {
+        //    toastr.error("Please select specific role  option.");
+        //    $('#divLoader').hide();
+        //    return false;
+        //}
+
+
+        $.ajax({
+
+            url: '@Url.Action("saveCart", "Customer")',
+            type: 'POST',
+            data: {
+                'listName': $("#txtChecklistName").val(),
+                'listDes': $("#txtDescription").val(),
+                'allRole': role.toString(),
+                'videoMendatory': $("input[name='mandatory']:checked").val(),//radio
+            },
+            dataType: 'json',
+            success: function (data) {
+
+                ShowProgress();
+                $('#divLoader').show();
+                if (data.ErrorCode === "000") {
+                    toastr.success(data.Message);
+                    $('#divLoader').hide();
+                    CallPartialView();
+                    $("#txtChecklistName").val(""),
+                    $("#txtDescription").val("")
+                    $("#ddlRoleType").empty();
+                    $("#css").prop("checked", true);
+                    BindDdlCatType();
+                }
+                else if (data.ErrorCode === "999") {
+                    toastr.error('Checklist already exists');
+
+                    $('#divLoader').hide();
+
+                }
+                else {
+                    toastr.error('Oops! Something went wrong');
+                    $('#divLoader').hide();
+                }
+
+                // FillTable();
+            },
+            error: function (request, error) {
+            }
+        });
+    }
+    </script>
+    <!-- /FOOTER -->
+    <!-- jQuery Plugins -->
+    <script src="~/customercontent/js/jquery.min.js"></script>
+    <script src="~/customercontent/js/bootstrap.min.js"></script>
+    <script src="~/customercontent/js/slick.min.js"></script>
+    <script src="~/customercontent/js/nouislider.min.js"></script>
+    <script src="~/customercontent/js/jquery.zoom.min.js"></script>
+    <script src="~/customercontent/js/main.js"></script>
+
+</body>
+
+</html>
+
+<style>
+    #bodyss {
+        display: flex;
+        margin-right: 20px;
+        margin-bottom: 30px;
+        justify-content: center;
+        align-items: center;
+        height: 5vh;
+    }
+
+    .radios {
+        background: #454857;
+        padding: 1px;
+        border-radius: 0px;
+        /*    box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3), 0 0 0 3px rgba(185, 185, 185, 0.3);*/
+        position: relative;
+    }
+
+        .radios input {
+            width: auto;
+            height: auto;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 0px;
+            padding: 4px 8px;
+            background: #454857;
+            color: #bdbdbdbd;
+            font-size: 14px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            transition: all 100ms linear;
+        }
+
+            .radios input:checked {
+                background-image: linear-gradient(180deg, #95d891, #74bbad);
+                color: #fff;
+                box-shadow: 0 1px 1px #0000002e;
+                text-shadow: 0 1px 0px #79485f7a;
+            }
+
+            .radios input:before {
+                content: attr(label);
+                display: inline-block;
+                text-align: center;
+                width: 100%;
+            }
+
+            
+}
+</style>

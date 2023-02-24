@@ -1,0 +1,91 @@
+﻿@model IEnumerable<bazar.Models.tblsizePantMale>
+@{
+    ViewBag.Title = "gettblsizePantmale";
+}
+
+
+
+<section class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ breadcrumb ] start -->
+                        <div class="page-header">
+                            <div class="page-block">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                                        </div>
+                                        <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                                            <li class="breadcrumb-item"><a href="#!">Bootstrap Table</a></li>
+                                            <li class="breadcrumb-item"><a href="#!">Basic Tables</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- [ breadcrumb ] end -->
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <!-- [ basic-table ] start -->
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Basic Table</h5>
+                                        <span class="d-block m-t-5">use class <code>table</code> inside table element</span>
+                                    </div>
+                                    <div class="card-body table-border-style">
+                                        <div class="table-responsive">
+                                            @foreach (var rows in Session["getchartname"] as List<bazar.DAL.Data.getchartnameclass>)
+                                            {
+                                                <table class="table">
+                                                    <thead style="color:#ff6002">
+                                                        <tr>
+                                                            <th>Size Name</th>
+                                                            <th>waist</th>                                            
+                                                            <th>pantlength</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tblfloortime">
+
+                                                        @foreach (var row in Model)
+                                                        {
+                                                            if (row.chartName == rows.chartname)
+                                                            {
+                                                                <tr>
+                                                                    <td>@Html.DisplayFor(modelItem => row.sizeName)</td>
+                                                                    <td>@Html.DisplayFor(modelItem => row.waist)</td>                                                                
+                                                                    <td>@Html.DisplayFor(modelItem => row.pantlength)</td>
+
+
+                                                                </tr>
+                                                            }
+                                                        }
+
+                                                        <tr>
+                                                            <td>@Html.ActionLink("Delete", "deletetblsizePantMale", "Delete", new { chartname = rows.chartname }, new { @class = "btn btn-primary" })</td>
+
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- [ basic-table ] end -->
+
+
+                        </div>
+                        <!-- [ Main Content ] end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
