@@ -66,7 +66,8 @@
                             <li><a href="#">Sales</a></li>*@
                         @*<li class="dropdown default-dropdown">*@
                         @*<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages </a>*@
-                        @foreach (var rows in Session["categories"] as List<bazar.Models.tblcategory>)
+                        @*@foreach (var rows in Session["categories"] as List<bazar.Models.tblcategory>)*@
+                        @foreach (var rows in Model.categorylist)
                         {
 
                             <li>@Html.ActionLink(rows.categoryName, "getUsersShopCategoryItem", "Customer", new { categoryid = rows.id }, new { @class = "btn" })</li>
@@ -148,7 +149,7 @@
                 @*col-md-3 col-sm-4 col-xs-4*@
 
                 @* Cards  *@
-                @if (TempData["categoryitem"] == null)
+                @if (TempData["categoryitemmale"] == null && TempData["categoryitemfemale"] == null && TempData["categoryitemshoe"] == null)
                 {
                     if (Model.maleGarmmentList != null)
                     {
@@ -157,7 +158,7 @@
                             <div class="col-6 col-md-3 col-lg-3">
                                 <div class="product product-single">
                                     <div class="product-thumb">
-                                        <a class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }) class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                         <img src="~/customercontent/img/product04.jpg" alt="">
                                     </div>
                                     <div class="product-body">
@@ -180,14 +181,14 @@
                             </div>
                         }
                     }
-                    if (Model.spMaleGarmmentList!=null)
+                    if (Model.spMaleGarmmentList != null)
                     {
                         foreach (var rows in Model.spMaleGarmmentList)
                         {
                             <div class="col-6 col-md-3 col-lg-3">
                                 <div class="product product-single">
                                     <div class="product-thumb">
-                                        <a class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid })  class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                         <img src="~/customercontent/img/product04.jpg" alt="">
                                     </div>
                                     <div class="product-body">
@@ -218,7 +219,7 @@
                             <div class="col-6 col-md-3 col-lg-3">
                                 <div class="product product-single">
                                     <div class="product-thumb">
-                                        <a class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid })  class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                         <img src="~/customercontent/img/product04.jpg" alt="">
                                     </div>
                                     <div class="product-body">
@@ -241,14 +242,14 @@
                             </div>
                         }
                     }
-                    if (Model.spFemaleGarmmentList!=null)
+                    if (Model.spFemaleGarmmentList != null)
                     {
                         foreach (var rows in Model.spFemaleGarmmentList)
                         {
                             <div class="col-6 col-md-3 col-lg-3">
                                 <div class="product product-single">
                                     <div class="product-thumb">
-                                        <a class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid })  class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                         <img src="~/customercontent/img/product04.jpg" alt="">
                                     </div>
                                     <div class="product-body">
@@ -272,15 +273,82 @@
                         }
                     }
 
+
+
+                     if (Model.shoeList != null)
+                    {
+                        foreach (var rows in Model.shoeList)
+                        {
+                            <div class="col-6 col-md-3 col-lg-3">
+                                <div class="product product-single">
+                                    <div class="product-thumb">
+                                        <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid })  class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        <img src="~/customercontent/img/product04.jpg" alt="">
+                                    </div>
+                                    <div class="product-body">
+                                        @*<h3 class="product-price">$32.50</h3>*@
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o empty"></i>@**@
+                                        </div>
+                                        @*<h4 class="product-name">*@ @Html.ActionLink(rows.shoename, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })@*</h4>*@
+                                        <div class="product-btns">
+                                            @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                            @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+                      if (Model.spShoeList != null)
+                    {
+                        foreach (var rows in Model.spShoeList)
+                        {
+                            <div class="col-6 col-md-3 col-lg-3">
+                                <div class="product product-single">
+                                    <div class="product-thumb">
+                                        <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid })  class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        <img src="~/customercontent/img/product04.jpg" alt="">
+                                    </div>
+                                    <div class="product-body">
+                                        @*<h3 class="product-price">$32.50</h3>*@
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o empty"></i>@**@
+                                        </div>
+                                        @*<h4 class="product-name">*@ @Html.ActionLink(rows.shoename, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })@*</h4>*@
+                                        <div class="product-btns">
+                                            @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                            @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
                 }
                 else
                 {
-                    foreach (var rows in TempData["categoryitem"] as List<bazar.Models.tblmaleGarment>)
+                    if (TempData["categoryitemmale"] != null)
                     {
+                        foreach (var rows in TempData["categoryitemmale"] as List<bazar.Models.tblmaleGarment>)
+                        {
                         <div class="col-6 col-md-3 col-lg-3">
                             <div class="product product-single">
                                 <div class="product-thumb">
-                                    <a class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                    <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid })  class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                     <img src="~/customercontent/img/product04.jpg" alt="">
                                 </div>
                                 <div class="product-body">
@@ -301,6 +369,69 @@
                                 </div>
                             </div>
                         </div>
+                        }
+                    }
+
+                    if (TempData["categoryitemfemale"] != null)
+                    {
+                        foreach (var rows in TempData["categoryitemfemale"] as List<bazar.Models.tblfemaleGarment>)
+                        {
+                        <div class="col-6 col-md-3 col-lg-3">
+                            <div class="product product-single">
+                                <div class="product-thumb">
+                                    <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid })  class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                    <img src="~/customercontent/img/product04.jpg" alt="">
+                                </div>
+                                <div class="product-body">
+                                    @*<h3 class="product-price">$32.50</h3>*@
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>@**@
+                                    </div>
+                                    @*<h4 class="product-name">*@ @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })@*</h4>*@
+                                    <div class="product-btns">
+                                        @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                        @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    }
+
+                     if (TempData["categoryitemshoe"] != null)
+                    {
+                        foreach (var rows in TempData["categoryitemshoe"] as List<bazar.Models.tblshoe>)
+                        {
+                        <div class="col-6 col-md-3 col-lg-3">
+                            <div class="product product-single">
+                                <div class="product-thumb">
+                                    <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid })  class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                    <img src="~/customercontent/img/product04.jpg" alt="">
+                                </div>
+                                <div class="product-body">
+                                    @*<h3 class="product-price">$32.50</h3>*@
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>@**@
+                                    </div>
+                                    @*<h4 class="product-name">*@ @Html.ActionLink(rows.shoename, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })@*</h4>*@
+                                    <div class="product-btns">
+                                        @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                        @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
                     }
                 }
                 <!--<div class="col-6 col-md-4 col-lg-4">

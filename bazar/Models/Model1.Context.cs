@@ -62,5 +62,14 @@ namespace bazar.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<serachMaleGarment_Result>("serachMaleGarment", searchParameter);
         }
+    
+        public virtual ObjectResult<serachShoes_Result> serachShoes(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("search", search) :
+                new ObjectParameter("search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<serachShoes_Result>("serachShoes", searchParameter);
+        }
     }
 }

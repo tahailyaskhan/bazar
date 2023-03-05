@@ -314,7 +314,11 @@ namespace bazar.Controllers
             tblfemaleGarmentaction repo = new tblfemaleGarmentaction();
             try
             {
+                Random rnd = new Random();
                 string filename = "";
+                string ServerSavePath = "";
+                int num = rnd.Next();
+                string username = Session["Username"].ToString();
                 var checkclothname = db.tblfemaleGarments.Where(x => x.clothname == data.clothname.ToString()).FirstOrDefault();
 
                 if (checkclothname == null)
@@ -345,25 +349,35 @@ namespace bazar.Controllers
                     ci.xxlarge = data.xxlarge;
 
 
-                    string path = @"C:\Users\Taha\source\repos\bazar\bazar\MaleGarments\" + "female"+@"\";  // Give the specific path  
+                    //string path = @"C:\Users\Taha\source\repos\bazar\bazar\MaleGarments\" + "female"+@"\";  // Give the specific path  
+                    //if (!(Directory.Exists(path)))
+                    //{
+                    //    Directory.CreateDirectory(path);
+
+                    //}
+
+                    string path = @"C:\Users\Taha\source\repos\bazar\bazar\FemaleGarments\" + username;  // Give the specific path  
                     if (!(Directory.Exists(path)))
                     {
                         Directory.CreateDirectory(path);
 
                     }
-                //C:\\Users\\Taha\\source\\repos\\bazar\\bazar\\female\\Capture8.PNG
-               
+                    //C:\\Users\\Taha\\source\\repos\\bazar\\bazar\\female\\Capture8.PNG
+
                     if (data.pic1 != null)
                     {
                         var InputFileName = Path.GetFileName(data.pic1.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("/MaleGarments/female/") + InputFileName);
-                        //Save file to server folder
-                        var imagepath = path + InputFileName;
-                        data.pic1.SaveAs(imagepath);
 
 
-                        string[] ImgPath = imagepath.Split(new[] { "MaleGarments" }, StringSplitOptions.None);
-                        string paths = "https://localhost:44326"+ "/MaleGarments/" + ImgPath[1];
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "FeFemaleGarments/" + username + "/") + InputFileName2);
+
+                        //Save file to server folder  
+                        data.pic1.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "FemaleGarments" }, StringSplitOptions.None);
+                        string paths = "https://localhost:44326" + "/FemaleGarments/" + username + ImgPath[1];
                         string s = paths.Replace("\\", "/");
                         ci.pic1 = s;
 
@@ -371,16 +385,18 @@ namespace bazar.Controllers
                     if (data.pic2 != null)
                     {
                         var InputFileName = Path.GetFileName(data.pic2.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/" + "female" + "/") + InputFileName);
+
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "FemaleGarments/" + username + "/") + InputFileName2);
+
                         //Save file to server folder  
-                        var imagepath = path + InputFileName;
-                        data.pic2.SaveAs(imagepath);
-                       
-                        string[] ImgPath = imagepath.Split(new[] { "bazar" }, StringSplitOptions.None);
-                        string paths = "https://localhost:44326" + ImgPath[1];
+                        data.pic2.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "FemaleGarments" }, StringSplitOptions.None);
+                        string paths = "https://localhost:44326" + "/FemaleGarments/" + username + ImgPath[1];
                         string s = paths.Replace("\\", "/");
-                       
-                       
                         ci.pic2 = s;
 
                     }
@@ -388,29 +404,38 @@ namespace bazar.Controllers
                     if (data.pic3 != null)
                     {
                         var InputFileName = Path.GetFileName(data.pic3.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/" + "female" + "/") + InputFileName);
+
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "FemaleGarments/" + username + "/") + InputFileName2);
+
                         //Save file to server folder  
-                        var imagepath = path + InputFileName;
-                        data.pic3.SaveAs(imagepath);
-                        string[] ImgPath = imagepath.Split(new[] { "bazar" }, StringSplitOptions.None);
-                        string paths = "https://localhost:44326" + ImgPath[1];
+                        data.pic3.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "FemaleGarments" }, StringSplitOptions.None);
+                        string paths = "https://localhost:44326" + "/FemaleGarments/" + username + ImgPath[1];
                         string s = paths.Replace("\\", "/");
-                        ci.pic3= s;
+                        ci.pic3 = s;
 
                     }
 
                     if (data.pic4 != null)
                     {
                         var InputFileName = Path.GetFileName(data.pic4.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/" + "female" + "/") + InputFileName);
-                        //Save file to server folder
-                        var imagepath = path + InputFileName;
-                        data.pic4.SaveAs(imagepath);
-                        string[] ImgPath = imagepath.Split(new[] { "bazar" }, StringSplitOptions.None);
-                        string paths = "https://localhost:44326" + ImgPath[1];
+
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "FemaleGarments/" + username + "/") + InputFileName2);
+
+                        //Save file to server folder  
+                        data.pic4.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "FemaleGarments" }, StringSplitOptions.None);
+                        string paths = "https://localhost:44326" + "/FemaleGarments/" + username + ImgPath[1];
                         string s = paths.Replace("\\", "/");
                         ci.pic4 = s;
-
                     }
                     ci.price = data.price;
                     ci.detail = data.detail;

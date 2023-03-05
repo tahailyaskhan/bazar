@@ -1,4 +1,4 @@
-﻿@model bazar.Models.tblmaleGarment
+﻿@model bazar.DAL.Data.viewmodel
 @{
     Layout = null;
 }
@@ -42,152 +42,195 @@
 </head>
 
 <body>
-    @{
-        Html.RenderPartial("_header");
-
-    }
-
-    <!-- NAVIGATION -->
-    <div id="navigation">
-        <!-- container -->
+  
+    <!-- header -->
+    <div id="header">
         <div class="container">
-            <div id="responsive-nav">
-
-                <div class="menu-nav">
-                    <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
-                    <ul class="menu-list">
-                        @*<li><a href="#">Home</a></li>
-                            <li><a href="#">Shop</a></li>
-
-
-                            <li><a href="#">Sales</a></li>*@
-                        @*<li class="dropdown default-dropdown">*@
-                        @*<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages </a>*@
-                        @foreach (var rows in Session["categories"] as List<bazar.Models.tblcategory>)
-                        {
-
-                            <li>@Html.ActionLink(rows.categoryName, "getCategorysGarment", "Customer", new { id = rows.id })</li>
-
-
-                        }
-                        @*</li>*@
-
-                    </ul>
+            <div class="pull-left">
+                <!-- Logo -->
+                <div class="header-logo">
+                    @*<a class="logo" href="#">
+                            <img src="./img/logo.png" alt="">
+                        </a>*@
                 </div>
-                <!-- menu nav -->
+                <!-- /Logo -->
+                <!-- Search -->
+                @*<div class="header-search">
+                    <form action=@Url.Action("getUsersShop", "Customer") id="data" enctype="multipart/form-data" method="post">
+
+
+
+
+
+                        <input class="input search-input" name="search" type="text" placeholder="Enter your keyword">
+
+
+                        <button class="search-btn"><i class="fa fa-search"></i></button>
+                        <input style="visibility:hidden" class="input search-input" value=@Session["shoptype"] name="shoptypeid" type="text" placeholder="Enter your keyword">
+
+                    </form>
+                </div>*@
+                <!-- /Search -->
+            </div>
+            <div class="pull-right">
+                <ul class="header-btns">
+                    <!-- Account -->
+                    @*<li class="header-account dropdown default-dropdown">
+                            <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                                <div class="header-btns-icon">
+                                    <i class="fa fa-user-o"></i>
+                                </div>
+                                <strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
+                            </div>
+                            <a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+                            <ul class="custom-menu">
+                                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                                <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
+                                <li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
+                                <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
+                                <li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
+                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+                            </ul>
+                        </li>*@
+                    <!-- /Account -->
+                    <!-- Cart -->
+                    <li class="header-cart dropdown default-dropdown">
+                        <a href=@Url.Action("getCart", "Customer") class="" aria-expanded="true">
+
+                            <div class="header-btns-icon  btn btn-outline-danger">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="qty">@Session["itemcount"]</span>
+                                <h5></h5>
+                            </div>
+
+                            @*<strong class="text-uppercase mt-3">My Cart</strong>*@
+
+                        </a>
+
+                    </li>
+                    <!-- /Cart -->
+                    <!-- Mobile nav toggle-->
+                    <li class="nav-toggle">
+                        <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                    </li>
+                    <!-- / Mobile nav toggle -->
+                </ul>
             </div>
         </div>
-        <!-- /container -->
+        <!-- header -->
     </div>
-    <!-- /NAVIGATION -->
-    <!-- section -->
-    <div class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <!--  Product Details -->
-                <div class="product product-details clearfix">
-                    <div class="col-md-6">
-                        <div id="product-main-view">
-                            <div class="product-view">
-                                <img src="~/customercontent/img/main-product01.jpg" alt="">
+    <!-- container -->
+    </header>
+
+    @if (Model.femaleGarmmentobj != null)
+    {
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <!--  Product Details -->
+                    <div class="product product-details clearfix">
+                        <div class="col-md-6">
+                            <div id="product-main-view">
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product01.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product02.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product03.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product04.jpg" alt="">
+                                </div>
                             </div>
-                            <div class="product-view">
-                                <img src="~/customercontent/img/main-product02.jpg" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="~/customercontent/img/main-product03.jpg" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="~/customercontent/img/main-product04.jpg" alt="">
+                            <div id="product-view">
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product01.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product02.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product03.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product04.jpg" alt="">
+                                </div>
                             </div>
                         </div>
-                        <div id="product-view">
-                            <div class="product-view">
-                                <img src="~/customercontent/img/thumb-product01.jpg" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="~/customercontent/img/thumb-product02.jpg" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="~/customercontent/img/thumb-product03.jpg" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="~/customercontent/img/thumb-product04.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="product-body">
-                            <div class="product-label">
-                                <span>New</span>
-                                <span class="sale">-20%</span>
-                            </div>
-                            <h2 class="product-name">@Model.clothname</h2>
-                            <h3 class="product-price">@Model.price</h3>
-                            <div>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
+                        <div class="col-md-6">
+                            <div class="product-body">
+                                <div class="product-label">
+                                    <span>New</span>
+                                    <span class="sale">-20%</span>
                                 </div>
-                                <a href="#">3 Review(s) / Add Review</a>
-                            </div>
-                            <p><strong>Availability:</strong> In Stock</p>
-                            <p><strong>Brand:</strong> E-SHOP</p>
-
-                            <p>
-                                @Model.detail
-                            </p>
-                            <form action=@Url.Action("addCart","Customer") id="data" enctype="multipart/form-data" method="post">
-                                <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.id>
-                                <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.pic1>
-                                <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.createdById>
-
-                                <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.clothname>
-                                <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.price>
-                                <div class="radios" id="bodyss">
-                                    @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                                        <input label="No" type="radio" id="female" name="gender" value="female">*@
-
-                                    @if (Model.xsmall == true)
-                                    {
-                                        <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
-
-                                    }
-                                    @if (Model.small == true)
-                                    {
-                                        <input label="S" type="radio" id="small" name="size" value="small">
-
-                                    }
-                                    @if (Model.medium == true)
-                                    {
-                                        <input label="M" type="radio" id="medium" name="size" value="medium">
-
-                                    }
-                                    @if (Model.large == true)
-                                    {
-                                        <input label="L" type="radio" id="large" name="size" value="large">
-
-                                    }
-                                    @if (Model.xlarge == true)
-                                    {
-                                        <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
-
-                                    }
+                                <h2 class="product-name">@Model.femaleGarmmentobj.clothname</h2>
+                                <h3 class="product-price">@Model.femaleGarmmentobj.price</h3>
+                                <div>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                    <a href="#">3 Review(s) / Add Review</a>
                                 </div>
+                                <p><strong>Availability:</strong> In Stock</p>
+                                <p><strong>Brand:</strong> E-SHOP</p>
 
-                                <h5>SizeChart</h5>
-                              @*<div class="card ">
-                                  
-                                    <div class="card-body table-border-style">*@
-                                        <div class="table-responsive " >
-                                        
-                                            <table style="width:10%" class="table">
-                                                <thead style="color: white; background-color: deepskyblue ">
+                                <p>
+                                    @Model.femaleGarmmentobj.detail
+                                </p>
+                                <form action=@Url.Action("addCart", "Customer") id="data" enctype="multipart/form-data" method="post">
+                                    <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.femaleGarmmentobj.id>
+                                    <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.femaleGarmmentobj.pic1>
+                                    <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.femaleGarmmentobj.createdById>
+
+                                    <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.femaleGarmmentobj.clothname>
+                                    <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.femaleGarmmentobj.price>
+                                    <div class="radios" id="bodyss">
+                                        @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
+                                            <input label="No" type="radio" id="female" name="gender" value="female">*@
+
+                                        @if (Model.femaleGarmmentobj.xsmall == true)
+                                        {
+                                            <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
+
+                                        }
+                                        @if (Model.femaleGarmmentobj.small == true)
+                                        {
+                                            <input label="S" type="radio" id="small" name="size" value="small">
+
+                                        }
+                                        @if (Model.femaleGarmmentobj.medium == true)
+                                        {
+                                            <input label="M" type="radio" id="medium" name="size" value="medium">
+
+                                        }
+                                        @if (Model.femaleGarmmentobj.large == true)
+                                        {
+                                            <input label="L" type="radio" id="large" name="size" value="large">
+
+                                        }
+                                        @if (Model.femaleGarmmentobj.xlarge == true)
+                                        {
+                                            <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                        }
+                                    </div>
+
+                                    <h5>SizeChart</h5>
+                                    @*<div class="card ">
+
+                                        <div class="card-body table-border-style">*@
+                                    <div class="table-responsive ">
+
+                                        <table style="width:10%" class="table">
+                                            @*<thead style="color: white; background-color: deepskyblue ">
                                                     <tr style="font-size:10px;">
                                                         <th>Size Name</th>
                                                         <th>Collar</th>
@@ -196,61 +239,419 @@
                                                         <th>ShirtLength</th>
                                                         <th>ShirtLength</th>
                                                     </tr>
-                                                </thead>
-                                                <tbody id="tblfloortime" >
+                                                </thead>*@
+                                            <tbody id="tblfloortime">
 
-                                                    @foreach (var row in Session["getshirtchartname"] as List<bazar.Models.tblsizeShirtMale>)
+                                                @if (Model.tblsizeShirtFemalelist != null)
+                                                {
+                                                    foreach (var row in Model.tblsizeShirtFemalelist)
                                                     {
-                                                      
-                                                    <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
-                                                        <td>@Html.DisplayFor(modelItem => row.sizeName)</td>
-                                                        <td>@Html.DisplayFor(modelItem => row.collar)</td>
-                                                        <td>@Html.DisplayFor(modelItem => row.chest)</td>
-                                                        <td>@Html.DisplayFor(modelItem => row.sleeveLength)</td>
-                                                        <td>@Html.DisplayFor(modelItem => row.shirtLength)</td>
-                                                        <td>@Html.DisplayFor(modelItem => row.shirtLength)</td>
+                                                        <tr style="font-size:10px;">
+                                                            <th>Sizename</th>
+                                                            <th>Shoulder</th>
+                                                            <th>Chest</th>
+                                                            <th>sleevelength</th>
+                                                            <th>ShirtLength</th>
+                                                            <th>armhole</th>
+                                                            <th>sleeveopening</th>
+                                                        </tr>
+                                                        <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
+                                                            <td>@Html.DisplayFor(modelItem => row.sizeName)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.shoulder)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.chest)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.sleeveLength)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.shirtLength)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.armhole)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.sleeveopening)</td>
 
 
 
 
-                                                    </tr>
-                                                        
+                                                        </tr>
+
                                                     }
+                                                }
+                                                @if (Model.tblsizePantFemalelist != null)
+                                                {
+                                                    <tr style="font-size:10px;">
+                                                        <th>Size Name</th>
+                                                        <th>Waist</th>
+                                                        <th>Pantlength</th>
+                                                        <th>hip</th>
+                                                        <th>thigh</th>
+                                                        <th>bottom</th>
+                                                    </tr>
+                                                    foreach (var row in Model.tblsizePantFemalelist)
+                                                    {
 
-                                                    
+                                                        <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
+                                                            <td>@Html.DisplayFor(modelItem => row.sizeName)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.waist)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.pantlength)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.hip)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.thigh)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.bottom)</td>
 
-                                                </tbody>
-                                            </table>
-                                        
-                                        </div>
-                                    @*</div>
-                                </div>*@
+
+                                                        </tr>
+
+                                                    }
+                                                }
 
 
-                                <div class="product-btns">
-                                    <div class="qty-input">
-                                        <span class="text-uppercase">QTY: </span>
-                                        <input class="input" id="quantity" name="quantity" type="number">
+                                            </tbody>
+                                        </table>
+
                                     </div>
-                                    <button class="primary-btn add-to-cart" type="submit" id="btnadd"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                    @*</div>
+                                        </div>*@
 
-                                </div>
-                            </form>
+
+                                    <div class="product-btns">
+                                        <div class="qty-input">
+                                            <span class="text-uppercase">QTY: </span>
+                                            <input class="input" id="quantity" name="quantity" type="number">
+                                        </div>
+                                        <button class="primary-btn add-to-cart" type="submit" id="btnadd"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+
+                                    </div>
+                                </form>
+                            </div>
                         </div>
+
+
                     </div>
-
-
+                    <!-- /Product Details -->
                 </div>
-                <!-- /Product Details -->
+                <!-- /row -->
             </div>
-            <!-- /row -->
+            <!-- /container -->
         </div>
-        <!-- /container -->
-    </div>
+
+    }
+
+    @if (Model.shoeobj != null)
+    {
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <!--  Product Details -->
+                    <div class="product product-details clearfix">
+                        <div class="col-md-6">
+                            <div id="product-main-view">
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product01.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product02.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product03.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product04.jpg" alt="">
+                                </div>
+                            </div>
+                            <div id="product-view">
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product01.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product02.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product03.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product04.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product-body">
+                                <div class="product-label">
+                                    <span>New</span>
+                                    <span class="sale">-20%</span>
+                                </div>
+                                <h2 class="product-name">@Model.shoeobj.shoename</h2>
+                                <h3 class="product-price">@Model.shoeobj.price</h3>
+                                <div>
+                                    <div class="product-rating">
+                                        m
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                    <a href="#">3 Review(s) / Add Review</a>
+                                </div>
+                                <p><strong>Availability:</strong> In Stock</p>
+                                <p><strong>Brand:</strong> E-SHOP</p>
+
+                                <p>
+                                    @Model.shoeobj.detail
+                                </p>
+                                <form action=@Url.Action("addCart", "Customer") id="data" enctype="multipart/form-data" method="post">
+                                    <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.shoeobj.id>
+                                    <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.shoeobj.pic1>
+                                    <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.shoeobj.createdById>
+
+                                    <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.shoeobj.shoename>
+                                    <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.shoeobj.price>
+                                    <div class="radios" id="bodyss">
+                                        @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
+                                            <input label="No" type="radio" id="female" name="gender" value="female">*@
+
+                                        @if (Model.shoeobj.xsmall == true)
+                                        {
+                                            <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
+
+                                        }
+                                        @if (Model.shoeobj.small == true)
+                                        {
+                                            <input label="S" type="radio" id="small" name="size" value="small">
+
+                                        }
+                                        @if (Model.shoeobj.medium == true)
+                                        {
+                                            <input label="M" type="radio" id="medium" name="size" value="medium">
+
+                                        }
+                                        @if (Model.shoeobj.large == true)
+                                        {
+                                            <input label="L" type="radio" id="large" name="size" value="large">
+
+                                        }
+                                        @if (Model.shoeobj.xlarge == true)
+                                        {
+                                            <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                        }
+                                    </div>
 
 
 
 
+
+                                    <div class="product-btns">
+                                        <div class="qty-input">
+                                            <span class="text-uppercase">QTY: </span>
+                                            <input class="input" id="quantity" name="quantity" type="number">
+                                        </div>
+                                        <button class="primary-btn add-to-cart" type="submit" id="btnadd"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- /Product Details -->
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+
+    }
+
+
+    else
+    {
+
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <!--  Product Details -->
+                    <div class="product product-details clearfix">
+                        <div class="col-md-6">
+                            <div id="product-main-view">
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product01.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product02.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product03.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/main-product04.jpg" alt="">
+                                </div>
+                            </div>
+                            <div id="product-view">
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product01.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product02.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product03.jpg" alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src="~/customercontent/img/thumb-product04.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product-body">
+                                <div class="product-label">
+                                    <span>New</span>
+                                    <span class="sale">-20%</span>
+                                </div>
+                                <h2 class="product-name">@Model.maleGarmmentobj.clothname</h2>
+                                <h3 class="product-price">@Model.maleGarmmentobj.price</h3>
+                                <div>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                    <a href="#">3 Review(s) / Add Review</a>
+                                </div>
+                                <p><strong>Availability:</strong> In Stock</p>
+                                <p><strong>Brand:</strong> E-SHOP</p>
+
+                                <p>
+                                    @Model.maleGarmmentobj.detail
+                                </p>
+                                <form action=@Url.Action("addCart", "Customer") id="data" enctype="multipart/form-data" method="post">
+                                    <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.maleGarmmentobj.id>
+                                    <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.maleGarmmentobj.pic1>
+                                    <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.maleGarmmentobj.createdById>
+
+                                    <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.maleGarmmentobj.clothname>
+                                    <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.maleGarmmentobj.price>
+                                    <div class="radios" id="bodyss">
+                                        @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
+                                            <input label="No" type="radio" id="female" name="gender" value="female">*@
+
+                                        @if (Model.maleGarmmentobj.xsmall == true)
+                                        {
+                                            <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
+
+                                        }
+                                        @if (Model.maleGarmmentobj.small == true)
+                                        {
+                                            <input label="S" type="radio" id="small" name="size" value="small">
+
+                                        }
+                                        @if (Model.maleGarmmentobj.medium == true)
+                                        {
+                                            <input label="M" type="radio" id="medium" name="size" value="medium">
+
+                                        }
+                                        @if (Model.maleGarmmentobj.large == true)
+                                        {
+                                            <input label="L" type="radio" id="large" name="size" value="large">
+
+                                        }
+                                        @if (Model.maleGarmmentobj.xlarge == true)
+                                        {
+                                            <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                        }
+                                    </div>
+
+                                    <h5>SizeChart</h5>
+                                    @*<div class="card ">
+
+                                        <div class="card-body table-border-style">*@
+                                    <div class="table-responsive ">
+
+                                        <table style="width:10%" class="table">
+                                            @*<thead style="color: white; background-color: deepskyblue ">
+
+                                                </thead>*@
+                                            <tbody id="tblfloortime">
+
+                                                @if (Model.tblsizeShirtMalelist != null)
+                                                {
+                                                    foreach (var row in Model.tblsizeShirtMalelist)
+                                                    {
+                                                        <tr style="font-size:10px;">
+                                                            <th>Size Name</th>
+                                                            <th>Collar</th>
+                                                            <th>chest</th>
+                                                            <th>sleevelength</th>
+                                                            <th>ShirtLength</th>
+                                                            <th>ShirtLength</th>
+                                                        </tr>
+                                                        <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
+                                                            <td>@Html.DisplayFor(modelItem => row.sizeName)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.collar)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.chest)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.sleeveLength)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.shirtLength)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.shirtLength)</td>
+
+
+
+
+                                                        </tr>
+
+                                                    }
+                                                }
+                                                @if (Model.tblsizePantMalelist != null)
+                                                {
+                                                    <tr style="font-size:10px;">
+                                                        <th>Size Name</th>
+                                                        <th>Waist</th>
+                                                        <th>Pantlength</th>
+                                                    </tr>
+                                                    foreach (var row in Model.tblsizePantMalelist)
+                                                    {
+
+                                                        <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
+                                                            <td>@Html.DisplayFor(modelItem => row.sizeName)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.waist)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.pantlength)</td>
+
+
+                                                        </tr>
+
+                                                    }
+                                                }
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    @*</div>
+                                        </div>*@
+
+
+                                    <div class="product-btns">
+                                        <div class="qty-input">
+                                            <span class="text-uppercase">QTY: </span>
+                                            <input class="input" id="quantity" name="quantity" type="number">
+                                        </div>
+                                        <button class="primary-btn add-to-cart" type="submit" id="btnadd"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- /Product Details -->
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+    }
     <!-- FOOTER -->
     <footer id="footer" class="section section-grey">
         <!-- container -->

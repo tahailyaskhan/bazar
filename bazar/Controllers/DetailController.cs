@@ -334,7 +334,7 @@ namespace bazar.Controllers
                     });
                 }
             }
-            return View(getorder);
+            return View(customerorderlist);
         }
         //end
 

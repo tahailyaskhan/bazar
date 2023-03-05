@@ -64,6 +64,8 @@
           <Property Name="ownerId" Type="int" />
           <Property Name="createdDate" Type="datetime" />
           <Property Name="isActive" Type="bit" />
+          <Property Name="customername" Type="varchar(max)" />
+          <Property Name="price" Type="int" />
         </EntityType>
         <EntityType Name="tblfemaleGarments">
           <Key>
@@ -286,6 +288,9 @@
         <Function Name="serachMaleGarment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="search" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="serachShoes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="search" Type="varchar(max)" Mode="In" />
+        </Function>
         <EntityContainer Name="bazarModelStoreContainer">
           <EntitySet Name="tblcategory" EntityType="Self.tblcategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblcity" EntityType="Self.tblcity" Schema="dbo" store:Type="Tables" />
@@ -435,6 +440,9 @@
           <Parameter Name="search" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="serachMaleGarment" ReturnType="Collection(bazarModel.serachMaleGarment_Result)">
+          <Parameter Name="search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="serachShoes" ReturnType="Collection(bazarModel.serachShoes_Result)">
           <Parameter Name="search" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="tblcustomerOrders" EntityType="bazarModel.tblcustomerOrder" />
@@ -631,6 +639,25 @@
           <Property Type="DateTime" Name="createdDate" Nullable="true" Precision="23" />
           <Property Type="Boolean" Name="isActive" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="serachShoes_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="shoename" Nullable="true" />
+          <Property Type="Int32" Name="categoryid" Nullable="true" />
+          <Property Type="String" Name="pic1" Nullable="true" />
+          <Property Type="String" Name="pic2" Nullable="true" />
+          <Property Type="String" Name="pic3" Nullable="true" />
+          <Property Type="Boolean" Name="xsmall" Nullable="true" />
+          <Property Type="Boolean" Name="small" Nullable="true" />
+          <Property Type="Boolean" Name="medium" Nullable="true" />
+          <Property Type="Boolean" Name="large" Nullable="true" />
+          <Property Type="Boolean" Name="xlarge" Nullable="true" />
+          <Property Type="Boolean" Name="xxlarge" Nullable="true" />
+          <Property Type="String" Name="detail" Nullable="true" />
+          <Property Type="Int32" Name="price" Nullable="true" />
+          <Property Type="Int32" Name="createdById" Nullable="true" />
+          <Property Type="DateTime" Name="createdDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+        </ComplexType>
         <EntityType Name="tblcustomerOrder">
           <Key>
             <PropertyRef Name="id" />
@@ -650,6 +677,8 @@
           <Property Name="ownerId" Type="Int32" />
           <Property Name="createdDate" Type="DateTime" Precision="3" />
           <Property Name="isActive" Type="Boolean" />
+          <Property Name="customername" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -978,9 +1007,34 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="serachShoes" FunctionName="bazarModel.Store.serachShoes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bazarModel.serachShoes_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="shoename" ColumnName="shoename" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+                <ScalarProperty Name="pic1" ColumnName="pic1" />
+                <ScalarProperty Name="pic2" ColumnName="pic2" />
+                <ScalarProperty Name="pic3" ColumnName="pic3" />
+                <ScalarProperty Name="xsmall" ColumnName="xsmall" />
+                <ScalarProperty Name="small" ColumnName="small" />
+                <ScalarProperty Name="medium" ColumnName="medium" />
+                <ScalarProperty Name="large" ColumnName="large" />
+                <ScalarProperty Name="xlarge" ColumnName="xlarge" />
+                <ScalarProperty Name="xxlarge" ColumnName="xxlarge" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="tblcustomerOrders">
             <EntityTypeMapping TypeName="bazarModel.tblcustomerOrder">
               <MappingFragment StoreEntitySet="tblcustomerOrder">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="customername" ColumnName="customername" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="createdDate" ColumnName="createdDate" />
                 <ScalarProperty Name="ownerId" ColumnName="ownerId" />
