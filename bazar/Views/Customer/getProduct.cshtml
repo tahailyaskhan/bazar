@@ -1,4 +1,4 @@
-﻿@model bazar.Models.tblmaleGarment
+﻿@model bazar.DAL.Data.viewmodel
 @{
     Layout = null;
 }
@@ -89,121 +89,300 @@
                 <!--  Product Details -->
                 <div class="product product-details clearfix">
                     <div class="col-md-6">
+                         @if (Model.maleGarmentObj != null)
+                         {
                         <div id="product-main-view">
                             <div class="product-view">
-                                <img src="~/customercontent/img/main-product01.jpg" alt="">
+                                <img src=@Model.maleGarmentObj.pic1 alt="">
                             </div>
                             <div class="product-view">
-                                <img src="~/customercontent/img/main-product02.jpg" alt="">
+                                <img src=@Model.maleGarmentObj.pic2 alt="">
+                            </div>
+                          
+                        </div>
+                        <div id="product-view">
+                            <div class="product-view">
+                                <img src=@Model.maleGarmentObj.pic1 alt="">
                             </div>
                             <div class="product-view">
-                                <img src="~/customercontent/img/main-product03.jpg" alt="">
+                                <img src=@Model.maleGarmentObj.pic2 alt="">
+                            </div>
+                           
+                        </div>
+                         }
+
+                          @if (Model.femaleGarmentObj != null)
+                         {
+                        <div id="product-main-view">
+                            <div class="product-view">
+                                <img src=@Model.femaleGarmentObj.pic1 alt="">
                             </div>
                             <div class="product-view">
-                                <img src="~/customercontent/img/main-product04.jpg" alt="">
+                                <img src=@Model.femaleGarmentObj.pic2 alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src=@Model.femaleGarmentObj.pic3 alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src=@Model.femaleGarmentObj.pic4 alt="">
                             </div>
                         </div>
                         <div id="product-view">
                             <div class="product-view">
-                                <img src="~/customercontent/img/thumb-product01.jpg" alt="">
+                                <img src=@Model.femaleGarmentObj.pic1 alt="">
                             </div>
                             <div class="product-view">
-                                <img src="~/customercontent/img/thumb-product02.jpg" alt="">
+                                <img src=@Model.femaleGarmentObj.pic2 alt="">
                             </div>
                             <div class="product-view">
-                                <img src="~/customercontent/img/thumb-product03.jpg" alt="">
+                                <img src=@Model.femaleGarmentObj.pic3 alt="">
                             </div>
                             <div class="product-view">
-                                <img src="~/customercontent/img/thumb-product04.jpg" alt="">
+                                <img src=@Model.femaleGarmentObj.pic4 alt="">
                             </div>
                         </div>
+                         }
+                           @if (Model.shoeObj != null)
+                         {
+                        <div id="product-main-view">
+                            <div class="product-view">
+                                <img src=@Model.shoeObj.pic1 alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src=@Model.shoeObj.pic2 alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src=@Model.shoeObj.pic3 alt="">
+                            </div>
+                          
+                        </div>
+                        <div id="product-view">
+                            <div class="product-view">
+                                <img src=@Model.shoeObj.pic1 alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src=@Model.shoeObj.pic2 alt="">
+                            </div>
+                            <div class="product-view">
+                                <img src=@Model.shoeObj.pic3 alt="">
+                            </div>
+                            
+                        </div>
+                         }
                     </div>
+
                     <div class="col-md-6">
                         <div class="product-body">
                             <div class="product-label">
                                 <span>New</span>
                                 <span class="sale">-20%</span>
                             </div>
-                            <h2 class="product-name">@Model.clothname</h2>
-                            <h3 class="product-price">@Model.price</h3>
-                            <div>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                </div>
-                                <a href="#">3 Review(s) / Add Review</a>
-                            </div>
-                            <p><strong>Availability:</strong> In Stock</p>
-                            <p><strong>Brand:</strong> E-SHOP</p>
-
-                            <p>
-                                @Model.detail
-                            </p>
                             <form action=@Url.Action("addCart","Customer") id="data" enctype="multipart/form-data" method="post">
-                                <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.id>
-                                <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.pic1>
-                                <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.createdById>
+                               @if (Model.maleGarmentObj != null)
+                               {
+                                <h2 class="product-name">@Model.maleGarmentObj.clothname</h2>
+                                <h3 class="product-price">@Model.maleGarmentObj.price</h3>
+                                <div>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                    <a href="#">3 Review(s) / Add Review</a>
+                                </div>
+                                <p><strong>Availability:</strong> In Stock</p>
+                                <p><strong>Brand:</strong> E-SHOP</p>
 
-                                <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.clothname>
-                                <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.price>
+                                <p>
+                                    @Model.maleGarmentObj.detail
+                                </p>
+
+
+                                <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.maleGarmentObj.id>
+                                <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.maleGarmentObj.pic1>
+                                <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.maleGarmentObj.createdById>
+
+                                <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.maleGarmentObj.clothname>
+                                <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.maleGarmentObj.price>
                                 <div class="radios" id="bodyss">
                                     @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                                        <input label="No" type="radio" id="female" name="gender" value="female">*@
+                <input label="No" type="radio" id="female" name="gender" value="female">*@
 
-                                    @if (Model.xsmall == true)
+                                    @if (Model.maleGarmentObj.xsmall == true)
                                     {
                                         <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
 
                                     }
-                                    @if (Model.small == true)
+                                    @if (Model.maleGarmentObj.small == true)
                                     {
                                         <input label="S" type="radio" id="small" name="size" value="small">
 
                                     }
-                                    @if (Model.medium == true)
+                                    @if (Model.maleGarmentObj.medium == true)
                                     {
                                         <input label="M" type="radio" id="medium" name="size" value="medium">
 
                                     }
-                                    @if (Model.large == true)
+                                    @if (Model.maleGarmentObj.large == true)
                                     {
                                         <input label="L" type="radio" id="large" name="size" value="large">
 
                                     }
-                                    @if (Model.xlarge == true)
+                                    @if (Model.maleGarmentObj.xlarge == true)
                                     {
                                         <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
 
                                     }
                                 </div>
+                               }
 
+                               @if (Model.femaleGarmentObj != null)
+                               {
+                                <h2 class="product-name">@Model.femaleGarmentObj.clothname</h2>
+                                <h3 class="product-price">@Model.femaleGarmentObj.price</h3>
+                                <div>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                    <a href="#">3 Review(s) / Add Review</a>
+                                </div>
+                                <p><strong>Availability:</strong> In Stock</p>
+                                <p><strong>Brand:</strong> E-SHOP</p>
+
+                                <p>
+                                    @Model.femaleGarmentObj.detail
+                                </p>
+
+
+                                <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.femaleGarmentObj.id>
+                                <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.femaleGarmentObj.pic1>
+                                <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.femaleGarmentObj.createdById>
+
+                                <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.femaleGarmentObj.clothname>
+                                <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.femaleGarmentObj.price>
+                                <div class="radios" id="bodyss">
+                                    @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
+                <input label="No" type="radio" id="female" name="gender" value="female">*@
+
+                                    @if (Model.femaleGarmentObj.xsmall == true)
+                                    {
+                                        <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
+
+                                    }
+                                    @if (Model.femaleGarmentObj.small == true)
+                                    {
+                                        <input label="S" type="radio" id="small" name="size" value="small">
+
+                                    }
+                                    @if (Model.femaleGarmentObj.medium == true)
+                                    {
+                                        <input label="M" type="radio" id="medium" name="size" value="medium">
+
+                                    }
+                                    @if (Model.femaleGarmentObj.large == true)
+                                    {
+                                        <input label="L" type="radio" id="large" name="size" value="large">
+
+                                    }
+                                    @if (Model.femaleGarmentObj.xlarge == true)
+                                    {
+                                        <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                    }
+                                </div>
+                               }
+
+                                @if (Model.shoeObj != null)
+                               {
+                                <h2 class="product-name">@Model.shoeObj.shoename</h2>
+                                <h3 class="product-price">@Model.shoeObj.price</h3>
+                                <div>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                    <a href="#">3 Review(s) / Add Review</a>
+                                </div>
+                                <p><strong>Availability:</strong> In Stock</p>
+                                <p><strong>Brand:</strong> E-SHOP</p>
+
+                                <p>
+                                    Model.shoeObj.detail
+                                </p>
+
+
+                                <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.shoeObj.id>
+                                <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.shoeObj.pic1>
+                                <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.shoeObj.createdById>
+
+                                <input type="text" style="visibility:hidden" id="shoename" name="shoename" value=@Model.shoeObj.shoename>
+                                <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.shoeObj.price>
+                                <div class="radios" id="bodyss">
+                                    @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
+                <input label="No" type="radio" id="female" name="gender" value="female">*@
+
+                                    @if (Model.shoeObj.xsmall == true)
+                                    {
+                                        <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
+
+                                    }
+                                    @if (Model.shoeObj.small == true)
+                                    {
+                                        <input label="S" type="radio" id="small" name="size" value="small">
+
+                                    }
+                                    @if (Model.shoeObj.medium == true)
+                                    {
+                                        <input label="M" type="radio" id="medium" name="size" value="medium">
+
+                                    }
+                                    @if (Model.shoeObj.large == true)
+                                    {
+                                        <input label="L" type="radio" id="large" name="size" value="large">
+
+                                    }
+                                    @if (Model.shoeObj.xlarge == true)
+                                    {
+                                        <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                    }
+                                </div>
+                               }
                                 <h5>SizeChart</h5>
-                              @*<div class="card ">
-                                  
-                                    <div class="card-body table-border-style">*@
-                                        <div class="table-responsive " >
-                                        
-                                            <table style="width:10%" class="table">
-                                                <thead style="color: white; background-color: deepskyblue ">
-                                                    <tr style="font-size:10px;">
-                                                        <th>Size Name</th>
-                                                        <th>Collar</th>
-                                                        <th>chest</th>
-                                                        <th>sleevelength</th>
-                                                        <th>ShirtLength</th>
-                                                        <th>ShirtLength</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="tblfloortime" >
+                                @*<div class="card ">
 
-                                                    @foreach (var row in Session["getshirtchartname"] as List<bazar.Models.tblsizeShirtMale>)
-                                                    {
-                                                      
+            <div class="card-body table-border-style">*@
+                                @if (Model.maleShirtSizeList != null)
+                                {
+                                    <div class="table-responsive ">
+
+                                        <table style="width:10%" class="table">
+                                            <thead style="color: white; background-color: deepskyblue ">
+                                                <tr style="font-size:10px;">
+                                                    @*<th>Size Name</th>*@
+                                                    <th>Collar</th>
+                                                    <th>chest</th>
+                                                    <th>sleevelength</th>
+                                                    <th>ShirtLength</th>
+                                                    <th>ShirtLength</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblfloortime">
+
+                                                @foreach (var row in Model.maleShirtSizeList)
+                                                {
+
                                                     <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
-                                                        <td>@Html.DisplayFor(modelItem => row.sizeName)</td>
+                                                        @*<td>@Html.DisplayFor(modelItem => row.sizeName)</td>*@
                                                         <td>@Html.DisplayFor(modelItem => row.collar)</td>
                                                         <td>@Html.DisplayFor(modelItem => row.chest)</td>
                                                         <td>@Html.DisplayFor(modelItem => row.sleeveLength)</td>
@@ -214,17 +393,151 @@
 
 
                                                     </tr>
-                                                        
-                                                    }
 
-                                                    
+                                                }
 
-                                                </tbody>
-                                            </table>
-                                        
-                                        </div>
-                                    @*</div>
-                                </div>*@
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+
+                                }
+
+                                @if (Model.malePantSizeList != null)
+                                {
+                                    <div class="table-responsive ">
+
+                                        <table style="width:10%" class="table">
+                                            <thead style="color: white; background-color: deepskyblue ">
+                                                <tr style="font-size:10px;">
+                                                    <th>Waist</th>
+                                                    <th>Pantlength</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblfloortime">
+
+                                                @foreach (var row in Model.malePantSizeList)
+                                                {
+
+                                                    <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
+                                                        <td>@Html.DisplayFor(modelItem => row.waist)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.pantlength)</td>
+
+
+
+
+
+                                                    </tr>
+
+                                                }
+
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+
+                                }
+
+                                @if (Model.femaleShirtSizeList != null)
+                                {
+                                    <div class="table-responsive ">
+
+                                        <table style="width:10%" class="table">
+                                            <thead style="color: white; background-color: deepskyblue ">
+                                                <tr style="font-size:10px;">
+                                                    <th>Shoulder</th>
+                                                    <th>Armhole</th>
+                                                    <th>chest</th>
+                                                    <th>sleevelength</th>
+                                                    <th>ShirtLength</th>
+                                                    <th>ShirtLength</th>
+                                                    <th>Daman</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblfloortime">
+
+                                                @foreach (var row in Model.femaleShirtSizeList)
+                                                {
+
+                                                    <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
+                                                        <td>@Html.DisplayFor(modelItem => row.shoulder)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.armhole)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.chest)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.sleeveLength)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.shirtLength)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.shirtLength)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.daman)</td>
+
+
+
+
+                                                    </tr>
+
+                                                }
+
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+
+                                }
+                                @if (Model.femalePantSizeList != null)
+                                {
+                                    <div class="table-responsive ">
+
+                                        <table style="width:10%" class="table">
+                                            <thead style="color: white; background-color: deepskyblue ">
+                                                <tr style="font-size:10px;">
+                                                    <th>Waist</th>
+                                                    <th>Pantlength</th>
+                                                    <th>Hip</th>
+                                                    <th>Thigh</th>
+                                                    <th>Bottom</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblfloortime">
+
+                                                @foreach (var row in Model.femalePantSizeList)
+                                                {
+
+                                                    <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
+                                                        <td>@Html.DisplayFor(modelItem => row.waist)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.pantlength)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.hip)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.thigh)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.bottom)</td>
+
+
+
+
+
+                                                    </tr>
+
+                                                }
+
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+
+                                }
+
+                                @*</div>
+            </div>*@
 
 
                                 <div class="product-btns">

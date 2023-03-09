@@ -113,27 +113,57 @@ namespace bazar.Controllers
 
         public ActionResult getProduct(int id, int userid,int categoryid)
         {
-            var getSpecificGarment = db.tblmaleGarments.Where(x=>x.id==id).FirstOrDefault();
+            viewmodel obj = new viewmodel();
+            tblmaleGarment getSpecificGarment = new tblmaleGarment();
+            tblfemaleGarment getSpecificfeGarment = new tblfemaleGarment();
+            if (categoryid == 1 || categoryid == 2)
+            {
+                obj.maleGarmentObj  = db.tblmaleGarments.Where(x => x.id == id).FirstOrDefault();
+            }
+            if (categoryid == 3 || categoryid == 4)
+            {
+               obj.femaleGarmentObj = db.tblfemaleGarments.Where(x => x.id == id).FirstOrDefault();
+
+            }
+            if (categoryid == 5 || categoryid == 6)
+            {
+                obj.shoeObj = db.tblshoes.Where(x => x.id == id).FirstOrDefault();
+            }
             List<tblsizeShirtMale> getsizeshirt = new List<tblsizeShirtMale>();
             List<tblsizePantMale> getsizepant = new List<tblsizePantMale>();
+            List<tblsizeShirtFemale> getsizeshirtfemale = new List<tblsizeShirtFemale>();
+            List<tblsizePantFemale> getsizepantfemale = new List<tblsizePantFemale>();
             Session["getshirtchartname"] = db.tblsizeShirtMales.Where(x=>x.chartName== getSpecificGarment.shirtsizechartid).ToList();
             var jj= db.tblsizeShirtMales.Where(x => x.chartName == getSpecificGarment.shirtsizechartid).ToList();
             if (categoryid == 1)
             {
                 getsizeshirt = db.tblsizeShirtMales.Where(x => x.createdById == userid).ToList();
-                Session["getsize"] = getsizeshirt;
+               obj.maleShirtSizeList = db.tblsizeShirtMales.Where(x => x.chartName == obj.maleGarmentObj.shirtsizechartid).ToList();
             }
             if (categoryid == 2)
             {
                 getsizepant = db.tblsizePantMales.Where(x => x.createdById == userid).ToList();
-                Session["getsize"] = getsizepant;
+                obj.malePantSizeList = db.tblsizePantMales.Where(x => x.chartName == obj.maleGarmentObj.pantsizechartid).ToList();
             }
-           
-            return View(getSpecificGarment);
+            if (categoryid == 3)
+            {
+                getsizeshirtfemale = db.tblsizeShirtFemales.Where(x => x.createdById == userid).ToList();
+                obj.femaleShirtSizeList = db.tblsizeShirtFemales.Where(x => x.chartName == obj.femaleGarmentObj.shirtsizechartnameid).ToList();
+            }
+            if (categoryid == 4)
+            {
+                getsizepantfemale = db.tblsizePantFemales.Where(x => x.chartName == getSpecificfeGarment.shirtsizechartnameid).ToList();
+                obj.femalePantSizeList = db.tblsizePantFemales.Where(x => x.chartName == obj.femaleGarmentObj.pantsizechartnameid).ToList();
+            }
+
+
+
+            return View(obj);
         }
 
         public ActionResult addCart(cart data)
         {
+         
             if (Session["cart"] == null)
             {
                 List<cart> li = new List<cart>();
@@ -141,7 +171,7 @@ namespace bazar.Controllers
                 li.Add(data);
                 Session["cart"] = li;
                 Session["itemcount"] = li.Count();
-
+                Session["total"]= data.price * data.quantity;
 
                 Session["count"] = 1;
 
@@ -150,21 +180,28 @@ namespace bazar.Controllers
             else
             {
                 List<cart> li = (List<cart>)Session["cart"];
+                int total = 0;
                 var check = li.Where(x => x.ids == data.ids).FirstOrDefault();
                 if (check != null)
                 {
-                    check.price = data.price;
+                    check.price = data.price* data.quantity;
                     check.pic1 = data.pic1;
                     check.quantity = data.quantity;
                     check.size = data.size;
                 }
                 else
                 {
+                    data.price = data.price * data.quantity;
                     li.Add(data);
                     Session["cart"] = li;
                     Session["itemcount"] = li.Count();
                 }
-               
+
+                foreach (var item in li)
+                {
+                    total = total + item.price;
+                }
+                Session["total"] = total;
                 Session["count"] = Convert.ToInt32(Session["count"]) + 1;
 
             }
