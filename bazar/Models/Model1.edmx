@@ -64,6 +64,8 @@
           <Property Name="ownerId" Type="int" />
           <Property Name="createdDate" Type="datetime" />
           <Property Name="isActive" Type="bit" />
+          <Property Name="customername" Type="varchar(max)" />
+          <Property Name="price" Type="int" />
         </EntityType>
         <EntityType Name="tblfemaleGarments">
           <Key>
@@ -115,9 +117,9 @@
         </EntityType>
         <EntityType Name="tblmarket">
           <Key>
-            <PropertyRef Name="Personid" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Personid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="marketName" Type="varchar(max)" />
           <Property Name="createdDate" Type="datetime" />
           <Property Name="createdById" Type="int" />
@@ -286,6 +288,12 @@
         <Function Name="serachMaleGarment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="search" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="serachShoe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="search" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="serachShoes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="search" Type="varchar(max)" Mode="In" />
+        </Function>
         <EntityContainer Name="bazarModelStoreContainer">
           <EntitySet Name="tblcategory" EntityType="Self.tblcategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblcity" EntityType="Self.tblcity" Schema="dbo" store:Type="Tables" />
@@ -330,11 +338,100 @@
           <Property Name="createdById" Type="Int32" />
           <Property Name="isActive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="tblcreateUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="addresss" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cnic" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="shoptypeid" Type="Int32" />
+          <Property Name="marketid" Type="Int32" />
+          <Property Name="createdById" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="shopname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="profilepic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblcustomerOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderId" Type="Int32" />
+          <Property Name="counts" Type="Int32" />
+          <Property Name="addresss" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cityname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="size" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mobileNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="reviews" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="customerId" Type="Int32" />
+          <Property Name="ownerId" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="customername" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblfemaleGarment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clothname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="categoryid" Type="Int32" />
+          <Property Name="shirtsizechartnameid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pantsizechartnameid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="xsmall" Type="Boolean" />
+          <Property Name="small" Type="Boolean" />
+          <Property Name="medium" Type="Boolean" />
+          <Property Name="large" Type="Boolean" />
+          <Property Name="xlarge" Type="Boolean" />
+          <Property Name="xxlarge" Type="Boolean" />
+          <Property Name="pic1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pic2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pic3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pic4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="createdById" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblmaleGarment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clothname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="categoryid" Type="Int32" />
+          <Property Name="shirtsizechartid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pantsizechartid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="xsmall" Type="Boolean" />
+          <Property Name="small" Type="Boolean" />
+          <Property Name="medium" Type="Boolean" />
+          <Property Name="large" Type="Boolean" />
+          <Property Name="xlarge" Type="Boolean" />
+          <Property Name="xxlarge" Type="Boolean" />
+          <Property Name="pic1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pic2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="createdById" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
         <EntityType Name="tblmarket">
           <Key>
-            <PropertyRef Name="Personid" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Personid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="marketName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="createdDate" Type="DateTime" Precision="3" />
           <Property Name="createdById" Type="Int32" />
@@ -413,98 +510,6 @@
           <Property Name="createdById" Type="Int32" />
           <Property Name="createdDate" Type="DateTime" Precision="3" />
           <Property Name="isActive" Type="Boolean" />
-        </EntityType>
-        <EntityContainer Name="bazarEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tblcategories" EntityType="Self.tblcategory" />
-          <EntitySet Name="tblcities" EntityType="Self.tblcity" />
-          <EntitySet Name="tblmarkets" EntityType="Self.tblmarket" />
-          <EntitySet Name="tblproducts" EntityType="Self.tblproduct" />
-          <EntitySet Name="tblroles" EntityType="Self.tblrole" />
-          <EntitySet Name="tblshoes" EntityType="Self.tblshoe" />
-          <EntitySet Name="tblshoptypes" EntityType="Self.tblshoptype" />
-          <EntitySet Name="tblsizechartnames" EntityType="Self.tblsizechartname" />
-          <EntitySet Name="tblfemaleGarments" EntityType="bazarModel.tblfemaleGarment" />
-          <EntitySet Name="tblmaleGarments" EntityType="bazarModel.tblmaleGarment" />
-          <EntitySet Name="tblcreateUsers" EntityType="bazarModel.tblcreateUser" />
-          <EntitySet Name="tblsizePantFemales" EntityType="bazarModel.tblsizePantFemale" />
-          <EntitySet Name="tblsizePantMales" EntityType="bazarModel.tblsizePantMale" />
-          <EntitySet Name="tblsizeShirtFemales" EntityType="bazarModel.tblsizeShirtFemale" />
-          <EntitySet Name="tblsizeShirtMales" EntityType="bazarModel.tblsizeShirtMale" />
-          <EntitySet Name="tblsizeShoes" EntityType="bazarModel.tblsizeSho" />
-          <FunctionImport Name="serachFemaleGarment" ReturnType="Collection(bazarModel.serachFemaleGarment_Result)">
-          <Parameter Name="search" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="serachMaleGarment" ReturnType="Collection(bazarModel.serachMaleGarment_Result)">
-          <Parameter Name="search" Mode="In" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="tblcustomerOrders" EntityType="bazarModel.tblcustomerOrder" />
-        </EntityContainer>
-        <EntityType Name="tblfemaleGarment">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="clothname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="categoryid" Type="Int32" />
-          <Property Name="shirtsizechartnameid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="pantsizechartnameid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="xsmall" Type="Boolean" />
-          <Property Name="small" Type="Boolean" />
-          <Property Name="medium" Type="Boolean" />
-          <Property Name="large" Type="Boolean" />
-          <Property Name="xlarge" Type="Boolean" />
-          <Property Name="xxlarge" Type="Boolean" />
-          <Property Name="pic1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="pic2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="pic3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="pic4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="price" Type="Int32" />
-          <Property Name="createdById" Type="Int32" />
-          <Property Name="createdDate" Type="DateTime" Precision="3" />
-          <Property Name="isActive" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tblmaleGarment">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="clothname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="categoryid" Type="Int32" />
-          <Property Name="shirtsizechartid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="pantsizechartid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="xsmall" Type="Boolean" />
-          <Property Name="small" Type="Boolean" />
-          <Property Name="medium" Type="Boolean" />
-          <Property Name="large" Type="Boolean" />
-          <Property Name="xlarge" Type="Boolean" />
-          <Property Name="xxlarge" Type="Boolean" />
-          <Property Name="pic1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="pic2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="price" Type="Int32" />
-          <Property Name="createdById" Type="Int32" />
-          <Property Name="createdDate" Type="DateTime" Precision="3" />
-          <Property Name="isActive" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tblcreateUser">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="addresss" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="cnic" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="shoptypeid" Type="Int32" />
-          <Property Name="marketid" Type="Int32" />
-          <Property Name="createdById" Type="Int32" />
-          <Property Name="createdDate" Type="DateTime" Precision="3" />
-          <Property Name="isActive" Type="Boolean" />
-          <Property Name="shopname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="profilepic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblsizePantFemale">
           <Key>
@@ -589,6 +594,37 @@
           <Property Name="isActive" Type="Boolean" />
           <Property Name="abbreviation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityContainer Name="bazarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblcategories" EntityType="Self.tblcategory" />
+          <EntitySet Name="tblcities" EntityType="Self.tblcity" />
+          <EntitySet Name="tblcreateUsers" EntityType="Self.tblcreateUser" />
+          <EntitySet Name="tblcustomerOrders" EntityType="Self.tblcustomerOrder" />
+          <EntitySet Name="tblfemaleGarments" EntityType="Self.tblfemaleGarment" />
+          <EntitySet Name="tblmaleGarments" EntityType="Self.tblmaleGarment" />
+          <EntitySet Name="tblmarkets" EntityType="Self.tblmarket" />
+          <EntitySet Name="tblproducts" EntityType="Self.tblproduct" />
+          <EntitySet Name="tblroles" EntityType="Self.tblrole" />
+          <EntitySet Name="tblshoes" EntityType="Self.tblshoe" />
+          <EntitySet Name="tblshoptypes" EntityType="Self.tblshoptype" />
+          <EntitySet Name="tblsizechartnames" EntityType="Self.tblsizechartname" />
+          <EntitySet Name="tblsizePantFemales" EntityType="Self.tblsizePantFemale" />
+          <EntitySet Name="tblsizePantMales" EntityType="Self.tblsizePantMale" />
+          <EntitySet Name="tblsizeShirtFemales" EntityType="Self.tblsizeShirtFemale" />
+          <EntitySet Name="tblsizeShirtMales" EntityType="Self.tblsizeShirtMale" />
+          <EntitySet Name="tblsizeShoes" EntityType="Self.tblsizeSho" />
+          <FunctionImport Name="serachFemaleGarment" ReturnType="Collection(bazarModel.serachFemaleGarment_Result)">
+          <Parameter Name="search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="serachMaleGarment" ReturnType="Collection(bazarModel.serachMaleGarment_Result)">
+          <Parameter Name="search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="serachShoes" ReturnType="Collection(bazarModel.serachShoes_Result)">
+          <Parameter Name="search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="serachShoe" ReturnType="Collection(bazarModel.serachShoe_Result)">
+            <Parameter Name="search" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
         <ComplexType Name="serachFemaleGarment_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="clothname" Nullable="true" />
@@ -631,26 +667,44 @@
           <Property Type="DateTime" Name="createdDate" Nullable="true" Precision="23" />
           <Property Type="Boolean" Name="isActive" Nullable="true" />
         </ComplexType>
-        <EntityType Name="tblcustomerOrder">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="orderId" Type="Int32" />
-          <Property Name="counts" Type="Int32" />
-          <Property Name="addresss" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="cityname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="size" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="mobileNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="reviews" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="rating" Type="Int32" />
-          <Property Name="customerId" Type="Int32" />
-          <Property Name="ownerId" Type="Int32" />
-          <Property Name="createdDate" Type="DateTime" Precision="3" />
-          <Property Name="isActive" Type="Boolean" />
-        </EntityType>
+        <ComplexType Name="serachShoes_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="shoename" Nullable="true" />
+          <Property Type="Int32" Name="categoryid" Nullable="true" />
+          <Property Type="String" Name="pic1" Nullable="true" />
+          <Property Type="String" Name="pic2" Nullable="true" />
+          <Property Type="String" Name="pic3" Nullable="true" />
+          <Property Type="Boolean" Name="xsmall" Nullable="true" />
+          <Property Type="Boolean" Name="small" Nullable="true" />
+          <Property Type="Boolean" Name="medium" Nullable="true" />
+          <Property Type="Boolean" Name="large" Nullable="true" />
+          <Property Type="Boolean" Name="xlarge" Nullable="true" />
+          <Property Type="Boolean" Name="xxlarge" Nullable="true" />
+          <Property Type="String" Name="detail" Nullable="true" />
+          <Property Type="Int32" Name="price" Nullable="true" />
+          <Property Type="Int32" Name="createdById" Nullable="true" />
+          <Property Type="DateTime" Name="createdDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="serachShoe_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="shoename" Nullable="true" />
+          <Property Type="Int32" Name="categoryid" Nullable="true" />
+          <Property Type="String" Name="pic1" Nullable="true" />
+          <Property Type="String" Name="pic2" Nullable="true" />
+          <Property Type="String" Name="pic3" Nullable="true" />
+          <Property Type="Boolean" Name="xsmall" Nullable="true" />
+          <Property Type="Boolean" Name="small" Nullable="true" />
+          <Property Type="Boolean" Name="medium" Nullable="true" />
+          <Property Type="Boolean" Name="large" Nullable="true" />
+          <Property Type="Boolean" Name="xlarge" Nullable="true" />
+          <Property Type="Boolean" Name="xxlarge" Nullable="true" />
+          <Property Type="String" Name="detail" Nullable="true" />
+          <Property Type="Int32" Name="price" Nullable="true" />
+          <Property Type="Int32" Name="createdById" Nullable="true" />
+          <Property Type="DateTime" Name="createdDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -680,10 +734,103 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblcreateUsers">
+            <EntityTypeMapping TypeName="bazarModel.tblcreateUser">
+              <MappingFragment StoreEntitySet="tblcreateUser">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="addresss" ColumnName="addresss" />
+                <ScalarProperty Name="cnic" ColumnName="cnic" />
+                <ScalarProperty Name="shoptypeid" ColumnName="shoptypeid" />
+                <ScalarProperty Name="marketid" ColumnName="marketid" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="shopname" ColumnName="shopname" />
+                <ScalarProperty Name="profilepic" ColumnName="profilepic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblcustomerOrders">
+            <EntityTypeMapping TypeName="bazarModel.tblcustomerOrder">
+              <MappingFragment StoreEntitySet="tblcustomerOrder">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+                <ScalarProperty Name="counts" ColumnName="counts" />
+                <ScalarProperty Name="addresss" ColumnName="addresss" />
+                <ScalarProperty Name="cityname" ColumnName="cityname" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="mobileNo" ColumnName="mobileNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="reviews" ColumnName="reviews" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="customername" ColumnName="customername" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblfemaleGarments">
+            <EntityTypeMapping TypeName="bazarModel.tblfemaleGarment">
+              <MappingFragment StoreEntitySet="tblfemaleGarments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="clothname" ColumnName="clothname" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+                <ScalarProperty Name="shirtsizechartnameid" ColumnName="shirtsizechartnameid" />
+                <ScalarProperty Name="pantsizechartnameid" ColumnName="pantsizechartnameid" />
+                <ScalarProperty Name="xsmall" ColumnName="xsmall" />
+                <ScalarProperty Name="small" ColumnName="small" />
+                <ScalarProperty Name="medium" ColumnName="medium" />
+                <ScalarProperty Name="large" ColumnName="large" />
+                <ScalarProperty Name="xlarge" ColumnName="xlarge" />
+                <ScalarProperty Name="xxlarge" ColumnName="xxlarge" />
+                <ScalarProperty Name="pic1" ColumnName="pic1" />
+                <ScalarProperty Name="pic2" ColumnName="pic2" />
+                <ScalarProperty Name="pic3" ColumnName="pic3" />
+                <ScalarProperty Name="pic4" ColumnName="pic4" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblmaleGarments">
+            <EntityTypeMapping TypeName="bazarModel.tblmaleGarment">
+              <MappingFragment StoreEntitySet="tblmaleGarments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="clothname" ColumnName="clothname" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+                <ScalarProperty Name="shirtsizechartid" ColumnName="shirtsizechartid" />
+                <ScalarProperty Name="pantsizechartid" ColumnName="pantsizechartid" />
+                <ScalarProperty Name="xsmall" ColumnName="xsmall" />
+                <ScalarProperty Name="small" ColumnName="small" />
+                <ScalarProperty Name="medium" ColumnName="medium" />
+                <ScalarProperty Name="large" ColumnName="large" />
+                <ScalarProperty Name="xlarge" ColumnName="xlarge" />
+                <ScalarProperty Name="xxlarge" ColumnName="xxlarge" />
+                <ScalarProperty Name="pic1" ColumnName="pic1" />
+                <ScalarProperty Name="pic2" ColumnName="pic2" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblmarkets">
             <EntityTypeMapping TypeName="bazarModel.tblmarket">
               <MappingFragment StoreEntitySet="tblmarket">
-                <ScalarProperty Name="Personid" ColumnName="Personid" />
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="marketName" ColumnName="marketName" />
                 <ScalarProperty Name="createdDate" ColumnName="createdDate" />
                 <ScalarProperty Name="createdById" ColumnName="createdById" />
@@ -770,161 +917,91 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblfemaleGarments">
-            <EntityTypeMapping TypeName="bazarModel.tblfemaleGarment">
-              <MappingFragment StoreEntitySet="tblfemaleGarments">
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdById" ColumnName="createdById" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="detail" ColumnName="detail" />
-                <ScalarProperty Name="pic4" ColumnName="pic4" />
-                <ScalarProperty Name="pic3" ColumnName="pic3" />
-                <ScalarProperty Name="pic2" ColumnName="pic2" />
-                <ScalarProperty Name="pic1" ColumnName="pic1" />
-                <ScalarProperty Name="xxlarge" ColumnName="xxlarge" />
-                <ScalarProperty Name="xlarge" ColumnName="xlarge" />
-                <ScalarProperty Name="large" ColumnName="large" />
-                <ScalarProperty Name="medium" ColumnName="medium" />
-                <ScalarProperty Name="small" ColumnName="small" />
-                <ScalarProperty Name="xsmall" ColumnName="xsmall" />
-                <ScalarProperty Name="pantsizechartnameid" ColumnName="pantsizechartnameid" />
-                <ScalarProperty Name="shirtsizechartnameid" ColumnName="shirtsizechartnameid" />
-                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
-                <ScalarProperty Name="clothname" ColumnName="clothname" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblmaleGarments">
-            <EntityTypeMapping TypeName="bazarModel.tblmaleGarment">
-              <MappingFragment StoreEntitySet="tblmaleGarments">
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdById" ColumnName="createdById" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="detail" ColumnName="detail" />
-                <ScalarProperty Name="pic2" ColumnName="pic2" />
-                <ScalarProperty Name="pic1" ColumnName="pic1" />
-                <ScalarProperty Name="xxlarge" ColumnName="xxlarge" />
-                <ScalarProperty Name="xlarge" ColumnName="xlarge" />
-                <ScalarProperty Name="large" ColumnName="large" />
-                <ScalarProperty Name="medium" ColumnName="medium" />
-                <ScalarProperty Name="small" ColumnName="small" />
-                <ScalarProperty Name="xsmall" ColumnName="xsmall" />
-                <ScalarProperty Name="pantsizechartid" ColumnName="pantsizechartid" />
-                <ScalarProperty Name="shirtsizechartid" ColumnName="shirtsizechartid" />
-                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
-                <ScalarProperty Name="clothname" ColumnName="clothname" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblcreateUsers">
-            <EntityTypeMapping TypeName="bazarModel.tblcreateUser">
-              <MappingFragment StoreEntitySet="tblcreateUser">
-                <ScalarProperty Name="profilepic" ColumnName="profilepic" />
-                <ScalarProperty Name="shopname" ColumnName="shopname" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdById" ColumnName="createdById" />
-                <ScalarProperty Name="marketid" ColumnName="marketid" />
-                <ScalarProperty Name="shoptypeid" ColumnName="shoptypeid" />
-                <ScalarProperty Name="cnic" ColumnName="cnic" />
-                <ScalarProperty Name="addresss" ColumnName="addresss" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblsizePantFemales">
             <EntityTypeMapping TypeName="bazarModel.tblsizePantFemale">
               <MappingFragment StoreEntitySet="tblsizePantFemale">
-                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdById" ColumnName="createdById" />
-                <ScalarProperty Name="unitId" ColumnName="unitId" />
-                <ScalarProperty Name="chartName" ColumnName="chartName" />
-                <ScalarProperty Name="sizeName" ColumnName="sizeName" />
-                <ScalarProperty Name="pantlength" ColumnName="pantlength" />
-                <ScalarProperty Name="bottom" ColumnName="bottom" />
-                <ScalarProperty Name="thigh" ColumnName="thigh" />
-                <ScalarProperty Name="hip" ColumnName="hip" />
-                <ScalarProperty Name="waist" ColumnName="waist" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="waist" ColumnName="waist" />
+                <ScalarProperty Name="hip" ColumnName="hip" />
+                <ScalarProperty Name="thigh" ColumnName="thigh" />
+                <ScalarProperty Name="bottom" ColumnName="bottom" />
+                <ScalarProperty Name="pantlength" ColumnName="pantlength" />
+                <ScalarProperty Name="sizeName" ColumnName="sizeName" />
+                <ScalarProperty Name="chartName" ColumnName="chartName" />
+                <ScalarProperty Name="unitId" ColumnName="unitId" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblsizePantMales">
             <EntityTypeMapping TypeName="bazarModel.tblsizePantMale">
               <MappingFragment StoreEntitySet="tblsizePantMale">
-                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdById" ColumnName="createdById" />
-                <ScalarProperty Name="unitId" ColumnName="unitId" />
-                <ScalarProperty Name="chartName" ColumnName="chartName" />
-                <ScalarProperty Name="sizeName" ColumnName="sizeName" />
-                <ScalarProperty Name="pantlength" ColumnName="pantlength" />
-                <ScalarProperty Name="waist" ColumnName="waist" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="waist" ColumnName="waist" />
+                <ScalarProperty Name="pantlength" ColumnName="pantlength" />
+                <ScalarProperty Name="sizeName" ColumnName="sizeName" />
+                <ScalarProperty Name="chartName" ColumnName="chartName" />
+                <ScalarProperty Name="unitId" ColumnName="unitId" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblsizeShirtFemales">
             <EntityTypeMapping TypeName="bazarModel.tblsizeShirtFemale">
               <MappingFragment StoreEntitySet="tblsizeShirtFemale">
-                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdById" ColumnName="createdById" />
-                <ScalarProperty Name="unitId" ColumnName="unitId" />
-                <ScalarProperty Name="chartName" ColumnName="chartName" />
-                <ScalarProperty Name="sizeName" ColumnName="sizeName" />
-                <ScalarProperty Name="daman" ColumnName="daman" />
-                <ScalarProperty Name="shirtLength" ColumnName="shirtLength" />
-                <ScalarProperty Name="sleeveopening" ColumnName="sleeveopening" />
-                <ScalarProperty Name="sleeveLength" ColumnName="sleeveLength" />
-                <ScalarProperty Name="armhole" ColumnName="armhole" />
-                <ScalarProperty Name="chest" ColumnName="chest" />
-                <ScalarProperty Name="shoulder" ColumnName="shoulder" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="shoulder" ColumnName="shoulder" />
+                <ScalarProperty Name="chest" ColumnName="chest" />
+                <ScalarProperty Name="armhole" ColumnName="armhole" />
+                <ScalarProperty Name="sleeveLength" ColumnName="sleeveLength" />
+                <ScalarProperty Name="sleeveopening" ColumnName="sleeveopening" />
+                <ScalarProperty Name="shirtLength" ColumnName="shirtLength" />
+                <ScalarProperty Name="daman" ColumnName="daman" />
+                <ScalarProperty Name="sizeName" ColumnName="sizeName" />
+                <ScalarProperty Name="chartName" ColumnName="chartName" />
+                <ScalarProperty Name="unitId" ColumnName="unitId" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblsizeShirtMales">
             <EntityTypeMapping TypeName="bazarModel.tblsizeShirtMale">
               <MappingFragment StoreEntitySet="tblsizeShirtMale">
-                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdById" ColumnName="createdById" />
-                <ScalarProperty Name="unitId" ColumnName="unitId" />
-                <ScalarProperty Name="chartName" ColumnName="chartName" />
-                <ScalarProperty Name="sizeName" ColumnName="sizeName" />
-                <ScalarProperty Name="shirtLength" ColumnName="shirtLength" />
-                <ScalarProperty Name="sleeveLength" ColumnName="sleeveLength" />
-                <ScalarProperty Name="chest" ColumnName="chest" />
-                <ScalarProperty Name="collar" ColumnName="collar" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="collar" ColumnName="collar" />
+                <ScalarProperty Name="chest" ColumnName="chest" />
+                <ScalarProperty Name="sleeveLength" ColumnName="sleeveLength" />
+                <ScalarProperty Name="shirtLength" ColumnName="shirtLength" />
+                <ScalarProperty Name="sizeName" ColumnName="sizeName" />
+                <ScalarProperty Name="chartName" ColumnName="chartName" />
+                <ScalarProperty Name="unitId" ColumnName="unitId" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblsizeShoes">
             <EntityTypeMapping TypeName="bazarModel.tblsizeSho">
               <MappingFragment StoreEntitySet="tblsizeShoes">
-                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdById" ColumnName="createdById" />
-                <ScalarProperty Name="chartName" ColumnName="chartName" />
-                <ScalarProperty Name="sizeName" ColumnName="sizeName" />
-                <ScalarProperty Name="sizeNumber" ColumnName="sizeNumber" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sizeNumber" ColumnName="sizeNumber" />
+                <ScalarProperty Name="sizeName" ColumnName="sizeName" />
+                <ScalarProperty Name="chartName" ColumnName="chartName" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -978,27 +1055,52 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="tblcustomerOrders">
-            <EntityTypeMapping TypeName="bazarModel.tblcustomerOrder">
-              <MappingFragment StoreEntitySet="tblcustomerOrder">
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="ownerId" ColumnName="ownerId" />
-                <ScalarProperty Name="customerId" ColumnName="customerId" />
-                <ScalarProperty Name="rating" ColumnName="rating" />
-                <ScalarProperty Name="reviews" ColumnName="reviews" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="mobileNo" ColumnName="mobileNo" />
-                <ScalarProperty Name="size" ColumnName="size" />
-                <ScalarProperty Name="cityname" ColumnName="cityname" />
-                <ScalarProperty Name="addresss" ColumnName="addresss" />
-                <ScalarProperty Name="counts" ColumnName="counts" />
-                <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <FunctionImportMapping FunctionImportName="serachShoes" FunctionName="bazarModel.Store.serachShoes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bazarModel.serachShoes_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+                <ScalarProperty Name="shoename" ColumnName="shoename" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+                <ScalarProperty Name="pic1" ColumnName="pic1" />
+                <ScalarProperty Name="pic2" ColumnName="pic2" />
+                <ScalarProperty Name="pic3" ColumnName="pic3" />
+                <ScalarProperty Name="xsmall" ColumnName="xsmall" />
+                <ScalarProperty Name="small" ColumnName="small" />
+                <ScalarProperty Name="medium" ColumnName="medium" />
+                <ScalarProperty Name="large" ColumnName="large" />
+                <ScalarProperty Name="xlarge" ColumnName="xlarge" />
+                <ScalarProperty Name="xxlarge" ColumnName="xxlarge" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="serachShoe" FunctionName="bazarModel.Store.serachShoe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bazarModel.serachShoe_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="shoename" ColumnName="shoename" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+                <ScalarProperty Name="pic1" ColumnName="pic1" />
+                <ScalarProperty Name="pic2" ColumnName="pic2" />
+                <ScalarProperty Name="pic3" ColumnName="pic3" />
+                <ScalarProperty Name="xsmall" ColumnName="xsmall" />
+                <ScalarProperty Name="small" ColumnName="small" />
+                <ScalarProperty Name="medium" ColumnName="medium" />
+                <ScalarProperty Name="large" ColumnName="large" />
+                <ScalarProperty Name="xlarge" ColumnName="xlarge" />
+                <ScalarProperty Name="xxlarge" ColumnName="xxlarge" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

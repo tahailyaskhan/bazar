@@ -14,7 +14,7 @@ namespace bazar.Models
     
     public partial class tblmarket
     {
-        public int Personid { get; set; }
+        public int id { get; set; }
         public string marketName { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
         public Nullable<int> createdById { get; set; }

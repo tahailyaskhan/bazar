@@ -10,8 +10,10 @@ namespace bazar.DAL.Data
     {
         public IEnumerable<tblmaleGarment> maleGarmmentList { get; set; }
         public IEnumerable<tblfemaleGarment> femaleGarmmentList { get; set; }
+        public IEnumerable<tblshoe> shoeList { get; set; }
 
         public IEnumerable<serachMaleGarment_Result> spMaleGarmmentList { get; set; }
         public IEnumerable<serachFemaleGarment_Result> spFemaleGarmmentList { get; set; }
+        public IEnumerable<serachShoe_Result> spShoeList { get; set; }
     }
 }
