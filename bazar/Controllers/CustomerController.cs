@@ -19,6 +19,37 @@ namespace bazar.Controllers
             var getCustomer = db.tblcreateUsers.ToList();
             return View(getCustomer);
         }
+        public ActionResult checkout()
+        {
+            ViewBag.success = "fail";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult checkout(customerInfo data)
+        {
+            tblcustomerOrder obj = new tblcustomerOrder();
+            
+            List<cart> cartlist = Session["cart"] as List<cart>;
+            if (cartlist != null)
+            {
+                foreach (var item in cartlist)
+                {
+                    obj.customername = data.firstname;
+                    obj.addresss = data.addresss;
+                    obj.cityname = data.city;
+                    obj.mobileNo = data.tel;
+                    obj.ownerId = item.userid;
+                    obj.counts = item.quantity;
+                    obj.price = item.price;
+                    obj.orderId = item.ids;
+                    obj.status = "pending";
+                    db.tblcustomerOrders.Add(obj);
+                    db.SaveChanges();
+                }
+            }
+            ViewBag.success = "success";
+            return View();
+        }
         [HttpGet]
         public ActionResult getMarketShop(int marketid)
         {

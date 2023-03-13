@@ -157,6 +157,7 @@
     <Compile Include="Controllers\UpdateController.cs" />
     <Compile Include="DAL\Contacts\IRepository.cs" />
     <Compile Include="DAL\Data\cart.cs" />
+    <Compile Include="DAL\Data\customerInfo.cs" />
     <Compile Include="DAL\Data\getchartnameclass.cs" />
     <Compile Include="DAL\Data\tblcustomerorder.cs" />
     <Compile Include="DAL\Data\tblfemaleGarmentclass.cs" />
@@ -805,6 +806,7 @@
     <Content Include="Views\Shared\_header.cshtml" />
     <Content Include="Views\Customer\getChart.cshtml" />
     <Content Include="Views\Detail\gettblorder.cshtml" />
+    <Content Include="Views\Customer\checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

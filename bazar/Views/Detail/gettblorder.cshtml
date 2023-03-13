@@ -53,7 +53,7 @@
                                             <table class="table">
                                                 <thead style="color:#ff6002">
                                                     <tr>
-                                                        <th>id</th>
+                                                        <th style="display:none">id</th>
                                                         <th>Cloth Name</th>
                                                         <th>image</th>
                                                         <th>Count</th>
@@ -82,10 +82,10 @@
                                                         <td>@Html.DisplayFor(modelItem => row.Email)</td>
 
                                                         <td>@Html.DisplayFor(modelItem => row.addresss)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.mobileNo)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.status)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.reviews)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.rating)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.mobileNo)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.status)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.reviews)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.rating)</td>
                                                         @*<td><img id="myImg" src="@row.pic11" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>*@
                                                         @*<td><img id="myImg" src="@row.pic22" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
                                                         <td><button class='mt-2 btn btn-primary btnEdit' id='btnEdit'>Edit</button>  @Html.ActionLink("Delete", "deletetblmaleGarment", "Delete", new { id = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>*@

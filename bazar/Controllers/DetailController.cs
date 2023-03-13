@@ -307,8 +307,8 @@ namespace bazar.Controllers
                         Email = row.Email,
                         status = row.status,
                         reviews = row.reviews,
-                        rating = row.rating
-                        ,
+                        rating = row.rating,
+                        
                         pic = obj.pic1
                     });
                 }
@@ -328,13 +328,34 @@ namespace bazar.Controllers
                         Email = row.Email,
                         status = row.status,
                         reviews = row.reviews,
-                        rating = row.rating
-                        ,
+                        rating = row.rating,
+                        
+                        pic = obj.pic1
+                    });
+                }
+                if (shoptype.shoptypeid == 3)
+                {
+                    var obj = db.tblshoes.Where(x => x.id == row.orderId).FirstOrDefault();
+                    customerorderlist.Add(new tblcustomerorder
+                    {
+                        orderId = row.orderId,
+                        clothname = obj.shoename,
+                        counts = row.counts,
+                        cityname = row.cityname
+                    ,
+                        addresss = row.addresss,
+                        size = row.size,
+                        mobileNo = row.mobileNo,
+                        Email = row.Email,
+                        status = row.status,
+                        reviews = row.reviews,
+                        rating = row.rating,
+
                         pic = obj.pic1
                     });
                 }
             }
-            return View(getorder);
+            return View(customerorderlist);
         }
         //end
 

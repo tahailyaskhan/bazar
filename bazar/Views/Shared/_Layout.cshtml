@@ -88,49 +88,64 @@
                     <li class="nav-item pcoded-menu-caption">
                         <label>Forms &amp; table</label>
                     </li>
-                    @if(Convert.ToInt32(@Session["shoptype"])==1)
+                    @if (Convert.ToInt32(@Session["shoptype"]) == 1)
                     {
-                    <li class="nav-item">
-                        <a href=@Url.Action("Index","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add ShirtSize</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=@Url.Action("viewtblsizePantMale","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add PantSize</span></a>
-                    </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("Index","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add ShirtSize</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("viewtblsizePantMale","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add PantSize</span></a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a href=@Url.Action("viewtblmaleGarment","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Garments</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=@Url.Action("gettblsizeShirtNale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Male Charts</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=@Url.Action("gettblsizePantMale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Female Charts</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=@Url.Action("gettblmaleGarment","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Garments Records</span></a>
-                    </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("viewtblmaleGarment","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Garments</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettblsizeShirtNale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Male Charts</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettblsizePantMale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Female Charts</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettblmaleGarment","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Garments Records</span></a>
+                        </li>
                     }
-                    @if(Convert.ToInt32(@Session["shoptype"]) == 2)
+                    @if (Convert.ToInt32(@Session["shoptype"]) == 2)
                     {
-                    <li class="nav-item">
-                        <a href=@Url.Action("viewtblsizeShirtFemale","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add ShirtSize</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=@Url.Action("viewtblsizePantFemale","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add PantSize</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=@Url.Action("viewtblfemaleGarment","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Garments</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=@Url.Action("gettblsizeShirtFemale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get shirt Charts</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=@Url.Action("gettblsizePantFemale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Pant Charts</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=@Url.Action("gettblfemaleGarment","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Garments Records</span></a>
-                    </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("viewtblsizeShirtFemale","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Female ShirtSize</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("viewtblsizePantFemale","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Female PantSize</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("viewtblfemaleGarment","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Female Garments</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettblsizeShirtFemale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Female shirt Charts</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettblsizePantFemale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Female Pant Charts</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettblfemaleGarment","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Female Garments Records</span></a>
+                        </li>
                     }
+
+                    @if (Convert.ToInt32(@Session["shoptype"]) == 3)
+                    {
+                        <li class="nav-item">
+                            <a href=@Url.Action("viewtblshoe","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add shoeSize</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettblshoe","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">get shoe</span></a>
+                        </li>
+                      
+                     
+                    }
+                    <li class="nav-item">
+                        <a href=@Url.Action("gettblorder","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Order Records</span></a>
+                    </li>
                 </ul>
               
             </div>

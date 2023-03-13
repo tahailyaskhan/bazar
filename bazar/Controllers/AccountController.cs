@@ -22,18 +22,32 @@ namespace bazar.Controllers
         public ActionResult Login(UserLogin login)
         {
             var check = db.tblcreateUsers.Where(x => x.username == login.username && x.password == login.password).FirstOrDefault();
-                if (check!=null)
+            if (check != null)
+            {
+                Session["Username"] = login.username;
+                Session["userid"] = check.id;
+                Session["shoptype"] = check.shoptypeid;
+                if (check.shoptypeid == 1)
                 {
-                    Session["Username"] = login.username;
-                    Session["userid"] = check.id;
-                    Session["shoptype"]=check.shoptypeid;
                     return RedirectToAction("Index", "Home");
                 }
-                else
+
+                if (check.shoptypeid == 2)
                 {
-                    ModelState.AddModelError("", "Invalid User Name or Password");
-                    return View(login);
+                    return RedirectToAction("viewtblsizeShirtFemale", "Home");
                 }
+
+                if (check.shoptypeid == 3)
+                {
+                    return RedirectToAction("viewtblshoe", "Home");
+                }
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid User Name or Password");
+                return View(login);
+            }
 
            
             return View(login);
