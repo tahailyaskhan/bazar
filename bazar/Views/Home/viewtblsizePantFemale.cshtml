@@ -6,6 +6,20 @@
 
 
 
+<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+
+<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+<link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Sscripts/moment.js"></script>
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+
+
+
+
 <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
     <div class="pcoded-wrapper">
@@ -48,25 +62,25 @@
 
                                                     <div class="form-group">
                                                         <label for="xswaist">Waist</label>
-                                                        <input type="text" class="form-control" name="xswaist" id="xswaist" placeholder="Enter waist size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xswaist" id="xswaist" placeholder="Enter waist size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="xship">Hip Size</label>
-                                                        <input type="text" class="form-control" name="xship" id="xship" placeholder="Enter hip size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xship" id="xship" placeholder="Enter hip size">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="xsthigh">Thigh</label>
-                                                        <input type="text" class="form-control" name="xsthigh" id="xsthigh" placeholder="Enter Thigh size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xsthigh" id="xsthigh" placeholder="Enter Thigh size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="xsbottom">Bottom</label>
-                                                        <input type="text" class="form-control" name="xsbottom" id="xsbottom" placeholder="Enter Bottomm size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xsbottom" id="xsbottom" placeholder="Enter Bottomm size">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="xspantlength">pantlength</label>
-                                                        <input type="text" class="form-control" name="xspantlength" id="xspantlength" placeholder="Enter pantlength size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xspantlength" id="xspantlength" placeholder="Enter pantlength size">
                                                     </div>
 
 
@@ -74,25 +88,25 @@
 
                                                     <div class="form-group">
                                                         <label for="swaist">Waist</label>
-                                                        <input type="text" class="form-control" name="swaist" id="swaist" placeholder="Enter waist size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="swaist" id="swaist" placeholder="Enter waist size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="ship">Hip Size</label>
-                                                        <input type="text" class="form-control" name="ship" id="ship" placeholder="Enter hip size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="ship" id="ship" placeholder="Enter hip size">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="xsthigh">Thigh</label>
-                                                        <input type="text" class="form-control" name="sthigh" id="sthigh" placeholder="Enter Thigh size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="sthigh" id="sthigh" placeholder="Enter Thigh size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="sbottom">Bottom</label>
-                                                        <input type="text" class="form-control" name="sbottom" id="sbottom" placeholder="Enter Bottomm size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="sbottom" id="sbottom" placeholder="Enter Bottomm size">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="spantlength">pantlength</label>
-                                                        <input type="text" class="form-control" name="spantlength" id="spantlength" placeholder="Enter pantlength size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="spantlength" id="spantlength" placeholder="Enter pantlength size">
                                                     </div>
 
 
@@ -101,25 +115,25 @@
 
                                                     <div class="form-group">
                                                         <label for="mwaist">Waist</label>
-                                                        <input type="text" class="form-control" name="mwaist" id="mwaist" placeholder="Enter waist size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="mwaist" id="mwaist" placeholder="Enter waist size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="mhip">Hip Size</label>
-                                                        <input type="text" class="form-control" name="mhip" id="mhip" placeholder="Enter hip size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="mhip" id="mhip" placeholder="Enter hip size">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="mthigh">Thigh</label>
-                                                        <input type="text" class="form-control" name="mthigh" id="mthigh" placeholder="Enter Thigh size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="mthigh" id="mthigh" placeholder="Enter Thigh size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="xsbottom">Bottom</label>
-                                                        <input type="text" class="form-control" name="mbottom" id="mbottom" placeholder="Enter Bottomm size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="mbottom" id="mbottom" placeholder="Enter Bottomm size">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="xspantlength">pantlength</label>
-                                                        <input type="text" class="form-control" name="mpantlength" id="mpantlength" placeholder="Enter pantlength size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="mpantlength" id="mpantlength" placeholder="Enter pantlength size">
                                                     </div>
 
 
@@ -127,50 +141,50 @@
 
                                                     <div class="form-group">
                                                         <label for="lwaist">Waist</label>
-                                                        <input type="text" class="form-control" name="lwaist" id="lwaist" placeholder="Enter waist size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="lwaist" id="lwaist" placeholder="Enter waist size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="lhip">Hip Size</label>
-                                                        <input type="text" class="form-control" name="lhip" id="lhip" placeholder="Enter hip size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="lhip" id="lhip" placeholder="Enter hip size">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="lthigh">Thigh</label>
-                                                        <input type="text" class="form-control" name="lthigh" id="lthigh" placeholder="Enter Thigh size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="lthigh" id="lthigh" placeholder="Enter Thigh size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="lbottom">Bottom</label>
-                                                        <input type="text" class="form-control" name="lbottom" id="lbottom" placeholder="Enter Bottomm size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="lbottom" id="lbottom" placeholder="Enter Bottomm size">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="lpantlength">pantlength</label>
-                                                        <input type="text" class="form-control" name="lpantlength" id="lpantlength" placeholder="Enter pantlength size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="lpantlength" id="lpantlength" placeholder="Enter pantlength size">
                                                     </div>
 
                                                     <h4>Extra large</h4>
 
                                                     <div class="form-group">
                                                         <label for="xlwaist">Waist</label>
-                                                        <input type="text" class="form-control" name="xlwaist" id="xlwaist" placeholder="Enter waist size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xlwaist" id="xlwaist" placeholder="Enter waist size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="xlhip">Hip Size</label>
-                                                        <input type="text" class="form-control" name="xlhip" id="xlhip" placeholder="Enter hip size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xlhip" id="xlhip" placeholder="Enter hip size">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="xlthigh">Thigh</label>
-                                                        <input type="text" class="form-control" name="xlthigh" id="xlthigh" placeholder="Enter Thigh size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xlthigh" id="xlthigh" placeholder="Enter Thigh size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="xlbottom">Bottom</label>
-                                                        <input type="text" class="form-control" name="xlbottom" id="xlbottom" placeholder="Enter Bottomm size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xlbottom" id="xlbottom" placeholder="Enter Bottomm size">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="xlpantlength">pantlength</label>
-                                                        <input type="text" class="form-control" name="xlpantlength" id="xlpantlength" placeholder="Enter pantlength size">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xlpantlength" id="xlpantlength" placeholder="Enter pantlength size">
                                                     </div>
 
                                                     <hr>
@@ -267,46 +281,47 @@
 <script>
     function CheckNull() {
         debugger
-        if ($("#xswaist").val() == "") { document.getElementById('xswaist').style.borderColor = "red"; toastr.error('xswaist  required!'); } else { document.getElementById('xswaist').style.borderColor = "#ced4da"; }
-        if ($("#xship").val() == "") { document.getElementById('xship').style.borderColor = "red"; toastr.error('xship required!'); } else { document.getElementById('xship').style.borderColor = "#ced4da"; }
-        if ($("#xsthigh").val() == "") { document.getElementById('xsthigh').style.borderColor = "red"; toastr.error('xsthigh required!'); } else { document.getElementById('xsthigh').style.borderColor = "#ced4da"; }
-        if ($("#xspantlength").val() == "") { document.getElementById('xspantlength').style.borderColor = "red"; toastr.error('xspantlength Field  required!'); } else { document.getElementById('xspantlength').style.borderColor = "#ced4da"; }
-        if ($("#xsbottom").val() == "") { document.getElementById('xsbottom').style.borderColor = "red"; toastr.error('xsbottom required!'); } else { document.getElementById('xsbottom').style.borderColor = "#ced4da"; }
+        if ($("#xswaist").val() == "") { document.getElementById('xswaist').style.borderColor = "red"; toastr.error('Extra Small waist  required!'); } else { document.getElementById('xswaist').style.borderColor = "#ced4da"; }
+        if ($("#xship").val() == "") { document.getElementById('xship').style.borderColor = "red"; toastr.error('Extra Small hip required!'); } else { document.getElementById('xship').style.borderColor = "#ced4da"; }
+        if ($("#xsthigh").val() == "") { document.getElementById('xsthigh').style.borderColor = "red"; toastr.error('Extra Small thigh required!'); } else { document.getElementById('xsthigh').style.borderColor = "#ced4da"; }
+        if ($("#xspantlength").val() == "") { document.getElementById('xspantlength').style.borderColor = "red"; toastr.error('Extra Small pantlength Field  required!'); } else { document.getElementById('xspantlength').style.borderColor = "#ced4da"; }
+        if ($("#xsbottom").val() == "") { document.getElementById('xsbottom').style.borderColor = "red"; toastr.error('Extra Small bottom required!'); } else { document.getElementById('xsbottom').style.borderColor = "#ced4da"; }
 
 
-        if ($("#swaist").val() == "") { document.getElementById('swaist').style.borderColor = "red"; toastr.error('swaist  required!'); } else { document.getElementById('swaist').style.borderColor = "#ced4da"; }
-        if ($("#ship").val() == "") { document.getElementById('ship').style.borderColor = "red"; toastr.error('ship required!'); } else { document.getElementById('ship').style.borderColor = "#ced4da"; }
-        if ($("#sthigh").val() == "") { document.getElementById('sthigh').style.borderColor = "red"; toastr.error('sthigh required!'); } else { document.getElementById('sthigh').style.borderColor = "#ced4da"; }
-        if ($("#spantlength").val() == "") { document.getElementById('spantlength').style.borderColor = "red"; toastr.error('spantlength Field  required!'); } else { document.getElementById('spantlength').style.borderColor = "#ced4da"; }
-        if ($("#sbottom").val() == "") { document.getElementById('sbottom').style.borderColor = "red"; toastr.error('sbottom required!'); } else { document.getElementById('sbottom').style.borderColor = "#ced4da"; }
+        if ($("#swaist").val() == "") { document.getElementById('swaist').style.borderColor = "red"; toastr.error('Small waist  required!'); } else { document.getElementById('swaist').style.borderColor = "#ced4da"; }
+        if ($("#ship").val() == "") { document.getElementById('ship').style.borderColor = "red"; toastr.error('Small hip required!'); } else { document.getElementById('ship').style.borderColor = "#ced4da"; }
+        if ($("#sthigh").val() == "") { document.getElementById('sthigh').style.borderColor = "red"; toastr.error('Small thigh required!'); } else { document.getElementById('sthigh').style.borderColor = "#ced4da"; }
+        if ($("#spantlength").val() == "") { document.getElementById('spantlength').style.borderColor = "red"; toastr.error('Small pantlength Field  required!'); } else { document.getElementById('spantlength').style.borderColor = "#ced4da"; }
+        if ($("#sbottom").val() == "") { document.getElementById('sbottom').style.borderColor = "red"; toastr.error('Small bottom required!'); } else { document.getElementById('sbottom').style.borderColor = "#ced4da"; }
 
 
-        if ($("#mwaist").val() == "") { document.getElementById('mwaist').style.borderColor = "red"; toastr.error('mwaist  required!'); } else { document.getElementById('mwaist').style.borderColor = "#ced4da"; }
-        if ($("#mhip").val() == "") { document.getElementById('mhip').style.borderColor = "red"; toastr.error(' mhip required!'); } else { document.getElementById('mhip').style.borderColor = "#ced4da"; }
-        if ($("#mthigh").val() == "") { document.getElementById('mthigh').style.borderColor = "red"; toastr.error('mthigh required!'); } else { document.getElementById('mthigh').style.borderColor = "#ced4da"; }
-        if ($("#mpantlength").val() == "") { document.getElementById('mpantlength').style.borderColor = "red"; toastr.error('mpantlength Field  required!'); } else { document.getElementById('mpantlength').style.borderColor = "#ced4da"; }
-        if ($("#mbottom").val() == "") { document.getElementById('mbottom').style.borderColor = "red"; toastr.error('mbottom required!'); } else { document.getElementById('mbottom').style.borderColor = "#ced4da"; }
+        if ($("#mwaist").val() == "") { document.getElementById('mwaist').style.borderColor = "red"; toastr.error('medium waist  required!'); } else { document.getElementById('mwaist').style.borderColor = "#ced4da"; }
+        if ($("#mhip").val() == "") { document.getElementById('mhip').style.borderColor = "red"; toastr.error(' medium hip required!'); } else { document.getElementById('mhip').style.borderColor = "#ced4da"; }
+        if ($("#mthigh").val() == "") { document.getElementById('mthigh').style.borderColor = "red"; toastr.error('medium thigh required!'); } else { document.getElementById('mthigh').style.borderColor = "#ced4da"; }
+        if ($("#mpantlength").val() == "") { document.getElementById('mpantlength').style.borderColor = "red"; toastr.error('medium pantlength Field  required!'); } else { document.getElementById('mpantlength').style.borderColor = "#ced4da"; }
+        if ($("#mbottom").val() == "") { document.getElementById('mbottom').style.borderColor = "red"; toastr.error('medium bottom required!'); } else { document.getElementById('mbottom').style.borderColor = "#ced4da"; }
 
-        if ($("#lwaist").val() == "") { document.getElementById('lwaist').style.borderColor = "red"; toastr.error('lwaist  required!'); } else { document.getElementById('lwaist').style.borderColor = "#ced4da"; }
-        if ($("#lhip").val() == "") { document.getElementById('lhip').style.borderColor = "red"; toastr.error(' lhip required!'); } else { document.getElementById('lhip').style.borderColor = "#ced4da"; }
-        if ($("#lthigh").val() == "") { document.getElementById('lthigh').style.borderColor = "red"; toastr.error('lthigh required!'); } else { document.getElementById('lthigh').style.borderColor = "#ced4da"; }
-        if ($("#lpantlength").val() == "") { document.getElementById('lpantlength').style.borderColor = "red"; toastr.error('lpantlength Field  required!'); } else { document.getElementById('lpantlength').style.borderColor = "#ced4da"; }
-        if ($("#lbottom").val() == "") { document.getElementById('lbottom').style.borderColor = "red"; toastr.error('lbottom required!'); } else { document.getElementById('lbottom').style.borderColor = "#ced4da"; }
+        if ($("#lwaist").val() == "") { document.getElementById('lwaist').style.borderColor = "red"; toastr.error('large waist  required!'); } else { document.getElementById('lwaist').style.borderColor = "#ced4da"; }
+        if ($("#lhip").val() == "") { document.getElementById('lhip').style.borderColor = "red"; toastr.error(' large hiprequired!'); } else { document.getElementById('lhip').style.borderColor = "#ced4da"; }
+        if ($("#lthigh").val() == "") { document.getElementById('lthigh').style.borderColor = "red"; toastr.error('large thigh required!'); } else { document.getElementById('lthigh').style.borderColor = "#ced4da"; }
+        if ($("#lpantlength").val() == "") { document.getElementById('lpantlength').style.borderColor = "red"; toastr.error('large pantlength Field  required!'); } else { document.getElementById('lpantlength').style.borderColor = "#ced4da"; }
+        if ($("#lbottom").val() == "") { document.getElementById('lbottom').style.borderColor = "red"; toastr.error('large bottom required!'); } else { document.getElementById('lbottom').style.borderColor = "#ced4da"; }
 
-        if ($("#xlwaist").val() == "") { document.getElementById('xlwaist').style.borderColor = "red"; toastr.error('xlwaist  required!'); } else { document.getElementById('xlwaist').style.borderColor = "#ced4da"; }
-        if ($("#xlhip").val() == "") { document.getElementById('xlhip').style.borderColor = "red"; toastr.error(' xlhip required!'); } else { document.getElementById('xlhip').style.borderColor = "#ced4da"; }
-        if ($("#xlthigh").val() == "") { document.getElementById('xlthigh').style.borderColor = "red"; toastr.error('xlthigh required!'); } else { document.getElementById('xlthigh').style.borderColor = "#ced4da"; }
-        if ($("#xlpantlength").val() == "") { document.getElementById('xlpantlength').style.borderColor = "red"; toastr.error('xlpantlength Field  required!'); } else { document.getElementById('xlpantlength').style.borderColor = "#ced4da"; }
-        if ($("#xlbottom").val() == "") { document.getElementById('xlbottom').style.borderColor = "red"; toastr.error('xlbottom required!'); } else { document.getElementById('xlbottom').style.borderColor = "#ced4da"; }
+        if ($("#xlwaist").val() == "") { document.getElementById('xlwaist').style.borderColor = "red"; toastr.error('Extra Large waist  required!'); } else { document.getElementById('xlwaist').style.borderColor = "#ced4da"; }
+        if ($("#xlhip").val() == "") { document.getElementById('xlhip').style.borderColor = "red"; toastr.error(' Extra Large hip required!'); } else { document.getElementById('xlhip').style.borderColor = "#ced4da"; }
+        if ($("#xlthigh").val() == "") { document.getElementById('xlthigh').style.borderColor = "red"; toastr.error('Extra Large thigh required!'); } else { document.getElementById('xlthigh').style.borderColor = "#ced4da"; }
+        if ($("#xlpantlength").val() == "") { document.getElementById('xlpantlength').style.borderColor = "red"; toastr.error('Extra Large pantlength Field  required!'); } else { document.getElementById('xlpantlength').style.borderColor = "#ced4da"; }
+        if ($("#xlbottom").val() == "") { document.getElementById('xlbottom').style.borderColor = "red"; toastr.error('Extra Large bottom required!'); } else { document.getElementById('xlbottom').style.borderColor = "#ced4da"; }
 
+        if ($("#unit").val() == "0") { document.getElementById('unit').style.borderColor = "red"; toastr.error('unit  required!'); } else { document.getElementById('unit').style.borderColor = "#ced4da"; }
         if ($("#chartName").val() == "") { document.getElementById('chartName').style.borderColor = "red"; toastr.error('chartName required!'); } else { document.getElementById('chartName').style.borderColor = "#ced4da"; }
-      
+
         if ($("#xswaist").val() == "" || $("#swaist").val() == "" || $("#mwaist").val() == "" || $("#lwaist").val() == "" || $("#xlwaist").val() == ""
             || $("#xspantlength").val() == "" || $("#spantlength").val() == "" || $("#mpantlength").val() == "" || $("#lpantlength").val() == "" || $("#xlpantlength").val() == ""
             || $("#xsthigh").val() == "" || $("#sthigh").val() == "" || $("#mthigh").val() == "" || $("#lthigh").val() == "" || $("#xlthigh").val() == ""
             || $("#xship").val() == "" || $("#ship").val() == "" || $("#mhip").val() == "" || $("#lhip").val() == "" || $("#xlhip").val() == ""
             || $("#xbottom").val() == "" || $("#sbottom").val() == "" || $("#mbottom").val() == "" || $("#lbottom").val() == "" || $("#xlbottom").val() == ""
-            || $("#chartName").val() == ""
+            || $("#chartName").val() == "" || $("#unit").val() == "0"
         )
         {
             debugger
@@ -319,9 +334,22 @@
             return true;
         }
     }
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only');
+            return false;
+        }
+
+        return true;
+    }
+
+
     $("form#data").submit(function (e) {
         debugger
-
+        e.preventDefault();
         var ch = CheckNull();
         if (ch == false) {
             return false;
@@ -337,6 +365,7 @@
                 data: formData,
                 success: function (data) {
                     toastr.success('Successfully Submitted');
+                    setTimeout(function () {location.reload() }, 1500);
                 },
                 cache: false,
                 contentType: false,

@@ -3,7 +3,7 @@
     ViewBag.Title = "viewtblfemaleGarment";
 }
 
-<h2>viewtblfemaleGarment</h2>
+
 
 
 
@@ -32,22 +32,13 @@
                 <div class="main-body">
                     <div class="page-wrapper">
                         <!-- [ breadcrumb ] start -->
-                        @*<div class="page-header">
+                        <div class="page-header">
                                 <div class="page-block">
                                     <div class="row align-items-center">
-                                        <div class="col-md-12">
-                                            <div class="page-header-title">
-                                                <h5 class="m-b-10">Form Elements</h5>
-                                            </div>
-                                            <ul class="breadcrumb">
-                                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                                                <li class="breadcrumb-item"><a href="#!">Form Components</a></li>
-                                                <li class="breadcrumb-item"><a href="#!">Form Elements</a></li>
-                                            </ul>
-                                        </div>
+                                  
                                     </div>
                                 </div>
-                            </div>*@
+                            </div>
                         <!-- [ breadcrumb ] end -->
                         <!-- [ Main Content ] start -->
                         <div class="row">
@@ -165,7 +156,7 @@
 
                                                     <div class="form-group">
                                                         <label for="price">Price</label>
-                                                        <input type="text" class="form-control" name="price" id="price" placeholder="Enter Price">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)"  name="price" id="price" placeholder="Enter Price">
                                                     </div>
 
 
@@ -173,7 +164,7 @@
                                                     <div class="form-group">
                                                         <div class="form-group">
                                                             <label for="detail">Detail</label>
-                                                            <textarea class="form-control" name="detail" id="detail" rows="3"></textarea>
+                                                            <textarea class="form-control"   name="detail" id="detail" rows="3"></textarea>
                                                         </div>
                                                     </div>
 
@@ -216,14 +207,14 @@
 
 
         if ($("#categoryid").val() == "0") { document.getElementById('categoryid').style.borderColor = "red"; toastr.error('categoryid Field  required!'); } else { document.getElementById('categoryid').style.borderColor = "#ced4da"; }
-        if ($("#categoryid").val() == "1")
+        if ($("#categoryid").val() == "3")
         {
-            if ($("#shirtsizechartnameid").val() == "0") { document.getElementById('shirtsizechartnameid').style.borderColor = "red"; toastr.error('shirtsizechartnameid Field  required!'); return false; } else { document.getElementById('shirtsizechartnameid').style.borderColor = "#ced4da"; }
+            if ($("#shirtsizechartnameid").val() == "0") { document.getElementById('shirtsizechartnameid').style.borderColor = "red"; toastr.error('shirt sizechart  Field  required!'); return false; } else { document.getElementById('shirtsizechartnameid').style.borderColor = "#ced4da"; }
 
 
         }
-        if ($("#categoryid").val() == "2") {
-            if ($("#pantsizechartnameid").val() == "0") { document.getElementById('pantsizechartnameid').style.borderColor = "red"; toastr.error('pantsizechartnameid Field  required!'); return false;} else { document.getElementById('pantsizechartnameid').style.borderColor = "#ced4da"; }
+        if ($("#categoryid").val() == "4") {
+            if ($("#pantsizechartnameid").val() == "0") { document.getElementById('pantsizechartnameid').style.borderColor = "red"; toastr.error('pant sizechart Field  required!'); return false;} else { document.getElementById('pantsizechartnameid').style.borderColor = "#ced4da"; }
 
 
         }
@@ -242,9 +233,21 @@
             return true;
         }
     }
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only');
+            return false;
+        }
+
+        return true;
+    }
+
     $("form#data").submit(function (e) {
         debugger
-
+        e.preventDefault();
         var ch = CheckNull();
         if (ch == false) {
             return false;
@@ -253,7 +256,8 @@
             var inp = document.getElementById('pic1');
             if (inp.files.length === 0) {
 
-                alert("Attachment Required");
+                /*alert("Attachment Required");*/
+                toastr.error("Attachment Required");
                 inp.focus();
 
                 return false;
@@ -262,7 +266,8 @@
             var inps = document.getElementById('pic2');
             if (inps.files.length === 0) {
 
-                alert("Attachment Required");
+                /* alert("Attachment Required");*/
+                toastr.error("Attachment Required");
                 inps.focus();
 
                 return false;
@@ -271,7 +276,8 @@
             var inps3 = document.getElementById('pic3');
             if (inps3.files.length === 0) {
 
-                alert("Attachment Required");
+                /*  alert("Attachment Required");*/
+                toastr.error("Attachment Required");
                 inps3.focus();
 
                 return false;
@@ -280,7 +286,8 @@
             var inps4 = document.getElementById('pic4');
             if (inps4.files.length === 0) {
 
-                alert("Attachment Required");
+                /*alert("Attachment Required");*/
+                toastr.error("Attachment Required");
                 inps4.focus();
 
                 return false;
@@ -295,7 +302,12 @@
                 type: 'POST',
                 data: formData,
                 success: function (data) {
-                    toastr.success('Successfully Submitted');
+                    if (data.messege == 'success') {
+                        toastr.success('Successfully Submitted');
+                    }
+                    else {
+                        toastr.error("chartname already exist");
+                    }
                 },
                 cache: false,
                 contentType: false,
@@ -340,7 +352,7 @@
 
     function getSizeMaleShirtList(categoryid) {
         $.ajax({
-            url: '@Url.Action("getSizeList", "Detail")',
+            url: '@Url.Action("getSizeListFemale", "Detail")',
             type: 'POST',
             data: {
                 'categoryid': categoryid
@@ -348,7 +360,7 @@
             dataType: 'json',
             success: function (data) {
                 var s ='<option value="0">-- Please Select --</option>';
-                $('#shirtsizechartid').empty();
+                $('#shirtsizechartnameid').empty();
                 //var s = '<option value="">--Please Select --</option>';
                 //s += '<option value="0">--Select All --</option>';
                 $.each(data.GetAllBtUserName, function (data, value) {
@@ -356,11 +368,11 @@
 
                 });
 
-                $("#shirtsizechartid").append(s);
+                $("#shirtsizechartnameid").append(s);
 
             },
             error: function (request, error) {
-                $('#divLoader').hide();
+               /* $('#divLoader').hide();*/
                 console.log(data);
                 //alert("Request: " + JSON.stringify(request));
             }
@@ -369,7 +381,7 @@
 
       function getSizeMalePantList(categoryid) {
         $.ajax({
-            url: '@Url.Action("getSizeList", "Detail")',
+            url: '@Url.Action("getSizeListFemale", "Detail")',
             type: 'POST',
             data: {
                 'categoryid': categoryid
@@ -377,7 +389,7 @@
             dataType: 'json',
             success: function (data) {
                 var s ='<option value="0">-- Please Select --</option>';
-                $('#pantsizechartid').empty();
+                $('#pantsizechartnameid').empty();
               //  var s = '<option value="">--Please Select --</option>';
                // s += '<option value="0">--Select All --</option>';
                 $.each(data.GetAllBtUserName, function (data, value) {
@@ -385,11 +397,11 @@
 
                 });
 
-                $("#pantsizechartid").append(s);
+                $("#pantsizechartnameid").append(s);
 
             },
             error: function (request, error) {
-                $('#divLoader').hide();
+               /* $('#divLoader').hide();*/
                 console.log(data);
                 //alert("Request: " + JSON.stringify(request));
             }
@@ -403,26 +415,26 @@
 
         categoryid = ($(this).val());
         if (categoryid == 0) {
-            $("#shirtsizechartid").prop("disabled", true);
-            $("#pantsizechartid").prop("disabled", true);
+            $("#shirtsizechartnameid").prop("disabled", true);
+            $("#pantsizechartnameid").prop("disabled", true);
 
 
 
         }
-        if(categoryid == 1)
+        if(categoryid == 3)
         {
-            $("#shirtsizechartid").prop("disabled", false);
-            $("#pantsizechartid").prop("disabled", true);
+            $("#shirtsizechartnameid").prop("disabled", false);
+            $("#pantsizechartnameid").prop("disabled", true);
     //        getSizeMalePantList(0);
-            $('#pantsizechartid').empty();
+            $('#pantsizechartnameid').empty();
             getSizeMaleShirtList(categoryid);
 
         }
-        if (categoryid == 2)
+        if (categoryid == 4)
         {
-            $("#pantsizechartid").prop("disabled", false);
-            $("#shirtsizechartid").prop("disabled", true);
-            $('#shirtsizechartid').empty();
+            $("#pantsizechartnameid").prop("disabled", false);
+            $("#shirtsizechartnameid").prop("disabled", true);
+            $('#shirtsizechartnameid').empty();
             getSizeMalePantList(categoryid);
 
         }
@@ -436,8 +448,8 @@
      $(document).ready(function () {
 
 
-         $("#shirtsizechartid").prop("disabled", true);
-         $("#pantsizechartid").prop("disabled", true);
+         $("#shirtsizechartnameid").prop("disabled", true);
+         $("#pantsizechartnameid").prop("disabled", true);
          getCategories();
 
 

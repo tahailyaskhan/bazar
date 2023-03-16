@@ -20,15 +20,16 @@ namespace bazar.Controllers
             {
                
                 int inputter = Convert.ToInt32(Session["inputterType"]);
-
+                var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
 
                 var CategoryTypes = (from pd in db.tblcategories
                                                        
                                      select new
                                      {
                                         pd.id,
-                                        pd.categoryName
-                                     }).ToList();
+                                        pd.categoryName,
+                                        pd.shoptypeId
+                                     }).Where(x=>x.shoptypeId==shoptype.shoptypeid).ToList();
 
                
                 return Json(new { ErrorCode = "000", CategoryTypes= CategoryTypes });
@@ -51,7 +52,7 @@ namespace bazar.Controllers
                  }).Where(x=>x.createdById== userid).Distinct().ToList();
                 return Json(new { ErrorCode = "000", GetAllBtUserName });
             }
-           else
+           if(categoryid == 2)
             {
 
                 var GetAllBtUserName=(from us in db.tblsizePantMales
@@ -62,12 +63,13 @@ namespace bazar.Controllers
                  }).Where(x => x.createdById == userid).Distinct().ToList();
                 return Json(new { ErrorCode = "000", GetAllBtUserName });
             }
+            return Json(new { ErrorCode = "001" });
         }
 
         public ActionResult getSizeListFemale(int categoryid)
         {
 
-            if (categoryid == 1)
+            if (categoryid == 3)
             {
 
 
@@ -79,7 +81,7 @@ namespace bazar.Controllers
                                         }).Where(x => x.createdById == userid).Distinct().ToList();
                 return Json(new { ErrorCode = "000", GetAllBtUserName });
             }
-            else
+            if(categoryid == 4)
             {
 
                 var GetAllBtUserName = (from us in db.tblsizePantFemales
@@ -90,6 +92,8 @@ namespace bazar.Controllers
                                         }).Where(x => x.createdById == userid).Distinct().ToList();
                 return Json(new { ErrorCode = "000", GetAllBtUserName });
             }
+
+            return Json(new { ErrorCode = "001" });
         }
         // Views 
         public ActionResult gettblsizeShirtNale()
@@ -282,7 +286,25 @@ namespace bazar.Controllers
 
 
         }
-        public ActionResult gettblorder()
+
+        public ActionResult changeStatus(int orderid)
+        {
+            int userid = Convert.ToInt32(Session["userid"]);
+            List<tblcustomerorder> customerorderlist = new List<tblcustomerorder>();
+            tblcustomerOrder getorder = db.tblcustomerOrders.Where(x => x.ownerId == userid && x.id==orderid).FirstOrDefault();
+            var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
+
+            if (getorder != null)
+            {
+
+                getorder.status = "done";
+                db.SaveChanges();
+            }
+           
+
+            return RedirectToAction("gettblorder", "Detail");
+        }
+            public ActionResult gettblorder()
         {
             int userid = Convert.ToInt32(Session["userid"]);
             List<tblcustomerorder> customerorderlist = new List<tblcustomerorder>();
@@ -293,66 +315,78 @@ namespace bazar.Controllers
                 
                 if (shoptype.shoptypeid == 1)
                 {
-                    var obj = db.tblmaleGarments.Where(x => x.id == row.orderId).FirstOrDefault();
-                    customerorderlist.Add(new tblcustomerorder
+                    var obj = db.tblmaleGarments.Where(x => x.id == row.orderId ).FirstOrDefault();
+                    if (obj != null)
                     {
-                        orderId = row.orderId,
-                        clothname = obj.clothname,
-                        counts = row.counts,
-                        cityname = row.cityname
-                    ,
-                        addresss = row.addresss,
-                        size = row.size,
-                        mobileNo = row.mobileNo,
-                        Email = row.Email,
-                        status = row.status,
-                        reviews = row.reviews,
-                        rating = row.rating,
-                        
-                        pic = obj.pic1
-                    });
+                        customerorderlist.Add(new tblcustomerorder
+                        {
+                            id = row.id,
+                            orderId = row.orderId,
+                            clothname = obj.clothname,
+                            counts = row.counts,
+                            cityname = row.cityname
+                        ,
+                            addresss = row.addresss,
+                            size = row.size,
+                            mobileNo = row.mobileNo,
+                            Email = row.Email,
+                            status = row.status,
+                            reviews = row.reviews,
+                            rating = row.rating,
+
+                            pic = obj.pic1
+                        });
+                    }
                 }
                 if (shoptype.shoptypeid == 2)
                 {
                     var obj = db.tblfemaleGarments.Where(x => x.id == row.orderId).FirstOrDefault();
-                    customerorderlist.Add(new tblcustomerorder
+                    if (obj != null)
                     {
-                        orderId = row.orderId,
-                        clothname = obj.clothname,
-                        counts = row.counts,
-                        cityname = row.cityname
-                    ,
-                        addresss = row.addresss,
-                        size = row.size,
-                        mobileNo = row.mobileNo,
-                        Email = row.Email,
-                        status = row.status,
-                        reviews = row.reviews,
-                        rating = row.rating,
-                        
-                        pic = obj.pic1
-                    });
+                        customerorderlist.Add(new tblcustomerorder
+                        {
+                            id = row.id,
+                            orderId = row.orderId,
+                            clothname = obj.clothname,
+                            counts = row.counts,
+                            cityname = row.cityname
+                        ,
+                            addresss = row.addresss,
+                            size = row.size,
+                            mobileNo = row.mobileNo,
+                            Email = row.Email,
+                            status = row.status,
+                            reviews = row.reviews,
+                            rating = row.rating,
+
+                            pic = obj.pic1
+                        });
+                    }
                 }
                 if (shoptype.shoptypeid == 3)
                 {
                     var obj = db.tblshoes.Where(x => x.id == row.orderId).FirstOrDefault();
-                    customerorderlist.Add(new tblcustomerorder
+                    if (obj != null)
                     {
-                        orderId = row.orderId,
-                        clothname = obj.shoename,
-                        counts = row.counts,
-                        cityname = row.cityname
-                    ,
-                        addresss = row.addresss,
-                        size = row.size,
-                        mobileNo = row.mobileNo,
-                        Email = row.Email,
-                        status = row.status,
-                        reviews = row.reviews,
-                        rating = row.rating,
+                        customerorderlist.Add(new tblcustomerorder
+                        {
+                            id = row.id,
+                            orderId = row.orderId,
+                            clothname = obj.shoename,
+                            counts = row.counts,
+                            cityname = row.cityname
+                        ,
+                            addresss = row.addresss,
+                            size = row.size,
+                            mobileNo = row.mobileNo,
+                            Email = row.Email,
+                            status = row.status,
+                            reviews = row.reviews,
+                            rating = row.rating,
 
-                        pic = obj.pic1
-                    });
+                            pic = obj.pic1
+                        });
+                    }
                 }
             }
             return View(customerorderlist);

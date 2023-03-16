@@ -39,6 +39,7 @@ namespace bazar.Controllers
 
         public ActionResult viewtblsizePantFemale()
         {
+            
             return View();
         }
 

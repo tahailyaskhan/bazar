@@ -8,6 +8,17 @@
 
 
 
+<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+
+<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+<link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Sscripts/moment.js"></script>
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+
 
 
 
@@ -49,17 +60,17 @@
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <form  method="post">
+                                                <form id="data" method="post">
 
                                                     <h4>extra Small</h4>
 
                                                     <div class="form-group">
                                                         <label for="collar">Waist</label>
-                                                        <input type="text" class="form-control" name="xswaist" id="xswaist" placeholder="Enter waist size">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xswaist" id="xswaist" placeholder="Enter waist size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="chest">PantLength</label>
-                                                        <input type="text" class="form-control" name="xspantlength" id="xspantlength" placeholder="Enter pant size">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xspantlength" id="xspantlength" placeholder="Enter pant size">
                                                     </div>
 
 
@@ -67,11 +78,11 @@
 
                                                     <div class="form-group">
                                                         <label for="collar">Waist</label>
-                                                        <input type="text" class="form-control" name="swaist" id="swaist" placeholder="Enter waist size">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="swaist" id="swaist" placeholder="Enter waist size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="chest">PantLength</label>
-                                                        <input type="text" class="form-control" name="spantlength" id="spantlength" placeholder="Enter pant size">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="spantlength" id="spantlength" placeholder="Enter pant size">
                                                     </div>
 
 
@@ -79,33 +90,33 @@
 
                                                     <div class="form-group">
                                                         <label for="collar">Waist</label>
-                                                        <input type="text" class="form-control" name="mwaist" id="mwaist" placeholder="Enter waist size">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="mwaist" id="mwaist" placeholder="Enter waist size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="chest">PantLength</label>
-                                                        <input type="text" class="form-control" name="mpantlength" id="mpantlength" placeholder="Enter pant size">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="mpantlength" id="mpantlength" placeholder="Enter pant size">
                                                     </div>
 
                                                     <h4>large</h4>
 
                                                     <div class="form-group">
                                                         <label for="collar">Waist</label>
-                                                        <input type="text" class="form-control" name="lwaist" id="lwaist" placeholder="Enter waist size">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="lwaist" id="lwaist" placeholder="Enter waist size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="chest">PantLength</label>
-                                                        <input type="text" class="form-control" name="lpantlength" id="lpantlength" placeholder="Enter pant size">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="lpantlength" id="lpantlength" placeholder="Enter pant size">
                                                     </div>
 
                                                     <h4>Extra large</h4>
 
                                                     <div class="form-group">
                                                         <label for="collar">Waist</label>
-                                                        <input type="text" class="form-control" name="xlwaist" id="xlwaist" placeholder="Enter waist size">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xlwaist" id="xlwaist" placeholder="Enter waist size">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="chest">PantLength</label>
-                                                        <input type="text" class="form-control" name="xlpantlength" id="xlpantlength" placeholder="Enter pant size">
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xlpantlength" id="xlpantlength" placeholder="Enter pant size">
                                                     </div>
 
                                                     <hr>
@@ -202,54 +213,68 @@
 <script>
     function CheckNull() {
         debugger
-        if ($("#xswaist").val() == "") { document.getElementById('xswaist').style.borderColor = "red"; toastr.error('xswaist  required!'); } else { document.getElementById('xswaist').style.borderColor = "#ced4da"; }
-        if ($("#xspantlength").val() == "") { document.getElementById('xspantlength').style.borderColor = "red"; toastr.error('xspantlength required!'); } else { document.getElementById('xspantlength').style.borderColor = "#ced4da"; }
+        if ($("#xswaist").val() == "") { document.getElementById('xswaist').style.borderColor = "red"; toastr.error('Extra Small waist  required!'); } else { document.getElementById('xswaist').style.borderColor = "#ced4da"; }
+        if ($("#xspantlength").val() == "") { document.getElementById('xspantlength').style.borderColor = "red"; toastr.error('Extra Small pantlength required!'); } else { document.getElementById('xspantlength').style.borderColor = "#ced4da"; }
 
-        if ($("#swaist").val() == "") { document.getElementById('swaist').style.borderColor = "red"; toastr.error('swaist required!'); } else { document.getElementById('swaist').style.borderColor = "#ced4da"; }
-
-
-        if ($("#spantlength").val() == "") { document.getElementById('spantlength').style.borderColor = "red"; toastr.error('spantlength Field  required!'); } else { document.getElementById('categoryid').style.borderColor = "#ced4da"; }
-
-        if ($("#mwaist").val() == "") { document.getElementById('mwaist').style.borderColor = "red"; toastr.error('mwaist required!'); } else { document.getElementById('mwaist').style.borderColor = "#ced4da"; }
+        if ($("#swaist").val() == "") { document.getElementById('swaist').style.borderColor = "red"; toastr.error('Small waist required!'); } else { document.getElementById('swaist').style.borderColor = "#ced4da"; }
 
 
-        if ($("#mpantlength").val() == "") { document.getElementById('mpantlength').style.borderColor = "red"; toastr.error('mpantlength Field  required!'); } else { document.getElementById('mpantlength').style.borderColor = "#ced4da"; }
+        if ($("#spantlength").val() == "") { document.getElementById('spantlength').style.borderColor = "red"; toastr.error('Small pantlength Field  required!'); } else { document.getElementById('spantlength').style.borderColor = "#ced4da"; }
 
-        if ($("#lwaist").val() == "") { document.getElementById('lwaist').style.borderColor = "red"; toastr.error('lwaist required!'); } else { document.getElementById('lwaist').style.borderColor = "#ced4da"; }
-
-
-        if ($("#lpantlength").val() == "") { document.getElementById('lpantlength').style.borderColor = "red"; toastr.error('lpantlength Field  required!'); } else { document.getElementById('lpantlength').style.borderColor = "#ced4da"; }
-
-        if ($("#xlwaist").val() == "") { document.getElementById('xlwaist').style.borderColor = "red"; toastr.error('xlwaist required!'); } else { document.getElementById('xlwaist').style.borderColor = "#ced4da"; }
+        if ($("#mwaist").val() == "") { document.getElementById('mwaist').style.borderColor = "red"; toastr.error('Medium waist required!'); } else { document.getElementById('mwaist').style.borderColor = "#ced4da"; }
 
 
-        if ($("#xlpantlength").val() == "") { document.getElementById('xlpantlength').style.borderColor = "red"; toastr.error('xpantlength Field  required!'); } else { document.getElementById('xlpantlength').style.borderColor = "#ced4da"; }
+        if ($("#mpantlength").val() == "") { document.getElementById('mpantlength').style.borderColor = "red"; toastr.error('Medium pantlength Field  required!'); } else { document.getElementById('mpantlength').style.borderColor = "#ced4da"; }
 
-       
+        if ($("#lwaist").val() == "") { document.getElementById('lwaist').style.borderColor = "red"; toastr.error('Large waist required!'); } else { document.getElementById('lwaist').style.borderColor = "#ced4da"; }
+
+
+        if ($("#lpantlength").val() == "") { document.getElementById('lpantlength').style.borderColor = "red"; toastr.error('Large pantlength Field  required!'); } else { document.getElementById('lpantlength').style.borderColor = "#ced4da"; }
+
+        if ($("#xlwaist").val() == "") { document.getElementById('xlwaist').style.borderColor = "red"; toastr.error('Extra Large waist required!'); } else { document.getElementById('xlwaist').style.borderColor = "#ced4da"; }
+
+
+        if ($("#xlpantlength").val() == "") { document.getElementById('xlpantlength').style.borderColor = "red"; toastr.error('Extra Large pantlength required!'); } else { document.getElementById('xlpantlength').style.borderColor = "#ced4da"; }
+        if ($("#chartName").val() == "") { document.getElementById('chartName').style.borderColor = "red"; toastr.error('chartName  required!'); } else { document.getElementById('chartName').style.borderColor = "#ced4da"; }
+
+        if ($("#unit").val() == '0') { document.getElementById('unit').style.borderColor = "red"; toastr.error('unit  required!'); } else { document.getElementById('unit').style.borderColor = "#ced4da"; }
 
 
 
-        if ($("#xswaist").val() == "" || $("#swaist").val() == "" || $("#mwaist").val() == "" || $("#lwaist").val() == ""
+
+        if ($("#xswaist").val() == "" || $("#swaist").val() == "" || $("#mwaist").val() == "" || $("#lwaist").val() == "" || $("#unit").val() == '0'
             || $("#xspantlength").val() == "" || $("#spantlength").val() == "" || $("#mpantlength").val() == "" || $("#lpantlength").val() == "" || $("#xlpantlength").val() == "")
         {
             debugger
             toastr.error('All Fields are required!');
-            checkingNull = false;
+          //  checkingNull = false;
             return false;
         }
         else {
-            checkingNull = true;
+           // checkingNull = true;
             return true;
         }
     }
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only');
+            return false;
+        }
+
+        return true;
+    }
+
     $("form#data").submit(function (e) {
         debugger
-
+        e.preventDefault();
         var ch = CheckNull();
         if (ch == false) {
             return false;
         }
-        
+
         var formData = new FormData(this);
 
 
@@ -259,7 +284,12 @@
                 type: 'POST',
                 data: formData,
                 success: function (data) {
-                    toastr.success('Successfully Submitted');
+                    if (data.messege == 'success') {
+                        toastr.success('Successfully Submitted');
+                    }
+                    else {
+                        toastr.error("chartname already exist");
+                    }
                 },
                 cache: false,
                 contentType: false,
@@ -274,3 +304,31 @@
 
 
 </script>
+
+
+@*@{
+
+    if (Convert.ToString(TempData["successstatus"]) == "exist")
+    {
+
+        <script>
+
+            toastr.error("chartname already exist");
+
+        </script>
+
+    }
+
+
+    if (Convert.ToString(TempData["successstatus"]) == "success")
+    {
+
+        <script>
+
+            toastr.success("successfully Added");
+
+        </script>
+
+    }
+
+}*@

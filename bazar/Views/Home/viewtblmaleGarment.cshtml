@@ -64,7 +64,7 @@
 
                                                     <div class="form-group">
                                                         <label for="clothname">ClothName</label>
-                                                        <input type="text" class="form-control" name="clothname" id="clothname" placeholder="Enter waist size">
+                                                        <input type="text" class="form-control" name="clothname" id="clothname" placeholder="Enter Clothname">
                                                     </div>
                                                     <div class="form-group">
 
@@ -153,7 +153,7 @@
 
                                                     <div class="form-group">
                                                         <label for="price">Price</label>
-                                                        <input type="text" class="form-control" name="price" id="price" placeholder="Enter Price">
+                                                        <input type="text"  class="form-control"  autocomplete="off" onkeypress="return isNumber(event)" name="price" id="price" placeholder="Enter Price">
                                                     </div>
 
 
@@ -229,9 +229,21 @@
             return true;
         }
     }
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only');
+            return false;
+        }
+
+        return true;
+    }
+
     $("form#data").submit(function (e) {
         debugger
-        
+        e.preventDefault();
         var ch = CheckNull();
         if (ch == false) {
             return false;
@@ -240,7 +252,8 @@
             var inp = document.getElementById('pic1');
             if (inp.files.length === 0) {
 
-                alert("Attachment Required");
+                //alert("Attachment Required");
+                toastr.error("Attachment Required");
                 inp.focus();
 
                 return false;
@@ -249,7 +262,8 @@
             var inps = document.getElementById('pic2');
             if (inps.files.length === 0) {
 
-                alert("Attachment Required");
+                //alert("Attachment Required");
+                toastr.error("Attachment Required");
                 inps.focus();
 
                 return false;
@@ -264,7 +278,13 @@
                 type: 'POST',
                 data: formData,
                 success: function (data) {
-                    toastr.success('Successfully Submitted');
+                    debugger
+                    if (data.messege == 'success') {
+                        toastr.success('Successfully Submitted');
+                    }
+                    else {
+                        toastr.error("chartname already exist");
+                    }
                 },
                 cache: false,
                 contentType: false,

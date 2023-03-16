@@ -6,7 +6,7 @@
 
 
 <script src="~/Sscripts/jquery-3.6.0.min.js"></script>
-
+<script src="~/Sscripts/jquery.dataTables.min.js"></script>
 <script src="~/Content/Toaster/scripts/toastr.min.js"></script>
 <link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
 <link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
@@ -21,36 +21,18 @@
                 <div class="main-body">
                     <div class="page-wrapper">
                         <!-- [ breadcrumb ] start -->
-                        <div class="page-header">
-                            <div class="page-block">
-                                <div class="row align-items-center">
-                                    <div class="col-md-12">
-                                        <div class="page-header-title">
-                                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
-                                        </div>
-                                        <ul class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                                            <li class="breadcrumb-item"><a href="#!">Bootstrap Table</a></li>
-                                            <li class="breadcrumb-item"><a href="#!">Basic Tables</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                  
                         <!-- [ breadcrumb ] end -->
                         <!-- [ Main Content ] start -->
                         <div class="row">
                             <!-- [ basic-table ] start -->
                             <div class="col-sm-12">
                                 <div class="card">
-                                    <div class="card-header">
-                                        <h5>Basic Table</h5>
-                                        <span class="d-block m-t-5">use class <code>table</code> inside table element</span>
-                                    </div>
+                                  
                                     <div class="card-body table-border-style">
                                         <div class="table-responsive">
 
-                                            <table class="table">
+                                            <table class="table" id="femaleTable" style="width:100%">
                                                 <thead style="color:#ff6002">
                                                     <tr>
                                                         <th style="display: none">id</th>
@@ -354,7 +336,7 @@
 
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="text" class="form-control" name="price" id="price" placeholder="Enter Price">
+                            <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)"  name="price" id="price" placeholder="Enter Price">
                         </div>
 
 
@@ -390,13 +372,13 @@
 
 
         if ($("#categoryid").val() == "0") { document.getElementById('categoryid').style.borderColor = "red"; toastr.error('categoryid Field  required!'); } else { document.getElementById('categoryid').style.borderColor = "#ced4da"; }
-        if ($("#categoryid").val() == "1")
+        if ($("#categoryid").val() == "3")
         {
             if ($("#shirtsizechartnameid").val() == "0") { document.getElementById('shirtsizechartnameid').style.borderColor = "red"; toastr.error('shirtsizechartnameid Field  required!'); return false; } else { document.getElementById('shirtsizechartnameid').style.borderColor = "#ced4da"; }
 
 
         }
-        if ($("#categoryid").val() == "2") {
+        if ($("#categoryid").val() == "4") {
             if ($("#pantsizechartnameid").val() == "0") { document.getElementById('pantsizechartnameid').style.borderColor = "red"; toastr.error('pantsizechartnameid Field  required!'); return false;} else { document.getElementById('pantsizechartnameid').style.borderColor = "#ced4da"; }
 
 
@@ -416,8 +398,79 @@
             return true;
         }
     }
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only');
+            return false;
+        }
+
+        return true;
+    }
+
+
     $("form#data").submit(function (e) {
         debugger
+        if ($('#xsmall').is(':checked') == true) {
+            $('#xsmall').attr('checked', 'checked');
+            $('#xsmall').val(true);
+        }
+        if ($('#xsmall').is(':checked') == false) {
+            $('#xsmall').attr('checked', false);
+            $('#xsmall').val(false);
+        }
+
+
+
+        if ($('#small').is(':checked') == true) {
+            $('#small').attr('checked', 'checked');
+            $('#small').val(true);
+        }
+
+        if ($('#small').is(':checked') == false) {
+            $('#small').attr('checked', false);
+            $('#small').val(false);
+        }
+
+
+        if ($('#medium').is(':checked') == true) {
+            $('#medium').attr('checked', 'checked');
+
+            $('#medium').val(true);
+        }
+        if ($('#medium').is(':checked') == false) {
+            $('#medium').attr('checked', false);
+            $('#medium').val(false);
+        }
+
+        if ($('#large').is(':checked') == true) {
+            $('#large').attr('checked', 'checked');
+            $('#large').val(true);
+        }
+        if ($('#large').is(':checked') == false) {
+            $('#large').attr('checked', false);
+            $('#large').val(false);
+        }
+
+        if ($('#xlarge').is(':checked') == true) {
+            $('#xlarge').attr('checked', 'checked');
+            $('#xlarge').val(true);
+        }
+        if ($('#xlarge').is(':checked') == false) {
+            $('#xlarge').attr('checked', false);
+            $('#xlarge').val(false);
+        }
+
+        if ($('#xxlarge').is(':checked') == true) {
+            $('#xxlarge').attr('checked', 'checked');
+            $('#xxlarge').val(true);
+        }
+        if ($('#xxlarge').is(':checked') == false) {
+            $('#xxlarge').attr('checked', false);
+            $('#xxlarge').val(false);
+        }
 
         var ch = CheckNull();
         if (ch == false) {
@@ -434,6 +487,7 @@
                 data: formData,
                 success: function (data) {
                     toastr.success('Successfully Submitted');
+                    setTimeout(function () { location.reload() }, 1500);
                 },
                 cache: false,
                 contentType: false,
@@ -502,7 +556,7 @@
 
 
          }
-         if (categoryid == 1) {
+         if (categoryid == 3) {
              $("#shirtsizechartnameid").prop("disabled", false);
              $("#pantsizechartnameid").prop("disabled", true);
              //        getSizeMalePantList(0);
@@ -515,7 +569,7 @@
              setTimeout(function () { $("#shirtsizechartnameid").val(vals); }, 2000);
 
          }
-         if (categoryid == 2) {
+         if (categoryid == 4) {
              $("#pantsizechartnameid").prop("disabled", false);
              $("#shirtsizechartnameid").prop("disabled", true);
              $('#shirtsizechartnameid').empty();
@@ -787,7 +841,7 @@
 
 
         }
-        if(categoryid == 1)
+        if(categoryid == 3)
         {
             $("#shirtsizechartnameid").prop("disabled", false);
             $("#pantsizechartnameid").prop("disabled", true);
@@ -796,7 +850,7 @@
             getSizeMaleShirtList(categoryid);
 
         }
-        if (categoryid == 2)
+        if (categoryid == 4)
         {
             $("#pantsizechartnameid").prop("disabled", false);
             $("#shirtsizechartnameid").prop("disabled", true);
@@ -824,6 +878,7 @@
 
      $(document).ready(function () {
 
+         let table = new DataTable('#femaleTable');
 
          $("#shirtsizechartid").prop("disabled", true);
          $("#pantsizechartid").prop("disabled", true);

@@ -29,7 +29,7 @@ namespace bazar.DAL.Repository
                     ci.daman = data.xsdaman;
                     ci.armhole = data.xsarmhole;
                     ci.sizeName = "xsmall";
-                    ci.createdById = 1;
+                    ci.createdById = Convert.ToInt32(System.Web.HttpContext.Current.Session["userid"]);
                     ci.unitId = data.unitId;
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
@@ -45,7 +45,7 @@ namespace bazar.DAL.Repository
                     ci.daman = data.sdaman;
                     ci.armhole = data.sarmhole;
                     ci.sizeName = "small";
-                    ci.createdById = 1;
+                    ci.createdById = Convert.ToInt32(System.Web.HttpContext.Current.Session["userid"]);
                     ci.unitId = data.unitId;
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
@@ -61,7 +61,7 @@ namespace bazar.DAL.Repository
                     ci.daman = data.mdaman;
                     ci.armhole = data.marmhole;
                     ci.sizeName = "medium";
-                    ci.createdById = 1;
+                    ci.createdById = Convert.ToInt32(System.Web.HttpContext.Current.Session["userid"]);
                     ci.unitId = data.unitId;
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
@@ -78,7 +78,7 @@ namespace bazar.DAL.Repository
                     ci.daman = data.ldaman;
                     ci.armhole = data.larmhole;
                     ci.sizeName = "large";
-                    ci.createdById = 1;
+                    ci.createdById = Convert.ToInt32(System.Web.HttpContext.Current.Session["userid"]);
                     ci.unitId = data.unitId;
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
@@ -93,7 +93,7 @@ namespace bazar.DAL.Repository
                     ci.daman = data.xldaman;
                     ci.armhole = data.xlarmhole;
                     ci.sizeName = "xlarge";
-                    ci.createdById = 1;
+                    ci.createdById = Convert.ToInt32(System.Web.HttpContext.Current.Session["userid"]);
                     ci.unitId = data.unitId;
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;

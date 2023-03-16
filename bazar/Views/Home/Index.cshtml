@@ -1,27 +1,36 @@
 ﻿@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
-   // Layout = null;
+    // Layout = null;
 }
 
 
 
 
 
+<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+
+<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+<link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Sscripts/moment.js"></script>
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+<script src="~/Sscripts/CustomeJS.js"></script>
 
 
-    
- 
-   
-    <!-- [ Main Content ] start -->
-    <div class="pcoded-main-container">
-        <div class="pcoded-wrapper">
-            <div class="pcoded-content">
-                <div class="pcoded-inner-content">
-                    <div class="main-body">
-                        <div class="page-wrapper">
-                            <!-- [ breadcrumb ] start -->
-                            @*<div class="page-header">
+
+
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ breadcrumb ] start -->
+                        @*<div class="page-header">
                                 <div class="page-block">
                                     <div class="row align-items-center">
                                         <div class="col-md-12">
@@ -37,266 +46,258 @@
                                     </div>
                                 </div>
                             </div>*@
-                            <!-- [ breadcrumb ] end -->
-                            <!-- [ Main Content ] start -->
-                            <div class="row">
-                                <!-- [ form-element ] start -->
-                                <div class="col-sm-12">
-                                    <div class="card">
-                                       
-                                        <div class="card-body">
-                                            <h1>Size for Shirt form</h1>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <form  id="data" method="post">
+                        <!-- [ breadcrumb ] end -->
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <!-- [ form-element ] start -->
+                            <div class="col-sm-12">
+                                <div class="card">
 
-                                                        <h4>extra Small</h4>
+                                    <div class="card-body">
+                                        <h1>Size for Shirt form</h1>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <form id="data" method="post">
 
-                                                        <div class="form-group">
-                                                            <label for="collar">Collar</label>
-                                                            <input type="text" class="form-control" name="xscollar" id="xscollar" placeholder="Enter collar size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="chest">Chest</label>
-                                                            <input type="text" class="form-control" name="xschest" id="xschest" placeholder="Enter chest size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="sleevelength">Sleevelength</label>
-                                                            <input type="text" class="form-control" name="xssleevelength" id="xssleevelength" placeholder="Enter sleevelength size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="shirtlength">Shirtlength</label>
-                                                            <input type="text" class="form-control" name="xsshirtlength" id="xsshirtlength" placeholder="Enter shirtlength size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="sizename">SizeName</label>
-                                                            <input type="text" class="form-control" name="xssizename" id="xssizename" placeholder="Enter sizename size">
-                                                        </div>
+                                                    <h4>extra Small</h4>
+
+                                                    <div class="form-group">
+                                                        <label for="collar">Collar</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xscollar" id="xscollar" placeholder="Enter collar size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="chest">Chest</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xschest" id="xschest" placeholder="Enter chest size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="sleevelength">Sleevelength</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xssleevelength" id="xssleevelength" placeholder="Enter sleevelength size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="shirtlength">Shirtlength</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xsshirtlength" id="xsshirtlength" placeholder="Enter shirtlength size">
+                                                    </div>
 
 
-                                                        <h4>Small</h4>
 
-                                                        <div class="form-group">
-                                                            <label for="collar">Collar</label>
-                                                            <input type="text" class="form-control" name="scollar" id="scollar" placeholder="Enter collar size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="chest">Chest</label>
-                                                            <input type="text" class="form-control" name="schest" id="schest" placeholder="Enter chest size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="sleevelength">Sleevelength</label>
-                                                            <input type="text" class="form-control" name="ssleevelength" id="ssleevelength" placeholder="Enter sleevelength size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="shirtlength">Shirtlength</label>
-                                                            <input type="text" class="form-control" name="sshirtlength" id="sshirtlength" placeholder="Enter shirtlength size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="sizename">SizeName</label>
-                                                            <input type="text" class="form-control" name="ssizename" id="ssizename" placeholder="Enter sizename size">
-                                                        </div>
+                                                    <h4>Small</h4>
+
+                                                    <div class="form-group">
+                                                        <label for="collar">Collar</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="scollar" id="scollar" placeholder="Enter collar size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="chest">Chest</label>
+                                                        <input type="text" class="form-control" autocomplete="off" autocomplete="off" onkeypress="return isNumber(event)" name="schest" id="schest" placeholder="Enter chest size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="sleevelength">Sleevelength</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="ssleevelength" id="ssleevelength" placeholder="Enter sleevelength size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="shirtlength">Shirtlength</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="sshirtlength" id="sshirtlength" placeholder="Enter shirtlength size">
+                                                    </div>
 
 
-                                                        <h4>Medium</h4>
 
-                                                        <div class="form-group">
-                                                            <label for="collar">Collar</label>
-                                                            <input type="text" class="form-control" name="mcollar" id="mcollar" placeholder="Enter collar size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="chest">Chest</label>
-                                                            <input type="text" class="form-control" name="mchest" id="mchest" placeholder="Enter chest size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="sleevelength">Sleevelength</label>
-                                                            <input type="text" class="form-control" name="msleevelength" id="msleevelength" placeholder="Enter sleevelength size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="shirtlength">Shirtlength</label>
-                                                            <input type="text" class="form-control" name="mshirtlength" id="mshirtlength" placeholder="Enter shirtlength size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="sizename">SizeName</label>
-                                                            <input type="text" class="form-control" name="msizename" id="msizename" placeholder="Enter sizename size">
-                                                        </div>
+                                                    <h4>Medium</h4>
 
-                                                        <h4>large</h4>
-
-                                                        <div class="form-group">
-                                                            <label for="collar">Collar</label>
-                                                            <input type="text" class="form-control" name="lcollar" id="lcollar" placeholder="Enter collar size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="chest">Chest</label>
-                                                            <input type="text" class="form-control" name="lchest" id="lchest" placeholder="Enter chest size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="sleevelength">Sleevelength</label>
-                                                            <input type="text" class="form-control" name="lsleevelength" id="lsleevelength" placeholder="Enter sleevelength size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="shirtlength">Shirtlength</label>
-                                                            <input type="text" class="form-control" name="lshirtlength" id="lshirtlength" placeholder="Enter shirtlength size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="sizename">SizeName</label>
-                                                            <input type="text" class="form-control" name="lsizename" id="lsizename" placeholder="Enter sizename size">
-                                                        </div>
-
-                                                        <h4>Extra large</h4>
-
-                                                        <div class="form-group">
-                                                            <label for="collar">Collar</label>
-                                                            <input type="text" class="form-control" name="xlcollar" id="xlcollar" placeholder="Enter collar size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="chest">Chest</label>
-                                                            <input type="text" class="form-control" name="xlchest" id="xlchest" placeholder="Enter chest size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="sleevelength">Sleevelength</label>
-                                                            <input type="text" class="form-control" name="xlsleevelength" id="xlsleevelength" placeholder="Enter sleevelength size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="shirtlength">Shirtlength</label>
-                                                            <input type="text" class="form-control" name="xlshirtlength" id="xlshirtlength" placeholder="Enter shirtlength size">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="sizename">SizeName</label>
-                                                            <input type="text" class="form-control" name="xlsizename" id="xlsizename" placeholder="Enter sizename size">
-                                                        </div>
-                                                        <hr>
-                                                        <h4>ChartName</h4>
-
-                                                        <div class="form-group">
-                                                            @*<label for="sizename">SizeName</label>*@
-                                                            <input type="text" class="form-control" name="chartName" id="chartName" placeholder="Enter Chartname">
-                                                        </div>
-                                                        <h4>Unit</h4>
-                                                        <div class="form-group">
-                                                            <select name="unit" id="unit" class="form-control" require>
-                                                                <option value="0">-- Please Select --</option>
-                                                                <option value="1"> centimetre </option>
-                                                                <option value="2"> inches </option>
-                                                            </select>
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label for="collar">Collar</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="mcollar" id="mcollar" placeholder="Enter collar size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="chest">Chest</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="mchest" id="mchest" placeholder="Enter chest size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="sleevelength">Sleevelength</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="msleevelength" id="msleevelength" placeholder="Enter sleevelength size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="shirtlength">Shirtlength</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="mshirtlength" id="mshirtlength" placeholder="Enter shirtlength size">
+                                                    </div>
 
 
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </form>
-                                                </div>
-                                               
+                                                    <h4>large</h4>
+
+                                                    <div class="form-group">
+                                                        <label for="collar">Collar</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="lcollar" id="lcollar" placeholder="Enter collar size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="chest">Chest</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="lchest" id="lchest" placeholder="Enter chest size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="sleevelength">Sleevelength</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="lsleevelength" id="lsleevelength" placeholder="Enter sleevelength size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="shirtlength">Shirtlength</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="lshirtlength" id="lshirtlength" placeholder="Enter shirtlength size">
+                                                    </div>
+
+
+                                                    <h4>Extra large</h4>
+
+                                                    <div class="form-group">
+                                                        <label for="collar">Collar</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xlcollar" id="xlcollar" placeholder="Enter collar size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="chest">Chest</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xlchest" id="xlchest" placeholder="Enter chest size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="sleevelength">Sleevelength</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xlsleevelength" id="xlsleevelength" placeholder="Enter sleevelength size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="shirtlength">Shirtlength</label>
+                                                        <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="xlshirtlength" id="xlshirtlength" placeholder="Enter shirtlength size">
+                                                    </div>
+
+                                                    <hr>
+                                                    <h4>ChartName</h4>
+
+                                                    <div class="form-group">
+                                                        @*<label for="sizename">SizeName</label>*@
+                                                        <input type="text" class="form-control" name="chartName" id="chartName" placeholder="Enter Chartname">
+                                                    </div>
+                                                    <h4>Unit</h4>
+                                                    <div class="form-group">
+                                                        <select name="unit" id="unit" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+                                                            <option value="1"> centimetre </option>
+                                                            <option value="2"> inches </option>
+                                                        </select>
+                                                    </div>
+
+
+                                                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                                                </form>
                                             </div>
-                                          
-                                        
-                                          
-                                         
-                                       
-                                           
-                                          
+
                                         </div>
+
+
+
+
+
+
+
                                     </div>
-                                    <!-- Input group -->
-                                    
                                 </div>
-                                <!-- [ form-element ] end -->
-                                <!-- [ Main Content ] end -->
+                                <!-- Input group -->
+
                             </div>
+                            <!-- [ form-element ] end -->
+                            <!-- [ Main Content ] end -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- [ Main Content ] end -->
-    <!-- Warning Section start -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 11]>
-            <div class="ie-warning">
-                <h1>Warning!!</h1>
-                <p>You are using an outdated version of Internet Explorer, please upgrade
-                   <br/>to any of the following web browsers to access this website.
-                </p>
-                <div class="iew-container">
-                    <ul class="iew-download">
-                        <li>
-                            <a href="http://www.google.com/chrome/">
-                                <img src="../assets/images/browser/chrome.png" alt="Chrome">
-                                <div>Chrome</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.mozilla.org/en-US/firefox/new/">
-                                <img src="../assets/images/browser/firefox.png" alt="Firefox">
-                                <div>Firefox</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.opera.com">
-                                <img src="../assets/images/browser/opera.png" alt="Opera">
-                                <div>Opera</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.apple.com/safari/">
-                                <img src="../assets/images/browser/safari.png" alt="Safari">
-                                <div>Safari</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                                <img src="../assets/images/browser/ie.png" alt="">
-                                <div>IE (11 & above)</div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <p>Sorry for the inconvenience!</p>
+</div>
+<!-- [ Main Content ] end -->
+<!-- Warning Section start -->
+<!-- Older IE warning message -->
+<!--[if lt IE 11]>
+        <div class="ie-warning">
+            <h1>Warning!!</h1>
+            <p>You are using an outdated version of Internet Explorer, please upgrade
+               <br/>to any of the following web browsers to access this website.
+            </p>
+            <div class="iew-container">
+                <ul class="iew-download">
+                    <li>
+                        <a href="http://www.google.com/chrome/">
+                            <img src="../assets/images/browser/chrome.png" alt="Chrome">
+                            <div>Chrome</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mozilla.org/en-US/firefox/new/">
+                            <img src="../assets/images/browser/firefox.png" alt="Firefox">
+                            <div>Firefox</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.opera.com">
+                            <img src="../assets/images/browser/opera.png" alt="Opera">
+                            <div>Opera</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.apple.com/safari/">
+                            <img src="../assets/images/browser/safari.png" alt="Safari">
+                            <div>Safari</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="../assets/images/browser/ie.png" alt="">
+                            <div>IE (11 & above)</div>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        <![endif]-->
-    <!-- Warning Section Ends -->
-    <!-- Required Js -->
-  
+            <p>Sorry for the inconvenience!</p>
+        </div>
+    <![endif]-->
+<!-- Warning Section Ends -->
+<!-- Required Js -->
 
-    <script>
+
+<script>
+
+
+    var checkingNull = false;
+
+
+
     function CheckNull() {
-        debugger
-        if ($("#xscollar").val() == "") { document.getElementById('xscollar').style.borderColor = "red"; toastr.error('xscollar  required!'); } else { document.getElementById('xscollar').style.borderColor = "#ced4da"; }
-        if ($("#xschest").val() == "") { document.getElementById('xschest').style.borderColor = "red"; toastr.error('xschest required!'); } else { document.getElementById('xschest').style.borderColor = "#ced4da"; }
-        if ($("#xssleevelength").val() == "") { document.getElementById('xssleevelength').style.borderColor = "red"; toastr.error('xssleevelength required!'); } else { document.getElementById('xssleevelength').style.borderColor = "#ced4da"; }
-        if ($("#xsshirtlength").val() == "") { document.getElementById('xsshirtlength').style.borderColor = "red"; toastr.error('xsshirtlength Field  required!'); } else { document.getElementById('xsshirtlength').style.borderColor = "#ced4da"; }
+        if ($("#xscollar").val() == "") { document.getElementById('xscollar').style.borderColor = "red"; toastr.error('Extra small collar  required!'); } else { document.getElementById('xscollar').style.borderColor = "#ced4da"; }
+        if ($("#xschest").val() == "") { document.getElementById('xschest').style.borderColor = "red"; toastr.error('Extra small chest required!'); } else { document.getElementById('xschest').style.borderColor = "#ced4da"; }
+        if ($("#xssleevelength").val() == "") { document.getElementById('xssleevelength').style.borderColor = "red"; toastr.error('Extra small sleevelength required!'); } else { document.getElementById('xssleevelength').style.borderColor = "#ced4da"; }
+        if ($("#xsshirtlength").val() == "") { document.getElementById('xsshirtlength').style.borderColor = "red"; toastr.error('Extra small shirtlength Field  required!'); } else { document.getElementById('xsshirtlength').style.borderColor = "#ced4da"; }
 
-        if ($("#scollar").val() == "") { document.getElementById('scollar').style.borderColor = "red"; toastr.error('scollar  required!'); } else { document.getElementById('scollar').style.borderColor = "#ced4da"; }
-        if ($("#schest").val() == "") { document.getElementById('schest').style.borderColor = "red"; toastr.error('schest required!'); } else { document.getElementById('schest').style.borderColor = "#ced4da"; }
-        if ($("#ssleevelength").val() == "") { document.getElementById('ssleevelength').style.borderColor = "red"; toastr.error('ssleevelength required!'); } else { document.getElementById('ssleevelength').style.borderColor = "#ced4da"; }
-        if ($("#sshirtlength").val() == "") { document.getElementById('sshirtlength').style.borderColor = "red"; toastr.error('sshirtlength Field  required!'); } else { document.getElementById('sshirtlength').style.borderColor = "#ced4da"; }
+        if ($("#scollar").val() == "") { document.getElementById('scollar').style.borderColor = "red"; toastr.error('Small collar  required!'); } else { document.getElementById('scollar').style.borderColor = "#ced4da"; }
+        if ($("#schest").val() == "") { document.getElementById('schest').style.borderColor = "red"; toastr.error('Small chest required!'); } else { document.getElementById('schest').style.borderColor = "#ced4da"; }
+        if ($("#ssleevelength").val() == "") { document.getElementById('ssleevelength').style.borderColor = "red"; toastr.error('Small sleevelength required!'); } else { document.getElementById('ssleevelength').style.borderColor = "#ced4da"; }
+        if ($("#sshirtlength").val() == "") { document.getElementById('sshirtlength').style.borderColor = "red"; toastr.error('Small shirtlength Field  required!'); } else { document.getElementById('sshirtlength').style.borderColor = "#ced4da"; }
 
-        if ($("#mcollar").val() == "") { document.getElementById('mcollar').style.borderColor = "red"; toastr.error('mcollar  required!'); } else { document.getElementById('mcollar').style.borderColor = "#ced4da"; }
-        if ($("#mchest").val() == "") { document.getElementById('mchest').style.borderColor = "red"; toastr.error('mchest required!'); } else { document.getElementById('mchest').style.borderColor = "#ced4da"; }
-        if ($("#msleevelength").val() == "") { document.getElementById('msleevelength').style.borderColor = "red"; toastr.error('msleevelength required!'); } else { document.getElementById('msleevelength').style.borderColor = "#ced4da"; }
-        if ($("#mshirtlength").val() == "") { document.getElementById('mshirtlength').style.borderColor = "red"; toastr.error('mshirtlength Field  required!'); } else { document.getElementById('mshirtlength').style.borderColor = "#ced4da"; }
+        if ($("#mcollar").val() == "") { document.getElementById('mcollar').style.borderColor = "red"; toastr.error('Medium collar  required!'); } else { document.getElementById('mcollar').style.borderColor = "#ced4da"; }
+        if ($("#mchest").val() == "") { document.getElementById('mchest').style.borderColor = "red"; toastr.error('Medium chest required!'); } else { document.getElementById('mchest').style.borderColor = "#ced4da"; }
+        if ($("#msleevelength").val() == "") { document.getElementById('msleevelength').style.borderColor = "red"; toastr.error('Medium sleevelength required!'); } else { document.getElementById('msleevelength').style.borderColor = "#ced4da"; }
+        if ($("#mshirtlength").val() == "") { document.getElementById('mshirtlength').style.borderColor = "red"; toastr.error('Medium shirtlength Field  required!'); } else { document.getElementById('mshirtlength').style.borderColor = "#ced4da"; }
 
-        if ($("#lcollar").val() == "") { document.getElementById('lcollar').style.borderColor = "red"; toastr.error('lcollar  required!'); } else { document.getElementById('lcollar').style.borderColor = "#ced4da"; }
-        if ($("#lchest").val() == "") { document.getElementById('lchest').style.borderColor = "red"; toastr.error('lchest required!'); } else { document.getElementById('lchest').style.borderColor = "#ced4da"; }
-        if ($("#lsleevelength").val() == "") { document.getElementById('lsleevelength').style.borderColor = "red"; toastr.error('lsleevelength required!'); } else { document.getElementById('lsleevelength').style.borderColor = "#ced4da"; }
-        if ($("#lshirtlength").val() == "") { document.getElementById('lshirtlength').style.borderColor = "red"; toastr.error('lshirtlength Field  required!'); } else { document.getElementById('lshirtlength').style.borderColor = "#ced4da"; }
+        if ($("#lcollar").val() == "") { document.getElementById('lcollar').style.borderColor = "red"; toastr.error('Large collar  required!'); } else { document.getElementById('lcollar').style.borderColor = "#ced4da"; }
+        if ($("#lchest").val() == "") { document.getElementById('lchest').style.borderColor = "red"; toastr.error('Large chest required!'); } else { document.getElementById('lchest').style.borderColor = "#ced4da"; }
+        if ($("#lsleevelength").val() == "") { document.getElementById('lsleevelength').style.borderColor = "red"; toastr.error('Large sleevelength required!'); } else { document.getElementById('lsleevelength').style.borderColor = "#ced4da"; }
+        if ($("#lshirtlength").val() == "") { document.getElementById('lshirtlength').style.borderColor = "red"; toastr.error('Large shirtlength Field  required!'); } else { document.getElementById('lshirtlength').style.borderColor = "#ced4da"; }
 
-        if ($("#xlcollar").val() == "") { document.getElementById('xlcollar').style.borderColor = "red"; toastr.error('xlcollar  required!'); } else { document.getElementById('xlcollar').style.borderColor = "#ced4da"; }
-        if ($("#xlchest").val() == "") { document.getElementById('xlchest').style.borderColor = "red"; toastr.error('xlchest required!'); } else { document.getElementById('xlchest').style.borderColor = "#ced4da"; }
-        if ($("#xlsleevelength").val() == "") { document.getElementById('xlsleevelength').style.borderColor = "red"; toastr.error('xlsleevelength required!'); } else { document.getElementById('xlsleevelength').style.borderColor = "#ced4da"; }
-        if ($("#xlshirtlength").val() == "") { document.getElementById('xlshirtlength').style.borderColor = "red"; toastr.error('xlshirtlength Field  required!'); } else { document.getElementById('xlshirtlength').style.borderColor = "#ced4da"; }
+        if ($("#xlcollar").val() == "") { document.getElementById('xlcollar').style.borderColor = "red"; toastr.error('Extra Large collar  required!'); } else { document.getElementById('xlcollar').style.borderColor = "#ced4da"; }
+        if ($("#xlchest").val() == "") { document.getElementById('xlchest').style.borderColor = "red"; toastr.error('Extra Large chest required!'); } else { document.getElementById('xlchest').style.borderColor = "#ced4da"; }
+        if ($("#xlsleevelength").val() == "") { document.getElementById('xlsleevelength').style.borderColor = "red"; toastr.error('Extra Large sleevelength required!'); } else { document.getElementById('xlsleevelength').style.borderColor = "#ced4da"; }
+        if ($("#xlshirtlength").val() == "") { document.getElementById('xlshirtlength').style.borderColor = "red"; toastr.error('Extra Large shirtlength Field  required!'); } else { document.getElementById('xlshirtlength').style.borderColor = "#ced4da"; }
+
+        if ($("#unit").val() == "0") { document.getElementById('unit').style.borderColor = "red"; toastr.error('unit  required!'); } else { document.getElementById('unit').style.borderColor = "#ced4da"; }
+        if ($("#chartName").val() == "") { document.getElementById('chartName').style.borderColor = "red"; toastr.error('chartName required!'); } else { document.getElementById('chartName').style.borderColor = "#ced4da"; }
 
 
         if ($("#xscollar").val() == "" || $("#scollar").val() == "" || $("#mcollar").val() == "" || $("#lcollar").val() == ""
             || $("#xlcollar").val() == "" || $("#xschest").val() == "" || $("#schest").val() == "" || $("#mchest").val() == "" || $("#lchest").val() == ""
             || $("#xlchest").val() == "" || $("#xssleevelength").val() == "" || $("#ssleevelength").val() == "" || $("#msleevelength").val() == ""
             || $("#lsleevelength").val() == "" || $("#xlsleevelength").val() == "" || $("#xsshirtlength").val() == "" || $("#sshirtlength").val() == "" || $("#mshirtlength").val() == ""
-            || $("#lsleevelength").val() == "" || $("#xlsleevelength").val() == ""
-        )
-        {
-            debugger
+            || $("#lsleevelength").val() == "" || $("#xlsleevelength").val() == "" || $("#unit").val() == "0" || $("#chartName").val() == ""
+        ) {
+
             toastr.error('All Fields are required!');
             checkingNull = false;
             return false;
@@ -305,14 +306,30 @@
             checkingNull = true;
             return true;
         }
-    }
-    $("form#data").submit(function (e) {
-        debugger
 
-        var ch = CheckNull();
-        if (ch == false) {
-            return false;
+    }
+
+    function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only');
+        return false;
         }
+
+    return true;
+}
+
+
+        $("form#data").submit(function (e) {
+            debugger
+                 var ch = CheckNull();
+                 if (ch == false) {
+                     return false;
+                 }
+
+
+            e.preventDefault();
 
         var formData = new FormData(this);
 
@@ -323,7 +340,17 @@
                 type: 'POST',
                 data: formData,
                 success: function (data) {
-                    toastr.success('Successfully Submitted');
+                   
+                    debugger
+                    if(data.messege == 'success') {
+                        toastr.success('Successfully Submitted');
+                    }
+                    if (data.messege == 'exception') {
+                        alert(data.messege);
+                    }
+                    else{
+                        toastr.error("chartname already exist");
+                    }
                 },
                 cache: false,
                 contentType: false,
@@ -337,4 +364,8 @@
 
 
 
-    </script>
+
+
+
+</script>
+

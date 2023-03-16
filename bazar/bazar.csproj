@@ -763,6 +763,7 @@
     <Content Include="Sscripts\jquery-3.4.1.js" />
     <Content Include="Sscripts\jquery-3.4.1.min.js" />
     <Content Include="Sscripts\jquery-3.6.0.min.js" />
+    <Content Include="Sscripts\jquery.dataTables.min.js" />
     <Content Include="Sscripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Sscripts\moment.js" />
     <Content Include="Sscripts\tahaJS\jquery-3.6.0.min.js" />
@@ -807,6 +808,7 @@
     <Content Include="Views\Customer\getChart.cshtml" />
     <Content Include="Views\Detail\gettblorder.cshtml" />
     <Content Include="Views\Customer\checkout.cshtml" />
+    <Content Include="Views\Shared\_gettblmalegarment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

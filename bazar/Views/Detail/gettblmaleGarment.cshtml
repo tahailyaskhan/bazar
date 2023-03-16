@@ -6,174 +6,24 @@
     // Layout = null;
 }
 
+
 <script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+<script src="~/Sscripts/jquery.dataTables.min.js"></script>
+@*<script src="~/Content/jquery-3.1.1.min.js"></script>*@
+@*<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+<link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />*@
+@*<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />*@
+@*<script src="~/Sscripts/moment.js"></script>*@
 
-<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
-<link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
-<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
-<script src="~/Sscripts/moment.js"></script>
-<script src="~/Sscripts/CustomeJS.js"></script>
-
-<script src="~/Sscripts/CustomeJS.js"></script>
-<section class="pcoded-main-container">
-    <div class="pcoded-wrapper">
-        <div class="pcoded-content">
-            <div class="pcoded-inner-content">
-                <div class="main-body">
-                    <div class="page-wrapper">
-                        <!-- [ breadcrumb ] start -->
-                        <div class="page-header">
-                            <div class="page-block">
-                                <div class="row align-items-center">
-                                    <div class="col-md-12">
-                                        <div class="page-header-title">
-                                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
-                                        </div>
-                                        <ul class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                                            <li class="breadcrumb-item"><a href="#!">Bootstrap Table</a></li>
-                                            <li class="breadcrumb-item"><a href="#!">Basic Tables</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- [ breadcrumb ] end -->
-                        <!-- [ Main Content ] start -->
-                        <div class="row">
-                            <!-- [ basic-table ] start -->
-                            <div class="col-sm-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5>Basic Table</h5>
-                                        <span class="d-block m-t-5">use class <code>table</code> inside table element</span>
-                                    </div>
-                                    <div class="card-body table-border-style">
-                                        <div class="table-responsive">
-
-                                            <table class="table">
-                                                <thead style="color:#ff6002">
-                                                    <tr>
-                                                        <th style="display: none">id</th>
-                                                        <th>Cloth Name</th>
-                                                        <th style="display: none">Category Name</th>
-                                                        <th>Category Name</th>
-                                                        <th>shirt chartname</th>
-                                                        <th>pant chartname</th>
-                                                        <th>Xsmall</th>
-                                                        <th>small</th>
-                                                        <th>Medium</th>
-                                                        <th>Large</th>
-                                                        <th>Xlarge</th>
-                                                        <th>xxl</th>
-                                                        <th>price</th>
-                                                        <th style="display:none">detail</th>
-                                                        <th style="display:none">pic22</th>
-                                                        <th style="display:none">pic11</th>
-                                                        <th>pic1</th>
-                                                        <th>pic2</th>
-                                                        <th>Edit</th>
-                                                      
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="tblfloortime">
-
-                                                    @foreach (var row in Model)
-                                                    {
-
-                                                    <tr>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.id)</td>
-                                                        <td>@Html.DisplayFor(modelItem => row.clothname)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.categoryid)</td>
-                                                        <td>@Html.DisplayFor(modelItem => row.categoryid)</td>
-                                                        <td>@Html.DisplayFor(modelItem => row.shirtsizechartid)</td>
-                                                        <td>@Html.DisplayFor(modelItem => row.pantsizechartid)</td>
-                                                        @if (row.xsmall == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        @if (row.small == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        @if (row.medium == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        @if (row.large == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        @if (row.xlarge == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        @if (row.xxlarge == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        <td>@Html.DisplayFor(modelItem => row.price)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.detail)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.pic11)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.pic22)</td>
-                                                        <td><img id="myImg" src="@row.pic11" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
-                                                        <td><img id="myImg" src="@row.pic22" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
-                                                        <td><button class='mt-2 btn btn-primary btnEdit' id='btnEdit'>Edit</button>  @Html.ActionLink("Delete", "deletetblmaleGarment", "Delete", new { id = row.id }, new { @class = "btn btn-primary" , style = "margin-top:10px" })</td>
-                                                        @*<td><button class='mt-2 btn btn-primary btnDelete' id='btnDelete'>Deactivate</button></td>*@
-                                                        @*<td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { id = row.id }, new { @class = "btn btn-primary" })</td>*@
+<link href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
 
 
-                                                    </tr>
-
-                                                    }
-
-                                                    @*<tr>
-                                                            <td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { chartname = rows.chartname }, new { @class = "btn btn-primary" })</td>
-
-                                                        </tr>*@
-
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- [ basic-table ] end -->
+@*<script src="~/Sscripts/CustomeJS.js"></script>*@
 
 
-                        </div>
-                        <!-- [ Main Content ] end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    @Html.Partial("_gettblmalegarment", Model)
+
+
 
 <div id="my-modal" class="modal">
     <div class="modal-dialog modal-lg">
@@ -233,7 +83,7 @@
 
                         <!--<div class="row" style="padding-left: 20px">
                             <div class="form-group col-md-2 col-sm-12">
-                                
+
                                 @*<input type="checkbox" class="form-check-input" name="xsmall" id="xsmall">*@
                                 <!--<label class="form-check-label" for="xsmall">ExtraSmall</label>
                             </div>
@@ -268,42 +118,42 @@
                             </div>
 
                         </div>-->
-                         <div class="row" style="padding-left:20px">
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("xsmall", new { @id = "xsmall",@class= "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="xsmall" id="xsmall">*@
-                                                            <label class="form-check-label" for="xsmall">ExtraSmall</label>
-                                                        </div>
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("small", new { @id = "small", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="small" id="small">*@
-                                                            <label class="form-check-label" for="xsmall">Small</label>
-                                                        </div>
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("medium", new { @id = "medium", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="medium" id="medium">*@
-                                                            <label class="form-check-label" for="medium">Medium</label>
-                                                        </div>
+                        <div class="row" style="padding-left:20px">
+                            <div class="form-group col-md-2 col-sm-1">
+                                @Html.CheckBox("xsmall", new { @id = "xsmall", @class = "form-check-input" })
+                                @*<input type="checkbox" class="form-check-input" name="xsmall" id="xsmall">*@
+                                <label class="form-check-label" for="xsmall">ExtraSmall</label>
+                            </div>
+                            <div class="form-group col-md-2 col-sm-1">
+                                @Html.CheckBox("small", new { @id = "small", @class = "form-check-input" })
+                                @*<input type="checkbox" class="form-check-input" name="small" id="small">*@
+                                <label class="form-check-label" for="xsmall">Small</label>
+                            </div>
+                            <div class="form-group col-md-2 col-sm-1">
+                                @Html.CheckBox("medium", new { @id = "medium", @class = "form-check-input" })
+                                @*<input type="checkbox" class="form-check-input" name="medium" id="medium">*@
+                                <label class="form-check-label" for="medium">Medium</label>
+                            </div>
 
-                                                    </div>
+                        </div>
 
-                                                    <div class="row" style="padding-left:20px">
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("large", new { @id = "large", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="large" id="large">*@
-                                                            <label class="form-check-label" for="large">Large</label>
-                                                        </div>
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("xlarge", new { @id = "xlarge", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="xlarge" id="xlarge">*@
-                                                            <label class="form-check-label" for="xlarge">Extra Large</label>
-                                                        </div>
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("xxlarge", new { @id = "xxlarge", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="xxlarge" id="xxlarge">*@
-                                                            <label class="form-check-label" for="xxlarge">XXL</label>
-                                                        </div>
-                                                        </div>
+                        <div class="row" style="padding-left:20px">
+                            <div class="form-group col-md-2 col-sm-1">
+                                @Html.CheckBox("large", new { @id = "large", @class = "form-check-input" })
+                                @*<input type="checkbox" class="form-check-input" name="large" id="large">*@
+                                <label class="form-check-label" for="large">Large</label>
+                            </div>
+                            <div class="form-group col-md-2 col-sm-1">
+                                @Html.CheckBox("xlarge", new { @id = "xlarge", @class = "form-check-input" })
+                                @*<input type="checkbox" class="form-check-input" name="xlarge" id="xlarge">*@
+                                <label class="form-check-label" for="xlarge">Extra Large</label>
+                            </div>
+                            <div class="form-group col-md-2 col-sm-1">
+                                @Html.CheckBox("xxlarge", new { @id = "xxlarge", @class = "form-check-input" })
+                                @*<input type="checkbox" class="form-check-input" name="xxlarge" id="xxlarge">*@
+                                <label class="form-check-label" for="xxlarge">XXL</label>
+                            </div>
+                        </div>
 
 
                         <div class="form-group">
@@ -327,7 +177,7 @@
 
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="text" class="form-control" name="price" id="price" placeholder="Enter Price">
+                            <input type="text" class="form-control" autocomplete="off" onkeypress="return isNumber(event)" name="price" id="price" placeholder="Enter Price">
                         </div>
 
 
@@ -350,12 +200,28 @@
     </div>
 
 </div>
-  
+
 
 
 <script>
+
+    $(document).ready(function () {
+
+        let table = new DataTable('#maletable');
+
+        //$('#maletable').dataTable({
+        //    "sDom": 'T<"clear">lfrtip',
+        //    "oTableTools": {
+        //        "sSwfPath": "/swf/copy_cvs_xlsx_pdf.swf"
+        //    }
+        //});
+
+
+    });
+
+
         function CheckNull() {
-        debugger
+      
         if ($("#clothname").val() == "") { document.getElementById('clothname').style.borderColor = "red"; toastr.error('clothname  required!'); } else { document.getElementById('clothname').style.borderColor = "#ced4da"; }
         if ($("#price").val() == "") { document.getElementById('price').style.borderColor = "red"; toastr.error('price required!');  } else { document.getElementById('price').style.borderColor = "#ced4da"; }
         if ($("#detail").val() == "") { document.getElementById('detail').style.borderColor = "red"; toastr.error('detail required!'); } else { document.getElementById('detail').style.borderColor = "#ced4da"; }
@@ -378,7 +244,7 @@
 
         if($("#clothname").val() == "" || $("#price").val() == "" || $("#detail").val() == "" || $("#categoryid").val() == "0" )
         {
-            debugger
+           
             toastr.error('All Fields are required!');
             checkingNull = false;
             return false;
@@ -388,14 +254,91 @@
             return true;
         }
     }
+
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only in price');
+            return false;
+        }
+
+        return true;
+    }
+
+
+
+
+
+
     $("form#data").submit(function (e) {
-        debugger
+       
 
         var ch = CheckNull();
         if (ch == false) {
             return false;
         }
-       
+
+        if ($('#xsmall').is(':checked') == true) {
+            $('#xsmall').attr('checked', 'checked');
+            $('#xsmall').val(true);
+        }
+        if ($('#xsmall').is(':checked') == false) {
+            $('#xsmall').attr('checked', false);
+            $('#xsmall').val(false);
+        }
+
+    
+
+        if ($('#small').is(':checked') == true) {
+            $('#small').attr('checked', 'checked');
+            $('#small').val(true);
+        }
+
+        if ($('#small').is(':checked') == false) {
+            $('#small').attr('checked', false);
+            $('#small').val(false);
+        }
+
+   
+        if ($('#medium').is(':checked') == true) {
+            $('#medium').attr('checked', 'checked');
+
+            $('#medium').val(true);
+        }
+        if($('#medium').is(':checked') == false) {
+            $('#medium').attr('checked', false);
+            $('#medium').val(false);
+        }
+
+        if ($('#large').is(':checked') == true) {
+            $('#large').attr('checked', 'checked');
+            $('#large').val(true);
+        }
+        if ($('#large').is(':checked') == false) {
+            $('#large').attr('checked', false);
+            $('#large').val(false);
+        }
+
+        if ($('#xlarge').is(':checked') == true) {
+            $('#xlarge').attr('checked', 'checked');
+            $('#xlarge').val(true);
+        }
+        if ($('#xlarge').is(':checked') == false) {
+            $('#xlarge').attr('checked', false);
+            $('#xlarge').val(false);
+        }
+
+        if ($('#xxlarge').is(':checked') == true) {
+            $('#xxlarge').attr('checked', 'checked');
+            $('#xxlarge').val(true);
+        }
+        if ($('#xxlarge').is(':checked') == false) {
+            $('#xxlarge').attr('checked', false);
+            $('#xxlarge').val(false);
+        }
+
         var formData = new FormData(this);
 
 
@@ -482,7 +425,7 @@
 
              getSizeMaleShirtList(categoryid);
              $tds = $row.find("td:nth-child(5)");
-             debugger
+            
              var vals = $tds.text();
              setTimeout(function () { $("#shirtsizechartid").val(vals); }, 2000);
 
@@ -653,7 +596,7 @@
 
     function getCategories() {
 
-        debugger
+       
         $.ajax({
             url: '@Url.Action("getCategories", "Detail")',
             type: 'POST',
@@ -661,7 +604,7 @@
             },
             dataType: 'json',
             success: function (data) {
-                debugger
+              
                 alert
                 console.log(data.CategoryTypes);
                 $('#categoryid').empty();
@@ -800,87 +743,103 @@
 
 
 </script>
+@{
 
 
 
-    <style>
-        :root {
-            --modal-duration: 1s;
-            --modal-color: #ff6002;
+
+    if (Convert.ToString(TempData["success"]) == "success")
+    {
+
+        <script>
+
+            toastr.success("successfully Added");
+
+        </script>
+
+    }
+
+}
+
+
+<style>
+    :root {
+        --modal-duration: 1s;
+        --modal-color: #ff6002;
+    }
+
+
+    .button {
+        background: #428bca;
+        padding: 1em 2em;
+        color: #fff;
+        border: 0;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .button:hover {
+            background: #3876ac;
         }
 
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 
-        .button {
-            background: #428bca;
-            padding: 1em 2em;
-            color: #fff;
-            border: 0;
-            border-radius: 5px;
+    .modal-content {
+        margin: 20% auto;
+        width: 100%;
+        box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+        animation-name: modalopen;
+        animation-duration: var(--modal-duration);
+    }
+
+    .modal-header h2,
+    .modal-footer h3 {
+        margin: 0;
+    }
+
+    .modal-header {
+        background: var(--modal-color);
+        padding: 15px;
+        color: #fff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .modal-body {
+        padding: 10px 20px;
+        background: #fff;
+    }
+
+    .modal-footer {
+        background: var(--modal-color);
+        padding: 10px;
+        color: #fff;
+        text-align: center;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .close {
+        color: #ccc;
+        float: right;
+        font-size: 30px;
+        color: #fff;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
             cursor: pointer;
         }
-
-            .button:hover {
-                background: #3876ac;
-            }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content {
-            margin: 20% auto;
-            width: 100%;
-            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-            animation-name: modalopen;
-            animation-duration: var(--modal-duration);
-        }
-
-        .modal-header h2,
-        .modal-footer h3 {
-            margin: 0;
-        }
-
-        .modal-header {
-            background: var(--modal-color);
-            padding: 15px;
-            color: #fff;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
-
-        .modal-body {
-            padding: 10px 20px;
-            background: #fff;
-        }
-
-        .modal-footer {
-            background: var(--modal-color);
-            padding: 10px;
-            color: #fff;
-            text-align: center;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-        }
-
-        .close {
-            color: #ccc;
-            float: right;
-            font-size: 30px;
-            color: #fff;
-        }
-
-            .close:hover,
-            .close:focus {
-                color: #000;
-                text-decoration: none;
-                cursor: pointer;
-            }
-    </style>
+</style>

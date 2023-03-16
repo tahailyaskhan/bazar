@@ -1,0 +1,179 @@
+﻿@model IEnumerable<bazar.DAL.Data.tblmaleGarmentclass>
+
+
+
+
+<section class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                       
+                        <div class="page-header">
+                            <div class="page-block">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                                        </div>
+                                        <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                                            <li class="breadcrumb-item"><a href="#!">Bootstrap Table</a></li>
+                                            <li class="breadcrumb-item"><a href="#!">Basic Tables</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                           
+                            <div class="col-12">
+                                <div class="card">
+                                    
+                                    <div class="card-body table-border-style" style="width:100%;">
+                                        <div class="table-responsive">
+
+                                            <table   id="maletable"  style="width:100%;">
+                                                <thead style="color: #ff6002; width: 100%;" >
+                                                    <tr>
+                                                        <td style="display: none">id</td>
+                                                        <td>Clotd Name</td>
+                                                        <td style="display: none">Category Name</td>
+                                                        <td>Category Name</td>
+                                                        <td>shirt chartname</td>
+                                                        <td>pant chartname</td>
+                                                        <td>Xsmall</td>
+                                                        <td>small</td>
+                                                        <td>Medium</td>
+                                                        <td>Large</td>
+                                                        <td>Xlarge</td>
+                                                        <td>xxl</td>
+                                                        <td>price</td>
+                                                        <td style="display:none">detail</td>
+                                                        <td style="display:none">pic22</td>
+                                                        <td style="display:none">pic11</td>
+                                                        <td>pic1</td>
+                                                            <td>pic2</td>
+                                                        <td>Edit</td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tblfloortime" style="width:100%;">
+
+                                                    @foreach (var row in Model)
+                                                    {
+
+                                                        <tr>
+                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.id)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.clothname)</td>
+                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.categoryid)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.categoryid)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.shirtsizechartid)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.pantsizechartid)</td>
+                                                            @if (row.xsmall == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            @if (row.small == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            @if (row.medium == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            @if (row.large == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            @if (row.xlarge == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            @if (row.xxlarge == true)
+                                                            {
+                                                                <td style="width:50px;">yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td  style="width:50px;">no</td>
+                                                            }
+                                                            <td>@Html.DisplayFor(modelItem => row.price)</td>
+                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.detail)</td>
+                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.pic11)</td>
+                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.pic22)</td>
+                                                            <td><img id="myImg" src="@row.pic11" alt="Snow" style="width:80px;height:80px;" class="mb-2"></td>
+                                                                <td><img id="myImg" src="@row.pic22" alt="Snow" style="width:80px;height:80px;" class="mb-2"></td>
+                                                            <td><button class='mt-2 btn btn-primary btnEdit' id='btnEdit'>Edit</button>  @Html.ActionLink("Delete", "deletetblmaleGarment", "Delete", new { id = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>
+                                                            @*<td><button class='mt-2 btn btn-primary btnDelete' id='btnDelete'>Deactivate</button></td>*@
+                                                            @*<td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { id = row.id }, new { @class = "btn btn-primary" })</td>*@
+
+
+                                                        </tr>
+
+                                                    }
+
+                                                    @*<tr>
+                                                            <td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { chartname = rows.chartname }, new { @class = "btn btn-primary" })</td>
+
+                                                        </tr>*@
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*<script>
+
+    $(document).ready(function () {
+
+
+
+        $('#maletable').dataTable({
+            "sDom": 'T<"clear">lfrtip',
+            "oTableTools": {
+                "sSwfPath": "/swf/copy_cvs_xlsx_pdf.swf"
+            }
+        });
+
+    });
+
+
+</script>*@
+

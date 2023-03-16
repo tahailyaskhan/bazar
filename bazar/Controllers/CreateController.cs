@@ -19,7 +19,7 @@ namespace bazar.Controllers
         {
             return View();
         }
-
+        [HttpPost]
         public ActionResult addtblsizeShirtMale(tblsizeShirtMaleField data)
         {
             tblsizeShirtMaleaction repo = new tblsizeShirtMaleaction();
@@ -90,15 +90,16 @@ namespace bazar.Controllers
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
 
-                  
-                    return RedirectToAction("Index", "Home");
+                    TempData["successstatusshirt"] = "success";
+                    return Json(new{ messege ="success"});
+                  //  return RedirectToAction("Index", "Home");
                 }
 
                 else
                 {
-                    Session["checkchartname"] = "exist";
-                    return RedirectToAction("Index", "Home");
-
+                    TempData["successstatusshirt"] = "exist";
+                    //return RedirectToAction("Index", "Home");
+                    return Json(new { messege = "exist" });
                 }
             }
             catch (Exception ex)
@@ -167,14 +168,15 @@ namespace bazar.Controllers
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
+                   
 
-                    return RedirectToAction("viewtblsizePantMale", "Home");
+                    return Json(new { messege = "success" });
 
                 }
                 else
                 {
-                    Session["checkchartname"] = "exist";
-                    return RedirectToAction("viewtblsizePantMale", "Home");
+
+                    return Json(new { messege = "exist" });
 
                 }
             }
@@ -216,9 +218,10 @@ namespace bazar.Controllers
                     ci.large = data.large;
                     ci.xlarge = data.xlarge;
                     ci.xxlarge = data.xxlarge;
+                    string keypath=ConfigurationManager.AppSettings["keypath"];
+                    string httpurl= ConfigurationManager.AppSettings["httpurl"];
 
-
-                    string path = @"C:\Users\Taha\source\repos\bazar\bazar\MaleGarments\" +username;  // Give the specific path  
+                    string path = @keypath +username;  // Give the specific path  
                     if (!(Directory.Exists(path)))
                     {
                         Directory.CreateDirectory(path);
@@ -233,12 +236,13 @@ namespace bazar.Controllers
                         var InputFileName2 = num + Session["userid"].ToString()+InputFileName  ;
                         ServerSavePath = Path.Combine(Server.MapPath("~/" + "MaleGarments/"+ username + "/") + InputFileName2);
                 
+                        
                         //Save file to server folder  
                         data.pic1.SaveAs(ServerSavePath);
                         filename = ServerSavePath;
 
                         string[] ImgPath = filename.Split(new[] { "MaleGarments" }, StringSplitOptions.None);
-                        string paths = "https://localhost:44326" + "/MaleGarments/"+username + ImgPath[1];
+                        string paths = httpurl + "/MaleGarments/"+ ImgPath[1];
                         string s = paths.Replace("\\", "/");
                         ci.pic1 = s;
                         //ci.pic1 = filename;
@@ -257,7 +261,7 @@ namespace bazar.Controllers
                         filename = ServerSavePath;
 
                         string[] ImgPath = filename.Split(new[] { "MaleGarments" }, StringSplitOptions.None);
-                        string paths = "https://localhost:44326" + "/MaleGarments/"+username + ImgPath[1];
+                        string paths = httpurl + "/MaleGarments/"+ ImgPath[1];
                         string s = paths.Replace("\\", "/");
                         ci.pic2 = s;
                         //ci.pic2 = filename;
@@ -270,22 +274,26 @@ namespace bazar.Controllers
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
 
+                    return Json(new { messege = "success" });
 
-                    return RedirectToAction("viewtblmaleGarment", "Home");
+                    //return RedirectToAction("viewtblmaleGarment", "Home");
                 }
 
                 else
                 {
-                    Session["checkchartname"] = "exist";
-                    return RedirectToAction("viewtblmaleGarment", "Home");
+                    // Session["checkchartname"] = "exist";
+                    //  return RedirectToAction("viewtblmaleGarment", "Home");
+                    return Json(new { messege = "exist" });
 
                 }
             }
             catch (Exception ex)
             {
 
-                Session["exception"] = ex.InnerException.ToString(); ;
-                return RedirectToAction("viewtblmaleGarment", "Home");
+                Session["exception"] = ex.InnerException.ToString();
+                return Json(new { messege = "exception" });
+
+                //return RedirectToAction("viewtblmaleGarment", "Home");
             }
         }
 
@@ -315,6 +323,10 @@ namespace bazar.Controllers
             try
             {
                 string filename = "";
+                Random rnd = new Random();
+                int num = rnd.Next();
+                string username = Session["Username"].ToString();
+                string ServerSavePath = "";
                 var checkclothname = db.tblfemaleGarments.Where(x => x.clothname == data.clothname.ToString()).FirstOrDefault();
 
                 if (checkclothname == null)
@@ -345,71 +357,91 @@ namespace bazar.Controllers
                     ci.xxlarge = data.xxlarge;
 
 
-                    string path = @"C:\Users\Taha\source\repos\bazar\bazar\MaleGarments\" + "female"+@"\";  // Give the specific path  
+                    string keypath = ConfigurationManager.AppSettings["keypathfemale"];
+                    string httpurl = ConfigurationManager.AppSettings["httpurl"];
+
+                    string path = @keypath + username;  // Give the specific path  
                     if (!(Directory.Exists(path)))
                     {
                         Directory.CreateDirectory(path);
 
                     }
-                //C:\\Users\\Taha\\source\\repos\\bazar\\bazar\\female\\Capture8.PNG
-               
+
                     if (data.pic1 != null)
+
                     {
                         var InputFileName = Path.GetFileName(data.pic1.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("/MaleGarments/female/") + InputFileName);
-                        //Save file to server folder
-                        var imagepath = path + InputFileName;
-                        data.pic1.SaveAs(imagepath);
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "FemaleGarments/" + username + "/") + InputFileName2);
 
 
-                        string[] ImgPath = imagepath.Split(new[] { "MaleGarments" }, StringSplitOptions.None);
-                        string paths = "https://localhost:44326"+ "/MaleGarments/" + ImgPath[1];
+                        //Save file to server folder  
+                        data.pic1.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "FemaleGarments" }, StringSplitOptions.None);
+                        string paths = httpurl + "/FemaleGarments/" + ImgPath[1];
                         string s = paths.Replace("\\", "/");
                         ci.pic1 = s;
+                        //ci.pic1 = filename;
 
                     }
                     if (data.pic2 != null)
                     {
                         var InputFileName = Path.GetFileName(data.pic2.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/" + "female" + "/") + InputFileName);
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "FemaleGarments/" + username + "/") + InputFileName2);
+
+
                         //Save file to server folder  
-                        var imagepath = path + InputFileName;
-                        data.pic2.SaveAs(imagepath);
-                       
-                        string[] ImgPath = imagepath.Split(new[] { "bazar" }, StringSplitOptions.None);
-                        string paths = "https://localhost:44326" + ImgPath[1];
+                        data.pic2.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "FemaleGarments" }, StringSplitOptions.None);
+                        string paths = httpurl + "/FemaleGarments/" + ImgPath[1];
                         string s = paths.Replace("\\", "/");
-                       
-                       
                         ci.pic2 = s;
+                        //ci.pic2 = filename;
 
                     }
-
                     if (data.pic3 != null)
                     {
                         var InputFileName = Path.GetFileName(data.pic3.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/" + "female" + "/") + InputFileName);
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "FemaleGarments/" + username + "/") + InputFileName2);
+
+
                         //Save file to server folder  
-                        var imagepath = path + InputFileName;
-                        data.pic3.SaveAs(imagepath);
-                        string[] ImgPath = imagepath.Split(new[] { "bazar" }, StringSplitOptions.None);
-                        string paths = "https://localhost:44326" + ImgPath[1];
+                        data.pic3.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "FemaleGarments" }, StringSplitOptions.None);
+                        string paths = httpurl + "/FemaleGarments/" + ImgPath[1];
                         string s = paths.Replace("\\", "/");
-                        ci.pic3= s;
+                        ci.pic3 = s;
+                        //ci.pic2 = filename;
 
                     }
-
                     if (data.pic4 != null)
                     {
                         var InputFileName = Path.GetFileName(data.pic4.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/" + "female" + "/") + InputFileName);
-                        //Save file to server folder
-                        var imagepath = path + InputFileName;
-                        data.pic4.SaveAs(imagepath);
-                        string[] ImgPath = imagepath.Split(new[] { "bazar" }, StringSplitOptions.None);
-                        string paths = "https://localhost:44326" + ImgPath[1];
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "FemaleGarments/" + username + "/") + InputFileName2);
+
+
+                        //Save file to server folder  
+                        data.pic4.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "FemaleGarments" }, StringSplitOptions.None);
+                        string paths = httpurl + "/FemaleGarments/" + ImgPath[1];
                         string s = paths.Replace("\\", "/");
                         ci.pic4 = s;
+                        //ci.pic2 = filename;
 
                     }
                     ci.price = data.price;
@@ -419,15 +451,15 @@ namespace bazar.Controllers
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
 
-
-                    return RedirectToAction("viewtblfemaleGarment", "Home");
+                    return Json(new { messege = "success" });
+                    //return RedirectToAction("viewtblfemaleGarment", "Home");
                 }
 
                 else
                 {
-                    Session["checkchartname"] = "exist";
-                    return RedirectToAction("viewtblfemaleGarment", "Home");
-
+                    //Session["checkchartname"] = "exist";
+                    //return RedirectToAction("viewtblfemaleGarment", "Home");
+                    return Json(new { messege = "exception" });
                 }
             }
             catch (Exception ex)
