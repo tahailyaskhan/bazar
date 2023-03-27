@@ -297,7 +297,14 @@ namespace bazar.Controllers
             tblfemaleGarmentaction repo = new tblfemaleGarmentaction();
             try
             {
+              
                 string filename = "";
+                Random rnd = new Random();
+                int num = rnd.Next();
+                string username = Session["Username"].ToString();
+                string ServerSavePath = "";
+
+
                 var ci = db.tblshoes.Where(x => x.id == data.id).FirstOrDefault();
 
                 //var checkclothname1 = db.tblmaleGarments.Where(x => x.id==data.id && x.clothname == data.clothname.ToString()).ToList();
@@ -317,42 +324,65 @@ namespace bazar.Controllers
                     ci.xxlarge = data.xxlarge;
 
 
-                    string path = @"C:\Users\Taha\source\repos\bazar\bazar\MaleGarments\" + "taha";  // Give the specific path  
-                    if (!(Directory.Exists(path)))
-                    {
-                        Directory.CreateDirectory(path);
-
-                    }
+                    string keypath = ConfigurationManager.AppSettings["keypathshoe"];
+                    string httpurl = ConfigurationManager.AppSettings["httpurl"];
 
                     if (data.pic1 != null)
+
                     {
                         var InputFileName = Path.GetFileName(data.pic1.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/" + "taha" + "/") + InputFileName);
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "Shoes/" + username + "/") + InputFileName2);
+
+
                         //Save file to server folder  
                         data.pic1.SaveAs(ServerSavePath);
                         filename = ServerSavePath;
-                        ci.pic1 = filename;
+
+                        string[] ImgPath = filename.Split(new[] { "Shoes" }, StringSplitOptions.None);
+                        string paths = httpurl + "/Shoes/" + ImgPath[1];
+                        string s = paths.Replace("\\", "/");
+                        ci.pic1 = s;
+                        //ci.pic1 = filename;
 
                     }
                     if (data.pic2 != null)
                     {
                         var InputFileName = Path.GetFileName(data.pic2.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/" + "taha" + "/") + InputFileName);
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "Shoes/" + username + "/") + InputFileName2);
+
+
                         //Save file to server folder  
                         data.pic2.SaveAs(ServerSavePath);
                         filename = ServerSavePath;
-                        ci.pic2 = filename;
+
+                        string[] ImgPath = filename.Split(new[] { "Shoes" }, StringSplitOptions.None);
+                        string paths = httpurl + "/Shoes/" + ImgPath[1];
+                        string s = paths.Replace("\\", "/");
+                        ci.pic2 = s;
+                        //ci.pic2 = filename;
 
                     }
-
                     if (data.pic3 != null)
                     {
                         var InputFileName = Path.GetFileName(data.pic3.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/" + "taha" + "/") + InputFileName);
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "Shoes/" + username + "/") + InputFileName2);
+
+
                         //Save file to server folder  
                         data.pic3.SaveAs(ServerSavePath);
                         filename = ServerSavePath;
-                        ci.pic3 = filename;
+
+                        string[] ImgPath = filename.Split(new[] { "Shoes" }, StringSplitOptions.None);
+                        string paths = httpurl + "/Shoes/" + ImgPath[1];
+                        string s = paths.Replace("\\", "/");
+                        ci.pic3 = s;
+                        //ci.pic2 = filename;
 
                     }
 

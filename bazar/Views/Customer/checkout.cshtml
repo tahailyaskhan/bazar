@@ -5,46 +5,154 @@
 
 @if (@ViewBag.success == "fail")
 {
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>E-SHOP HTML Template</title>
+        <title>E-SHOP HTML Template</title>
 
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="~/customercontent/css/bootstrap.min.css" />
+        <!-- Bootstrap -->
+        <link type="text/css" rel="stylesheet" href="~/customercontent/css/bootstrap.min.css" />
 
-    <!-- Slick -->
-    <link type="text/css" rel="stylesheet" href="~/customercontent/css/slick.css" />
-    <link type="text/css" rel="stylesheet" href="~/customercontent/css/slick-theme.css" />
+        <!-- Slick -->
+        <link type="text/css" rel="stylesheet" href="~/customercontent/css/slick.css" />
+        <link type="text/css" rel="stylesheet" href="~/customercontent/css/slick-theme.css" />
 
-    <!-- nouislider -->
-    <link type="text/css" rel="stylesheet" href="~/customercontent/css/nouislider.min.css" />
+        <!-- nouislider -->
+        <link type="text/css" rel="stylesheet" href="~/customercontent/css/nouislider.min.css" />
 
-    <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="~/customercontent/css/font-awesome.min.css">
+        <!-- Font Awesome Icon -->
+        <link rel="stylesheet" href="~/customercontent/css/font-awesome.min.css">
 
-    <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="~/customercontent/css/style.css" />
+        <!-- Custom stlylesheet -->
+        <link type="text/css" rel="stylesheet" href="~/customercontent/css/style.css" />
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+              <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
 
-</head>
+    </head>
+
+
+<body style="background-color:white">
+    <div id="top-header">
+        <div class="container">
+            <div class=" text-center">
+                <span>Welcome to E-shop!</span>
+            </div>
+            @*<div class="pull-right">
+                    <ul class="header-top-links">
+                        <li><a href="#">Store</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li class="dropdown default-dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li><a href="#">English (ENG)</a></li>
+                                <li><a href="#">Russian (Ru)</a></li>
+                                <li><a href="#">French (FR)</a></li>
+                                <li><a href="#">Spanish (Es)</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown default-dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">USD <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li><a href="#">USD ($)</a></li>
+                                <li><a href="#">EUR (€)</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>*@
+        </div>
+    </div>
+
+    <header>
+        <!-- top Header -->
+        <!-- /top Header -->
+        <!-- header -->
+        <div id="header">
+            <div class="container">
+                <div class="pull-left ">
+                    <!-- Logo -->
+
+                    <div class="header-logo">
+                        <a class="logo" href=@Url.Action("customerView", "Customer")>
+                            <img src="~/LOGO/logo.png" alt="">
+                        </a>
+
+                    </div>
+
+                    <!-- /Logo -->
+                    <!-- Search -->
+                    @*<div class="header-search">
+                            <form action=@Url.Action("customerView", "Customer") method="post">
 
 
 
-    Html.RenderPartial("_header");
+                                <input class="input" name="search" id="namesearch" type="text" placeholder="Enter your keyword">
+
+
+
+
+
+
+                                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+
+
+
+                            </form>
+                        </div>*@
+                    <!-- /Search -->
+                </div>
+
+
+                <!-- /Search -->
+                <!--</div>-->
+                <div class="pull-right">
+                    <ul class="header-btns">
+                        <!-- Account -->
+                        <!-- /Account -->
+                        <!-- Cart -->
+                        <li class="header-cart dropdown default-dropdown">
+                            <a href=@Url.Action("getCart", "Customer") class="" aria-expanded="true">
+
+                                <div class="header-btns-icon  btn btn-outline-danger">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="qty">@Session["itemcount"]</span>
+                                    <h5></h5>
+                                </div>
+
+                                @*<strong class="text-uppercase mt-3">My Cart</strong>*@
+
+                            </a>
+
+                        </li>
+                        <!-- /Cart -->
+                        <!-- Mobile nav toggle-->
+                        <li class="nav-toggle">
+                            <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                        </li>
+                        <!-- / Mobile nav toggle -->
+                    </ul>
+                </div>
+            </div>
+            <!-- header -->
+        </div>
+        <!-- container -->
+    </header>
+    <!-- /HEADER -->
+    @*//Html.RenderPartial("_header");*@
 
 
     <!-- section -->
@@ -52,8 +160,9 @@
         <!-- container -->
         <div class="container">
             <!-- row -->
+            @*@Url.Action("checkout", "Customer")*@
             <div class="row">
-                <form @Url.Action("checkout", "Customer") method="post" id="checkout-form" class="clearfix">
+                <form method="post"  id="data" class="clearfix">
                     <div class="col-md-6">
 
 
@@ -79,29 +188,29 @@
                                 <h3 class="title">Billing Details</h3>
                             </div>
                             <div class="form-group">
-                                <input class="input" type="text" name="firstname" placeholder="First Name">
+                                <input class="input" type="text" id="firstname" name="firstname" placeholder="Your Name">
                             </div>
 
                             <div class="form-group">
-                                <input class="input" type="email" name="email" placeholder="Email">
+                                <input class="input" type="text" id="email" name="email" placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <input class="input" type="text" name="addresss" placeholder="Address">
+                                <input class="input" type="text" id="addresss" name="addresss" placeholder="Address">
                             </div>
                             <div class="form-group">
-                                <input class="input" type="text" name="city" placeholder="City">
+                                <input class="input" type="text" id="city" name="city" placeholder="City">
                             </div>
 
                             @*<div class="form-group">
-                    <input class="input" type="text" name="zipcode" placeholder="ZIP Code">
-                </div>*@
+                            <input class="input" type="text" name="zipcode" placeholder="ZIP Code">
+                        </div>*@
                             <div class="form-group">
-                                <input class="input" type="tel" name="tel" placeholder="Telephone">
+                                <input class="input" type="tel" id="tel" maxlength="11" size="11" autocomplete="off"  onkeypress="return isNumberkey(event)" name="tel" placeholder="Mobile No (03153100000)">
                             </div>
                             <div class="form-group">
                                 <div class="input-checkbox">
                                     @*<input type="checkbox" id="register">
-                        <label class="font-weak" for="register">Create Account?</label>*@
+                                <label class="font-weak" for="register">Create Account?</label>*@
                                     <div class="caption">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
                                         <p>
@@ -124,14 +233,17 @@
         </div>
         <!-- /container -->
     </div>
+
+    </body>
+</html>
     <!-- /section -->
-}
+    }
 
-else
-{
+    else
+    {
 
 
-  
+
 
 
     <!DOCTYPE html>
@@ -289,30 +401,163 @@ else
                                 <div><h3>Total: @Session["total"]</h3></div>
                             }
                         }
-                     
-                    </div>
-                 
-               
-            </div>
-        </div>
 
-        <!-- jQuery Plugins -->
-        <script src="~/customercontent/js/jquery.min.js"></script>
-        <script src="~/customercontent/js/bootstrap.min.js"></script>
-        <script src="~/customercontent/js/slick.min.js"></script>
-        <script src="~/customercontent/js/nouislider.min.js"></script>
-        <script src="~/customercontent/js/jquery.zoom.min.js"></script>
-        <script src="~/customercontent/js/main.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+
+            <script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+            <link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+            <link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+            <script src="~/Sscripts/moment.js"></script>
+            <script src="~/Sscripts/CustomeJS.js"></script>
+            <!-- jQuery Plugins -->
+            <script src="~/customercontent/js/jquery.min.js"></script>
+            <script src="~/customercontent/js/bootstrap.min.js"></script>
+            <script src="~/customercontent/js/slick.min.js"></script>
+            <script src="~/customercontent/js/nouislider.min.js"></script>
+            <script src="~/customercontent/js/jquery.zoom.min.js"></script>
+            <script src="~/customercontent/js/main.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     </body>
 
 </html>
 
+}
+
+
+<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+
+<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+<link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Sscripts/moment.js"></script>
+<script src="~/Sscripts/CustomeJS.js"></script>
+<!-- jQuery Plugins -->
+<script src="~/customercontent/js/jquery.min.js"></script>
+<script src="~/customercontent/js/bootstrap.min.js"></script>
+<script src="~/customercontent/js/slick.min.js"></script>
+<script src="~/customercontent/js/nouislider.min.js"></script>
+<script src="~/customercontent/js/jquery.zoom.min.js"></script>
+<script src="~/customercontent/js/main.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+
+    function CheckNull() {
+        debugger
+        if ($("#firstname").val() == "") { document.getElementById('firstname').style.borderColor = "red"; toastr.error('yourname  required!'); } else { document.getElementById('firstname').style.borderColor = "#ced4da"; }
+        if ($("#email").val() == "") { document.getElementById('email').style.borderColor = "red"; toastr.error('email required!'); } else { document.getElementById('email').style.borderColor = "#ced4da"; }
+        if ($("#addresss").val() == "") { document.getElementById('addresss').style.borderColor = "red"; toastr.error('address required!'); } else { document.getElementById('addresss').style.borderColor = "#ced4da"; }
+        if ($("#city").val() == "") { document.getElementById('city').style.borderColor = "red"; toastr.error('city  required!'); } else { document.getElementById('city').style.borderColor = "#ced4da"; }
+        if ($("#tel").val() == "") { document.getElementById('tel').style.borderColor = "red"; toastr.error('tel required!'); } else { document.getElementById('tel').style.borderColor = "#ced4da"; }
 
 
 
+
+
+
+        if ($("#firstname").val() == "" || $("#email").val() == "" || $("#addresss").val() == "" || $("#city").val() == "" || $("#tel").val() == "") {
+            debugger
+            toastr.error('All Fields are required!');
+            checkingNull = false;
+            return false;
+        }
+        else {
+            checkingNull = true;
+            return true;
+        }
+    }
+
+    function isNumberkey(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only');
+            return false;
+        }
+
+        return true;
+    }
+
+    function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (regex.test(email)) {
+            // value is ok, use it
+            return true;
+        } else {
+            toastr.error('invalid Email')
+            // number.focus()
+            // alert('invalid email');
+            return false
+        }
+
+    }
+
+    function isNumber(number) {
+        var val = /^923\d{9}$|^03\d{9}$/;
+
+        if (val.test(number)) {
+            // value is ok, use it
+            return true;
+        } else {
+            toastr.error('invalid contact number ')
+            //  number.focus()
+            // alert('invalid number');
+            return false
+        }
+    }
+
+
+    $("form#data").submit(function (e) {
+        debugger
+        e.preventDefault();
+        var email = isEmail($('#email').val());
+        var mobile = isNumber($('#tel').val());
+        var ch = CheckNull();
+        if (ch == false || email == false || mobile == false) {
+            return false;
+        }
+        
+
+
+
+
+
+        var formData = new FormData(this);
+
+
+            //alert(email+mobile+cnic);
+            $.ajax({
+                url: '@Url.Action("checkout", "Customer")',
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    if (data.messege == 'success') {
+                        toastr.success('Successfully Submitted');
+                    }
+                    else {
+                        toastr.error("cart is empty");
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+
+    });
+
+</script>
 
 
 

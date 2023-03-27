@@ -52,14 +52,13 @@
                                 <div class="card">
 
                                     <div class="card-body">
-                                        <h1>Size for Shirt form</h1>
+                                        <h1>Add Shoes</h1>
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <form  id="data" enctype="multipart/form-data" method="post">
 
-                                                    <h4>extra Small</h4>
-
+                                                   
                                                     <div class="form-group">
                                                         <label for="shoename">shoename</label>
                                                         <input type="text" class="form-control" name="shoename" id="shoename" placeholder="Enter waist size">
@@ -129,7 +128,7 @@
 
                                                     <div class="form-group">
                                                         <label for="price">Price</label>
-                                                        <input type="text" class="form-control" name="price" id="price" placeholder="Enter Price">
+                                                        <input type="text"  autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="price" id="price" placeholder="Enter Price">
                                                     </div>
 
 
@@ -194,6 +193,20 @@
             return true;
         }
     }
+
+
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only');
+            return false;
+        }
+
+        return true;
+    }
+
     $("form#data").submit(function (e) {
         debugger
 
@@ -205,7 +218,8 @@
             var inp = document.getElementById('pic1');
             if (inp.files.length === 0) {
 
-                alert("Attachment Required");
+                toastr.error('Attachment Required');
+                /*alert("Attachment Required");*/
                 inp.focus();
 
                 return false;
@@ -214,7 +228,8 @@
             var inps = document.getElementById('pic2');
             if (inps.files.length === 0) {
 
-                alert("Attachment Required");
+                /*alert("Attachment Required");*/
+                toastr.error('Attachment Required');
                 inps.focus();
 
                 return false;
@@ -223,7 +238,8 @@
             var inps3 = document.getElementById('pic3');
             if (inps3.files.length === 0) {
 
-                alert("Attachment Required");
+                toastr.error('Attachment Required');
+                /*alert("Attachment Required");*/
                 inps3.focus();
 
                 return false;

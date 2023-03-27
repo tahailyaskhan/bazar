@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -89,278 +90,278 @@
                 <!--  Product Details -->
                 <div class="product product-details clearfix">
                     <div class="col-md-6">
-                         @if (Model.maleGarmentObj != null)
-                         {
-                        <div id="product-main-view">
-                            <div class="product-view">
-                                <img src=@Model.maleGarmentObj.pic1 alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src=@Model.maleGarmentObj.pic2 alt="">
-                            </div>
-                          
-                        </div>
-                        <div id="product-view">
-                            <div class="product-view">
-                                <img src=@Model.maleGarmentObj.pic1 alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src=@Model.maleGarmentObj.pic2 alt="">
-                            </div>
-                           
-                        </div>
-                         }
+                        @if (Model.maleGarmentObj != null)
+                        {
+                            <div id="product-main-view">
+                                <div class="product-view">
+                                    <img src=@Model.maleGarmentObj.pic1 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.maleGarmentObj.pic2 alt="">
+                                </div>
 
-                          @if (Model.femaleGarmentObj != null)
-                         {
-                        <div id="product-main-view">
-                            <div class="product-view"> 
-                                <img src=@Model.femaleGarmentObj.pic1 alt="">
                             </div>
-                            <div class="product-view">
-                                <img src=@Model.femaleGarmentObj.pic2 alt="">
+                            <div id="product-view">
+                                <div class="product-view">
+                                    <img src=@Model.maleGarmentObj.pic1 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.maleGarmentObj.pic2 alt="">
+                                </div>
+
                             </div>
-                            <div class="product-view">
-                                <img src=@Model.femaleGarmentObj.pic3 alt="">
+                        }
+
+                        @if (Model.femaleGarmentObj != null)
+                        {
+                            <div id="product-main-view">
+                                <div class="product-view">
+                                    <img src=@Model.femaleGarmentObj.pic1 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.femaleGarmentObj.pic2 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.femaleGarmentObj.pic3 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.femaleGarmentObj.pic4 alt="">
+                                </div>
                             </div>
-                            <div class="product-view">
-                                <img src=@Model.femaleGarmentObj.pic4 alt="">
+                            <div id="product-view">
+                                <div class="product-view">
+                                    <img src=@Model.femaleGarmentObj.pic1 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.femaleGarmentObj.pic2 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.femaleGarmentObj.pic3 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.femaleGarmentObj.pic4 alt="">
+                                </div>
                             </div>
-                        </div>
-                        <div id="product-view">
-                            <div class="product-view">
-                                <img src=@Model.femaleGarmentObj.pic1 alt="">
+                        }
+                        @if (Model.shoeObj != null)
+                        {
+                            <div id="product-main-view">
+                                <div class="product-view">
+                                    <img src=@Model.shoeObj.pic1 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.shoeObj.pic2 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.shoeObj.pic3 alt="">
+                                </div>
+
                             </div>
-                            <div class="product-view">
-                                <img src=@Model.femaleGarmentObj.pic2 alt="">
+                            <div id="product-view">
+                                <div class="product-view">
+                                    <img src=@Model.shoeObj.pic1 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.shoeObj.pic2 alt="">
+                                </div>
+                                <div class="product-view">
+                                    <img src=@Model.shoeObj.pic3 alt="">
+                                </div>
+
                             </div>
-                            <div class="product-view">
-                                <img src=@Model.femaleGarmentObj.pic3 alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src=@Model.femaleGarmentObj.pic4 alt="">
-                            </div>
-                        </div>
-                         }
-                           @if (Model.shoeObj != null)
-                         {
-                        <div id="product-main-view">
-                            <div class="product-view">
-                                <img src=@Model.shoeObj.pic1 alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src=@Model.shoeObj.pic2 alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src=@Model.shoeObj.pic3 alt="">
-                            </div>
-                          
-                        </div>
-                        <div id="product-view">
-                            <div class="product-view">
-                                <img src=@Model.shoeObj.pic1 alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src=@Model.shoeObj.pic2 alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src=@Model.shoeObj.pic3 alt="">
-                            </div>
-                            
-                        </div>
-                         }
+                        }
                     </div>
 
                     <div class="col-md-6">
                         <div class="product-body">
                             <div class="product-label">
                                 <span>New</span>
-                                <span class="sale">-20%</span>
+                                @*<span class="sale">-20%</span>*@
                             </div>
-                            <form action=@Url.Action("addCart","Customer") id="data" enctype="multipart/form-data" method="post">
-                               @if (Model.maleGarmentObj != null)
-                               {
-                                <h2 class="product-name">@Model.maleGarmentObj.clothname</h2>
-                                <h3 class="product-price">@Model.maleGarmentObj.price</h3>
-                                <div>
-                                    <div class="product-rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o empty"></i>
+                            <form id="data" enctype="multipart/form-data" method="post">
+                                @if (Model.maleGarmentObj != null)
+                                {
+                                    <h2 class="product-name">@Model.maleGarmentObj.clothname</h2>
+                                    <h3 class="product-price">@Model.maleGarmentObj.price</h3>
+                                    @*<div>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>
+                                            <a href="#">3 Review(s) / Add Review</a>
+                                        </div>*@
+                                    <p><strong>Availability:</strong> In Stock</p>
+                                    @*<p><strong>Brand:</strong> E-SHOP</p>*@
+
+                                    <p>
+                                        @Model.maleGarmentObj.detail
+                                    </p>
+
+
+                                    <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.maleGarmentObj.id>
+                                    <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.maleGarmentObj.pic1>
+                                    <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.maleGarmentObj.createdById>
+
+                                    <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.maleGarmentObj.clothname>
+                                    <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.maleGarmentObj.price>
+                                    <div class="radios" id="bodyss">
+                                        @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
+                                            <input label="No" type="radio" id="female" name="gender" value="female">*@
+
+                                        @if (Model.maleGarmentObj.xsmall == true)
+                                        {
+                                            <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
+
+                                        }
+                                        @if (Model.maleGarmentObj.small == true)
+                                        {
+                                            <input label="S" type="radio" id="small" name="size" value="small">
+
+                                        }
+                                        @if (Model.maleGarmentObj.medium == true)
+                                        {
+                                            <input label="M" type="radio" id="medium" name="size" value="medium">
+
+                                        }
+                                        @if (Model.maleGarmentObj.large == true)
+                                        {
+                                            <input label="L" type="radio" id="large" name="size" value="large">
+
+                                        }
+                                        @if (Model.maleGarmentObj.xlarge == true)
+                                        {
+                                            <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                        }
                                     </div>
-                                    <a href="#">3 Review(s) / Add Review</a>
-                                </div>
-                                <p><strong>Availability:</strong> In Stock</p>
-                                <p><strong>Brand:</strong> E-SHOP</p>
+                                }
 
-                                <p>
-                                    @Model.maleGarmentObj.detail
-                                </p>
+                                @if (Model.femaleGarmentObj != null)
+                                {
+                                    <h2 class="product-name">@Model.femaleGarmentObj.clothname</h2>
+                                    <h3 class="product-price">@Model.femaleGarmentObj.price</h3>
+                                    @*<div>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>
+                                            <a href="#">3 Review(s) / Add Review</a>
+                                        </div>*@
+                                    <p><strong>Availability:</strong> In Stock</p>
+                                    @*<p><strong>Brand:</strong> E-SHOP</p>*@
+
+                                    <p>
+                                        @Model.femaleGarmentObj.detail
+                                    </p>
 
 
-                                <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.maleGarmentObj.id>
-                                <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.maleGarmentObj.pic1>
-                                <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.maleGarmentObj.createdById>
+                                    <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.femaleGarmentObj.id>
+                                    <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.femaleGarmentObj.pic1>
+                                    <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.femaleGarmentObj.createdById>
 
-                                <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.maleGarmentObj.clothname>
-                                <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.maleGarmentObj.price>
-                                <div class="radios" id="bodyss">
-                                    @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                <input label="No" type="radio" id="female" name="gender" value="female">*@
+                                    <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.femaleGarmentObj.clothname>
+                                    <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.femaleGarmentObj.price>
+                                    <div class="radios" id="bodyss">
+                                        @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
+                                            <input label="No" type="radio" id="female" name="gender" value="female">*@
 
-                                    @if (Model.maleGarmentObj.xsmall == true)
-                                    {
-                                        <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
+                                        @if (Model.femaleGarmentObj.xsmall == true)
+                                        {
+                                            <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
 
-                                    }
-                                    @if (Model.maleGarmentObj.small == true)
-                                    {
-                                        <input label="S" type="radio" id="small" name="size" value="small">
+                                        }
+                                        @if (Model.femaleGarmentObj.small == true)
+                                        {
+                                            <input label="S" type="radio" id="small" name="size" value="small">
 
-                                    }
-                                    @if (Model.maleGarmentObj.medium == true)
-                                    {
-                                        <input label="M" type="radio" id="medium" name="size" value="medium">
+                                        }
+                                        @if (Model.femaleGarmentObj.medium == true)
+                                        {
+                                            <input label="M" type="radio" id="medium" name="size" value="medium">
 
-                                    }
-                                    @if (Model.maleGarmentObj.large == true)
-                                    {
-                                        <input label="L" type="radio" id="large" name="size" value="large">
+                                        }
+                                        @if (Model.femaleGarmentObj.large == true)
+                                        {
+                                            <input label="L" type="radio" id="large" name="size" value="large">
 
-                                    }
-                                    @if (Model.maleGarmentObj.xlarge == true)
-                                    {
-                                        <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+                                        }
+                                        @if (Model.femaleGarmentObj.xlarge == true)
+                                        {
+                                            <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
 
-                                    }
-                                </div>
-                               }
-
-                               @if (Model.femaleGarmentObj != null)
-                               {
-                                <h2 class="product-name">@Model.femaleGarmentObj.clothname</h2>
-                                <h3 class="product-price">@Model.femaleGarmentObj.price</h3>
-                                <div>
-                                    <div class="product-rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o empty"></i>
+                                        }
                                     </div>
-                                    <a href="#">3 Review(s) / Add Review</a>
-                                </div>
-                                <p><strong>Availability:</strong> In Stock</p>
-                                <p><strong>Brand:</strong> E-SHOP</p>
-
-                                <p>
-                                    @Model.femaleGarmentObj.detail
-                                </p>
-
-
-                                <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.femaleGarmentObj.id>
-                                <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.femaleGarmentObj.pic1>
-                                <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.femaleGarmentObj.createdById>
-
-                                <input type="text" style="visibility:hidden" id="clothname" name="clothname" value=@Model.femaleGarmentObj.clothname>
-                                <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.femaleGarmentObj.price>
-                                <div class="radios" id="bodyss">
-                                    @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                <input label="No" type="radio" id="female" name="gender" value="female">*@
-
-                                    @if (Model.femaleGarmentObj.xsmall == true)
-                                    {
-                                        <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
-
-                                    }
-                                    @if (Model.femaleGarmentObj.small == true)
-                                    {
-                                        <input label="S" type="radio" id="small" name="size" value="small">
-
-                                    }
-                                    @if (Model.femaleGarmentObj.medium == true)
-                                    {
-                                        <input label="M" type="radio" id="medium" name="size" value="medium">
-
-                                    }
-                                    @if (Model.femaleGarmentObj.large == true)
-                                    {
-                                        <input label="L" type="radio" id="large" name="size" value="large">
-
-                                    }
-                                    @if (Model.femaleGarmentObj.xlarge == true)
-                                    {
-                                        <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
-
-                                    }
-                                </div>
-                               }
+                                }
 
                                 @if (Model.shoeObj != null)
-                               {
-                                <h2 class="product-name">@Model.shoeObj.shoename</h2>
-                                <h3 class="product-price">@Model.shoeObj.price</h3>
-                                <div>
-                                    <div class="product-rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o empty"></i>
+                                {
+                                    <h2 class="product-name">@Model.shoeObj.shoename</h2>
+                                    <h3 class="product-price">@Model.shoeObj.price</h3>
+                                    @*<div>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>
+                                            <a href="#">3 Review(s) / Add Review</a>
+                                        </div>*@
+                                    <p><strong>Availability:</strong> In Stock</p>
+                                    @*<p><strong>Brand:</strong> E-SHOP</p>*@
+
+                                    <p>
+                                        @Model.shoeObj.detail
+                                    </p>
+
+
+                                    <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.shoeObj.id>
+                                    <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.shoeObj.pic1>
+                                    <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.shoeObj.createdById>
+
+                                    <input type="text" style="visibility:hidden" id="shoename" name="clothname" value=@Model.shoeObj.shoename>
+                                    <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.shoeObj.price>
+                                    <div class="radios" id="bodyss">
+                                        @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
+                                            <input label="No" type="radio" id="female" name="gender" value="female">*@
+
+                                        @if (Model.shoeObj.xsmall == true)
+                                        {
+                                            <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
+
+                                        }
+                                        @if (Model.shoeObj.small == true)
+                                        {
+                                            <input label="S" type="radio" id="small" name="size" value="small">
+
+                                        }
+                                        @if (Model.shoeObj.medium == true)
+                                        {
+                                            <input label="M" type="radio" id="medium" name="size" value="medium">
+
+                                        }
+                                        @if (Model.shoeObj.large == true)
+                                        {
+                                            <input label="L" type="radio" id="large" name="size" value="large">
+
+                                        }
+                                        @if (Model.shoeObj.xlarge == true)
+                                        {
+                                            <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                        }
                                     </div>
-                                    <a href="#">3 Review(s) / Add Review</a>
-                                </div>
-                                <p><strong>Availability:</strong> In Stock</p>
-                                <p><strong>Brand:</strong> E-SHOP</p>
-
-                                <p>
-                                    Model.shoeObj.detail
-                                </p>
-
-
-                                <input type="text" style="visibility:hidden" id="ids" name="ids" value=@Model.shoeObj.id>
-                                <input type="text" style="visibility:hidden" id="pic1" name="pic1" value=@Model.shoeObj.pic1>
-                                <input type="text" style="visibility:hidden" id="userid" name="userid" value=@Model.shoeObj.createdById>
-
-                                <input type="text" style="visibility:hidden" id="shoename" name="shoename" value=@Model.shoeObj.shoename>
-                                <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.shoeObj.price>
-                                <div class="radios" id="bodyss">
-                                    @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                <input label="No" type="radio" id="female" name="gender" value="female">*@
-
-                                    @if (Model.shoeObj.xsmall == true)
-                                    {
-                                        <input label="XS" type="radio" id="xsmall" name="size" value="xsmall">
-
-                                    }
-                                    @if (Model.shoeObj.small == true)
-                                    {
-                                        <input label="S" type="radio" id="small" name="size" value="small">
-
-                                    }
-                                    @if (Model.shoeObj.medium == true)
-                                    {
-                                        <input label="M" type="radio" id="medium" name="size" value="medium">
-
-                                    }
-                                    @if (Model.shoeObj.large == true)
-                                    {
-                                        <input label="L" type="radio" id="large" name="size" value="large">
-
-                                    }
-                                    @if (Model.shoeObj.xlarge == true)
-                                    {
-                                        <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
-
-                                    }
-                                </div>
-                               }
+                                }
                                 <h5>SizeChart</h5>
                                 @*<div class="card ">
 
-            <div class="card-body table-border-style">*@
+                                    <div class="card-body table-border-style">*@
                                 @if (Model.maleShirtSizeList != null)
                                 {
                                     <div class="table-responsive ">
@@ -537,13 +538,13 @@
                                 }
 
                                 @*</div>
-            </div>*@
+                                    </div>*@
 
 
                                 <div class="product-btns">
                                     <div class="qty-input">
                                         <span class="text-uppercase">QTY: </span>
-                                        <input class="input" id="quantity" name="quantity" type="number">
+                                        <input class="input" id="quantity" autocomplete="off" onkeypress="return isNumber(event)" name="quantity" type="number">
                                     </div>
                                     <button class="primary-btn add-to-cart" type="submit" id="btnadd"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 
@@ -591,93 +592,79 @@
 
 
     <script>
-
-        //$(document).on('click', '#btnadd', function (e)
-        //{
-        //    debugger
-
-        //    if ($("#txtChecklistName").val() == "")
-        //	{
-        //        document.getElementById('txtChecklistName').style.borderColor = "red";
-        //        toastr.error('Checklist Name is Required!');
-        //	}
-        //	else {
-        //        document.getElementById('txtChecklistName').style.borderColor = "#ced4da";
-        //	}
-        //    if ($("#txtDescription").val() == "")
-        //	{
-        //        document.getElementById('txtDescription').style.borderColor = "red";
-        //	    toastr.error('Description is required!');
-        //	}
-        //	else {
-        //        document.getElementById('txtDescription').style.borderColor = "#ced4da";
-        //	}
-        //    if ($("#txtChecklistName").val() != "" && $("#txtDescription").val() != "") {
-        //		e.preventDefault();
-        //		AddChecklist();
-        //	}
-
-
-        //});
-
-        function AddChecklist() {
-       debugger
-        ShowProgress();
-
-        $('#divLoader').show();
-        var role = $("#ddlRoleType").val();
-        //if (role == 0 ) {
-        //    toastr.error("Please select specific role  option.");
-        //    $('#divLoader').hide();
-        //    return false;
-        //}
-
-
-        $.ajax({
-
-            url: '@Url.Action("saveCart", "Customer")',
-            type: 'POST',
-            data: {
-                'listName': $("#txtChecklistName").val(),
-                'listDes': $("#txtDescription").val(),
-                'allRole': role.toString(),
-                'videoMendatory': $("input[name='mandatory']:checked").val(),//radio
-            },
-            dataType: 'json',
-            success: function (data) {
-
-                ShowProgress();
-                $('#divLoader').show();
-                if (data.ErrorCode === "000") {
-                    toastr.success(data.Message);
-                    $('#divLoader').hide();
-                    CallPartialView();
-                    $("#txtChecklistName").val(""),
-                    $("#txtDescription").val("")
-                    $("#ddlRoleType").empty();
-                    $("#css").prop("checked", true);
-                    BindDdlCatType();
-                }
-                else if (data.ErrorCode === "999") {
-                    toastr.error('Checklist already exists');
-
-                    $('#divLoader').hide();
-
-                }
-                else {
-                    toastr.error('Oops! Something went wrong');
-                    $('#divLoader').hide();
-                }
-
-                // FillTable();
-            },
-            error: function (request, error) {
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                toastr.error('write number only');
+                return false;
             }
-        });
-    }
+
+            return true;
+        }
+
+        $("form#data").submit(function (e) {
+            debugger
+            var gender = document.getElementsByName('size');
+            var genValue = false;
+
+            for (var i = 0; i < gender.length; i++) {
+                if (gender[i].checked == true) {
+                    genValue = true;
+                }
+            }
+            if (!genValue) {
+                toastr.error('please Choose size');
+                return false;
+            }
+
+
+        //e.preventDefault();
+        //var ch = CheckNull();
+            if ($("#quantity").val() == "") {
+                toastr.error('select Quantity')
+            return false;
+        }
+
+        var formData = new FormData(this);
+
+
+            //alert(email+mobile+cnic);
+            $.ajax({
+                url: '@Url.Action("addCart", "Customer")',
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    if (data.messege == 'success') {
+                        toastr.success('Successfully Submitted');
+                    }
+                    else {
+                        toastr.error("chartname already exist");
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+
+    })
+        
+
+     
     </script>
     <!-- /FOOTER -->
     <!-- jQuery Plugins -->
+    <script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+
+    <script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+    <link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Sscripts/moment.js"></script>
+    <script src="~/Sscripts/CustomeJS.js"></script>
+
+
     <script src="~/customercontent/js/jquery.min.js"></script>
     <script src="~/customercontent/js/bootstrap.min.js"></script>
     <script src="~/customercontent/js/slick.min.js"></script>

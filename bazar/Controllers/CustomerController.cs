@@ -15,9 +15,23 @@ namespace bazar.Controllers
         // GET: Customer
         public ActionResult customerView()
         {
+            viewmodel get = new viewmodel();
             Session["market"] = db.tblmarkets.ToList();
-            var getCustomer = db.tblcreateUsers.ToList();
-            return View(getCustomer);
+            //   var getCustomer = db.tblcreateUsers.ToList();
+             get.userList = db.tblcreateUsers.ToList();
+
+            return View(get);
+        }
+        [HttpPost]
+        public ActionResult customerView(string search)
+        {
+            viewmodel get = new viewmodel();
+            Session["market"] = db.tblmarkets.ToList();
+             get.spUserList =  db.serachUser(search).ToList();
+
+            //var getCustomer = db.tblcreateUsers.Where(x=>x.name==search).ToList();
+            return View(get);
+
         }
         public ActionResult checkout()
         {
@@ -46,9 +60,14 @@ namespace bazar.Controllers
                     db.tblcustomerOrders.Add(obj);
                     db.SaveChanges();
                 }
+                return Json(new { messege = "success" });
             }
-            ViewBag.success = "success";
-            return View();
+            else 
+            {
+                return Json(new { messege = "fail" });
+            }
+            //ViewBag.success = "success";
+            //return View();
         }
         [HttpGet]
         public ActionResult getMarketShop(int marketid)
@@ -58,8 +77,10 @@ namespace bazar.Controllers
             var userid = Convert.ToInt32(Session["itemuserid"]);
             TempData["marketshop"] = db.tblcreateUsers.Where(x => x.marketid == marketid).ToList();
 
+            var obj = db.tblmarkets.Where(x => x.id == marketid).FirstOrDefault();
 
-        
+            TempData["searchedMarket"] = obj.marketName;
+
             return RedirectToAction("customerView", "Customer");
         }
         public ActionResult getUsersShop(int id)
@@ -87,33 +108,35 @@ namespace bazar.Controllers
             Session["categories"] = db.tblcategories.Where(x=>x.shoptypeId== shoptype.shoptypeid).ToList();
             var ss= db.tblcategories.ToList();
             ViewBag.check = null;
-            Session["itemuserid"] = id;
+            Session["itemuserid"] = shoptype.id;
             return View(gets);
         }
         [HttpPost]
-        public ActionResult getUsersShop(string search,int shoptypeid)
+        public ActionResult getUsersShop(string search,string shoptypeid)
         {
             viewmodel gets = new viewmodel();
             var userid = Convert.ToInt32(Session["itemuserid"]);
-            if (shoptypeid == 1)
+            if (Convert.ToInt32(shoptypeid) == 1)
             {
                 gets.spMaleGarmmentList = db.serachMaleGarment(search).Where(x => x.createdById == userid).ToList();
 
             }
-            if (shoptypeid == 2)
+            if (Convert.ToInt32(shoptypeid) == 2)
             {
                 gets.spFemaleGarmmentList = db.serachFemaleGarment(search).Where(x => x.createdById == userid).ToList();
 
             }
-            if (shoptypeid == 3)
+            if (Convert.ToInt32(shoptypeid) == 3)
             {
                 gets.spShoeList = db.serachShoe(search).Where(x => x.createdById == userid).ToList();
 
             }
-            Session["categories"] = db.tblcategories.ToList();
+            //Session["categories"] = db.tblcategories.ToList();
             var ss = db.tblcategories.ToList();
             return View(gets);
         }
+
+       
         public ActionResult getUsersShopCategoryItem(int categoryid)
         {
             viewmodel gets = new viewmodel();
@@ -198,7 +221,7 @@ namespace bazar.Controllers
             if (Session["cart"] == null)
             {
                 List<cart> li = new List<cart>();
-
+                data.price = data.price * data.quantity;
                 li.Add(data);
                 Session["cart"] = li;
                 Session["itemcount"] = li.Count();
@@ -212,7 +235,7 @@ namespace bazar.Controllers
             {
                 List<cart> li = (List<cart>)Session["cart"];
                 int total = 0;
-                var check = li.Where(x => x.ids == data.ids).FirstOrDefault();
+                var check = li.Where(x => x.ids == data.ids && x.userid==data.userid).FirstOrDefault();
                 if (check != null)
                 {
                     check.price = data.price* data.quantity;
@@ -240,16 +263,21 @@ namespace bazar.Controllers
             return RedirectToAction("getUsersShop","Customer",new{id=data.userid});
         }
 
-        public ActionResult deleteItem(int id)
+        public ActionResult deleteItem(int id,int userid)
         {
             
             List<cart> li = (List<cart>)Session["cart"];
-            var row = li.Where(x => x.ids == id).FirstOrDefault();
+            int total = 0;
+            var row = li.Where(x => x.ids == id && x.userid==userid).FirstOrDefault();
             li.Remove(row);
             Session["cart"] = li;
             Session["itemcount"] = li.Count();
-           
 
+            foreach (var item in li)
+            {
+                total = total + item.price;
+            }
+            Session["total"] = total;
             return RedirectToAction("getCart", "Customer");
         }
         public ActionResult getCart()

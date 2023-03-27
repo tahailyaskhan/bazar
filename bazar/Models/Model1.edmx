@@ -294,6 +294,9 @@
         <Function Name="serachShoes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="search" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="serachUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="search" Type="varchar(max)" Mode="In" />
+        </Function>
         <EntityContainer Name="bazarModelStoreContainer">
           <EntitySet Name="tblcategory" EntityType="Self.tblcategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblcity" EntityType="Self.tblcity" Schema="dbo" store:Type="Tables" />
@@ -622,6 +625,9 @@
           <Parameter Name="search" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="serachShoe" ReturnType="Collection(bazarModel.serachShoe_Result)">
+          <Parameter Name="search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="serachUser" ReturnType="Collection(bazarModel.serachUser_Result)">
             <Parameter Name="search" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
@@ -704,6 +710,22 @@
           <Property Type="Int32" Name="createdById" Nullable="true" />
           <Property Type="DateTime" Name="createdDate" Nullable="true" Precision="23" />
           <Property Type="Boolean" Name="isActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="serachUser_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="username" Nullable="true" />
+          <Property Type="String" Name="password" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="true" />
+          <Property Type="String" Name="addresss" Nullable="true" />
+          <Property Type="String" Name="cnic" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="shoptypeid" Nullable="true" />
+          <Property Type="Int32" Name="marketid" Nullable="true" />
+          <Property Type="Int32" Name="createdById" Nullable="true" />
+          <Property Type="DateTime" Name="createdDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+          <Property Type="String" Name="shopname" Nullable="true" />
+          <Property Type="String" Name="profilepic" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1098,6 +1120,26 @@
                 <ScalarProperty Name="createdById" ColumnName="createdById" />
                 <ScalarProperty Name="createdDate" ColumnName="createdDate" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="serachUser" FunctionName="bazarModel.Store.serachUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bazarModel.serachUser_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="addresss" ColumnName="addresss" />
+                <ScalarProperty Name="cnic" ColumnName="cnic" />
+                <ScalarProperty Name="shoptypeid" ColumnName="shoptypeid" />
+                <ScalarProperty Name="marketid" ColumnName="marketid" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="shopname" ColumnName="shopname" />
+                <ScalarProperty Name="profilepic" ColumnName="profilepic" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

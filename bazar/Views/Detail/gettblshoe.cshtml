@@ -6,15 +6,26 @@
     // Layout = null;
 }
 
-<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+@*<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
 
+    <script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+    <link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Sscripts/moment.js"></script>
+    <script src="~/Sscripts/CustomeJS.js"></script>
+
+    <script src="~/Sscripts/CustomeJS.js"></script>*@
+
+<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+<script src="~/Sscripts/jquery.dataTables.min.js"></script>
 <script src="~/Content/Toaster/scripts/toastr.min.js"></script>
 <link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
 <link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
 <script src="~/Sscripts/moment.js"></script>
-<script src="~/Sscripts/CustomeJS.js"></script>
+@*<script src="~/Sscripts/CustomeJS.js"></script>*@
 
 <script src="~/Sscripts/CustomeJS.js"></script>
+
 <section class="pcoded-main-container">
     <div class="pcoded-wrapper">
         <div class="pcoded-content">
@@ -51,7 +62,7 @@
                                     <div class="card-body table-border-style">
                                         <div class="table-responsive">
 
-                                            <table class="table">
+                                            <table id="tblshoe" class="table" style="width:100%">
                                                 <thead style="color:#ff6002">
                                                     <tr>
                                                         <th style="display: none">id</th>
@@ -80,73 +91,73 @@
                                                     @foreach (var row in Model)
                                                     {
 
-                                                    <tr>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.id)</td>
-                                                        <td>@Html.DisplayFor(modelItem => row.shoename)</td>
+                                                        <tr>
+                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.id)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.shoename)</td>
 
 
-                                                        @if (row.xsmall == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        @if (row.small == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        @if (row.medium == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        @if (row.large == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        @if (row.xlarge == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        @if (row.xxlarge == true)
-                                                        {
-                                                            <td>yes</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td>no</td>
-                                                        }
-                                                        <td>@Html.DisplayFor(modelItem => row.price)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.detail)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.pic11)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.pic22)</td>
-                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.pic33)</td>
-                                                        <td><img id="myImg1" src="@row.pic11" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
-                                                        <td><img id="myImg2" src="@row.pic22" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
-                                                        <td><img id="myImg3" src="@row.pic33" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
-                                                        <td><button class='mt-2 btn btn-primary btnEdit' id='btnEdit'>Edit</button>  @Html.ActionLink("Delete", "deletetblshoe", "Delete", new { id = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>
-                                                        @*<td><button class='mt-2 btn btn-primary btnDelete' id='btnDelete'>Deactivate</button></td>*@
-                                                        @*<td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { id = row.id }, new { @class = "btn btn-primary" })</td>*@
+                                                            @if (row.xsmall == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            @if (row.small == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            @if (row.medium == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            @if (row.large == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            @if (row.xlarge == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            @if (row.xxlarge == true)
+                                                            {
+                                                                <td>yes</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>no</td>
+                                                            }
+                                                            <td>@Html.DisplayFor(modelItem => row.price)</td>
+                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.detail)</td>
+                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.pic11)</td>
+                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.pic22)</td>
+                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.pic33)</td>
+                                                            <td><img id="myImg1" src="@row.pic11" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
+                                                            <td><img id="myImg2" src="@row.pic22" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
+                                                            <td><img id="myImg3" src="@row.pic33" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
+                                                            <td><button class='mt-2 btn btn-primary btnEdit' id='btnEdit'>Edit</button>  @Html.ActionLink("Delete", "deletetblshoe", "Delete", new { id = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>
+                                                            @*<td><button class='mt-2 btn btn-primary btnDelete' id='btnDelete'>Deactivate</button></td>*@
+                                                            @*<td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { id = row.id }, new { @class = "btn btn-primary" })</td>*@
 
 
-                                                    </tr>
+                                                        </tr>
 
                                                     }
 
@@ -290,7 +301,7 @@
     </div>
 
 </div>
-  
+
 
 
 <script>
@@ -318,12 +329,70 @@
     }
     $("form#data").submit(function (e) {
         debugger
+        if ($('#xsmall').is(':checked') == true) {
+            $('#xsmall').attr('checked', 'checked');
+            $('#xsmall').val(true);
+        }
+        if ($('#xsmall').is(':checked') == false) {
+            $('#xsmall').attr('checked', false);
+            $('#xsmall').val(false);
+        }
+
+
+
+        if ($('#small').is(':checked') == true) {
+            $('#small').attr('checked', 'checked');
+            $('#small').val(true);
+        }
+
+        if ($('#small').is(':checked') == false) {
+            $('#small').attr('checked', false);
+            $('#small').val(false);
+        }
+
+
+        if ($('#medium').is(':checked') == true) {
+            $('#medium').attr('checked', 'checked');
+
+            $('#medium').val(true);
+        }
+        if ($('#medium').is(':checked') == false) {
+            $('#medium').attr('checked', false);
+            $('#medium').val(false);
+        }
+
+        if ($('#large').is(':checked') == true) {
+            $('#large').attr('checked', 'checked');
+            $('#large').val(true);
+        }
+        if ($('#large').is(':checked') == false) {
+            $('#large').attr('checked', false);
+            $('#large').val(false);
+        }
+
+        if ($('#xlarge').is(':checked') == true) {
+            $('#xlarge').attr('checked', 'checked');
+            $('#xlarge').val(true);
+        }
+        if ($('#xlarge').is(':checked') == false) {
+            $('#xlarge').attr('checked', false);
+            $('#xlarge').val(false);
+        }
+
+        if ($('#xxlarge').is(':checked') == true) {
+            $('#xxlarge').attr('checked', 'checked');
+            $('#xxlarge').val(true);
+        }
+        if ($('#xxlarge').is(':checked') == false) {
+            $('#xxlarge').attr('checked', false);
+            $('#xxlarge').val(false);
+        }
 
         var ch = CheckNull();
         if (ch == false) {
             return false;
         }
-        
+
         var formData = new FormData(this);
 
 
@@ -496,14 +565,30 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
+    }
+    function readURL3(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#pic3').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
         }
+    }
 
         $("#pics1").change(function () {
             readURL(this);
         });
         $("#pics2").change(function () {
             readURL2(this);
+
         });
+
+    $("#pics3").change(function () {
+        readURL3(this);
+    });
       $(document).on('click', '#btnView', function () {
 
 
@@ -688,97 +773,98 @@
 
         });
 
+    $(document).ready(function () {
 
-     $(document).ready(function () {
-
+        let table = new DataTable('#tblshoe');
 
 
 
     });
 
 
+
 </script>
 
 
 
-    <style>
-        :root {
-            --modal-duration: 1s;
-            --modal-color: #ff6002;
+<style>
+    :root {
+        --modal-duration: 1s;
+        --modal-color: #ff6002;
+    }
+
+
+    .button {
+        background: #428bca;
+        padding: 1em 2em;
+        color: #fff;
+        border: 0;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .button:hover {
+            background: #3876ac;
         }
 
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 
-        .button {
-            background: #428bca;
-            padding: 1em 2em;
-            color: #fff;
-            border: 0;
-            border-radius: 5px;
+    .modal-content {
+        margin: 20% auto;
+        width: 100%;
+        box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+        animation-name: modalopen;
+        animation-duration: var(--modal-duration);
+    }
+
+    .modal-header h2,
+    .modal-footer h3 {
+        margin: 0;
+    }
+
+    .modal-header {
+        background: var(--modal-color);
+        padding: 15px;
+        color: #fff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .modal-body {
+        padding: 10px 20px;
+        background: #fff;
+    }
+
+    .modal-footer {
+        background: var(--modal-color);
+        padding: 10px;
+        color: #fff;
+        text-align: center;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .close {
+        color: #ccc;
+        float: right;
+        font-size: 30px;
+        color: #fff;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
             cursor: pointer;
         }
-
-            .button:hover {
-                background: #3876ac;
-            }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content {
-            margin: 20% auto;
-            width: 100%;
-            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-            animation-name: modalopen;
-            animation-duration: var(--modal-duration);
-        }
-
-        .modal-header h2,
-        .modal-footer h3 {
-            margin: 0;
-        }
-
-        .modal-header {
-            background: var(--modal-color);
-            padding: 15px;
-            color: #fff;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
-
-        .modal-body {
-            padding: 10px 20px;
-            background: #fff;
-        }
-
-        .modal-footer {
-            background: var(--modal-color);
-            padding: 10px;
-            color: #fff;
-            text-align: center;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-        }
-
-        .close {
-            color: #ccc;
-            float: right;
-            font-size: 30px;
-            color: #fff;
-        }
-
-            .close:hover,
-            .close:focus {
-                color: #000;
-                text-decoration: none;
-                cursor: pointer;
-            }
-    </style>
+</style>
