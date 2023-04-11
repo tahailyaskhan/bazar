@@ -5,20 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace bazar.Controllers
 {
     public class CustomerController : Controller
     {
         bazarEntities db = new bazarEntities();
-        
+
         // GET: Customer
         public ActionResult customerView()
         {
             viewmodel get = new viewmodel();
             Session["market"] = db.tblmarkets.ToList();
             //   var getCustomer = db.tblcreateUsers.ToList();
-             get.userList = db.tblcreateUsers.ToList();
+            get.userList = db.tblcreateUsers.ToList();
 
             return View(get);
         }
@@ -27,7 +28,7 @@ namespace bazar.Controllers
         {
             viewmodel get = new viewmodel();
             Session["market"] = db.tblmarkets.ToList();
-             get.spUserList =  db.serachUser(search).ToList();
+            get.spUserList = db.serachUser(search).ToList();
 
             //var getCustomer = db.tblcreateUsers.Where(x=>x.name==search).ToList();
             return View(get);
@@ -42,7 +43,7 @@ namespace bazar.Controllers
         public ActionResult checkout(customerInfo data)
         {
             tblcustomerOrder obj = new tblcustomerOrder();
-            
+
             List<cart> cartlist = Session["cart"] as List<cart>;
             if (cartlist != null)
             {
@@ -51,6 +52,7 @@ namespace bazar.Controllers
                     obj.customername = data.firstname;
                     obj.addresss = data.addresss;
                     obj.cityname = data.city;
+                    obj.Email = data.email;
                     obj.mobileNo = data.tel;
                     obj.ownerId = item.userid;
                     obj.counts = item.quantity;
@@ -60,9 +62,10 @@ namespace bazar.Controllers
                     db.tblcustomerOrders.Add(obj);
                     db.SaveChanges();
                 }
+                //return RedirectToAction("receipt", "Customer");
                 return Json(new { messege = "success" });
             }
-            else 
+            else
             {
                 return Json(new { messege = "fail" });
             }
@@ -72,7 +75,7 @@ namespace bazar.Controllers
         [HttpGet]
         public ActionResult getMarketShop(int marketid)
         {
-           
+
             viewmodel gets = new viewmodel();
             var userid = Convert.ToInt32(Session["itemuserid"]);
             TempData["marketshop"] = db.tblcreateUsers.Where(x => x.marketid == marketid).ToList();
@@ -83,35 +86,44 @@ namespace bazar.Controllers
 
             return RedirectToAction("customerView", "Customer");
         }
-        public ActionResult getUsersShop(int id)
+        [HttpGet]
+        [Route("{ shopname ?}")]
+        public ActionResult getUsersShop(string shopname)
         {
             viewmodel gets = new viewmodel();
-            var shoptype = db.tblcreateUsers.Where(x => x.id == id).FirstOrDefault();
+            var shoptype = db.tblcreateUsers.Where(x => x.name == shopname).FirstOrDefault();
             Session["shoptype"] = shoptype.shoptypeid;
+            Session["shoplogo"] = shoptype.logo;
+            Session["shopname"] = shoptype.name;
             if (shoptype.shoptypeid == 1)
             {
-             //hello
-                gets.maleGarmmentList = db.tblmaleGarments.Where(x => x.createdById == id).ToList();
+                //hello
+                //gets.maleGarmmentList = db.tblmaleGarments.Where(x => x.createdById == id).ToList();
+                gets.maleGarmmentList = db.tblmaleGarments.Where(x => x.createdById == shoptype.id).ToList();
             }
             if (shoptype.shoptypeid == 2)
             {
-               
-                gets.femaleGarmmentList = db.tblfemaleGarments.Where(x => x.createdById == id).ToList();
+
+                //gets.femaleGarmmentList = db.tblfemaleGarments.Where(x => x.createdById == id).ToList();
+                gets.femaleGarmmentList = db.tblfemaleGarments.Where(x => x.createdById == shoptype.id).ToList();
 
 
             }
             if (shoptype.shoptypeid == 3)
             {
                 //hello
-                gets.shoeList = db.tblshoes.Where(x => x.createdById == id).ToList();
+                //gets.shoeList = db.tblshoes.Where(x => x.createdById == id).ToList();
+                gets.shoeList = db.tblshoes.Where(x => x.createdById == shoptype.id).ToList();
             }
-            Session["categories"] = db.tblcategories.Where(x=>x.shoptypeId== shoptype.shoptypeid).ToList();
-            var ss= db.tblcategories.ToList();
+            Session["categories"] = db.tblcategories.Where(x => x.shoptypeId == shoptype.shoptypeid).ToList();
+            var ss = db.tblcategories.ToList();
             ViewBag.check = null;
             Session["itemuserid"] = shoptype.id;
             return View(gets);
+            //return View();
         }
         [HttpPost]
+        [Route("getUsersShop")]
         public ActionResult getUsersShop(string search,string shoptypeid)
         {
             viewmodel gets = new viewmodel();
@@ -141,7 +153,8 @@ namespace bazar.Controllers
         {
             viewmodel gets = new viewmodel();
             var userid = Convert.ToInt32(Session["itemuserid"]);
-            if(categoryid == 1 || categoryid==2) {
+            var shopname = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
+            if (categoryid == 1 || categoryid==2) {
 
                 TempData["categoryitem"] = db.tblmaleGarments.Where(x => x.categoryid == categoryid && x.createdById == userid).ToList();
 
@@ -162,7 +175,9 @@ namespace bazar.Controllers
 
             //Session["categories"] = db.tblcategories.ToList();
             //var ss = db.tblcategories.ToList();
-            return RedirectToAction("getUsersShop", "Customer",new { id=userid });
+            //return RedirectToAction("getUsersShop", "Customer",new { id=userid });
+          
+            return RedirectToAction("getUsersShop", "Customer", new { shopname = shopname.name });
         }
 
         public ActionResult getProduct(int id, int userid,int categoryid)
@@ -221,7 +236,12 @@ namespace bazar.Controllers
             if (Session["cart"] == null)
             {
                 List<cart> li = new List<cart>();
+                var obj = db.tblcreateUsers.Where(x => x.id == data.userid).FirstOrDefault();
+
+                data.brandname = obj.name;
+                data.date = DateTime.Now.ToString();
                 data.price = data.price * data.quantity;
+                
                 li.Add(data);
                 Session["cart"] = li;
                 Session["itemcount"] = li.Count();
@@ -238,13 +258,16 @@ namespace bazar.Controllers
                 var check = li.Where(x => x.ids == data.ids && x.userid==data.userid).FirstOrDefault();
                 if (check != null)
                 {
-                    check.price = data.price* data.quantity;
+                    check.price = data.price*data.quantity;
                     check.pic1 = data.pic1;
                     check.quantity = data.quantity;
                     check.size = data.size;
                 }
                 else
                 {
+                    var obj = db.tblcreateUsers.Where(x => x.id == data.userid).FirstOrDefault();
+                    data.date = DateTime.Now.ToString();
+                    data.brandname = obj.name;
                     data.price = data.price * data.quantity;
                     li.Add(data);
                     Session["cart"] = li;
@@ -259,8 +282,9 @@ namespace bazar.Controllers
                 Session["count"] = Convert.ToInt32(Session["count"]) + 1;
 
             }
-
-            return RedirectToAction("getUsersShop","Customer",new{id=data.userid});
+            var shopname = db.tblcreateUsers.Where(x => x.id == data.userid).FirstOrDefault();
+            return RedirectToAction("getUsersShop", "Customer", new { shopname = shopname.name });
+            //return RedirectToAction("getUsersShop","Customer",new{id=data.userid});
         }
 
         public ActionResult deleteItem(int id,int userid)
@@ -285,6 +309,13 @@ namespace bazar.Controllers
 
             return View();
         }
+
+        public ActionResult receipt()
+        {
+
+            return View();
+        }
+
         public ActionResult getChart()
         {
 

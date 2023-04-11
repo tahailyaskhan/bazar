@@ -89,8 +89,9 @@
                 <!-- Logo -->
 
                 <div class="header-logo">
-                    <a class="logo" href=@Url.Action("customerView", "Customer")>
-                        <img src="~/LOGO/logo.png" alt="">
+                    <a class="" href=@Url.Action("customerView", "Customer")>
+                        <img src="~/LOGO/logo.png" alt="" style="width:150px; height:70px">
+                        
                     </a>
 
                 </div>
@@ -168,17 +169,31 @@
             <div id="responsive-nav">
 
                 <div class="menu-nav">
-                    <span class="menu-header">Markets <i class="fa fa-bars"></i></span>
+                    <span class="menu-header"> <i class="fa fa-bars"></i></span>
                     <ul class="menu-list">
-                        @*<li><a href="#">Home</a></li>
-                        <li><a href="#">Shop</a></li>*@
-                         @foreach (var rows in Session["market"] as List<bazar.Models.tblmarket>)
+                        
+                        <li class="dropdown default-dropdown"><a class="" data-toggle="dropdown" aria-expanded="true">Markets  <i class="fa fa-caret-down"></i></a>
+							<ul class="custom-menu">
+							 @foreach (var rows in Session["market"] as List<bazar.Models.tblmarket>)
                                 {
 
                                     <li>@Html.ActionLink(rows.marketName, "getMarketShop", "Customer", new { marketid = rows.id}, new { @class = "btn" })</li>
 
 
                                 }
+
+							</ul>
+						</li>
+
+                        <li><a href="#">Return policy</a></li>
+                        <li><a href="#">About Us</a></li>
+                         @*@foreach (var rows in Session["market"] as List<bazar.Models.tblmarket>)
+                                {
+
+                                    <li>@Html.ActionLink(rows.marketName, "getMarketShop", "Customer", new { marketid = rows.id}, new { @class = "btn" })</li>
+
+
+                                }*@
 
                         @*<li><a href="#">Sales</a></li>*@
                         @*<li class="dropdown default-dropdown">
@@ -287,10 +302,11 @@
                             <div class="col-6 col-md-3 col-lg-3 ">
                                 <div class="product product-single">
                                     <div class="product-thumb">
-                                        <a href=@Url.Action("getUsersShop", "Customer", new { id = rows.id }) class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        @*<a href=@Url.Action("yourshop", "Customer", new { id = rows.id }) class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>*@
+                                        <a href="https://localhost:44326/?shopname=@rows.name" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                         @*<img src="~/customercontent/img/product04.jpg" alt="">*@
 
-                                        <img src="@rows.profilepic" style="width: 100%; height: 40vh; object-fit: contain; " alt="">
+                                        <img src="@rows.logo" style="width: 100%; height: 40vh; object-fit: contain; " alt="">
                                     </div>
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
@@ -326,7 +342,7 @@
                                         <a href=@Url.Action("getUsersShop", "Customer", new { id = rows.id }) class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                         @*<img src="~/customercontent/img/product04.jpg" alt="">*@
 
-                                        <img src="@rows.profilepic" style="width: 100%; height: 40vh; object-fit: contain; " alt="">
+                                        <img src="@rows.logo" style="width: 100%; height: 40vh; object-fit: contain; " alt="">
                                     </div>
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
@@ -364,7 +380,7 @@
                                     <a href=@Url.Action("getUsersShop", "Customer", new { id = rows.id }) class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                     @*<img src="~/customercontent/img/product04.jpg" alt="">*@
 
-                                    <img src="@rows.profilepic" style="width: 100%; height: 40vh; object-fit: contain; " alt="">
+                                    <img src="@rows.logo" style="width: 100%; height: 40vh; object-fit: contain; " alt="">
                                 </div>
                                 <div class="product-body text-center">
                                     @*<h3 class="product-price">$32.50</h3>*@

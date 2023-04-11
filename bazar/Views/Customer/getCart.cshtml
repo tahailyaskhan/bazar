@@ -49,7 +49,7 @@
 
     <div id="top-header">
         <div class="container">
-            <div class="text-white">
+            <div class="text-white text-center">
                 <span>Welcome to E-shop!</span>
             </div>
             @*<div class="pull-right">
@@ -125,6 +125,7 @@
                         <!-- Account -->
                         <!-- /Account -->
                         <!-- Cart -->
+   
                         <li class="header-cart dropdown default-dropdown">
                             <a href=@Url.Action("getCart", "Customer") class="" aria-expanded="true">
 
@@ -141,9 +142,7 @@
                         </li>
                         <!-- /Cart -->
                         <!-- Mobile nav toggle-->
-                        <li class="nav-toggle">
-                            <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
-                        </li>
+                        
                         <!-- / Mobile nav toggle -->
                     </ul>
                 </div>
@@ -153,39 +152,7 @@
         <!-- container -->
     </header>
     <!-- /HEADER -->
-    <!-- NAVIGATION -->
-    <div id="navigation">
-        <!-- container -->
-        <div class="container">
-            <div id="responsive-nav">
-
-                <div class="menu-nav">
-                    <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
-                    <ul class="menu-list">
-                        @*<li><a href="#">Home</a></li>
-                            <li><a href="#">Shop</a></li>
-
-
-                            <li><a href="#">Sales</a></li>*@
-                        @*<li class="dropdown default-dropdown">*@
-                        @*<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages </a>*@
-                        @*@foreach (var rows in Session["categories"] as List<bazar.Models.tblcategory>)
-                            {
-
-                                <li>@Html.ActionLink(rows.categoryName, "getCategorysGarment", "Customer", new { id = rows.id })</li>
-
-
-                            }*@
-                        @*</li>*@
-
-                    </ul>
-                </div>
-                <!-- menu nav -->
-            </div>
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /NAVIGATION -->
+   
     <!-- section -->
 
 

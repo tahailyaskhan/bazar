@@ -12,7 +12,9 @@ namespace bazar.DAL.Data
 
         public int userid { get; set; }
 
+        public string brandname { get; set; }
         public int price { get; set; }
+        public string date { get; set; }
 
         public string size { get; set; }
         public string pic1 { get; set; }

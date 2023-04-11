@@ -542,7 +542,8 @@
                 data: formData,
                 success: function (data) {
                     if (data.messege == 'success') {
-                        toastr.success('Successfully Submitted');
+                        /* toastr.success('Successfully Submitted');*/
+                        window.open("https://localhost:44326/Customer/receipt", '_blank');
                     }
                     else {
                         toastr.error("cart is empty");

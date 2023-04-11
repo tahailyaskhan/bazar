@@ -29,7 +29,6 @@ namespace bazar.Models
     
         public virtual DbSet<tblcategory> tblcategories { get; set; }
         public virtual DbSet<tblcity> tblcities { get; set; }
-        public virtual DbSet<tblcreateUser> tblcreateUsers { get; set; }
         public virtual DbSet<tblcustomerOrder> tblcustomerOrders { get; set; }
         public virtual DbSet<tblfemaleGarment> tblfemaleGarments { get; set; }
         public virtual DbSet<tblmaleGarment> tblmaleGarments { get; set; }
@@ -44,6 +43,7 @@ namespace bazar.Models
         public virtual DbSet<tblsizeShirtFemale> tblsizeShirtFemales { get; set; }
         public virtual DbSet<tblsizeShirtMale> tblsizeShirtMales { get; set; }
         public virtual DbSet<tblsizeSho> tblsizeShoes { get; set; }
+        public virtual DbSet<tblcreateUser> tblcreateUsers { get; set; }
     
         public virtual ObjectResult<serachFemaleGarment_Result> serachFemaleGarment(string search)
         {
