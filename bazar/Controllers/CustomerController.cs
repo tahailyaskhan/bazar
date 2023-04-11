@@ -125,13 +125,13 @@ namespace bazar.Controllers
         [HttpPost]
         [Route("getUsersShop")]
         public ActionResult getUsersShop(string search,string shoptypeid)
-        {
+        {/////
             viewmodel gets = new viewmodel();
             var userid = Convert.ToInt32(Session["itemuserid"]);
             if (Convert.ToInt32(shoptypeid) == 1)
             {
                 gets.spMaleGarmmentList = db.serachMaleGarment(search).Where(x => x.createdById == userid).ToList();
-
+                
             }
             if (Convert.ToInt32(shoptypeid) == 2)
             {
