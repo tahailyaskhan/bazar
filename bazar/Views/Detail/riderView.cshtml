@@ -7,53 +7,68 @@
 
 <script src="~/Sscripts/jquery-3.6.0.min.js"></script>
 <script src="~/Sscripts/jquery.dataTables.min.js"></script>
-<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
-<link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
-<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
-<script src="~/Sscripts/moment.js"></script>
-<script src="~/Sscripts/CustomeJS.js"></script>
+@*<script src="~/Content/jquery-3.1.1.min.js"></script>*@
+@*<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+    <link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />*@
+@*<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />*@
+@*<script src="~/Sscripts/moment.js"></script>*@
+
 <link href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
-<script src="~/Sscripts/CustomeJS.js"></script>
+
+
 <section class="pcoded-main-container">
     <div class="pcoded-wrapper">
         <div class="pcoded-content">
             <div class="pcoded-inner-content">
                 <div class="main-body">
                     <div class="page-wrapper">
-                        <!-- [ breadcrumb ] start -->
-                       
-                        <!-- [ breadcrumb ] end -->
-                        <!-- [ Main Content ] start -->
-                        <div class="row">
-                            <!-- [ basic-table ] start -->
-                            <div class="col-sm-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h2 class="">Your Orders</h2>
 
+                        @*<div class="page-header">
+                            <div class="page-block">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                                        </div>
+                                        <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                                            <li class="breadcrumb-item"><a href="#!">Bootstrap Table</a></li>
+                                            <li class="breadcrumb-item"><a href="#!">Basic Tables</a></li>
+                                        </ul>
                                     </div>
-                                    <div class="card-body table-border-style">
+                                </div>
+                            </div>
+                        </div>*@
+
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="card">
+
+                                    <div class="card-body table-border-style" style="width:100%;">
                                         <div class="table-responsive">
 
-                                            <table class="table" id="tblorder" style="width:100%">
-                                                <thead style="color:#ff6002">
+                                            <table id="maletable" style="width:100%;">
+                                                <thead style="color: #ff6002; width: 100%;">
                                                     <tr>
                                                         <th style="display:none">id</th>
                                                         <th>Cloth Name</th>
                                                         <th>image</th>
                                                         <th>Count</th>
                                                         <th>Size</th>
-                                                        @*<th>Email</th>
                                                         <th>Address</th>
-                                                        <th>Mobile</th>*@
+                                                        @*<th>Email</th>
+                                                            <th>Address</th>
+                                                            <th>Mobile</th>*@
                                                         <th>Status</th>
-                                                        <th>reviews</th>
-                                                        <th>Rating</th>
+                                                        <th>Shopname</th>
+                                                        <th>Market</th>
                                                         <th>Status</th>
+
 
                                                     </tr>
                                                 </thead>
-                                                <tbody id="tblfloortime">
+                                                <tbody id="tblfloortime" style="width:100%;">
 
                                                     @foreach (var row in Model)
                                                     {
@@ -64,16 +79,17 @@
                                                             <td><img id="myImg" src=@row.pic alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
                                                             <td>@Html.DisplayFor(modelItem => row.counts)</td>
                                                             <td>@Html.DisplayFor(modelItem => row.size)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.addresss)</td>
                                                             @*<td>@Html.DisplayFor(modelItem => row.Email)</td>
 
-                                                            <td>@Html.DisplayFor(modelItem => row.addresss)</td>
-                                                            <td>@Html.DisplayFor(modelItem => row.mobileNo)</td>*@
+                                                                <td>@Html.DisplayFor(modelItem => row.addresss)</td>
+                                                                <td>@Html.DisplayFor(modelItem => row.mobileNo)</td>*@
                                                             <td>@Html.DisplayFor(modelItem => row.status)</td>
-                                                            <td>@Html.DisplayFor(modelItem => row.reviews)</td>
-                                                            <td>@Html.DisplayFor(modelItem => row.rating)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.shopname)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.marketname)</td>
                                                             @*<td><img id="myImg" src="@row.pic11" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>*@
                                                             @*<td><img id="myImg" src="@row.pic22" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>*@
-                                                            <td>@Html.ActionLink("Deliver", "changeStatus", "Detail", new { orderid = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>
+                                                            <td>@Html.ActionLink("Deliver", "changeStatusRider", "Detail", new { orderid = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>
                                                             @*<td><button class='mt-2 btn btn-primary btnDelete' id='btnDelete'>Deactivate</button></td>*@
                                                             @*<td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { id = row.id }, new { @class = "btn btn-primary" })</td>*@
 
@@ -94,22 +110,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- [ basic-table ] end -->
 
 
                         </div>
-                        <!-- [ Main Content ] end -->
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
 <script>
 
-$(document).ready(function () {
+    $(document).ready(function () {
 
-        let table = new DataTable('#tblorder');
+        let table = new DataTable('#maletable');
 
         //$('#maletable').dataTable({
         //    "sDom": 'T<"clear">lfrtip',
@@ -119,6 +136,6 @@ $(document).ready(function () {
         //});
 
 
-});
+    });
 
-    </script>
+</script>

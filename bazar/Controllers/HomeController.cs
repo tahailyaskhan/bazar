@@ -54,5 +54,10 @@ namespace bazar.Controllers
         {
             return View();
         }
+
+        public ActionResult riderView()
+        {
+            return View();
+        }
     }
 }

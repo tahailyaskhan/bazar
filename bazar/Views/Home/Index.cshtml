@@ -172,8 +172,8 @@
                                                     <div class="form-group">
                                                         <select name="unit" id="unit" class="form-control" require>
                                                             <option value="0">-- Please Select --</option>
-                                                            <option value="1"> centimetre </option>
-                                                            <option value="2"> inches </option>
+                                                            <option value="centimetre"> centimetre </option>
+                                                            <option value="inches"> inches </option>
                                                         </select>
                                                     </div>
 
@@ -345,7 +345,7 @@
                     if(data.messege == 'success') {
                         toastr.success('Successfully Submitted');
                     }
-                    if (data.messege == 'exception') {
+                    else if (data.messege == 'exception') {
                         alert(data.messege);
                     }
                     else{

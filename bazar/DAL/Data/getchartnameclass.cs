@@ -9,5 +9,6 @@ namespace bazar.DAL.Data
     {
         
             public string chartname { get; set; }
+            public string unit { get; set; }
     }
 }

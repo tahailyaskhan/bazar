@@ -78,7 +78,14 @@
                                                                 </tr>
                                                             }
                                                         }
+                                                        <tr style="background-color:brown;color:white">
+                                                            <td>Chartname:</td>
+                                                            <td>@rows.chartname</td>
+                                                            <td></td>
+                                                            <td>Unit:</td>
+                                                            <td>@rows.unit</td>
 
+                                                        </tr>
                                                         <tr>
                                                             <td>@Html.ActionLink("Delete", "deletetblsizeShirtFemale", "Delete", new { chartname = rows.chartname }, new { @class = "btn btn-primary" })</td>
 

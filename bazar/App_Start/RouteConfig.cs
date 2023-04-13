@@ -12,7 +12,7 @@ namespace bazar
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-           
+
 
             routes.MapMvcAttributeRoutes();
             routes.MapRoute(
@@ -20,6 +20,8 @@ namespace bazar
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
+
+            //routes.MapMvcAttributeRoutes();
         }
     }
 }

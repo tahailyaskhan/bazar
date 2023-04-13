@@ -9,6 +9,7 @@ using System.Web.Routing;
 
 namespace bazar.Controllers
 {
+
     public class CustomerController : Controller
     {
         bazarEntities db = new bazarEntities();
@@ -19,7 +20,7 @@ namespace bazar.Controllers
             viewmodel get = new viewmodel();
             Session["market"] = db.tblmarkets.ToList();
             //   var getCustomer = db.tblcreateUsers.ToList();
-            get.userList = db.tblcreateUsers.ToList();
+            get.userList = db.tblcreateUsers.Where(x=>x.roleid==2 || x.roleid == 3 || x.roleid == 4).ToList();
 
             return View(get);
         }
@@ -58,6 +59,7 @@ namespace bazar.Controllers
                     obj.counts = item.quantity;
                     obj.price = item.price;
                     obj.orderId = item.ids;
+                    obj.size = item.size;
                     obj.status = "pending";
                     db.tblcustomerOrders.Add(obj);
                     db.SaveChanges();
@@ -87,7 +89,8 @@ namespace bazar.Controllers
             return RedirectToAction("customerView", "Customer");
         }
         [HttpGet]
-        [Route("{ shopname ?}")]
+       
+        [Route("yourshop/{ shopname ?}")]
         public ActionResult getUsersShop(string shopname)
         {
             viewmodel gets = new viewmodel();
@@ -95,6 +98,7 @@ namespace bazar.Controllers
             Session["shoptype"] = shoptype.shoptypeid;
             Session["shoplogo"] = shoptype.logo;
             Session["shopname"] = shoptype.name;
+            ViewBag.shoplogo = shoptype.logo;
             if (shoptype.shoptypeid == 1)
             {
                 //hello
@@ -115,7 +119,8 @@ namespace bazar.Controllers
                 //gets.shoeList = db.tblshoes.Where(x => x.createdById == id).ToList();
                 gets.shoeList = db.tblshoes.Where(x => x.createdById == shoptype.id).ToList();
             }
-            Session["categories"] = db.tblcategories.Where(x => x.shoptypeId == shoptype.shoptypeid).ToList();
+            //Session["categories"] = db.tblcategories.Where(x => x.shoptypeId == shoptype.shoptypeid).ToList();
+            ViewBag.categories = db.tblcategories.Where(x => x.shoptypeId == shoptype.shoptypeid).ToList();
             var ss = db.tblcategories.ToList();
             ViewBag.check = null;
             Session["itemuserid"] = shoptype.id;
@@ -124,10 +129,20 @@ namespace bazar.Controllers
         }
         [HttpPost]
         [Route("getUsersShop")]
-        public ActionResult getUsersShop(string search,string shoptypeid)
+        public ActionResult getUsersShop(string search,string shoptypeid,string usersid)
         {/////
             viewmodel gets = new viewmodel();
-            var userid = Convert.ToInt32(Session["itemuserid"]);
+            //var userid = Convert.ToInt32(Session["itemuserid"]);
+
+            var userid = Convert.ToInt32(usersid);
+            var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
+            Session["shoptype"] = shoptype.shoptypeid;
+            Session["shoplogo"] = shoptype.logo;
+            Session["shopname"] = shoptype.name;
+         
+            ViewBag.shoplogo = shoptype.logo;
+           
+
             if (Convert.ToInt32(shoptypeid) == 1)
             {
                 gets.spMaleGarmmentList = db.serachMaleGarment(search).Where(x => x.createdById == userid).ToList();
@@ -143,16 +158,18 @@ namespace bazar.Controllers
                 gets.spShoeList = db.serachShoe(search).Where(x => x.createdById == userid).ToList();
 
             }
+            ViewBag.categories = db.tblcategories.Where(x => x.shoptypeId == shoptype.shoptypeid).ToList();
             //Session["categories"] = db.tblcategories.ToList();
             var ss = db.tblcategories.ToList();
             return View(gets);
         }
 
        
-        public ActionResult getUsersShopCategoryItem(int categoryid)
+        public ActionResult getUsersShopCategoryItem(int categoryid, string usersid)
         {
             viewmodel gets = new viewmodel();
-            var userid = Convert.ToInt32(Session["itemuserid"]);
+            //var userid = Convert.ToInt32(Session["itemuserid"]);
+            var userid = Convert.ToInt32(usersid);
             var shopname = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
             if (categoryid == 1 || categoryid==2) {
 
@@ -171,12 +188,13 @@ namespace bazar.Controllers
                 TempData["categoryshoesitem"] = db.tblshoes.Where(x => x.categoryid == categoryid && x.createdById == userid).ToList();
 
             }
-
+           
+           
 
             //Session["categories"] = db.tblcategories.ToList();
             //var ss = db.tblcategories.ToList();
             //return RedirectToAction("getUsersShop", "Customer",new { id=userid });
-          
+
             return RedirectToAction("getUsersShop", "Customer", new { shopname = shopname.name });
         }
 
@@ -225,8 +243,9 @@ namespace bazar.Controllers
                 obj.femalePantSizeList = db.tblsizePantFemales.Where(x => x.chartName == obj.femaleGarmentObj.pantsizechartnameid).ToList();
             }
 
-
-
+            var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
+            ViewBag.categories = db.tblcategories.Where(x => x.shoptypeId == shoptype.shoptypeid).ToList();
+            ViewBag.shoplogo = shoptype.logo;
             return View(obj);
         }
 

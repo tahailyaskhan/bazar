@@ -98,10 +98,12 @@ namespace bazar.Controllers
         // Views 
         public ActionResult gettblsizeShirtNale()
         {
-
+           // int userid = Convert.ToInt32(Session["userid"]);
            List<getchartnameclass> getchartname  = (from us in db.tblsizeShirtMales
-                                                      select new getchartnameclass
+                                                    where us.createdById==userid 
+                                                    select new getchartnameclass
                                                       {
+                                                        unit=us.unitId,
                                                        chartname= us.chartName
                                                       }).Distinct().ToList();
             Session["getchartname"] = getchartname;
@@ -115,11 +117,12 @@ namespace bazar.Controllers
 
         public ActionResult gettblsizePantMale()
         {
-
+         //   int userid = Convert.ToInt32(Session["userid"]);
             List<getchartnameclass> getchartname = (from us in db.tblsizePantMales
+                                                    where us.createdById == userid
                                                     select new getchartnameclass
                                                     {
-                                                        
+                                                        unit = us.unitId,
                                                         chartname = us.chartName
                                                     }).Distinct().ToList();
             Session["getchartname"] = getchartname;
@@ -132,10 +135,12 @@ namespace bazar.Controllers
         }
         public ActionResult gettblsizeShirtFemale()
         {
-
+            //int userid = Convert.ToInt32(Session["userid"]);
             List<getchartnameclass> getchartname = (from us in db.tblsizeShirtFemales
+                                                    where us.createdById == userid
                                                     select new getchartnameclass
                                                     {
+                                                        unit = us.unitId,
                                                         chartname = us.chartName
                                                     }).Distinct().ToList();
             Session["getfemalechartname"] = getchartname;
@@ -152,8 +157,10 @@ namespace bazar.Controllers
         {
 
             List<getchartnameclass> getchartname = (from us in db.tblsizePantFemales
+                                                    where us.createdById == userid
                                                     select new getchartnameclass
                                                     {
+                                                        unit = us.unitId,
                                                         chartname = us.chartName
                                                     }).Distinct().ToList();
             Session["getfemalechartname"] = getchartname;
@@ -304,7 +311,25 @@ namespace bazar.Controllers
 
             return RedirectToAction("gettblorder", "Detail");
         }
-            public ActionResult gettblorder()
+
+        public ActionResult changeStatusRider(int orderid)
+        {
+            int userid = Convert.ToInt32(Session["userid"]);
+            List<tblcustomerorder> customerorderlist = new List<tblcustomerorder>();
+            tblcustomerOrder getorder = db.tblcustomerOrders.Where(x => x.ownerId == userid && x.id == orderid).FirstOrDefault();
+            var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
+
+            if (getorder != null)
+            {
+
+                getorder.status = "Delivered";
+                db.SaveChanges();
+            }
+
+
+            return RedirectToAction("gettblorder", "Detail");
+        }
+        public ActionResult gettblorder()
         {
             int userid = Convert.ToInt32(Session["userid"]);
             List<tblcustomerorder> customerorderlist = new List<tblcustomerorder>();
@@ -376,6 +401,101 @@ namespace bazar.Controllers
                             counts = row.counts,
                             cityname = row.cityname
                         ,
+                            addresss = row.addresss,
+                            size = row.size,
+                            mobileNo = row.mobileNo,
+                            Email = row.Email,
+                            status = row.status,
+                            reviews = row.reviews,
+                            rating = row.rating,
+
+                            pic = obj.pic1
+                        });
+                    }
+                }
+            }
+            return View(customerorderlist);
+        }
+
+
+        public ActionResult riderView()
+        {
+            //int userid = Convert.ToInt32(Session["userid"]);
+            List<tblcustomerorder> customerorderlist = new List<tblcustomerorder>();
+            List<tblcustomerOrder> getorder = db.tblcustomerOrders.ToList();
+           
+            foreach (var row in getorder)
+            {
+                var shoptype = db.tblcreateUsers.Where(x => x.id == row.ownerId).FirstOrDefault();
+                var marketType = db.tblmarkets.Where(x => x.id == shoptype.marketid).FirstOrDefault();
+                if (shoptype.shoptypeid == 1)
+                {
+                    var obj = db.tblmaleGarments.Where(x => x.id == row.orderId ).FirstOrDefault();
+                    if (obj != null)
+                    {
+                        customerorderlist.Add(new tblcustomerorder
+                        {
+                            id = row.id,
+                            orderId = row.orderId,
+                            clothname = obj.clothname,
+                            counts = row.counts,
+                            cityname = row.cityname
+                        ,   shopname=shoptype.name,
+                            marketname=marketType.marketName,
+                            addresss = row.addresss,
+                            size = row.size,
+                            mobileNo = row.mobileNo,
+                            Email = row.Email,
+                            status = row.status,
+                            reviews = row.reviews,
+                            rating = row.rating,
+
+                            pic = obj.pic1
+                        });
+                    }
+                }
+                if (shoptype.shoptypeid == 2)
+                {
+                    var obj = db.tblfemaleGarments.Where(x => x.id == row.orderId).FirstOrDefault();
+                    if (obj != null)
+                    {
+                        customerorderlist.Add(new tblcustomerorder
+                        {
+                            id = row.id,
+                            orderId = row.orderId,
+                            clothname = obj.clothname,
+                            counts = row.counts,
+                            cityname = row.cityname
+                        ,
+                            shopname = shoptype.name,
+                            marketname = marketType.marketName,
+                            addresss = row.addresss,
+                            size = row.size,
+                            mobileNo = row.mobileNo,
+                            Email = row.Email,
+                            status = row.status,
+                            reviews = row.reviews,
+                            rating = row.rating,
+
+                            pic = obj.pic1
+                        });
+                    }
+                }
+                if (shoptype.shoptypeid == 3)
+                {
+                    var obj = db.tblshoes.Where(x => x.id == row.orderId).FirstOrDefault();
+                    if (obj != null)
+                    {
+                        customerorderlist.Add(new tblcustomerorder
+                        {
+                            id = row.id,
+                            orderId = row.orderId,
+                            clothname = obj.shoename,
+                            counts = row.counts,
+                            cityname = row.cityname
+                        ,
+                            shopname = shoptype.name,
+                            marketname = marketType.marketName,
                             addresss = row.addresss,
                             size = row.size,
                             mobileNo = row.mobileNo,

@@ -85,9 +85,9 @@
                 <li class=""><a href="bc_typography.html" class="">Typography</a></li>
             </ul>
         </li>*@
-                    <li class="nav-item pcoded-menu-caption">
+                    @*<li class="nav-item pcoded-menu-caption">
                         <label>Forms &amp; table</label>
-                    </li>
+                    </li>*@
                     @if (Convert.ToInt32(@Session["shoptype"]) == 1)
                     {
                         <li class="nav-item">
@@ -101,13 +101,16 @@
                             <a href=@Url.Action("viewtblmaleGarment","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Garments</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href=@Url.Action("gettblsizeShirtNale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Male Charts</span></a>
+                            <a href=@Url.Action("gettblsizeShirtNale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Shirt  Charts</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href=@Url.Action("gettblsizePantMale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Female Charts</span></a>
+                            <a href=@Url.Action("gettblsizePantMale","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get pant Charts</span></a>
                         </li>
                         <li class="nav-item">
                             <a href=@Url.Action("gettblmaleGarment","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Garments Records</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettblorder","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Order Records</span></a>
                         </li>
                     }
                     @if (Convert.ToInt32(@Session["shoptype"]) == 2)
@@ -130,6 +133,9 @@
                         <li class="nav-item">
                             <a href=@Url.Action("gettblfemaleGarment","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Female Garments Records</span></a>
                         </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettblorder","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Order Records</span></a>
+                        </li>
                     }
 
                     @if (Convert.ToInt32(@Session["shoptype"]) == 3)
@@ -140,12 +146,21 @@
                         <li class="nav-item">
                             <a href=@Url.Action("gettblshoe","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">get shoe</span></a>
                         </li>
-                      
-                     
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettblorder","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Order Records</span></a>
+                        </li>
+
                     }
-                    <li class="nav-item">
-                        <a href=@Url.Action("gettblorder","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Order Records</span></a>
-                    </li>
+                    @if (Convert.ToInt32(@Session["roleid"]) == 5)
+                    {
+                        <li class="nav-item">
+                            <a href=@Url.Action("riderView","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Show Orders</span></a>
+                        </li>
+
+
+                    }
+
+
                 </ul>
               
             </div>

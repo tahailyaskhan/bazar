@@ -47,174 +47,173 @@
 
 <body>
     <!-- HEADER -->
-    
-<div id="top-header">
-    <div class="container">
-        <div class=" text-center">
-            <span>Welcome to E-shop!</span>
-        </div>
-        @*<div class="pull-right">
-            <ul class="header-top-links">
-                <li><a href="#">Store</a></li>
-                <li><a href="#">Newsletter</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li class="dropdown default-dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
-                    <ul class="custom-menu">
-                        <li><a href="#">English (ENG)</a></li>
-                        <li><a href="#">Russian (Ru)</a></li>
-                        <li><a href="#">French (FR)</a></li>
-                        <li><a href="#">Spanish (Es)</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown default-dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">USD <i class="fa fa-caret-down"></i></a>
-                    <ul class="custom-menu">
-                        <li><a href="#">USD ($)</a></li>
-                        <li><a href="#">EUR (€)</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>*@
-    </div>
-</div>
 
-<header>
-    <!-- top Header -->
-    <!-- /top Header -->
-    <!-- header -->
-    <div id="header">
+    <div id="top-header">
         <div class="container">
-            <div class="pull-left ">
-                <!-- Logo -->
+            <div class=" text-center">
+                <span>Welcome to E-shop!</span>
+            </div>
+            @*<div class="pull-right">
+                    <ul class="header-top-links">
+                        <li><a href="#">Store</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li class="dropdown default-dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li><a href="#">English (ENG)</a></li>
+                                <li><a href="#">Russian (Ru)</a></li>
+                                <li><a href="#">French (FR)</a></li>
+                                <li><a href="#">Spanish (Es)</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown default-dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">USD <i class="fa fa-caret-down"></i></a>
+                            <ul class="custom-menu">
+                                <li><a href="#">USD ($)</a></li>
+                                <li><a href="#">EUR (€)</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>*@
+        </div>
+    </div>
 
-                <div class="header-logo">
-                    <a class="" href=@Url.Action("customerView", "Customer")>
-                        <img src="~/LOGO/logo.png" alt="" style="width:150px; height:70px">
-                        
-                    </a>
+    <header>
+        <!-- top Header -->
+        <!-- /top Header -->
+        <!-- header -->
+        <div id="header">
+            <div class="container">
+                <div class="pull-left ">
+                    <!-- Logo -->
 
-                </div>
-              
-                <!-- /Logo -->
-                <!-- Search -->
-                <div class="header-search">
-                    <form action= @Url.Action("customerView", "Customer") method="post" >
-
-
-
-                        <input class="input" name="search" id="namesearch" type="text" placeholder="Enter your keyword">
-
-
-                    
-
-
-
-                        <button type="submit" class="search-btn" ><i class="fa fa-search"></i></button>
-
-
-
-                    </form>
-                </div>
-                <!-- /Search -->
-           </div>
-                
-        
-            <!-- /Search -->
-            <!--</div>-->
-            <div class="pull-right">
-                <ul class="header-btns">
-                    <!-- Account -->
-                   
-                    <!-- /Account -->
-                    <!-- Cart -->
-                    <li class="header-cart dropdown default-dropdown">
-                        <a href=@Url.Action("getCart", "Customer") class="" aria-expanded="true">
-
-                            <div class="header-btns-icon  btn btn-outline-danger">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span class="qty">@Session["itemcount"]</span>
-                                <h5></h5>
-                            </div>
-
-                            @*<strong class="text-uppercase mt-3">My Cart</strong>*@
+                    <div class="header-logo">
+                        <a class="" href=@Url.Action("customerView", "Customer")>
+                            <img src="~/LOGO/logo.png" alt="" style="width:150px; height:70px">
 
                         </a>
 
-                    </li>
-                    <!-- /Cart -->
-                    <!-- Mobile nav toggle-->
-                    <li class="nav-toggle">
-                        <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
-                    </li>
-                    <!-- / Mobile nav toggle -->
-                </ul>
+                    </div>
+
+                    <!-- /Logo -->
+                    <!-- Search -->
+                    <div class="header-search">
+                        <form action=@Url.Action("customerView", "Customer") method="post">
+
+
+
+                            <input class="input" name="search" id="namesearch" type="text" placeholder="Enter your keyword">
+
+
+
+
+
+
+                            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+
+
+
+                        </form>
+                    </div>
+                    <!-- /Search -->
+                </div>
+
+
+                <!-- /Search -->
+                <!--</div>-->
+                <div class="pull-right">
+                    <ul class="header-btns">
+                        <!-- Account -->
+                        <!-- /Account -->
+                        <!-- Cart -->
+                        <li class="header-cart dropdown default-dropdown">
+                            <a href=@Url.Action("getCart", "Customer") class="" aria-expanded="true">
+
+                                <div class="header-btns-icon  btn btn-outline-danger">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="qty">@Session["itemcount"]</span>
+                                    <h5></h5>
+                                </div>
+
+                                @*<strong class="text-uppercase mt-3">My Cart</strong>*@
+
+                            </a>
+
+                        </li>
+                        <!-- /Cart -->
+                        <!-- Mobile nav toggle-->
+                        <li class="nav-toggle">
+                            <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                        </li>
+                        <!-- / Mobile nav toggle -->
+                    </ul>
+                </div>
             </div>
+            <!-- header -->
         </div>
-        <!-- header -->
-    </div>
-    <!-- container -->
-</header>
-<!-- /HEADER -->
-
-
-    
-    
-    
+        <!-- container -->
+    </header>
     <!-- /HEADER -->
-    <!-- NAVIGATION -->
+
     <div id="navigation">
         <!-- container -->
         <div class="container">
             <div id="responsive-nav">
 
                 <div class="menu-nav">
-                    <span class="menu-header"> <i class="fa fa-bars"></i></span>
+                    <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
                     <ul class="menu-list">
-                        
-                        <li class="dropdown default-dropdown"><a class="" data-toggle="dropdown" aria-expanded="true">Markets  <i class="fa fa-caret-down"></i></a>
-							<ul class="custom-menu">
-							 @foreach (var rows in Session["market"] as List<bazar.Models.tblmarket>)
-                                {
 
-                                    <li>@Html.ActionLink(rows.marketName, "getMarketShop", "Customer", new { marketid = rows.id}, new { @class = "btn" })</li>
+                @*<li class="dropdown default-dropdown">
+                        <a class="" data-toggle="dropdown" aria-expanded="true">Markets  <i class="fa fa-caret-down"></i></a>
+                        <ul class="custom-menu">
+                            @foreach (var rows in Session["market"] as List<bazar.Models.tblmarket>)
+                            {
 
-
-                                }
-
-							</ul>
-						</li>
-
-                        <li><a href="#">Return policy</a></li>
-                        <li><a href="#">About Us</a></li>
-                         @*@foreach (var rows in Session["market"] as List<bazar.Models.tblmarket>)
-                                {
-
-                                    <li>@Html.ActionLink(rows.marketName, "getMarketShop", "Customer", new { marketid = rows.id}, new { @class = "btn" })</li>
+                                <li>@Html.ActionLink(rows.marketName, "getMarketShop", "Customer", new { marketid = rows.id }, new { @class = "btn" })</li>
 
 
-                                }*@
+                            }
 
-                        @*<li><a href="#">Sales</a></li>*@
-                        @*<li class="dropdown default-dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Markets </a>
-                            <ul class="custom-menu">
-                                @foreach (var rows in Session["market"] as List<bazar.Models.tblmarket>)
-                                {
+                        </ul>
+                    </li>*@
 
-                                    <li>@Html.ActionLink(rows.marketName, "getMarketShop", "Customer", new { id = rows.id})</li>
+                <li><a href="#">Return policy</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#"  data-toggle="modal" data-target="#exampleModalCenter">Customer Review</a></li>
+                @*@foreach (var rows in Session["market"] as List<bazar.Models.tblmarket>)
+                    {
+
+                        <li>@Html.ActionLink(rows.marketName, "getMarketShop", "Customer", new { marketid = rows.id}, new { @class = "btn" })</li>
 
 
-                                }
-                            </ul>
-                        </li>*@
-                    </ul>
+                    }*@
+
+                @*<li><a href="#">Sales</a></li>*@
+                @*<li class="dropdown default-dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Markets </a>
+                        <ul class="custom-menu">
+                            @foreach (var rows in Session["market"] as List<bazar.Models.tblmarket>)
+                            {
+
+                                <li>@Html.ActionLink(rows.marketName, "getMarketShop", "Customer", new { id = rows.id})</li>
+
+
+                            }
+                        </ul>
+                    </li>*@
+            </ul>
                 </div>
                 <!-- menu nav -->
             </div>
         </div>
         <!-- /container -->
     </div>
+
+
+    <!-- /HEADER -->
+    <!-- NAVIGATION -->
     <!-- /NAVIGATION -->
     <!-- HOME -->
     <div id="home">
@@ -272,21 +271,21 @@
             <div class="row">
                 <!-- section title -->
                 <div class="col-md-12 mt-3">
-                  @if (TempData["searchedMarket"] != null)
-                  {
+                    @if (TempData["searchedMarket"] != null)
+                    {
 
-                         <div class="section-title">
-                             <h2 class="title">@TempData["searchedMarket"] Shops</h2>
-                    </div>
-                 
+                        <div class="section-title">
+                            <h2 class="title">@TempData["searchedMarket"] Shops</h2>
+                        </div>
 
-                  }
-                  else
-                  {
-                      <div class="section-title">
-                        <h2 class="title">Our Shops</h2>
-                    </div>
-                  }
+
+                    }
+                    else
+                    {
+                        <div class="section-title">
+                            <h2 class="title">Our Shops</h2>
+                        </div>
+                    }
                 </div>
                 <!-- section title -->
                 <!-- Product Single -->
@@ -303,7 +302,7 @@
                                 <div class="product product-single">
                                     <div class="product-thumb">
                                         @*<a href=@Url.Action("yourshop", "Customer", new { id = rows.id }) class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>*@
-                                        <a href="https://localhost:44326/?shopname=@rows.name" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        <a href="https://localhost:44326/yourshop/?shopname=@rows.name" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                         @*<img src="~/customercontent/img/product04.jpg" alt="">*@
 
                                         <img src="@rows.logo" style="width: 100%; height: 40vh; object-fit: contain; " alt="">
@@ -311,18 +310,18 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         @*<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>
-                                        </div>*@
-                                         <h4 style="color:orange">@rows.name </h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>*@
+                                        <h4 style="color:orange">@rows.name </h4>
 
                                         @*<h4 class="product-name">@Html.ActionLink(rows.username, "getUsersShop", "Customer", new { id = rows.id }, new { @class = "btn" })</h4>*@
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
@@ -347,18 +346,18 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         @*<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>
-                                        </div>*@
-                                           <h4 style="color:orange">@rows.name </h4>
-                                       
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>*@
+                                        <h4 style="color:orange">@rows.name </h4>
+
                                         @*<h4 class="product-name">@Html.ActionLink(rows.username, "getUsersShop", "Customer", new { id = rows.id }, new { @class = "btn" })</h4>*@
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
@@ -385,18 +384,18 @@
                                 <div class="product-body text-center">
                                     @*<h3 class="product-price">$32.50</h3>*@
                                     @*<div class="product-rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o empty"></i>
-                                    </div>*@
-                                       <h4 style="color:orange">@rows.name </h4>
-                                       
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o empty"></i>
+                                        </div>*@
+                                    <h4 style="color:orange">@rows.name </h4>
+
                                     @*<h4 class="product-name">@Html.ActionLink(rows.username, "getUsersShop", "Customer", new { id = rows.id }, new { @class = "btn" })</h4>*@
                                     <div class="product-btns">
                                         @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                            <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                         @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                     </div>
                                 </div>
@@ -406,29 +405,29 @@
                 }
 
                 <!--<div class="col-6 col-md-4 col-lg-4">
-    <div class="product product-single">
-        <div class="product-thumb">
-            <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-            <img src="~/customercontent/img/product04.jpg" alt="">
-        </div>
-        <div class="product-body">-->
+                <div class="product product-single">
+                    <div class="product-thumb">
+                        <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                        <img src="~/customercontent/img/product04.jpg" alt="">
+                    </div>
+                    <div class="product-body">-->
                 @*<h3 class="product-price">$32.50</h3>*@
                 <!--<div class="product-rating">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star-o empty"></i>
-    </div>
-    <h5 class="product-name"><a href="#">Product Name Goes Here</a></h5>
-    <div class="product-btns">-->
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o empty"></i>
+                </div>
+                <h5 class="product-name"><a href="#">Product Name Goes Here</a></h5>
+                <div class="product-btns">-->
                 @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-        <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                 @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                 <!--</div>
-            </div>
-        </div>
-    </div>-->
+                        </div>
+                    </div>
+                </div>-->
                 <!-- /Product Single -->
                 <!-- Product Single -->
 
@@ -437,6 +436,40 @@
             <!-- /row -->
         </div>
         <!-- /container -->
+    </div>
+    <!-- Button trigger modal -->
+    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      Launch demo modal
+    </button>-->
+     Modal 
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                  <label for="shoename">shoename</label>
+                  <input type="text" class="form-control mb-2" name="shoename" id="shoename" placeholder="Enter waist size">
+                  <span class="star-rating star-5">
+                      <input type="radio" name="rating" value="1"><i></i>
+                      <input type="radio" name="rating" value="2"><i></i>
+                      <input type="radio" name="rating" value="3"><i></i>
+                      <input type="radio" name="rating" value="4"><i></i>
+                      <input type="radio" name="rating" value="5"><i></i>
+                  </span>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- /section -->
     <!-- FOOTER -->
@@ -551,3 +584,81 @@
 
 </html>
 
+
+<style>
+    .star-rating {
+  font-size: 0;
+  white-space: nowrap;
+  display: inline-block;
+  /* width: 250px; remove this */
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+  background-size: contain;
+}
+.star-rating i {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  /* width: 20%; remove this */
+  z-index: 1;
+  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+  background-size: contain;
+}
+.star-rating input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  opacity: 0;
+  display: inline-block;
+  /* width: 20%; remove this */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  position: relative;
+}
+.star-rating input:hover + i,
+.star-rating input:checked + i {
+  opacity: 1;
+}
+.star-rating i ~ i {
+  width: 40%;
+}
+.star-rating i ~ i ~ i {
+  width: 60%;
+}
+.star-rating i ~ i ~ i ~ i {
+  width: 80%;
+}
+.star-rating i ~ i ~ i ~ i ~ i {
+  width: 100%;
+}
+::after,
+::before {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.star-rating.star-5 {width: 250px;}
+.star-rating.star-5 input,
+.star-rating.star-5 i {width: 20%;}
+.star-rating.star-5 i ~ i {width: 40%;}
+.star-rating.star-5 i ~ i ~ i {width: 60%;}
+.star-rating.star-5 i ~ i ~ i ~ i {width: 80%;}
+.star-rating.star-5 i ~ i ~ i ~ i ~i {width: 100%;}
+
+.star-rating.star-3 {width: 150px;}
+.star-rating.star-3 input,
+.star-rating.star-3 i {width: 33.33%;}
+.star-rating.star-3 i ~ i {width: 66.66%;}
+.star-rating.star-3 i ~ i ~ i {width: 100%;}
+
+
+</style>

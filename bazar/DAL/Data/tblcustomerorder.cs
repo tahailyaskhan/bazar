@@ -10,6 +10,8 @@ namespace bazar.DAL.Data
         public int id { get; set; }
         public Nullable<int> orderId { get; set; }
         public Nullable<int> counts { get; set; }
+        public string shopname { get; set; }
+        public string marketname { get; set; }
         public string addresss { get; set; }
         public string cityname { get; set; }
         public string clothname { get; set; }

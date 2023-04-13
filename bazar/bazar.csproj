@@ -814,6 +814,7 @@
     <Content Include="Views\Customer\checkout.cshtml" />
     <Content Include="Views\Shared\_gettblmalegarment.cshtml" />
     <Content Include="Views\Customer\receipt.cshtml" />
+    <Content Include="Views\Detail\riderView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

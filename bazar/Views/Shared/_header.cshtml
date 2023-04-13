@@ -24,7 +24,8 @@
                 <div class="header-logo logobar" >
                     @*<a class="logo" href=@Url.Action("customerView", "Customer")>*@
                         <a class="" href=@Url.Action("customerView", "Customer")>
-                            <img src="@Session["shoplogo"]" alt="" style="width:150px; height:90px">
+                            @*<img src="@Session["shoplogo"]" alt="" style="width:150px; height:90px">*@
+                            <img src="@ViewBag.shoplogo" alt="" style="width:150px; height:90px">
                         </a>
 
                 </div>
@@ -32,19 +33,20 @@
                 <!-- /Logo -->
                 <!-- Search -->
                 <div class="header-search searchbar">
-                    <form action= @Url.Action("getUsersShop", "Customer") method="post" >
+                    <form action=@Url.Action("getUsersShop", "Customer") method="post">
 
 
 
                         <input class="input" name="search" id="namesearch" type="text" placeholder="Enter your keyword">
 
 
-                        <input  style="visibility:hidden" class="input search-categories" value=@Session["shoptype"] name="shoptypeid" type="text" placeholder="Enter your keyword">
+                        <input style="visibility:hidden" class="input search-categories" value=@Session["shoptype"] name="shoptypeid" type="text" placeholder="Enter your keyword">
+                        <input style="visibility:hidden" class="input search-categories" value=@Session["itemuserid"] name="usersid" type="text" placeholder="Enter your keyword">
 
 
 
 
-                        <button type="submit" class="search-btn" ><i class="fa fa-search"></i></button>
+                        <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
 
 
 

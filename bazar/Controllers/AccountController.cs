@@ -27,21 +27,26 @@ namespace bazar.Controllers
                 Session["Username"] = login.username;
                 Session["userid"] = check.id;
                 Session["shoptype"] = check.shoptypeid;
-                if (check.shoptypeid == 1)
+                Session["roleid"] = check.roleid;
+                if (check.roleid == 2)
                 {
                     return RedirectToAction("Index", "Home");
                 }
 
-                if (check.shoptypeid == 2)
+                if (check.roleid == 3)
                 {
                     return RedirectToAction("viewtblsizeShirtFemale", "Home");
                 }
 
-                if (check.shoptypeid == 3)
+                if (check.roleid == 4)
                 {
                     return RedirectToAction("viewtblshoe", "Home");
                 }
 
+                if (check.roleid == 5)
+                {
+                    return RedirectToAction("riderView", "Detail");
+                }
             }
             else
             {

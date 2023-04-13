@@ -64,8 +64,9 @@
                             <li><a href="#">Sales</a></li>*@
                         @*<li class="dropdown default-dropdown">*@
                         @*<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages </a>*@
-                        @foreach (var rows in Session["categories"] as List<bazar.Models.tblcategory>)
-                        {
+                        @*@foreach (var rows in Session["categories"] as List<bazar.Models.tblcategory>)*@
+                         @foreach (var rows in @ViewBag.categories as List<bazar.Models.tblcategory>)
+                         {
 
                             <li>@Html.ActionLink(rows.categoryName, "getCategorysGarment", "Customer", new { id = rows.id })</li>
 
