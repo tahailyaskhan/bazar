@@ -7,7 +7,6 @@
       <Diagram DiagramId="8cf6b4374cb6427184b5035b5c9da4a3" Name="Diagram1">
         <EntityTypeShape EntityType="bazarModel.tblcategory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bazarModel.tblcity" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="bazarModel.tblcustomerOrder" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bazarModel.tblfemaleGarment" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bazarModel.tblmaleGarment" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bazarModel.tblmarket" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
@@ -22,6 +21,9 @@
         <EntityTypeShape EntityType="bazarModel.tblsizeShirtMale" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bazarModel.tblsizeSho" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bazarModel.tblcreateUser" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="bazarModel.tblcustomerOrder" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="bazarModel.tblgeneral" Width="1.5" PointX="3.375" PointY="12.75" />
+        <EntityTypeShape EntityType="bazarModel.tbl_template" Width="1.5" PointX="5.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

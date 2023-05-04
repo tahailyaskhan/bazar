@@ -67,15 +67,18 @@
                         @*<li class="dropdown default-dropdown">*@
                         @*<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages </a>*@
                         @*@foreach (var rows in Session["categories"] as List<bazar.Models.tblcategory>)*@
-                         @foreach (var rows in @ViewBag.categories as List<bazar.Models.tblcategory>)
+                        @foreach (var rows in @ViewBag.categories as List<bazar.Models.tblcategory>)
                         {
-                            
 
-                            <li>@Html.ActionLink(rows.categoryName, "getUsersShopCategoryItem", "Customer", new { categoryid = rows.id, usersid= @Session["itemuserid"] }, new { @class = "btn" })</li>
+
+                            <li>@Html.ActionLink(rows.categoryName, "getUsersShopCategoryItem", "Customer", new { categoryid = rows.id, usersid = @Session["itemuserid"] }, new { @class = "btn" })</li>
 
 
                         }
                         @*</li>*@
+
+                        <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Customer Review</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#exampleModalCenterReviews">Review</a></li>
 
                     </ul>
                 </div>
@@ -184,10 +187,10 @@
                                             <i class="fa fa-star-o empty"></i>-->
                                         @**@
                                         <!--</div>-->
-                                        
+
                                         <h4 style="color:orange">@rows.clothname </h4>
-                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
-                                            && rows.xlarge == false)
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
                                         {
                                             <p>out Of Stock</p>
                                         }
@@ -243,11 +246,12 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->@**@
+                                            <i class="fa fa-star-o empty"></i>-->
+                                        @**@
                                         <!--</div>-->
-                                          <h4 style="color:orange">@rows.clothname </h4>
-                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
-                                            && rows.xlarge == false)
+                                        <h4 style="color:orange">@rows.clothname </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
                                         {
                                             <p>out Of Stock</p>
                                         }
@@ -292,16 +296,17 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->@**@
+                                            <i class="fa fa-star-o empty"></i>-->
+                                        @**@
                                         <!--</div>-->
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
-                                         <h4 style="color:orange">@rows.clothname </h4>
-                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
-                                            && rows.xlarge == false)
+                                        <h4 style="color:orange">@rows.clothname </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
                                         {
                                             <p>out Of Stock</p>
                                         }
-                                        
+
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                                 <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
@@ -342,12 +347,13 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->@**@
+                                            <i class="fa fa-star-o empty"></i>-->
+                                        @**@
                                         <!--</div>-->
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
-                                          <h4 style="color:orange">@rows.clothname </h4>
-                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
-                                            && rows.xlarge == false)
+                                        <h4 style="color:orange">@rows.clothname </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
                                         {
                                             <p>out Of Stock</p>
                                         }
@@ -387,16 +393,16 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         @*<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>
-                                        </div>*@
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>*@
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.shoename, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
-                                          <h4 style="color:orange">@rows.shoename </h4>
-                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
-                                            && rows.xlarge == false)
+                                        <h4 style="color:orange">@rows.shoename </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
                                         {
                                             <p>out Of Stock</p>
                                         }
@@ -435,20 +441,20 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         @*<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>
-                                        </div>*@
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>*@
                                         @*<h4 class="product-name">Html.ActionLink(rows.shoename, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
-                                          <h4 style="color:orange">@rows.shoename </h4>
-                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
-                                            && rows.xlarge == false)
+                                        <h4 style="color:orange">@rows.shoename </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
                                         {
                                             <p>out Of Stock</p>
                                         }
-                                        
+
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                                 <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
@@ -486,20 +492,20 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         @*<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>
-                                        </div>*@
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>*@
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
-                                          <h4 style="color:orange">@rows.clothname </h4>
-                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
-                                            && rows.xlarge == false)
+                                        <h4 style="color:orange">@rows.clothname </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
                                         {
                                             <p>out Of Stock</p>
                                         }
-                                        
+
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                                 <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
@@ -540,17 +546,18 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->@**@
+                                            <i class="fa fa-star-o empty"></i>-->
+                                        @**@
                                         <!--</div>-->
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
-                                          <h4 style="color:orange">@rows.clothname </h4>
-                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
-                                            && rows.xlarge == false)
+                                        <h4 style="color:orange">@rows.clothname </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
                                         {
                                             <p>out Of Stock</p>
                                         }
-                                        
-                                        
+
+
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                                 <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
@@ -582,7 +589,7 @@
                                         }
 
                                         <img src=@rows.pic1 style="width: 100%; height: 40vh; object-fit: contain; " alt="">
-                                    </div> 
+                                    </div>
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         <!--<div class="product-rating">
@@ -590,16 +597,17 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->@**@
+                                            <i class="fa fa-star-o empty"></i>-->
+                                        @**@
                                         <!--</div>-->
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.shoename, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
-                                          <h4 style="color:orange">@rows.shoename </h4>
-                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
-                                            && rows.xlarge == false)
+                                        <h4 style="color:orange">@rows.shoename </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
                                         {
                                             <p>out Of Stock</p>
                                         }
-                                        
+
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                                 <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
@@ -645,6 +653,167 @@
         </div>
         <!-- /container -->
     </div>
+
+    <!-- /Rating -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Rating&Reviews</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="data" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+
+                            <label for="shoename">Mobile No </label><p>(Add your number that you use in your order)</p>
+                            <input class="input" name="number" type="tel" id="tel" maxlength="11" size="11" autocomplete="off" onkeypress="return isNumberkey(event)" placeholder="Mobile No (03153100000)">
+                            <br />
+                            <br />
+
+                            <div id="radios" style="visibility:hidden">
+                                <label>Rating</label>
+                                <span class="star-rating star-5">
+                                    @Html.RadioButton("rating", "1")<i></i>
+                                    @Html.RadioButton("rating", "2")<i></i>
+                                    @Html.RadioButton("rating", "3")<i></i>
+                                    @Html.RadioButton("rating", "4")<i></i>
+                                    @Html.RadioButton("rating", "5")<i></i>
+                                    @*<input type="radio" name="rating" value="1"><i></i>
+                                        <input type="radio" name="rating" value="2"><i></i>
+                                        <input type="radio" name="rating" value="3"><i></i>
+                                        <input type="radio" name="rating" value="4"><i></i>
+                                        <input type="radio" name="rating" value="5"><i></i>*@
+                                </span>
+                                <br />
+                                <label>Review</label>
+                                <br />
+                                <input type="text" class="form-control mb-2" name="review" id="review" placeholder="Enter review">
+
+                                <input type="text" class="form-control mb-2" name="userid" style="visibility:hidden" value="@Session["itemuserid"]">
+                                <p id="mesg" style="color:red; visibility:hidden">You didnt received any order yet from this shop..! You cant give Rating until you buy anything..! </p>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- /reviews -->
+
+    <div class="modal fade" id="exampleModalCenterReviews" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Rating&Reviews</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="data" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+
+                          
+                            @foreach (var item in Model.spGetCustomerReviews)
+                            {
+                            <div id="" >
+                                <h6>@item.customername</h6>
+                                
+                                @if (item.rating == 1)
+                                {
+                                       <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star empty"></i>
+                                                <i class="fa fa-star empty"></i>
+                                                <i class="fa fa-star empty"></i>
+                                                <i class="fa fa-star empty"></i>
+                                            </div>
+
+                                }
+                                else if (item.rating == 2)
+                                {
+                                    <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                <i class="fa fa-star empty"></i>
+                                                <i class="fa fa-star empty"></i>
+                                                <i class="fa fa-star empty"></i>
+                                            </div>
+
+                                }
+                                else if (item.rating == 3)
+                                {
+                                     <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                <i class="fa fa-star empty"></i>
+                                                <i class="fa fa-star empty"></i>
+                                            </div>
+
+                                }
+                                else if (item.rating == 4)
+                                {
+                                    <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                <i class="fa fa-star empty"></i>
+                                            </div>
+
+                                }
+                                else if (item.rating == 5)
+                                {
+                                    
+                                    <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                            </div>
+
+                                }
+                                
+                              
+                              <p  style="">@item.reviews </p>
+                                <hr />
+                            </div>
+
+                            
+                            }
+                            
+
+                        </div>
+
+
+                    </div>
+
+                 
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <!-- /section -->
     <!-- FOOTER -->
     <footer id="footer" class="section section-grey">
@@ -743,15 +912,82 @@
     </footer>
     <input type="hidden" id="refreshed" value="no">
     <script type="text/javascript">
-        onload = function () {
-            var e = document.getElementById("refreshed");
-            if (e.value == "no") e.value = "yes";
-            else { e.value = "no"; location.reload(); }
+        //onload = function () {
+        //    var e = document.getElementById("refreshed");
+        //    if (e.value == "no") e.value = "yes";
+        //    else { e.value = "no"; location.reload(); }
+        //}
+
+        function isNumber(number) {
+        var val = /^923\d{9}$|^03\d{9}$/;
+
+        if (val.test(number)) {
+            // value is ok, use it
+            return true;
+        } else {
+            toastr.error('invalid contact number ')
+            //  number.focus()
+            // alert('invalid number');
+            return false
+        }
+    }
+        function isNumberkey(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                toastr.error('write number only');
+                return false;
+            }
+
+            return true;
         }
 
+         $("form#data").submit(function (e) {
+        debugger
+        e.preventDefault();
+        //var ch = CheckNull();
+        //if (ch == false) {
+        //    return false;
+        //}
+
+        var formData = new FormData(this);
+
+
+            //alert(email+mobile+cnic);
+            $.ajax({
+                url: '@Url.Action("checkNumber", "Customer")',
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+
+                    if (data.messege == 'found')
+                    {
+                        $("#radios").css("visibility", "visible");
+                        $("#mesg").css("visibility", "hidden");
+                    }
+                    if (data.messege == 'notfound') {
+                        $("#radios").css("visibility", "hidden");
+                        $("#mesg").css("visibility", "visible");
+
+                    }
+                    if (data.messege == 'congo') {
+                        $("#radios").css("visibility", "hidden");
+
+                        $('#exampleModalCenter').modal('toggle');
+                        toastr.success('Successfully Submitted');
+
+                    }
+
+                    /*setTimeout(function () { location.reload() }, 1500);*/
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
 
 
 
+    });
 
     </script>
 
@@ -759,6 +995,17 @@
 
     <!-- /FOOTER -->
     <!-- jQuery Plugins -->
+
+
+    <script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+
+    <script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+    <link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Sscripts/moment.js"></script>
+    <script src="~/Sscripts/CustomeJS.js"></script>
+
+    <script src="~/Sscripts/CustomeJS.js"></script>
 
     <script src="~/customercontent/js/jquery.min.js"></script>
     <script src="~/customercontent/js/bootstrap.min.js"></script>
@@ -771,3 +1018,81 @@
 
 </html>
 
+
+<style>
+    .star-rating {
+  font-size: 0;
+  white-space: nowrap;
+  display: inline-block;
+  /* width: 250px; remove this */
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+  background-size: contain;
+}
+.star-rating i {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  /* width: 20%; remove this */
+  z-index: 1;
+  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+  background-size: contain;
+}
+.star-rating input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  opacity: 0;
+  display: inline-block;
+  /* width: 20%; remove this */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  position: relative;
+}
+.star-rating input:hover + i,
+.star-rating input:checked + i {
+  opacity: 1;
+}
+.star-rating i ~ i {
+  width: 40%;
+}
+.star-rating i ~ i ~ i {
+  width: 60%;
+}
+.star-rating i ~ i ~ i ~ i {
+  width: 80%;
+}
+.star-rating i ~ i ~ i ~ i ~ i {
+  width: 100%;
+}
+::after,
+::before {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.star-rating.star-5 {width: 250px;}
+.star-rating.star-5 input,
+.star-rating.star-5 i {width: 20%;}
+.star-rating.star-5 i ~ i {width: 40%;}
+.star-rating.star-5 i ~ i ~ i {width: 60%;}
+.star-rating.star-5 i ~ i ~ i ~ i {width: 80%;}
+.star-rating.star-5 i ~ i ~ i ~ i ~i {width: 100%;}
+
+.star-rating.star-3 {width: 150px;}
+.star-rating.star-3 input,
+.star-rating.star-3 i {width: 33.33%;}
+.star-rating.star-3 i ~ i {width: 66.66%;}
+.star-rating.star-3 i ~ i ~ i {width: 100%;}
+
+
+</style>

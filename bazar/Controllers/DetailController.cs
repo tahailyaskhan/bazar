@@ -242,9 +242,10 @@ namespace bazar.Controllers
                                                         pic11 = pd.pic1,
                                                         pic22 = pd.pic2,
                                                         pic33 = pd.pic3,
-                                                        pic44 = pd.pic4
+                                                        pic44 = pd.pic4,
+                                                        createdById = pd.createdById
 
-                                                    }).ToList();
+                                                    }).Where(x => x.createdById == userid).ToList();
 
             //var s=        (from pd in db.tblmaleGarments                                                       
             //                  select new tblmaleGarmentclass
@@ -284,11 +285,35 @@ namespace bazar.Controllers
                                                           pic11 = pd.pic1,
                                                           pic22 = pd.pic2,
                                                           pic33 = pd.pic3,
-                                                         
+                                                          createdById = pd.createdById
 
-                                                      }).ToList();
+                                                      }).Where(x => x.createdById == userid).ToList();
 
                     return View(getgarment);
+
+
+
+        }
+
+        public ActionResult gettblgeneral()
+        {
+
+            List<tblgeneralclass> getgeneralproducts = (from pd in db.tblgenerals
+                                                      select new tblgeneralclass
+                                                      {
+                                                          id = pd.id,
+                                                          productname = pd.productname,
+                                                         
+                                                          detail = pd.detail,
+                                                          price = pd.price,
+                                                          pic11 = pd.pic1,
+                                                          pic22 = pd.pic2,
+                                                          pic33 = pd.pic3,
+                                                          createdById = pd.createdById
+
+                                                      }).Where(x => x.createdById == userid).ToList();
+
+                    return View(getgeneralproducts);
 
 
 
@@ -304,7 +329,7 @@ namespace bazar.Controllers
             if (getorder != null)
             {
 
-                getorder.status = "done";
+                getorder.status = "delivered";
                 db.SaveChanges();
             }
            
@@ -322,12 +347,12 @@ namespace bazar.Controllers
             if (getorder != null)
             {
 
-                getorder.status = "Delivered";
+                getorder.status = "customerReceived";
                 db.SaveChanges();
             }
 
 
-            return RedirectToAction("gettblorder", "Detail");
+            return RedirectToAction("riderView", "Detail");
         }
         public ActionResult gettblorder()
         {

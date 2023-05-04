@@ -81,5 +81,15 @@ namespace bazar.Controllers
 
             return RedirectToAction("gettblshoe", "Detail");
         }
+
+        public ActionResult deletetblgeneral(int id)
+        {
+            var todo = db.tblgenerals.Where(x => x.id== id).FirstOrDefault();
+            db.tblgenerals.Remove(todo);
+            db.SaveChanges();
+
+
+            return RedirectToAction("gettblgeneral", "Detail");
+        }
     }
 }

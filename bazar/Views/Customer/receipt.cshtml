@@ -90,147 +90,160 @@
         </div>
     </div>
     <div id="pdfs">
-    <header>
-        <!-- top Header -->
-        <!-- /top Header -->
-        <!-- header -->
-        <div id="header">
-            <div class="container">
-                <div class="text-center ">
-                    <!-- Logo -->
-
-                    <div class="header-logo">
-                        <a class="logo" href=@Url.Action("customerView", "Customer")>
-                            <img src="~/LOGO/logo.png" alt="">
-                        </a>
-
-                    </div>
-
-                    <!-- /Logo -->
-                    <!-- Search -->
-                    @*<div class="header-search">
-                            <form action=@Url.Action("customerView", "Customer") method="post">
-
-
-
-                                <input class="input" name="search" id="namesearch" type="text" placeholder="Enter your keyword">
-
-
-
-
-
-
-                                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-
-
-
-                            </form>
-                        </div>*@
-                    <!-- /Search -->
-                </div>
-
-
-                <!-- /Search -->
-                <!--</div>-->
-
-            </div>
+        <header>
+            <!-- top Header -->
+            <!-- /top Header -->
             <!-- header -->
-        </div>
-        <!-- container -->
-    </header>
-    <!-- /HEADER -->
+            <div id="header">
+                <div class="container">
+                    <div class="text-center ">
+                        <!-- Logo -->
 
-   
-    <table class="body-wrap" >
-        <tbody>
-            <tr>
-                <td></td>
-                <td class="container" width="600">
-                    <div class="content">
-                        <table class="main" width="100%" cellpadding="0" cellspacing="0">
-                            <tbody>
-                                <tr>
-                                    <td class="content-wrap aligncenter">
-                                        <table width="100%" cellpadding="0" cellspacing="0">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="content-block" style="text-align:center">
-                                                        <h2>Thanks for using our app</h2>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="content-block">
-                                                        <table class="invoice">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>EShop<br>@DateTime.Now.ToString()</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <table class="invoice-items" cellpadding="0" cellspacing="0">
-                                                                            <tbody>
-                                                                                @foreach (var rows in Session["cart"] as List<bazar.DAL.Data.cart>)
-                                                                                {
+                        <div class="header-logo">
+                            <a class="logo" href=@Url.Action("customerView", "Customer")>
+                                <img src="~/LOGO/logo.png" alt="">
+                            </a>
 
-                                                                                    <tr>
-                                                                                        <td>@rows.clothname <span style="color:orange"> [by @rows.brandname]</span></td>
+                        </div>
 
-                                                                                        <td class="alignright">Rs: @rows.price</td>
-                                                                                    </tr>
-                                                                                }
-                                                                                @*<tr>
-                                                                                        <td>Service 2</td>
-                                                                                        <td class="alignright">$ 10.00</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>Service 3</td>
-                                                                                        <td class="alignright">$ 6.00</td>
-                                                                                    </tr>*@
-                                                                                <tr class="total">
-                                                                                    <td class="alignright" width="70%">Total</td>
-                                                                                    <td class="alignright">Rs: @Session["total"]</td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="content-block" style="text-align:center">
-                                                        @*<a href=@Url.Action("customerView","Customer")>Continue Shopping</a>*@
-                                                        <button id="btnpdf" class="btn btn-primary">Download Receipt</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="content-block" style="text-align:center">
-                                                        Created By Taha Khan
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        @*<div class="footer">
-                                <table width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td class="aligncenter content-block">Questions? Email <a href="mailto:">support@company.inc</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <!-- /Logo -->
+                        <!-- Search -->
+                        @*<div class="header-search">
+                                <form action=@Url.Action("customerView", "Customer") method="post">
+
+
+
+                                    <input class="input" name="search" id="namesearch" type="text" placeholder="Enter your keyword">
+
+
+
+
+
+
+                                    <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+
+
+
+                                </form>
                             </div>*@
+                        <!-- /Search -->
                     </div>
-                </td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-        </div>
+
+
+                    <!-- /Search -->
+                    <!--</div>-->
+
+                </div>
+                <!-- header -->
+            </div>
+            <!-- container -->
+        </header>
+        <!-- /HEADER -->
+
+
+        <table class="body-wrap">
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td class="container" width="600">
+                        <div class="content">
+                            <table class="main" width="100%" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="content-wrap aligncenter">
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="content-block" style="text-align:center">
+                                                            <h2>Thanks for using our app</h2>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="content-block">
+                                                            <table class="invoice">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>EShop<br>@DateTime.Now.ToString()</td>
+                                                                    </tr>
+                                                                    @foreach (var rows in Session["receipt"] as List<bazar.Models.tblcustomerOrder>)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>Name : @rows.customername</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Address : @rows.addresss</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Mobile : @rows.mobileNo</td>
+                                                                        </tr>
+                                                                        break;
+                                                                    }
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table class="invoice-items" cellpadding="0" cellspacing="0">
+                                                                                <tbody>
+                                                                                    @foreach (var rows in Session["cart"] as List<bazar.DAL.Data.cart>)
+                                                                                    {
+
+                                                                                        <tr>
+                                                                                            <td>@rows.clothname <span style="color:orange"> [by @rows.brandname]</span></td>
+
+                                                                                            <td class="alignright">Rs: @rows.price</td>
+                                                                                        </tr>
+                                                                                    }
+                                                                                    @*<tr>
+                                                                                            <td>Service 2</td>
+                                                                                            <td class="alignright">$ 10.00</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>Service 3</td>
+                                                                                            <td class="alignright">$ 6.00</td>
+                                                                                        </tr>*@
+                                                                                    <tr class="total">
+                                                                                        <td class="alignright" width="70%">Total</td>
+                                                                                        <td class="alignright">Rs: @Session["total"]</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="content-block" style="text-align:center">
+                                                            @*<a href=@Url.Action("customerView","Customer")>Continue Shopping</a>*@
+                                                            <button id="btnpdf" class="btn btn-primary">Download Receipt</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="content-block" style="text-align:center">
+                                                            Created By Taha Khan
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            @*<div class="footer">
+                                    <table width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td class="aligncenter content-block">Questions? Email <a href="mailto:">support@company.inc</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>*@
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <h3>Preview :</h3>
 
     <div id="previewImage"></div>
@@ -293,7 +306,7 @@
         Convert_HTML_To_PDF()
 
         // Convert HTML content to PDF
-       
+
 
     });
 </script>
@@ -576,3 +589,70 @@
         }
     }
 </style>
+
+
+<!--<html>
+
+<body style="background-color:#e2e1e0;font-family: Open Sans, sans-serif;font-size:100%;font-weight:400;line-height:1.4;color:#000;">
+    <table style="max-width:670px;margin:50px auto 10px;background-color:#fff;padding:50px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);-moz-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24); border-top: solid 10px green;">
+        <thead>
+            <tr>
+                <th style="text-align:left;"><img style="max-width: 150px;" src="https://www.bachanatours.in/book/img/logo.png" alt="bachana tours"></th>
+                <th style="text-align:right;font-weight:400;">orderdate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="height:35px;"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: solid 1px #ddd; padding:10px 20px;">
+                    <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:150px">Order status</span><b style="color:green;font-weight:normal;margin:0">Success</b></p>-->
+@*<p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Transaction ID</span> abcd1234567890</p>*@
+<!--<p style="font-size:14px;margin:0 0 0 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Order amount</span>totalamount</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="height:35px;"></td>
+            </tr>
+            <tr>
+                <td style="width:50%;padding:20px;vertical-align:top">
+                    <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px">Name</span> customername</p>
+
+                    <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Phone</span> customernumber</p>
+
+                </td>
+                <td style="width:50%;padding:20px;vertical-align:top">
+                    <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Address</span> customeraddress</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="font-size:20px;padding:30px 15px 0 15px;">Items</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding:15px;">
+                    <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;">
+                        <span style="display:block;font-size:13px;font-weight:normal;">Homestay with fooding & lodging</span> Rs. 3500 <b style="font-size:12px;font-weight:300;"> /person/day</b>
+                    </p>
+                    <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;"><span style="display:block;font-size:13px;font-weight:normal;">Pickup & Drop</span> Rs. 2000 <b style="font-size:12px;font-weight:300;"> /person/day</b></p>
+                    <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;"><span style="display:block;font-size:13px;font-weight:normal;">Local site seeing with guide</span> Rs. 800 <b style="font-size:12px;font-weight:300;"> /person/day</b></p>
+                    <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;"><span style="display:block;font-size:13px;font-weight:normal;">Tea tourism with guide</span> Rs. 500 <b style="font-size:12px;font-weight:300;"> /person/day</b></p>
+                    <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;"><span style="display:block;font-size:13px;font-weight:normal;">River side camping with guide</span> Rs. 1500 <b style="font-size:12px;font-weight:300;"> /person/day</b></p>
+                    <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;"><span style="display:block;font-size:13px;font-weight:normal;">Trackking and hiking with guide</span> Rs. 1000 <b style="font-size:12px;font-weight:300;"> /person/day</b></p>
+                </td>
+            </tr>
+        </tbody>
+        <tfooter>
+            <tr>
+                <td colspan="2" style="font-size:14px;padding:50px 15px 0 15px;">
+                    <strong style="display:block;margin:0 0 10px 0;">Regards</strong> Hyderabad Bazar<br>
+                    <b>Phone:</b> 03552-222011<br>
+                    <b>Email:</b> contact@bachanatours.in
+                </td>
+            </tr>
+        </tfooter>
+    </table>
+</body>
+
+</html>-->

@@ -594,6 +594,126 @@ namespace bazar.Controllers
                 return RedirectToAction("viewtblshoe", "Home");
             }
         }
+
+        public ActionResult addtblgeneral(tblgeneralclass data)
+        {
+            tblfemaleGarmentaction repo = new tblfemaleGarmentaction();
+            try
+            {
+
+                string filename = "";
+                Random rnd = new Random();
+                int num = rnd.Next();
+                string username = Session["Username"].ToString();
+                string ServerSavePath = "";
+
+
+                var checkclothname = db.tblgenerals.Where(x => x.productname == data.productname.ToString()).FirstOrDefault();
+
+                if (checkclothname == null)
+                {
+                    tblgeneral ci = new tblgeneral();
+                    ci.productname = data.productname;
+
+                    
+                 
+
+
+                    string keypath = ConfigurationManager.AppSettings["keypathgeneral"];
+                    string httpurl = ConfigurationManager.AppSettings["httpurl"];
+
+                    string path = @keypath + username;  // Give the specific path  
+                    if (!(Directory.Exists(path)))
+                    {
+                        Directory.CreateDirectory(path);
+
+                    }
+
+                    if(data.pic1 != null)
+
+                    {
+                        var InputFileName = Path.GetFileName(data.pic1.FileName);
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "Generals/" + username + "/") + InputFileName2);
+
+
+                        //Save file to server folder  
+                        data.pic1.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "Generals" }, StringSplitOptions.None);
+                        string paths = httpurl + "/Generals/" + ImgPath[1];
+                        string s = paths.Replace("\\", "/");
+                        ci.pic1 = s;
+                        //ci.pic1 = filename;
+
+                    }
+                    if (data.pic2 != null)
+                    {
+                        var InputFileName = Path.GetFileName(data.pic2.FileName);
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "Generals/" + username + "/") + InputFileName2);
+
+
+                        //Save file to server folder  
+                        data.pic2.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "Generals" }, StringSplitOptions.None);
+                        string paths = httpurl + "/Generals/" + ImgPath[1];
+                        string s = paths.Replace("\\", "/");
+                        ci.pic2 = s;
+                        //ci.pic2 = filename;
+
+                    }
+                    if (data.pic3 != null)
+                    {
+                        var InputFileName = Path.GetFileName(data.pic3.FileName);
+
+                        var InputFileName2 = num + Session["userid"].ToString() + InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "Generals/" + username + "/") + InputFileName2);
+
+
+                        //Save file to server folder  
+                        data.pic3.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "Generals" }, StringSplitOptions.None);
+                        string paths = httpurl + "/Generals/" + ImgPath[1];
+                        string s = paths.Replace("\\", "/");
+                        ci.pic3 = s;
+                        //ci.pic2 = filename;
+
+                    }
+
+                    ci.price = data.price;
+                    ci.detail = data.detail;
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+                    ci.isActive = true;
+                    ci.createdDate = DateTime.Now;
+                    db.tblgenerals.Add(ci);
+                    db.SaveChanges();
+
+
+                    return RedirectToAction("viewtblgeneral", "Home");
+                }
+
+                else
+                {
+                    //Session["checkchartname"] = "exist";
+                    return RedirectToAction("viewtblgeneral", "Home");
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session["exception"] = ex.InnerException.ToString(); ;
+                return RedirectToAction("viewtblgeneral", "Home");
+            }
+        }
         //end
     }
 }

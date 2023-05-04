@@ -27,5 +27,6 @@ namespace bazar.DAL.Data
         public IEnumerable<serachFemaleGarment_Result> spFemaleGarmmentList { get; set; }
         public IEnumerable<serachShoe_Result> spShoeList { get; set; }
         public IEnumerable<serachUser_Result> spUserList { get; set; }
+        public IEnumerable<getCustomerReviews_Result> spGetCustomerReviews { get; set; }
     }
 }

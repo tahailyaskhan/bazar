@@ -31,5 +31,6 @@ namespace bazar.Models
         public Nullable<bool> isActive { get; set; }
         public string customername { get; set; }
         public Nullable<int> price { get; set; }
+        public Nullable<System.DateTime> deliveredDate { get; set; }
     }
 }

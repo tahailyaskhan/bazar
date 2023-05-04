@@ -161,6 +161,7 @@
     <Compile Include="DAL\Data\getchartnameclass.cs" />
     <Compile Include="DAL\Data\tblcustomerorder.cs" />
     <Compile Include="DAL\Data\tblfemaleGarmentclass.cs" />
+    <Compile Include="DAL\Data\tblgeneralclass.cs" />
     <Compile Include="DAL\Data\tblmaleGarmentclass.cs" />
     <Compile Include="DAL\Data\tblshoeclass.cs" />
     <Compile Include="DAL\Data\tblsizePantFemaleclass.cs" />
@@ -181,6 +182,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomAuthenticationFilter.cs" />
+    <Compile Include="Models\getCustomerReviews_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -226,6 +230,9 @@
     <Compile Include="Models\tblfemaleGarment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblgeneral.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblmaleGarment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -260,6 +267,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblsizeSho.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_template.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -815,6 +825,8 @@
     <Content Include="Views\Shared\_gettblmalegarment.cshtml" />
     <Content Include="Views\Customer\receipt.cshtml" />
     <Content Include="Views\Detail\riderView.cshtml" />
+    <Content Include="Views\Home\viewtblgeneral.cshtml" />
+    <Content Include="Views\Detail\gettblgeneral.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

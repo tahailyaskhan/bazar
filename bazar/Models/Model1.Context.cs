@@ -29,7 +29,6 @@ namespace bazar.Models
     
         public virtual DbSet<tblcategory> tblcategories { get; set; }
         public virtual DbSet<tblcity> tblcities { get; set; }
-        public virtual DbSet<tblcustomerOrder> tblcustomerOrders { get; set; }
         public virtual DbSet<tblfemaleGarment> tblfemaleGarments { get; set; }
         public virtual DbSet<tblmaleGarment> tblmaleGarments { get; set; }
         public virtual DbSet<tblmarket> tblmarkets { get; set; }
@@ -44,6 +43,9 @@ namespace bazar.Models
         public virtual DbSet<tblsizeShirtMale> tblsizeShirtMales { get; set; }
         public virtual DbSet<tblsizeSho> tblsizeShoes { get; set; }
         public virtual DbSet<tblcreateUser> tblcreateUsers { get; set; }
+        public virtual DbSet<tblcustomerOrder> tblcustomerOrders { get; set; }
+        public virtual DbSet<tblgeneral> tblgenerals { get; set; }
+        public virtual DbSet<tbl_template> tbl_template { get; set; }
     
         public virtual ObjectResult<serachFemaleGarment_Result> serachFemaleGarment(string search)
         {
@@ -88,6 +90,15 @@ namespace bazar.Models
                 new ObjectParameter("search", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<serachUser_Result>("serachUser", searchParameter);
+        }
+    
+        public virtual ObjectResult<getCustomerReviews_Result> getCustomerReviews(Nullable<int> usersid)
+        {
+            var usersidParameter = usersid.HasValue ?
+                new ObjectParameter("usersid", usersid) :
+                new ObjectParameter("usersid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getCustomerReviews_Result>("getCustomerReviews", usersidParameter);
         }
     }
 }

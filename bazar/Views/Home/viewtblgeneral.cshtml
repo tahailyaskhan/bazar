@@ -17,7 +17,19 @@
 
 
 
-
+@{
+//if (Session["Username"] == null)
+//{
+//    Response.Redirect("~/Account/Login");
+//}
+//else
+//{
+//    if (Session["FullName"] != null)
+//    {
+//        ViewBag.Name = Session["FullName"];
+//    }
+//}
+}
 
 
 <!-- [ Main Content ] start -->
@@ -52,59 +64,20 @@
                                 <div class="card">
 
                                     <div class="card-body">
-                                        <h1>Add Shoes</h1>
+                                        <h1>Add Product</h1>
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <form  id="data" enctype="multipart/form-data" method="post">
+                                                <form id="data" enctype="multipart/form-data" method="post">
 
-                                                   
+
                                                     <div class="form-group">
-                                                        <label for="shoename">shoename</label>
-                                                        <input type="text" class="form-control" name="shoename" id="shoename" placeholder="Enter waist size">
-                                                    </div>
-                                           
-
-
-                                           
-
-                                                    <div class="row" style="padding-left:20px">
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("xsmall", new { @id = "xsmall", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="xsmall" id="xsmall">*@
-                                                            <label class="form-check-label" for="xsmall">ExtraSmall</label>
-                                                        </div>
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("small", new { @id = "small", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="small" id="small">*@
-                                                            <label class="form-check-label" for="xsmall">Small</label>
-                                                        </div>
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("medium", new { @id = "medium", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="medium" id="medium">*@
-                                                            <label class="form-check-label" for="medium">Medium</label>
-                                                        </div>
-
+                                                        <label for="productname">productname</label>
+                                                        <input type="text" class="form-control" name="productname" id="productname" placeholder="Enter productname">
                                                     </div>
 
-                                                    <div class="row" style="padding-left:20px">
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("large", new { @id = "large", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="large" id="large">*@
-                                                            <label class="form-check-label" for="large">Large</label>
-                                                        </div>
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("xlarge", new { @id = "xlarge", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="xlarge" id="xlarge">*@
-                                                            <label class="form-check-label" for="xlarge">Extra Large</label>
-                                                        </div>
-                                                        <div class="form-group col-md-2 col-sm-1">
-                                                            @Html.CheckBox("xxlarge", new { @id = "xxlarge", @class = "form-check-input" })
-                                                            @*<input type="checkbox" class="form-check-input" name="xxlarge" id="xxlarge">*@
-                                                            <label class="form-check-label" for="xxlarge">XXL</label>
-                                                        </div>
 
-                                                    </div>
+
 
                                                     <div class="form-group">
                                                         <label for="pic1">Select a file:</label>
@@ -128,7 +101,7 @@
 
                                                     <div class="form-group">
                                                         <label for="price">Price</label>
-                                                        <input type="text"  autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="price" id="price" placeholder="Enter Price">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="price" id="price" placeholder="Enter Price">
                                                     </div>
 
 
@@ -173,7 +146,7 @@
 
      function CheckNull() {
         debugger
-        if ($("#shoename").val() == "") { document.getElementById('shoename').style.borderColor = "red"; toastr.error('shoename  required!'); } else { document.getElementById('shoename').style.borderColor = "#ced4da"; }
+         if ($("#productname").val() == "") { document.getElementById('productname').style.borderColor = "red"; toastr.error('productname  required!'); } else { document.getElementById('productname').style.borderColor = "#ced4da"; }
         if ($("#price").val() == "") { document.getElementById('price').style.borderColor = "red"; toastr.error('price required!');  } else { document.getElementById('price').style.borderColor = "#ced4da"; }
         if ($("#detail").val() == "") { document.getElementById('detail').style.borderColor = "red"; toastr.error('detail required!'); } else { document.getElementById('detail').style.borderColor = "#ced4da"; }
 
@@ -181,7 +154,7 @@
 
 
 
-        if($("#shoename").val() == "" || $("#price").val() == "" || $("#detail").val() == ""  )
+         if ($("#productname").val() == "" || $("#price").val() == "" || $("#detail").val() == ""  )
         {
             debugger
             toastr.error('All Fields are required!');
@@ -250,7 +223,7 @@
 
             //alert(email+mobile+cnic);
             $.ajax({
-                url: '@Url.Action("addtblShoe", "Create")',
+                url: '@Url.Action("addtblgeneral", "Create")',
                 type: 'POST',
                 data: formData,
                 success: function (data) {
@@ -265,6 +238,7 @@
 
     });
 
-
+    
+   
 
 </script>

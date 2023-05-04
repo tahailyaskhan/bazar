@@ -2,10 +2,16 @@
 using bazar.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.UI.WebControls;
 
 namespace bazar.Controllers
 {
@@ -19,8 +25,9 @@ namespace bazar.Controllers
         {
             viewmodel get = new viewmodel();
             Session["market"] = db.tblmarkets.ToList();
+            Session["shop"] = db.tblshoptypes.Where(x=>x.id!=1 && x.id != 2 && x.id != 3).ToList();
             //   var getCustomer = db.tblcreateUsers.ToList();
-            get.userList = db.tblcreateUsers.Where(x=>x.roleid==2 || x.roleid == 3 || x.roleid == 4).ToList();
+            get.userList = db.tblcreateUsers.Where(x=>x.roleid!=5 && x.roleid != 1).ToList();
 
             return View(get);
         }
@@ -29,6 +36,7 @@ namespace bazar.Controllers
         {
             viewmodel get = new viewmodel();
             Session["market"] = db.tblmarkets.ToList();
+            Session["shop"] = db.tblshoptypes.ToList();
             get.spUserList = db.serachUser(search).ToList();
 
             //var getCustomer = db.tblcreateUsers.Where(x=>x.name==search).ToList();
@@ -46,6 +54,7 @@ namespace bazar.Controllers
             tblcustomerOrder obj = new tblcustomerOrder();
 
             List<cart> cartlist = Session["cart"] as List<cart>;
+            List<tblcustomerOrder> cart = new List<tblcustomerOrder>();
             if (cartlist != null)
             {
                 foreach (var item in cartlist)
@@ -61,9 +70,47 @@ namespace bazar.Controllers
                     obj.orderId = item.ids;
                     obj.size = item.size;
                     obj.status = "pending";
+
+                    cart.Add(obj);
+
+
                     db.tblcustomerOrders.Add(obj);
                     db.SaveChanges();
                 }
+                Session["receipt"] = cart;
+                //try
+                //{
+                //    if (ModelState.IsValid)
+                //    {
+                //        var senderEmail = new MailAddress("mtk212@yahoo.com", "Jamil");
+                //        var receiverEmail = new MailAddress("ktahakhan8@gmail.com", "Receiver");
+                //        var password = "Your Email Password here";
+                //        var sub = "subject";
+                //        var body = "message";
+                //        var smtp = new SmtpClient
+                //        {
+                //            Host = "smtp.gmail.com",
+                //            Port = 587,
+                //            EnableSsl = true,
+                //            DeliveryMethod = SmtpDeliveryMethod.Network,
+                //            UseDefaultCredentials = false,
+                //            Credentials = new NetworkCredential(senderEmail.Address, password)
+                //        };
+                //        using (var mess = new MailMessage(senderEmail, receiverEmail)
+                //        {
+                //            Subject = sub,
+                //            Body = body
+                //        })
+                //        {
+                //            smtp.Send(mess);
+                //        }
+                //        return View();
+                //    }
+                //}
+                //catch (Exception)
+                //{
+                //    ViewBag.Error = "Some Error";
+                //}
                 //return RedirectToAction("receipt", "Customer");
                 return Json(new { messege = "success" });
             }
@@ -73,6 +120,47 @@ namespace bazar.Controllers
             }
             //ViewBag.success = "success";
             //return View();
+        }
+
+        public ActionResult semail()
+        {
+            try
+            {
+               
+                {
+                    var senderEmail = new MailAddress("ktahakhan8@gmail.com", "Jamil");
+                    var receiverEmail = new MailAddress("mtk212@yahoo.com", "Receiver");
+                    var password = "okoxdnbhxitekqny";
+                    var sub = "subject";
+                    var body = "message";
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential("ktahakhan8@gmail.com", password),
+                       
+                    };
+                    using (var mess = new MailMessage(senderEmail, receiverEmail)
+                    {
+                        Subject = sub,
+                        Body = body
+                    })
+                    {
+                        
+                        smtp.Send(mess);
+                    }
+                    return RedirectToAction("customerView", "Customer");
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Some Error";
+                return RedirectToAction("customerView", "Customer");
+            }
+            return RedirectToAction("customerView", "Customer");
         }
         [HttpGet]
         public ActionResult getMarketShop(int marketid)
@@ -88,12 +176,29 @@ namespace bazar.Controllers
 
             return RedirectToAction("customerView", "Customer");
         }
+
+        [HttpGet]
+        public ActionResult getShoptype(int shoptypeid)
+        {
+
+            viewmodel gets = new viewmodel();
+            var userid = Convert.ToInt32(Session["itemuserid"]);
+            TempData["marketshop"] = db.tblcreateUsers.Where(x => x.shoptypeid == shoptypeid).ToList();
+
+            var obj = db.tblshoptypes.Where(x => x.id == shoptypeid).FirstOrDefault();
+
+            TempData["searchedMarket"] = obj.shoptypeName;
+
+            return RedirectToAction("customerView", "Customer");
+        }
         [HttpGet]
        
         [Route("yourshop/{ shopname ?}")]
         public ActionResult getUsersShop(string shopname)
         {
             viewmodel gets = new viewmodel();
+         
+            
             var shoptype = db.tblcreateUsers.Where(x => x.name == shopname).FirstOrDefault();
             Session["shoptype"] = shoptype.shoptypeid;
             Session["shoplogo"] = shoptype.logo;
@@ -124,11 +229,13 @@ namespace bazar.Controllers
             var ss = db.tblcategories.ToList();
             ViewBag.check = null;
             Session["itemuserid"] = shoptype.id;
+            var getcustomerreviews = db.getCustomerReviews(shoptype.id).ToList();
+            gets.spGetCustomerReviews = getcustomerreviews;
             return View(gets);
             //return View();
         }
         [HttpPost]
-        [Route("getUsersShop")]
+        //[Route("getUsersShop")]
         public ActionResult getUsersShop(string search,string shoptypeid,string usersid)
         {/////
             viewmodel gets = new viewmodel();
@@ -331,8 +438,161 @@ namespace bazar.Controllers
 
         public ActionResult receipt()
         {
+            string midmesg = "";
+            
+            var obj=db.tbl_template.FirstOrDefault();
+
+            string uppermesg =obj.uppermesg;
+            string endmesg = obj.endmesg;
+
+            string mesg = "";
+            try
+            {
+
+                {
+                    var senderEmail = new MailAddress("ktahakhan8@gmail.com", "Jamil");
+                    var receiverEmail = new MailAddress("mtk212@yahoo.com", "Receiver");
+                    var password = "okoxdnbhxitekqny";
+                    var sub = "subject";
+                    string table = "<table><tr><td>id</td><td>Name</td><td>Price</td></tr></table>";
+                    
+
+                    MailDefinition md = new MailDefinition();
+                    md.From = "test@domain.example";
+                    md.IsBodyHtml = true;
+                    md.Subject = "Test of MailDefinition";
+                    //md.IsBodyHtml = true;
+                    foreach (var rows in Session["cart"] as List<bazar.DAL.Data.cart>)
+                    {
+
+                        midmesg = midmesg + "<tr><td> <p style='font - size:14px; margin: 0; padding: 10px; border: solid 1px #ddd;font-weight:bold;'><span style='display:block;font-size:13px;font-weight:normal;'>" + rows.clothname + "[by" + rows.brandname + "]</span>" + "Rs:" + rows.price + "</p>" + "</td></tr>";
+                            
+
+
+                    }
+                    mesg = uppermesg + midmesg + endmesg;
+                    //uppermesg = "<table  width='100%' cellpadding='0' cellspacing='0'>"+
+                    //      "  <tbody>"+
+                    //           " <tr>"+
+                    //                "<td>"+
+                    //                   "<table width='100%' cellpadding='0' cellspacing='0'>"+
+                    //                        "<tbody>"+
+                    //                            "<tr>"+
+                    //                                "<td  style='text-align:center'>"+
+                    //                                    "<h2>Thanks for using our app</h2>"+
+                    //                                "</td>"+
+                    //                            "</tr>"+
+                    //                            "<tr>"+
+                    //                               "<td >"+
+                    //                                    "<table>"+
+                    //                                        "<tbody>"+
+                    //                                            "<tr>"+
+                    //                                                <td>EShop<br>enddate</td>
+                    //                                            </tr>
+                    //                                            <tr>
+                    //                                                <td>
+                    //                                                    <table class="invoice-items" cellpadding="0" cellspacing="0">
+                    //                                                        <tbody>";
+                    //mesg=mesg+ <tr> <td> <table class="invoice-items" cellpadding="0" cellspacing="0"> <tbody>
+
+
+
+                    //foreach (var rows in Session["cart"] as List<bazar.DAL.Data.cart>)
+                    //{
+
+                    //    mesg = mesg + "<tr>  <td>@rows.clothname <span style='color: orange'> [by" + rows.brandname + "]</span></td>" +
+                    //        "<td class='alignright''> Rs:" + rows.price + " </td> </tr>";
+
+
+                    //}
+
+                    var body = table;
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential("ktahakhan8@gmail.com", password),
+
+                    };
+
+                    
+                    body = mesg;
+                    foreach (var rows in Session["receipt"] as List<bazar.Models.tblcustomerOrder>)
+                   {
+                        body = body.Replace("customername", rows.customername);
+                        body = body.Replace("customernumber", rows.mobileNo);
+                        body = body.Replace("customeraddress", rows.addresss);
+                        body = body.Replace("totalamount", Convert.ToString(@Session["total"]));
+                        body = body.Replace("orderdate", DateTime.Now.ToString());
+                        break;
+                    }                   
+                   
+                    //using (var mess = new MailMessage(senderEmail, receiverEmail)
+                    //{
+                    //    Subject = sub,
+                    //    Body = Convert.ToString(body)
+                    //})
+                    ListDictionary replacements = new ListDictionary();
+                    MailMessage msg = md.CreateMailMessage("mtk212@yahoo.com", replacements, body, new System.Web.UI.Control());
+                    {
+
+                        smtp.Send(msg);
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Some Error";
+                
+            }
 
             return View();
+        }
+
+        //public ActionResult getReviews(int userid)
+        //{
+        //    viewmodel getReviews = new viewmodel();
+        //    var getcustomerreviews = db.getCustomerReviews(userid).ToList();
+        //    getReviews.spGetCustomerReviews = getcustomerreviews;
+        //    return View(getReviews);
+        //}
+
+        [HttpPost]
+        public ActionResult checkNumber(string number, string review, string userid,string rating)
+        {
+            int ownerid = Convert.ToInt32(userid);
+            var check = db.tblcustomerOrders.Where(x => x.status == "recieved" && x.mobileNo == number && x.ownerId==ownerid&& x.rating == null).FirstOrDefault();
+            if (check == null && rating == null)
+            {
+                return Json(new { messege = "notfound" });
+            }
+            else if (check != null && rating == null)
+            {
+                return Json(new { messege = "found" });
+            }
+            else if (rating != null)
+            {
+                var list = db.tblcustomerOrders.Where(x => x.status == "recieved" && x.mobileNo == number && x.ownerId == ownerid && x.rating == null).ToList();
+                foreach (var i in list)
+                {
+                    i.rating = Convert.ToInt32(rating);
+                    i.reviews = review;
+                    db.SaveChanges();
+
+                }
+                return Json(new { messege = "congo" });
+            }
+
+
+            //return RedirectToAction("receipt", "Customer");
+            return Json(new { messege = "success" });
+            
+            
+            
         }
 
         public ActionResult getChart()

@@ -55,6 +55,17 @@ namespace bazar.Controllers
             return View();
         }
 
+        public ActionResult viewtblgeneral()
+        {
+            Response.AppendHeader("Cache-Control", "no-store");
+            Response.ExpiresAbsolute = DateTime.Now.AddDays(-1d);
+
+            Response.Expires = -1500;
+
+            Response.CacheControl = "no-cache";
+            return View();
+        }
+
         public ActionResult riderView()
         {
             return View();

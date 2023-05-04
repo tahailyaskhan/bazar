@@ -636,12 +636,13 @@
                 type: 'POST',
                 data: formData,
                 success: function (data) {
-                    if (data.messege == 'success') {
+                   /* if (data.messege == 'success')*/
+                    {
                         toastr.success('Successfully Submitted');
                     }
-                    else {
-                        toastr.error("chartname already exist");
-                    }
+                    //else {
+                    //    toastr.error("chartname already exist");
+                    //}
                 },
                 cache: false,
                 contentType: false,
