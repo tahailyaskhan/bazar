@@ -168,6 +168,8 @@
     <Compile Include="DAL\Data\tblsizePantMaleclass.cs" />
     <Compile Include="DAL\Data\tblsizeShirtFemaleclass.cs" />
     <Compile Include="DAL\Data\tblsizeShirtMaleField.cs" />
+    <Compile Include="DAL\Data\tbluserclass.cs" />
+    <Compile Include="DAL\Data\userclass.cs" />
     <Compile Include="DAL\Data\UserLogin.cs" />
     <Compile Include="DAL\Data\viewmodel.cs" />
     <Compile Include="DAL\Repository\tblcreateUseraction.cs" />
@@ -827,6 +829,12 @@
     <Content Include="Views\Detail\riderView.cshtml" />
     <Content Include="Views\Home\viewtblgeneral.cshtml" />
     <Content Include="Views\Detail\gettblgeneral.cshtml" />
+    <Content Include="Views\Home\viewtbluser.cshtml" />
+    <Content Include="Views\Detail\gettbluser.cshtml" />
+    <Content Include="Views\Shared\_getuser.cshtml" />
+    <Content Include="Views\Home\viewtblMarket.cshtml" />
+    <Content Include="Views\Home\viewtblRole.cshtml" />
+    <Content Include="Views\Home\viewtblShoptype.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -58,17 +58,26 @@
                     <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
                     <ul class="menu-list">
                         @*<li><a href="#">Home</a></li>
-                            <li><a href="#">Shop</a></li>
+        <li><a href="#">Shop</a></li>
 
 
-                            <li><a href="#">Sales</a></li>*@
+        <li><a href="#">Sales</a></li>*@
                         @*<li class="dropdown default-dropdown">*@
                         @*<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages </a>*@
                         @*@foreach (var rows in Session["categories"] as List<bazar.Models.tblcategory>)*@
-                         @foreach (var rows in @ViewBag.categories as List<bazar.Models.tblcategory>)
-                         {
+                        @*@foreach (var rows in @ViewBag.categories as List<bazar.Models.tblcategory>)
+                        {
 
                             <li>@Html.ActionLink(rows.categoryName, "getCategorysGarment", "Customer", new { id = rows.id })</li>
+
+
+                        }*@
+
+                        @foreach (var rows in @ViewBag.categories as List<bazar.Models.tblcategory>)
+                        {
+
+
+                            <li>@Html.ActionLink(rows.categoryName, "getUsersShopCategoryItem", "Customer", new { categoryid = rows.id, usersid = @Session["itemuserid"] }, new { @class = "btn" })</li>
 
 
                         }
@@ -410,9 +419,9 @@
 
                                 @if (Model.malePantSizeList != null)
                                 {
-                                    <div class="table-responsive ">
+                                    <div class="">
 
-                                        <table style="width:10%" class="table">
+                                        <table style="width:10%; border:solid" class="table" >
                                             <thead style="color: white; background-color: deepskyblue ">
                                                 <tr style="font-size:10px;">
                                                     <th>Waist</th>

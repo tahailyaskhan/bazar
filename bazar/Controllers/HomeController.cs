@@ -55,6 +55,47 @@ namespace bazar.Controllers
             return View();
         }
 
+        public ActionResult viewtbluser()
+        {
+            return View();
+        }
+
+        public ActionResult viewtblMarket()
+        {
+
+            bazarEntities db = new bazarEntities();
+            var mar = db.tblmarkets.ToList();
+            
+
+
+
+            return View(mar);
+        }
+
+        public ActionResult viewtblRole()
+        {
+
+            bazarEntities db = new bazarEntities();
+            var mar = db.tblroles.ToList();
+
+
+
+
+            return View(mar);
+        }
+
+        public ActionResult viewtblShoptype()
+        {
+
+            bazarEntities db = new bazarEntities();
+            var mar = db.tblshoptypes.ToList();
+
+
+
+
+            return View(mar);
+        }
+
         public ActionResult viewtblgeneral()
         {
             Response.AppendHeader("Cache-Control", "no-store");

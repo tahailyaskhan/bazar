@@ -66,6 +66,10 @@ namespace bazar.Controllers
                 {
                     return RedirectToAction("viewtblgeneral", "Home");
                 }
+                if (check.roleid == 1)
+                {
+                    return RedirectToAction("viewtbluser", "Home");
+                }
             }
             else
             {

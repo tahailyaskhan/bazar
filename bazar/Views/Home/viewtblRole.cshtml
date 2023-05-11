@@ -1,0 +1,191 @@
+﻿@model IEnumerable<bazar.Models.tblrole>
+@{
+    ViewBag.Title = "viewtblrole";
+}
+
+<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+
+<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+<link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Sscripts/moment.js"></script>
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ breadcrumb ] start -->
+                        <!-- [ breadcrumb ] end -->
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <!-- [ form-element ] start -->
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Shoptype Form</h5>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <form id="data">
+                                                    <div class="form-group">
+                                                        <label for="marketname">rolename</label>
+                                                        <input type="text" class="form-control" name="rolename" id="rolename" placeholder="Enter marketname">
+                                                        @*<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>*@
+                                                    </div>
+
+
+                                                    <button type="submit" id="add" class="btn btn-primary">Submit</button>
+                                                    <button type="button" class="btn btn-primary" id="update" style="display:none">Update</button>
+                                                </form>
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+                                </div>
+                                <!-- Input group -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Input Group</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <table id="maletable" style="width:100%;">
+                                            <thead style="color: #ff6002; width: 100%;">
+                                                <tr>
+                                                    <td style="display: none">id</td>
+
+
+                                                    <td>rolename</td>
+
+                                                    <td>Action</td>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblfloortime" style="width:100%;">
+
+                                                @foreach (var row in Model)
+                                                {
+
+                                                    <tr>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.id)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.roleName)</td>
+                                                        <td><button class='mt-2 btn btn-primary btnEdit' id='btnEdit'>Edit</button>  @Html.ActionLink("Delete", "deletetblrole", "Delete", new { id = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>
+                                                        @*<td><button class='mt-2 btn btn-primary btnDelete' id='btnDelete'>Deactivate</button></td>*@
+                                                        @*<td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { id = row.id }, new { @class = "btn btn-primary" })</td>*@
+
+
+                                                    </tr>
+
+                                                }
+
+                                                @*<tr>
+                                                        <td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { chartname = rows.chartname }, new { @class = "btn btn-primary" })</td>
+
+                                                    </tr>*@
+
+                                            </tbody>
+                                        </table>
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- [ form-element ] end -->
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+
+    var id = "";
+
+    $("form#data").submit(function (e) {
+        debugger
+
+
+
+        var formData = new FormData(this);
+
+
+            //alert(email+mobile+cnic);
+        $.ajax({
+            url: '@Url.Action("addtblRole", "Create")',
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                toastr.success('Successfully Submitted');
+                location.reload();
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+
+    });
+
+     $(document).on('click', '#update', function () {
+         /*  $('#my-modal').fadeIn(400);*/
+
+                 $.ajax({
+                url: '@Url.Action("updatetblRole", "Update")',
+                type: 'POST',
+                     data: {
+                         'id': id,
+                         'rolename': $('#rolename').val()
+                     },
+                success: function (data) {
+                    toastr.success('Successfully Updated');
+                    location.reload();
+                },
+
+            });
+         $('#update').hide();
+         $('#add').show();
+     });
+
+
+
+
+        $(document).on('click', '.btnEdit', function () {
+
+            $('#add').hide();
+            $('#update').show();
+
+                 var $row = $(this).closest("tr");
+                $tds = $row.find("td:nth-child(1)");
+
+            id = $tds.text();
+
+                $tds = $row.find("td:nth-child(2)");
+                $('#rolename').val($tds.text());
+
+
+        });
+</script>

@@ -81,7 +81,43 @@ namespace bazar.Controllers
 
             return RedirectToAction("gettblshoe", "Detail");
         }
+        public ActionResult deletetbluser(int id)
+        {
+            var todo = db.tblcreateUsers.Where(x => x.id == id).FirstOrDefault();
+            db.tblcreateUsers.Remove(todo);
+            db.SaveChanges();
 
+
+            return RedirectToAction("gettbluser", "Detail");
+        }
+
+        public ActionResult deletetblmarket(int id)
+        {
+            var todo = db.tblmarkets.Where(x => x.id == id).FirstOrDefault();
+            db.tblmarkets.Remove(todo);
+            db.SaveChanges();
+
+
+            return RedirectToAction("viewtblMarket", "Home");
+        }
+        public ActionResult deletetblshoptype(int id)
+        {
+            var todo = db.tblshoptypes.Where(x => x.id == id).FirstOrDefault();
+            db.tblshoptypes.Remove(todo);
+            db.SaveChanges();
+
+
+            return RedirectToAction("viewtblShoptype", "Home");
+        }
+        public ActionResult deletetblrole(int id)
+        {
+            var todo = db.tblroles.Where(x => x.id == id).FirstOrDefault();
+            db.tblroles.Remove(todo);
+            db.SaveChanges();
+
+
+            return RedirectToAction("viewtblRole", "Home");
+        }
         public ActionResult deletetblgeneral(int id)
         {
             var todo = db.tblgenerals.Where(x => x.id== id).FirstOrDefault();

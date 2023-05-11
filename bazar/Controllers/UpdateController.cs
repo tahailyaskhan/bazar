@@ -14,6 +14,146 @@ namespace bazar.Controllers
     public class UpdateController : Controller
     {
         // GET: Update
+
+        public ActionResult updatetblMarket(string id, string marketname)
+        {
+            bazarEntities db = new bazarEntities();
+            int ids = Convert.ToInt32(id);
+            var obj = db.tblmarkets.Where(x => x.id == ids).FirstOrDefault();
+
+            obj.marketName = marketname;
+            db.SaveChanges();
+            return RedirectToAction("viewtblMarket", "Home");
+        }
+
+        public ActionResult updatetblRole(string id, string rolename)
+        {
+            bazarEntities db = new bazarEntities();
+            int ids = Convert.ToInt32(id);
+            var obj = db.tblroles.Where(x => x.id == ids).FirstOrDefault();
+
+            obj.roleName = rolename;
+            db.SaveChanges();
+            return RedirectToAction("viewtblRole", "Home");
+        }
+
+        public ActionResult updatetblShoptype(string id, string shoptypename)
+        {
+            bazarEntities db = new bazarEntities();
+            int ids = Convert.ToInt32(id);
+            var obj = db.tblshoptypes.Where(x => x.id == ids).FirstOrDefault();
+
+            obj.shoptypeName = shoptypename;
+            db.SaveChanges();
+            return RedirectToAction("viewtblShoptype", "Home");
+        }
+        public ActionResult updatetbluser(userclass data)
+          {
+            bazarEntities db =new bazarEntities();
+          
+            try
+            {
+                Random rnd = new Random();
+                string filename = "";
+                int num = rnd.Next();
+                string ServerSavePath = "";
+                string username = Session["Username"].ToString();
+                //var checkusername = db.tblcreateUsers.Where(x => x.username == data.username.ToString()).FirstOrDefault();
+                //var checkshopname = db.tblcreateUsers.Where(x => x.shopname == data.shopname.ToString()).FirstOrDefault();
+               
+                //if (checkusername== null && checkshopname == null) 
+                {
+                    var ci = db.tblcreateUsers.Where(x => x.id == data.id).FirstOrDefault();
+
+                    ci.username = data.username;
+                    ci.password = data.password;
+                    ci.email = data.email;
+                    ci.cnic = data.cnic;
+                    ci.shopname = data.shopname;
+                    ci.addresss = data.address;
+                    ci.roleid = data.roleid;
+                    ci.marketid = data.marketid;
+                    ci.shoptypeid = data.shoptypeid;
+                    string keypath=ConfigurationManager.AppSettings["keypathprofilepic"];
+                    string httpurl= ConfigurationManager.AppSettings["httpurl"];
+
+                    string path = @keypath + data.username;  // Give the specific path  
+                    if (!(Directory.Exists(path)))
+                    {
+                        Directory.CreateDirectory(path);
+
+                    }
+
+                    if (data.pics1 != null)
+
+                    {
+                        var InputFileName = Path.GetFileName(data.pics1.FileName);
+                 
+                        var InputFileName2 = num + Session["userid"].ToString()+InputFileName  ;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "profilepic/"+ username + "/") + InputFileName2);
+                
+                        
+                        //Save file to server folder  
+                        data.pics1.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "profilepic" }, StringSplitOptions.None);
+                        string paths = httpurl + "/profilepic/" + ImgPath[1];
+                        string s = paths.Replace("\\", "/");
+                        ci.profilepic = s;
+                        //ci.pic1 = filename;
+                        
+                    }
+                   if (data.pics2 != null)
+                    {
+                        var InputFileName = Path.GetFileName(data.pics2.FileName);
+                       
+                      
+                        var InputFileName2 = num + Session["userid"].ToString()+InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "profilepic/" + username + "/") + InputFileName2);
+
+                        //Save file to server folder  
+                        data.pics2.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "profilepic" }, StringSplitOptions.None);
+                        string paths = httpurl + "/profilepic/" + ImgPath[1];
+                        string s = paths.Replace("\\", "/");
+                        ci.logo = s;
+                        //ci.pic2 = filename;
+                        
+                    }
+                    
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+                    ci.isActive = true;
+                  
+
+                   
+                    db.SaveChanges();
+                   
+
+                    return Json(new { messege = "success" });
+
+                    //return RedirectToAction("viewtblmaleGarment", "Home");
+                }
+
+                //else
+                //{
+                //    // Session["checkchartname"] = "exist";
+                //    //  return RedirectToAction("viewtblmaleGarment", "Home");
+                //    return Json(new { messege = "exist" });
+
+                //}
+            }
+            catch (Exception ex)
+            {
+
+                Session["exception"] = ex.InnerException.ToString();
+                return Json(new { messege = "exception" });
+
+                //return RedirectToAction("viewtblmaleGarment", "Home");
+            }
+        }
         public ActionResult updatetblmaleGarment(tblmaleGarmentclass data)
         {
             bazarEntities db = new bazarEntities();

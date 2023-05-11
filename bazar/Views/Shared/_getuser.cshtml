@@ -1,0 +1,123 @@
+﻿@model IEnumerable<bazar.DAL.Data.userclass>
+
+
+
+
+<section class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+
+                 
+
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="card">
+
+                                    <div class="card-body table-border-style" style="width:100%;">
+                                        <div class="table-responsive">
+
+                                            <table id="maletable" style="width:100%;">
+                                                <thead style="color: #ff6002; width: 100%;">
+                                                    <tr>
+                                                        <td style="display: none">id</td>
+                                                        <td>user Name</td>
+
+                                                        <td>email</td>
+                                                        <td>password</td>
+                                                        <td>Role</td>
+                                                        <td>shopname</td>
+                                                        <td>shoptype</td>
+                                                        <td>address</td>
+                                                        <td>market</td>
+                                                        <td>cnic</td>
+                                                        <td style="display:none">profilepic</td>
+                                                        <td style="display:none">logo</td>
+                                                        <td style="display:none">market</td>
+                                                        <td style="display:none">shop</td>
+                                                        <td style="display:none">role</td>
+                                                        <td>profilepic</td>
+                                                        <td>logo</td>
+
+                                                        <td>Action</td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tblfloortime" style="width:100%;">
+
+                                                    @foreach (var row in Model)
+                                                    {
+
+                                                    <tr>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.id)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.username)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.email)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.password)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.role)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.shopname)</td>
+
+                                                        <td>@Html.DisplayFor(modelItem => row.shoptype)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.address)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.market)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.cnic)</td>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.profilepic)</td>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.logo)</td>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.marketid)</td>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.shoptypeid)</td>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.roleid)</td>
+                                                        <td><img id="myImg" src="@row.profilepic" alt="Snow" style="width:80px;height:80px;" class="mb-2"></td>
+                                                        <td><img id="myImg" src="@row.logo" alt="Snow" style="width:80px;height:80px;" class="mb-2"></td>
+                                                        <td><button class='mt-2 btn btn-primary btnEdit' id='btnEdit'>Edit</button>  @Html.ActionLink("Delete", "deletetbluser", "Delete", new { id = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>
+                                                        @*<td><button class='mt-2 btn btn-primary btnDelete' id='btnDelete'>Deactivate</button></td>*@
+                                                        @*<td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { id = row.id }, new { @class = "btn btn-primary" })</td>*@
+
+
+                                                    </tr>
+
+                                                    }
+
+                                                    @*<tr>
+                                                            <td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { chartname = rows.chartname }, new { @class = "btn btn-primary" })</td>
+
+                                                        </tr>*@
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*<script>
+
+        $(document).ready(function () {
+
+
+
+            $('#maletable').dataTable({
+                "sDom": 'T<"clear">lfrtip',
+                "oTableTools": {
+                    "sSwfPath": "/swf/copy_cvs_xlsx_pdf.swf"
+                }
+            });
+
+        });
+
+
+    </script>*@
+

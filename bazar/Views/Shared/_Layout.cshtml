@@ -174,7 +174,26 @@
 
 
                     }
+                    @if (Convert.ToInt32(@Session["roleid"]) == 1)
+                    {
+                        <li class="nav-item">
+                            <a href=@Url.Action("viewtbluser","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Users</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("gettbluser","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get users</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("viewtblRole","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Role</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("viewtblMarket","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Markets</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=@Url.Action("viewtblShoptype","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Shoptype</span></a>
+                        </li>
 
+
+                    }
 
                 </ul>
               

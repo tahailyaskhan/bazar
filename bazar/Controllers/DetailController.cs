@@ -36,6 +36,67 @@ namespace bazar.Controllers
 
 
             }
+         public ActionResult getMarkets()
+            {
+               
+               
+                var CategoryTypes = (from pd in db.tblmarkets
+                                                       
+                                     select new
+                                     {
+                                        pd.id,
+                                        pd.marketName,
+                                       
+                                     }).ToList();
+
+               
+                return Json(new { ErrorCode = "000", CategoryTypes= CategoryTypes });
+
+
+            }
+
+             public ActionResult getShoptype()
+            {
+               
+                int inputter = Convert.ToInt32(Session["inputterType"]);
+               // var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
+
+                var CategoryTypes = (from pd in db.tblshoptypes
+                                                       
+                                     select new
+                                     {
+                                        pd.id,
+                                        pd.shoptypeName,
+                                       
+                                     }).ToList();
+
+               
+                return Json(new { ErrorCode = "000", CategoryTypes= CategoryTypes });
+
+
+            }
+
+
+            public ActionResult getRole()
+            {
+               
+                int inputter = Convert.ToInt32(Session["inputterType"]);
+               // var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
+
+                var CategoryTypes = (from pd in db.tblroles
+                                                       
+                                     select new
+                                     {
+                                        pd.id,
+                                        pd.roleName,
+                                       
+                                     }).ToList();
+
+               
+                return Json(new { ErrorCode = "000", CategoryTypes= CategoryTypes });
+
+
+            }
 
         public ActionResult getSizeList(int categoryid)
         {
@@ -294,7 +355,52 @@ namespace bazar.Controllers
 
 
         }
+         public ActionResult gettbluser()
+        {
 
+            List<userclass> getgarment = (from pd in db.tblcreateUsers
+                                               join sub in db.tblshoptypes on pd.shoptypeid equals sub.id
+                                               join mk in db.tblmarkets on pd.marketid equals mk.id
+                                               join rl in db.tblroles on pd.roleid equals rl.id
+                                               select new  userclass
+                                               {
+                                                   id           =pd.id,
+                                                   username       = pd.username,
+                                                   email           =pd.email,
+                                                   password    =pd.password,
+                                                   cnic            =pd.cnic,
+                                                   shopname          =pd.shopname,
+                                                   profilepic            =pd.profilepic,
+                                                   logo              =pd.logo,
+                                                   shoptype       =   sub.shoptypeName,
+                                                   market        =mk.marketName,
+                                                   role = rl.roleName,
+                                                   address=pd.addresss,
+                                                   shoptypeid= sub.id,
+                                                   roleid=rl.id,
+                                                   marketid=mk.id
+
+
+                                               }).ToList();
+        
+                   //var s=        (from pd in db.tblmaleGarments                                                       
+                   //                  select new tblmaleGarmentclass
+                   //                  {
+                   //                    clothname= pd.clothname,
+                   //                     pd.categoryName
+                   //                  }).ToList();
+
+
+            //foreach (var row in otherattrlist)
+            //{
+            //    otherlist.Add(new bt { SubAttribute = row.SubAttribute, Category = row.Category, oRating = row.Rating, Comment = row.Comment });
+
+            //}
+            return View(getgarment);
+
+
+
+        }
         public ActionResult gettblgeneral()
         {
 

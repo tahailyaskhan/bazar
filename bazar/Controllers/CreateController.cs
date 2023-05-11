@@ -187,7 +187,110 @@ namespace bazar.Controllers
                 return View();
             }
         }
+         public ActionResult addtbluser(userclass data)
+        {
+          
+            try
+            {
+                Random rnd = new Random();
+                string filename = "";
+                int num = rnd.Next();
+                string username = Session["Username"].ToString();
+                var checkusername = db.tblcreateUsers.Where(x => x.username == data.username.ToString()).FirstOrDefault();
+                var checkshopname = db.tblcreateUsers.Where(x => x.shopname == data.shopname.ToString()).FirstOrDefault();
+                string ServerSavePath = "";
+                if (checkusername== null && checkshopname == null) 
+                {
+                    tblcreateUser ci = new tblcreateUser();
+                    ci.username = data.username;
+                    ci.password = data.password;
+                    ci.email = data.email;
+                    ci.cnic = data.cnic;
+                    ci.shopname = data.shopname;
+                    ci.addresss = data.address;
+                    ci.roleid = data.roleid;
+                    ci.marketid = data.marketid;
+                    ci.shoptypeid = data.shoptypeid;
+                    string keypath=ConfigurationManager.AppSettings["keypathprofilepic"];
+                    string httpurl= ConfigurationManager.AppSettings["httpurl"];
 
+                    string path = @keypath + data.username;  // Give the specific path  
+                    if (!(Directory.Exists(path)))
+                    {
+                        Directory.CreateDirectory(path);
+
+                    }
+
+                    if (data.pics1 != null)
+
+                    {
+                        var InputFileName = Path.GetFileName(data.pics1.FileName);
+                 
+                        var InputFileName2 = num + Session["userid"].ToString()+InputFileName  ;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "profilepic/"+ username + "/") + InputFileName2);
+                
+                        
+                        //Save file to server folder  
+                        data.pics1.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "profilepic" }, StringSplitOptions.None);
+                        string paths = httpurl + "/profilepic/" + ImgPath[1];
+                        string s = paths.Replace("\\", "/");
+                        ci.profilepic = s;
+                        //ci.pic1 = filename;
+                        
+                    }
+                   if (data.pics2 != null)
+                    {
+                        var InputFileName = Path.GetFileName(data.pics2.FileName);
+                       
+                      
+                        var InputFileName2 = num + Session["userid"].ToString()+InputFileName;
+                        ServerSavePath = Path.Combine(Server.MapPath("~/" + "profilepic/" + username + "/") + InputFileName2);
+
+                        //Save file to server folder  
+                        data.pics2.SaveAs(ServerSavePath);
+                        filename = ServerSavePath;
+
+                        string[] ImgPath = filename.Split(new[] { "profilepic" }, StringSplitOptions.None);
+                        string paths = httpurl + "/profilepic/" + ImgPath[1];
+                        string s = paths.Replace("\\", "/");
+                        ci.logo = s;
+                        //ci.pic2 = filename;
+                        
+                    }
+                    
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+                    ci.isActive = true;
+                    ci.createdDate = DateTime.Now;
+
+                    db.tblcreateUsers.Add(ci);
+                    db.SaveChanges();
+                   
+
+                    return Json(new { messege = "success" });
+
+                    //return RedirectToAction("viewtblmaleGarment", "Home");
+                }
+
+                else
+                {
+                    // Session["checkchartname"] = "exist";
+                    //  return RedirectToAction("viewtblmaleGarment", "Home");
+                    return Json(new { messege = "exist" });
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session["exception"] = ex.InnerException.ToString();
+                return Json(new { messege = "exception" });
+
+                //return RedirectToAction("viewtblmaleGarment", "Home");
+            }
+        }
         public ActionResult addtblmaleGarment(tblmaleGarmentclass data)
         {
             tblmaleGarmentaction repo = new tblmaleGarmentaction();
@@ -297,8 +400,37 @@ namespace bazar.Controllers
             }
         }
 
+        public ActionResult addtblMarket(string marketname)
+        {
+            tblmarket ci = new tblmarket();
+            ci.marketName = marketname;
+            ci.isActive = true;
+            ci.createdDate = DateTime.Now;
+            db.tblmarkets.Add(ci);
+            return RedirectToAction("viewtblMarket", "Home");
 
+        }
 
+        public ActionResult addtblRole(string rolename)
+        {
+            tblrole ci = new tblrole();
+            ci.roleName =rolename;
+            ci.isActive = true;
+            ci.createdDate = DateTime.Now;
+            db.tblroles.Add(ci);
+            return RedirectToAction("viewtblRole", "Home");
+
+        }
+        public ActionResult addtblShoptype(string shoptypename)
+        {
+            tblshoptype ci = new tblshoptype();
+            ci.shoptypeName = shoptypename;
+            ci.isActive = true;
+            ci.createdDate = DateTime.Now;
+            db.tblshoptypes.Add(ci);
+            return RedirectToAction("viewtblShoptype", "Home");
+
+        }
         public ActionResult addtblsizeShirtFemale(tblsizeShirtFemaleclass data)
         {
             tblsizeShirtFemaleaction ci = new tblsizeShirtFemaleaction();

@@ -1,0 +1,597 @@
+﻿@model IEnumerable<bazar.DAL.Data.userclass>
+
+@{
+    ViewBag.Title = "user Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Layout = null;
+}
+
+
+<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+<script src="~/Sscripts/jquery.dataTables.min.js"></script>
+@*<script src="~/Content/jquery-3.1.1.min.js"></script>*@
+@*<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+    <link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />*@
+@*<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />*@
+@*<script src="~/Sscripts/moment.js"></script>*@
+
+<link href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+@*<script src="~/Sscripts/CustomeJS.js"></script>*@
+
+
+@Html.Partial("_getuser", Model)
+
+
+
+<div id="my-modal" class="modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:blue">
+                <h2 style="color:white">Edit Form</h2>
+                <span id="close" class="close">&times;</span>
+
+            </div>
+            <div class="modal-body">
+                <div id="modaldata" style="margin-top:20px; margin-bottom:30px;">  </div>
+                <h5 id="modelcontent2" style=" font-family:Calibri !important; "></h5>
+                <div id="modelcontent" style="margin-bottom:30px;  font-family:Calibri !important; ">
+                    <form id="data" enctype="multipart/form-data" method="post">
+
+
+                         <div class="col-md-6">
+                                                @*action=@Url.Action("addtblmaleGarment", "Create")*@
+                                                
+
+                                                 <div class="form-group" style="display:none">
+                                                        <label for="clothname">id</label>
+                                                        <input type="text" class="form-control" name="id" id="id" placeholder="Enter username">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">UserName</label>
+                                                        <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">Email</label>
+                                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter email">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">Password</label>
+                                                        <input type="text" class="form-control" name="password" id="password" placeholder="Enter password">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">Address</label>
+                                                        <input type="text" class="form-control" name="address" id="address" placeholder="Enter addresses">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">CNIC</label>
+                                                        <input type="text" class="form-control" name="cnic" id="cnic" placeholder="Enter cnic">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="clothname">shopname</label>
+                                                        <input type="text" class="form-control" name="shopname" id="shopname" placeholder="Enter shopname">
+                                                    </div>
+                                         
+                                                         <div class="form-group">
+
+                                                        <label for="role">Select Role</label>
+
+                                                        <select name="roleid" id="role" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <label for="shoptype">Select Shoptype</label>
+
+                                                        <select name="shoptypeid" id="shoptype" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label for="market">Select Market</label>
+
+                                                        <select name="marketid" id="market" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+
+
+
+
+                                                    <div class="form-group">
+                                                        <img src="" id="pic1"
+                                                             class="rounded-square"
+                                                             height="50" width="75"
+                                                             style="border:1px" />
+                                                        <input type="file" id="pics1" name="pics1">
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <img src="" id="pic2"
+                                                             class="rounded-square"
+                                                             height="50" width="75"
+                                                             style="border:1px" />
+                                                        <input type="file" id="pics2" name="pics2">
+                                                    </div>
+
+
+                                                
+
+                                                   
+                                                
+                                            </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button> <button type="button" id="cancel" class="btn btn-danger">Cancel</button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color:blue">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+
+    $(document).ready(function () {
+        getMarkets();
+        getRole();
+        getShoptype();
+
+        let table = new DataTable('#maletable');
+
+        //$('#maletable').dataTable({
+        //    "sDom": 'T<"clear">lfrtip',
+        //    "oTableTools": {
+        //        "sSwfPath": "/swf/copy_cvs_xlsx_pdf.swf"
+        //    }
+        //});
+    });
+
+    function getRole() {
+
+
+        $.ajax({
+            url: '@Url.Action("getRole", "Detail")',
+            type: 'POST',
+            data: {
+            },
+            dataType: 'json',
+            success: function (data) {
+                debugger
+                alert
+                console.log(data.CategoryTypes);
+                $('#role').empty();
+
+                var s = ' <option value="0">-- Please Select --</option>';
+
+                $.each(data.CategoryTypes, function (data, value) {
+                    //$("#ddlAttributeType").append('<option value="' + value.ID + '">' + value.CategoryType1 + '</option>');
+                    s += '<option value="' + value.id + '">' + value.roleName + '</option>';
+                });
+                $("#role").append(s);
+
+            },
+            error: function (request, error) {
+                console.log(request);
+            }
+        });
+    }
+
+
+
+    function getShoptype() {
+
+
+        $.ajax({
+            url: '@Url.Action("getShoptype", "Detail")',
+            type: 'POST',
+            data: {
+            },
+            dataType: 'json',
+            success: function (data) {
+                debugger
+                alert
+                console.log(data.CategoryTypes);
+                $('#shoptype').empty();
+
+                var s = ' <option value="0">-- Please Select --</option>';
+
+                $.each(data.CategoryTypes, function (data, value) {
+                    //$("#ddlAttributeType").append('<option value="' + value.ID + '">' + value.CategoryType1 + '</option>');
+                    s += '<option value="' + value.id + '">' + value.shoptypeName + '</option>';
+                });
+                $("#shoptype").append(s);
+
+            },
+            error: function (request, error) {
+                console.log(request);
+            }
+        });
+    }
+
+
+    function getMarkets() {
+
+        debugger
+        $.ajax({
+            url: '@Url.Action("getMarkets", "Detail")',
+            type: 'POST',
+            data: {
+            },
+            dataType: 'json',
+            success: function (data) {
+                debugger
+                alert
+                console.log(data.CategoryTypes);
+                $('#market').empty();
+
+                var s = ' <option value="0">-- Please Select --</option>';
+
+                $.each(data.CategoryTypes, function (data, value) {
+                    //$("#ddlAttributeType").append('<option value="' + value.ID + '">' + value.CategoryType1 + '</option>');
+                    s += '<option value="' + value.id + '">' + value.marketName + '</option>';
+                });
+                $("#market").append(s);
+
+            },
+            error: function (request, error) {
+                console.log(request);
+            }
+        });
+    }
+
+
+
+    function CheckNull() {
+        debugger
+        if ($("#username").val() == "") { document.getElementById('username').style.borderColor = "red"; toastr.error('username  required!'); } else { document.getElementById('username').style.borderColor = "#ced4da"; }
+        if ($("#email").val() == "") { document.getElementById('email').style.borderColor = "red"; toastr.error('email required!'); } else { document.getElementById('email').style.borderColor = "#ced4da"; }
+        if ($("#password").val() == "") { document.getElementById('password').style.borderColor = "red"; toastr.error('password required!'); } else { document.getElementById('password').style.borderColor = "#ced4da"; }
+        if ($("#cnic").val() == "") { document.getElementById('cnic').style.borderColor = "red"; toastr.error('cnic required!'); } else { document.getElementById('cnic').style.borderColor = "#ced4da"; }
+        if ($("#shopname").val() == "") { document.getElementById('shopname').style.borderColor = "red"; toastr.error('shopname required!'); } else { document.getElementById('shopname').style.borderColor = "#ced4da"; }
+
+
+        if ($("#role").val() == "0") { document.getElementById('role').style.borderColor = "red"; toastr.error('role Field  required!'); } else { document.getElementById('role').style.borderColor = "#ced4da"; }
+        if ($("#shotype").val() == "0") { document.getElementById('shotype').style.borderColor = "red"; toastr.error('shotype Field  required!'); } else { document.getElementById('shotype').style.borderColor = "#ced4da"; }
+        if ($("#market").val() == "0") { document.getElementById('market').style.borderColor = "red"; toastr.error('market Field  required!'); } else { document.getElementById('market').style.borderColor = "#ced4da"; }
+
+
+
+
+
+        if ($("#username").val() == "" || $("#email").val() == "" || $("#password").val() == "" || $("#cnic").val() == ""
+            || $("#shopname").val() == "" || $("#role").val() == "0" || $("#shotype").val() == "0" || $("#market").val() == "0"
+        ) {
+            debugger
+            toastr.error('All Fields are required!');
+            checkingNull = false;
+            return false;
+        }
+        else {
+            checkingNull = true;
+            return true;
+        }
+    }
+
+
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only in price');
+            return false;
+        }
+
+        return true;
+    }
+
+
+
+
+
+
+    $("form#data").submit(function (e) {
+
+
+        var formData = new FormData(this);
+
+
+            //alert(email+mobile+cnic);
+            $.ajax({
+                url: '@Url.Action("updatetbluser", "Update")',
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    toastr.success('Successfully Submitted');
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+
+    });
+
+
+     $(document).on('click', '.btnEdit', function () {
+         $('#my-modal').fadeIn(400);
+
+
+            var $row = $(this).closest("tr"),
+            $tds = $row.find("td:nth-child(1)");
+             $('#id').val($tds.text());
+
+
+
+            //$tds = $row.find("td:nth-child(6)");
+            //checklistId = $tds.text();
+
+            $tds = $row.find("td:nth-child(2)");
+            $('#username').val($tds.text());
+            //AreaName = $('#txtCategoryName').val();
+
+            $tds = $row.find("td:nth-child(3)");
+            $("#email").val($tds.text());
+
+            $tds = $row.find("td:nth-child(4)");
+            $("#password").val($tds.text());
+
+            $tds = $row.find("td:nth-child(3)");
+            $("#email").val($tds.text());
+         $tds = $row.find("td:nth-child(6)");
+         $("#shopname").val($tds.text());
+         $tds = $row.find("td:nth-child(8)");
+         $("#address").val($tds.text());
+
+         $tds = $row.find("td:nth-child(10)");
+         $("#cnic").val($tds.text());
+          
+
+         $tds = $row.find("td:nth-child(13)");
+         $("#market").val($tds.text());
+            $tds = $row.find("td:nth-child(14)");
+            $("#shoptype").val($tds.text());
+            $tds = $row.find("td:nth-child(15)");
+            $("#role").val($tds.text());
+
+
+
+
+        
+         $tds = $row.find("td:nth-child(11)");
+         $("#pic1").attr("src", $tds.text());
+
+         $tds = $row.find("td:nth-child(12)");
+         $("#pic2").attr("src", $tds.text());
+
+
+     });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#pic1').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function readURL2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#pic2').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#pics1").change(function () {
+            readURL(this);
+        });
+        $("#pics2").change(function () {
+            readURL2(this);
+
+        });
+
+
+      @*$(document).on('click', '#btnView', function () {
+
+
+            $('#my-modal').fadeIn(400);
+
+            var $row = $(this).closest("tr"),
+            $tds = $row.find("td:nth-child(1)");
+            id = $tds.text();
+            $tds = $row.find("td:nth-child(2)");
+
+
+            $.ajax({
+                url: '@Url.Action("edittblmaleGarment", "Edit")',
+                type: 'POST',
+                data: {
+                    'id': id
+                },
+
+                dataType: 'json',
+
+                success: function (response) {
+
+
+                    var res = response.data;
+                    var len = res.length;
+
+                    if (len != 0) {
+                        $("#modelcontent1").html($tds.text());
+                        $("#modaldata").show();
+                        $("#modelcontent2").hide();
+                        for (i = 0; i < len; i++) {
+
+                            $('#modelcontent').append('<h6 style=" ">' + '<i class="fas fa-check" style=" color:#ff6002">' + '</i>' + '    ' + ' ' + ' ' + '<span style=" margin-left:10px; font-family:Calibri !important;  font-size:20px;"> ' + res[i].Name + '</span>' + '</h6>');
+                        }
+                    }
+                    else {
+                        $("#modelcontent2").html("Checklist is not assigned to this role");
+                        $("#modelcontent2").show();
+                        $("#modaldata").hide();
+                    }
+                },
+                error: function (request, error) {
+                    toastr.error('Oops! Something went wrong');
+                }
+            });
+        })*@
+
+
+
+
+
+        $(document).on('click', '#close', function () {
+            //$('#modelcontent').empty();
+            //$("#modelcontent1").empty();
+            $('#my-modal').fadeOut(400);
+
+        });
+        $(document).on('click', '#cancel', function () {
+            //$('#modelcontent').empty();
+            //$("#modelcontent1").empty();
+            $('#my-modal').fadeOut(400);
+
+        });
+
+
+     $(document).ready(function () {
+
+
+       
+
+
+    });
+
+
+</script>
+@{
+
+
+
+
+    if (Convert.ToString(TempData["success"]) == "success")
+    {
+
+        <script>
+
+            toastr.success("successfully Added");
+
+        </script>
+
+    }
+
+}
+
+
+<style>
+    :root {
+        --modal-duration: 1s;
+        --modal-color: #ff6002;
+    }
+
+
+    .button {
+        background: #428bca;
+        padding: 1em 2em;
+        color: #fff;
+        border: 0;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .button:hover {
+            background: #3876ac;
+        }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        margin: 20% auto;
+        width: 100%;
+        box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+        animation-name: modalopen;
+        animation-duration: var(--modal-duration);
+    }
+
+    .modal-header h2,
+    .modal-footer h3 {
+        margin: 0;
+    }
+
+    .modal-header {
+        background: var(--modal-color);
+        padding: 15px;
+        color: #fff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .modal-body {
+        padding: 10px 20px;
+        background: #fff;
+    }
+
+    .modal-footer {
+        background: var(--modal-color);
+        padding: 10px;
+        color: #fff;
+        text-align: center;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .close {
+        color: #ccc;
+        float: right;
+        font-size: 30px;
+        color: #fff;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>

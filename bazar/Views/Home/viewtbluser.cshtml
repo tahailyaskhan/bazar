@@ -1,0 +1,383 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Layout = null;
+}
+
+
+
+<script src="~/Sscripts/jquery-3.6.0.min.js"></script>
+
+<script src="~/Content/Toaster/scripts/toastr.min.js"></script>
+<link href="~/Content/Toaster/content/toastr.min.css" rel="stylesheet" />
+<link href="~/Content/JqueryDatatable/CSS/dataTables.bootstrap.min.css" rel="stylesheet" />
+<script src="~/Sscripts/moment.js"></script>
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+<script src="~/Sscripts/CustomeJS.js"></script>
+
+
+
+
+
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ breadcrumb ] start -->
+                        @*<div class="page-header">
+                                <div class="page-block">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-12">
+                                            <div class="page-header-title">
+                                                <h5 class="m-b-10">Form Elements</h5>
+                                            </div>
+                                            <ul class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                                                <li class="breadcrumb-item"><a href="#!">Form Components</a></li>
+                                                <li class="breadcrumb-item"><a href="#!">Form Elements</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <!-- [ breadcrumb ] end -->
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <!-- [ form-element ] start -->
+                            <div class="col-sm-12">
+                                <div class="card">
+
+                                    <div class="card-body">
+                                        <h1>Size for Shirt form</h1>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                @*action=@Url.Action("addtblmaleGarment", "Create")*@
+                                                <form id="data" enctype="multipart/form-data" method="post">
+
+                                                    <h4>extra Small</h4>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">UserName</label>
+                                                        <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">Email</label>
+                                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter email">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">Password</label>
+                                                        <input type="text" class="form-control" name="password" id="password" placeholder="Enter password">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">Address</label>
+                                                        <input type="text" class="form-control" name="address" id="address" placeholder="Enter addresses">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="clothname">CNIC</label>
+                                                        <input type="text" class="form-control" name="cnic" id="cnic" placeholder="Enter cnic">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="clothname">shopname</label>
+                                                        <input type="text" class="form-control" name="shopname" id="shopname" placeholder="Enter shopname">
+                                                    </div>
+                                                   
+                                                    @*<div class="form-group">
+
+                                                        <label for="categoryid">Select Category</label>
+
+                                                        <select name="categoryid" id="categoryid" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>*@
+                                                     <div class="form-group">
+
+                                                        <label for="shoptype">Select Role</label>
+
+                                                        <select name="roleid" id="role" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <label for="shoptype">Select Shoptype</label>
+
+                                                        <select name="shoptypeid" id="shoptype" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label for="marketid">Select Market</label>
+
+                                                        <select name="marketid" id="market" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+
+
+
+
+                                                    <div class="form-group">
+                                                        <label for="pic1">Select a file:</label>
+                                                        <input type="file" id="pics1" name="pics1">
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <label for="pics2">Select a file:</label>
+                                                        <input type="file" id="pics2" name="pics2">
+                                                    </div>
+
+
+
+                                                    
+
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </form>
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                                <!-- Input group -->
+
+                            </div>
+                            <!-- [ form-element ] end -->
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+<!-- Warning Section start -->
+<!-- Older IE warning message -->
+<script>
+    function CheckNull() {
+        debugger
+        if ($("#username").val() == "") { document.getElementById('username').style.borderColor = "red"; toastr.error('username  required!'); } else { document.getElementById('username').style.borderColor = "#ced4da"; }
+        if ($("#email").val() == "") { document.getElementById('email').style.borderColor = "red"; toastr.error('email required!'); } else { document.getElementById('email').style.borderColor = "#ced4da"; }
+        if ($("#password").val() == "") { document.getElementById('password').style.borderColor = "red"; toastr.error('password required!'); } else { document.getElementById('password').style.borderColor = "#ced4da"; }
+        if ($("#cnic").val() == "") { document.getElementById('cnic').style.borderColor = "red"; toastr.error('cnic required!'); } else { document.getElementById('cnic').style.borderColor = "#ced4da"; }
+        if ($("#shopname").val() == "") { document.getElementById('shopname').style.borderColor = "red"; toastr.error('shopname required!'); } else { document.getElementById('shopname').style.borderColor = "#ced4da"; }
+
+
+        if ($("#role").val() == "0") { document.getElementById('role').style.borderColor = "red"; toastr.error('role Field  required!'); } else { document.getElementById('role').style.borderColor = "#ced4da"; }
+        if ($("#shotype").val() == "0") { document.getElementById('shotype').style.borderColor = "red"; toastr.error('shotype Field  required!'); } else { document.getElementById('shotype').style.borderColor = "#ced4da"; }
+        if ($("#market").val() == "0") { document.getElementById('market').style.borderColor = "red"; toastr.error('market Field  required!'); } else { document.getElementById('market').style.borderColor = "#ced4da"; }
+
+
+
+
+
+        if ($("#username").val() == "" || $("#email").val() == "" || $("#password").val() == "" || $("#cnic").val() == ""
+            || $("#shopname").val() == "" || $("#role").val() == "0" || $("#shotype").val() == "0" || $("#market").val() == "0"
+        )
+        {
+            debugger
+            toastr.error('All Fields are required!');
+            checkingNull = false;
+            return false;
+        }
+        else {
+            checkingNull = true;
+            return true;
+        }
+    }
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            toastr.error('write number only');
+            return false;
+        }
+
+        return true;
+    }
+
+    $("form#data").submit(function (e) {
+        debugger
+        e.preventDefault();
+        //var ch = CheckNull();
+        //if (ch == false) {
+        //    return false;
+        //}
+        //if (ch == true) {
+        //    var inp = document.getElementById('pics1');
+        //    if (inp.files.length === 0) {
+
+        //        //alert("Attachment Required");
+        //        toastr.error("Attachment Required");
+        //        inp.focus();
+
+        //        return false;
+        //    }
+
+        //    var inps = document.getElementById('pics2');
+        //    if (inps.files.length === 0) {
+
+        //        //alert("Attachment Required");
+        //        toastr.error("Attachment Required");
+        //        inps.focus();
+
+        //        return false;
+        //    }
+        //}
+        var formData = new FormData(this);
+
+
+            //alert(email+mobile+cnic);
+            $.ajax({
+                url: '@Url.Action("addtbluser","Create")',
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    debugger
+                    if (data.messege == 'success') {
+                        toastr.success('Successfully Submitted');
+                    }
+                    else {
+                        toastr.error("chartname already exist");
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+
+    });
+
+    
+    function getRole() {
+
+       
+        $.ajax({
+            url: '@Url.Action("getRole", "Detail")',
+            type: 'POST',
+            data: {
+            },
+            dataType: 'json',
+            success: function (data) {
+                debugger
+                alert
+                console.log(data.CategoryTypes);
+                $('#role').empty();
+
+                var s = ' <option value="0">-- Please Select --</option>';
+
+                $.each(data.CategoryTypes, function (data, value) {
+                    //$("#ddlAttributeType").append('<option value="' + value.ID + '">' + value.CategoryType1 + '</option>');
+                    s += '<option value="' + value.id + '">' + value.roleName + '</option>';
+                });
+                $("#role").append(s);
+
+            },
+            error: function (request, error) {
+                console.log(request);
+            }
+        });
+    }
+
+
+
+    function getShoptype() {
+
+       
+        $.ajax({
+            url: '@Url.Action("getShoptype", "Detail")',
+            type: 'POST',
+            data: {
+            },
+            dataType: 'json',
+            success: function (data) {
+                debugger
+                alert
+                console.log(data.CategoryTypes);
+                $('#shoptype').empty();
+
+                var s = ' <option value="0">-- Please Select --</option>';
+
+                $.each(data.CategoryTypes, function (data, value) {
+                    //$("#ddlAttributeType").append('<option value="' + value.ID + '">' + value.CategoryType1 + '</option>');
+                    s += '<option value="' + value.id + '">' + value.shoptypeName + '</option>';
+                });
+                $("#shoptype").append(s);
+
+            },
+            error: function (request, error) {
+                console.log(request);
+            }
+        });
+    }
+
+
+    function getMarkets() {
+
+        debugger
+        $.ajax({
+            url: '@Url.Action("getMarkets", "Detail")',
+            type: 'POST',
+            data: {
+            },
+            dataType: 'json',
+            success: function (data) {
+                debugger
+                alert
+                console.log(data.CategoryTypes);
+                $('#market').empty();
+
+                var s = ' <option value="0">-- Please Select --</option>';
+
+                $.each(data.CategoryTypes, function (data, value) {
+                    //$("#ddlAttributeType").append('<option value="' + value.ID + '">' + value.CategoryType1 + '</option>');
+                    s += '<option value="' + value.id + '">' + value.marketName + '</option>';
+                });
+                $("#market").append(s);
+
+            },
+            error: function (request, error) {
+                console.log(request);
+            }
+        });
+    }
+
+
+
+
+     $(document).ready(function () {
+
+         getMarkets();
+         getShoptype();
+         getRole();
+
+    });
+
+</script>
