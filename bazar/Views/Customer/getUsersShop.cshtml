@@ -153,7 +153,8 @@
                 @*col-md-3 col-sm-4 col-xs-4*@
 
                 @* Cards  *@
-                @if (TempData["categoryitem"] == null && TempData["categoryfemaleitem"] == null && TempData["categoryshoesitem"] == null)
+                @if (TempData["categoryitem"] == null && TempData["categoryfemaleitem"] == null && TempData["categoryshoesitem"] == null
+                  && TempData["spMaleGarmmentList"] ==null && TempData["spFemaleGarmmentList"]==null && TempData["spShoeList"]==null)
                 {
                     if (Model.maleGarmmentList != null)
                     {
@@ -180,11 +181,11 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         <!--<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o empty"></i>-->
                                         @**@
                                         <!--</div>-->
 
@@ -199,20 +200,20 @@
                                             @*<h4 class="product-name">*@ @*@Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })*@@*</h4>*@
 
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
                                     @*<div class="product-body text-center">
-                                            <h3 class="product-price">$32.50</h3>
+                                <h3 class="product-price">$32.50</h3>
 
-                                            <h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>
-                                            <div class="product-btns">
-                                                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                        <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                                <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                                            </div>
-                                        </div>*@
+                                <h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>
+                                <div class="product-btns">
+                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                            <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                </div>
+                            </div>*@
                                 </div>
                             </div>
                         }
@@ -242,11 +243,11 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         <!--<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o empty"></i>-->
                                         @**@
                                         <!--</div>-->
                                         <h4 style="color:orange">@rows.clothname </h4>
@@ -258,7 +259,7 @@
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
@@ -266,7 +267,7 @@
                             </div>
                         }
                     }
-
+                    
                     if (Model.femaleGarmmentList != null)
                     {
                         foreach (var rows in Model.femaleGarmmentList)
@@ -292,11 +293,11 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         <!--<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o empty"></i>-->
                                         @**@
                                         <!--</div>-->
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
@@ -309,7 +310,7 @@
 
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
@@ -343,11 +344,11 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         <!--<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o empty"></i>-->
                                         @**@
                                         <!--</div>-->
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
@@ -359,7 +360,7 @@
                                         }
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
@@ -367,6 +368,8 @@
                             </div>
                         }
                     }
+                 
+
                     if (Model.shoeList != null)
                     {
                         foreach (var rows in Model.shoeList)
@@ -393,12 +396,12 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         @*<div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o empty"></i>
-                                            </div>*@
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>*@
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.shoename, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
                                         <h4 style="color:orange">@rows.shoename </h4>
                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
@@ -408,7 +411,7 @@
                                         }
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
@@ -441,12 +444,12 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         @*<div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o empty"></i>
-                                            </div>*@
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>*@
                                         @*<h4 class="product-name">Html.ActionLink(rows.shoename, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
                                         <h4 style="color:orange">@rows.shoename </h4>
                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
@@ -457,7 +460,7 @@
 
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
@@ -465,6 +468,9 @@
                             </div>
                         }
                     }
+
+
+                  
                 }
                 else
                 {
@@ -492,12 +498,12 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         @*<div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o empty"></i>
-                                            </div>*@
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>*@
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
                                         <h4 style="color:orange">@rows.clothname </h4>
                                         @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
@@ -508,7 +514,7 @@
 
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
@@ -542,11 +548,11 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         <!--<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o empty"></i>-->
                                         @**@
                                         <!--</div>-->
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
@@ -560,7 +566,7 @@
 
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
@@ -593,11 +599,11 @@
                                     <div class="product-body text-center">
                                         @*<h3 class="product-price">$32.50</h3>*@
                                         <!--<div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o empty"></i>-->
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o empty"></i>-->
                                         @**@
                                         <!--</div>-->
                                         @*<h4 class="product-name"> @Html.ActionLink(rows.shoename, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
@@ -610,7 +616,7 @@
 
                                         <div class="product-btns">
                                             @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
                                             @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
                                         </div>
                                     </div>
@@ -619,33 +625,188 @@
                         }
 
                     }
+
+                    if (TempData["spMaleGarmmentList"] != null)
+                    {
+                        foreach (var rows in TempData["spMaleGarmmentList"] as List<bazar.Models.serachMaleGarment_Result>)
+                        {
+                            <div class="col-6 col-md-3 col-lg-3">
+                                <div class="product product-single">
+                                    <div class="product-thumb">
+                                        @*<a class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>*@
+                                        @if (rows.small != false || rows.xsmall != false || rows.medium != false || rows.large != false
+                                            || rows.xlarge != false)
+                                        {
+                                            <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }) class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        }
+                                        else if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                            && rows.xlarge == false)
+                                        {
+                                            <button class="main-btn quick-view">Out Of Stock</button>
+
+                                        }
+
+                                        <img src=@rows.pic1 style="width: 100%; height: 40vh; object-fit: contain; " alt="">
+                                    </div>
+                                    <div class="product-body text-center">
+                                        @*<h3 class="product-price">$32.50</h3>*@
+                                        <!--<div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o empty"></i>-->
+                                        @**@
+                                        <!--</div>-->
+                                        <h4 style="color:orange">@rows.clothname </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
+                                        {
+                                            <p>out Of Stock</p>
+                                        }
+                                        @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
+                                        <div class="product-btns">
+                                            @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                            @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                       if (TempData["spFemaleGarmmentList"] != null)
+                    {
+                        foreach (var rows in TempData["spFemaleGarmmentList"] as List<bazar.Models.serachFemaleGarment_Result>)
+                        {
+                            <div class="col-6 col-md-3 col-lg-3">
+                                <div class="product product-single">
+                                    <div class="product-thumb">
+                                        @*<a class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>*@
+                                        @if (rows.small != false || rows.xsmall != false || rows.medium != false || rows.large != false
+                                           || rows.xlarge != false)
+                                        {
+                                            <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }) class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        }
+                                        else if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                            && rows.xlarge == false)
+                                        {
+                                            <button class="main-btn quick-view">Out Of Stock</button>
+
+                                        }
+
+
+                                        <img src=@rows.pic1 style="width: 100%; height: 40vh; object-fit: contain; " alt="">
+                                    </div>
+                                    <div class="product-body text-center">
+                                        @*<h3 class="product-price">$32.50</h3>*@
+                                        <!--<div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o empty"></i>-->
+                                        @**@
+                                        <!--</div>-->
+                                        @*<h4 class="product-name"> @Html.ActionLink(rows.clothname, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
+                                        <h4 style="color:orange">@rows.clothname </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
+                                        {
+                                            <p>out Of Stock</p>
+                                        }
+                                        <div class="product-btns">
+                                            @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                            @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                      if (TempData["spShoeList"] != null)
+                    {
+                        foreach (var rows in TempData["spShoeList"] as List<bazar.Models.serachShoe_Result>)
+                        {
+                            <div class="col-6 col-md-3 col-lg-3">
+                                <div class="product product-single">
+                                    <div class="product-thumb">
+                                        @*<a class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>*@
+                                        @if (rows.small != false || rows.xsmall != false || rows.medium != false || rows.large != false
+                                            || rows.xlarge != false)
+                                        {
+                                            <a href=@Url.Action("getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }) class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+                                        }
+                                        else if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                            && rows.xlarge == false)
+                                        {
+                                            <button class="main-btn quick-view">Out Of Stock</button>
+
+                                        }
+
+                                        <img src=@rows.pic1 style="width: 100%; height: 40vh; object-fit: contain; " alt="">
+                                    </div>
+                                    <div class="product-body text-center">
+                                        @*<h3 class="product-price">$32.50</h3>*@
+                                        @*<div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>*@
+                                        @*<h4 class="product-name">Html.ActionLink(rows.shoename, "getProduct", "Customer", new { id = rows.id, userid = rows.createdById, categoryid = rows.categoryid }, new { @class = "btn btn-outline-primary" })</h4>*@
+                                        <h4 style="color:orange">@rows.shoename </h4>
+                                        @if (rows.small == false && rows.xsmall == false && rows.medium == false && rows.large == false
+                                           && rows.xlarge == false)
+                                        {
+                                            <p>out Of Stock</p>
+                                        }
+
+                                        <div class="product-btns">
+                                            @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                                            @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
                 }
-                <!--<div class="col-6 col-md-4 col-lg-4">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                        <img src="~/customercontent/img/product04.jpg" alt="">
-                    </div>
-                    <div class="product-body">-->
-                @*<h3 class="product-price">$32.50</h3>*@
-                <!--<div class="product-rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o empty"></i>
+
+                
+
+
+
+
+                    <!--<div class="col-6 col-md-4 col-lg-4">
+        <div class="product product-single">
+            <div class="product-thumb">
+                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                <img src="~/customercontent/img/product04.jpg" alt="">
+            </div>
+            <div class="product-body">-->
+                    @*<h3 class="product-price">$32.50</h3>*@
+                    <!--<div class="product-rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o empty"></i>
+        </div>
+        <h5 class="product-name"><a href="#">Product Name Goes Here</a></h5>
+        <div class="product-btns">-->
+                    @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+            <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
+                    @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
+                    <!--</div>
                 </div>
-                <h5 class="product-name"><a href="#">Product Name Goes Here</a></h5>
-                <div class="product-btns">-->
-                @*<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>*@
-                @*<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>*@
-                <!--</div>
-                        </div>
-                    </div>
-                </div>-->
-                <!-- /Product Single -->
-                <!-- Product Single -->
+            </div>
+        </div>-->
+                    <!-- /Product Single -->
+                    <!-- Product Single -->
 
 
             </div>

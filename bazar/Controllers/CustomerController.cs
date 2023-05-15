@@ -193,7 +193,7 @@ namespace bazar.Controllers
         }
         [HttpGet]
        
-        [Route("yourshop/{ shopname ?}")]
+        [Route("yourshop")]
         public ActionResult getUsersShop(string shopname)
         {
             viewmodel gets = new viewmodel();
@@ -235,8 +235,8 @@ namespace bazar.Controllers
             //return View();
         }
         [HttpPost]
-        //[Route("getUsersShop")]
-        public ActionResult getUsersShop(string search,string shoptypeid,string usersid)
+       // [Route("getUsersShop")]
+        public ActionResult getUsersShops(string search,string shoptypeid,string usersid)
         {/////
             viewmodel gets = new viewmodel();
             //var userid = Convert.ToInt32(Session["itemuserid"]);
@@ -252,23 +252,27 @@ namespace bazar.Controllers
 
             if (Convert.ToInt32(shoptypeid) == 1)
             {
-                gets.spMaleGarmmentList = db.serachMaleGarment(search).Where(x => x.createdById == userid).ToList();
-                
+               // gets.spMaleGarmmentList = db.serachMaleGarment(search).Where(x => x.createdById == userid).ToList();
+                TempData["spMaleGarmmentList"]= db.serachMaleGarment(search).Where(x => x.createdById == userid).ToList();
+
+
             }
             if (Convert.ToInt32(shoptypeid) == 2)
             {
-                gets.spFemaleGarmmentList = db.serachFemaleGarment(search).Where(x => x.createdById == userid).ToList();
-
+             //   gets.spFemaleGarmmentList = db.serachFemaleGarment(search).Where(x => x.createdById == userid).ToList();
+                TempData["spFemaleGarmmentList"]= db.serachFemaleGarment(search).Where(x => x.createdById == userid).ToList();
             }
             if (Convert.ToInt32(shoptypeid) == 3)
             {
-                gets.spShoeList = db.serachShoe(search).Where(x => x.createdById == userid).ToList();
-
+                //gets.spShoeList = db.serachShoe(search).Where(x => x.createdById == userid).ToList();
+                TempData["spShoeList"] = db.serachShoe(search).Where(x => x.createdById == userid).ToList();
             }
             ViewBag.categories = db.tblcategories.Where(x => x.shoptypeId == shoptype.shoptypeid).ToList();
             //Session["categories"] = db.tblcategories.ToList();
             var ss = db.tblcategories.ToList();
-            return View(gets);
+           // return View(gets);
+
+            return RedirectToAction("getUsersShop", "Customer", new { shopname = shoptype.name });
         }
 
        
