@@ -614,6 +614,7 @@ namespace bazar.Controllers
 
         public ActionResult riderView()
         {
+            string market = "";
             //int userid = Convert.ToInt32(Session["userid"]);
             List<tblcustomerorder> customerorderlist = new List<tblcustomerorder>();
             List<tblcustomerOrder> getorder = db.tblcustomerOrders.ToList();
@@ -625,6 +626,10 @@ namespace bazar.Controllers
                 if (shoptype.shoptypeid == 1)
                 {
                     var obj = db.tblmaleGarments.Where(x => x.id == row.orderId ).FirstOrDefault();
+                    if (marketType != null)
+                    {
+                        market = marketType.marketName;
+                    }
                     if (obj != null)
                     {
                         customerorderlist.Add(new tblcustomerorder
@@ -635,7 +640,7 @@ namespace bazar.Controllers
                             counts = row.counts,
                             cityname = row.cityname
                         ,   shopname=shoptype.name,
-                            marketname=marketType.marketName,
+                            marketname= market,
                             addresss = row.addresss,
                             size = row.size,
                             mobileNo = row.mobileNo,
@@ -651,6 +656,10 @@ namespace bazar.Controllers
                 if (shoptype.shoptypeid == 2)
                 {
                     var obj = db.tblfemaleGarments.Where(x => x.id == row.orderId).FirstOrDefault();
+                    if (marketType != null)
+                    {
+                        market = marketType.marketName;
+                    }
                     if (obj != null)
                     {
                         customerorderlist.Add(new tblcustomerorder
@@ -662,7 +671,7 @@ namespace bazar.Controllers
                             cityname = row.cityname
                         ,
                             shopname = shoptype.name,
-                            marketname = marketType.marketName,
+                            marketname = market,
                             addresss = row.addresss,
                             size = row.size,
                             mobileNo = row.mobileNo,
@@ -678,6 +687,10 @@ namespace bazar.Controllers
                 if (shoptype.shoptypeid == 3)
                 {
                     var obj = db.tblshoes.Where(x => x.id == row.orderId).FirstOrDefault();
+                    if (marketType != null)
+                    {
+                        market = marketType.marketName;
+                    }
                     if (obj != null)
                     {
                         customerorderlist.Add(new tblcustomerorder
@@ -689,7 +702,7 @@ namespace bazar.Controllers
                             cityname = row.cityname
                         ,
                             shopname = shoptype.name,
-                            marketname = marketType.marketName,
+                            marketname = market,
                             addresss = row.addresss,
                             size = row.size,
                             mobileNo = row.mobileNo,

@@ -141,7 +141,7 @@
                     @if (Convert.ToInt32(@Session["shoptype"]) == 3 || Convert.ToInt32(@Session["shoptype"]) == 5)
                     {
                         <li class="nav-item">
-                            <a href=@Url.Action("viewtblshoe","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add shoeSize</span></a>
+                            <a href=@Url.Action("viewtblshoe","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add shoe</span></a>
                         </li>
                         <li class="nav-item">
                             <a href=@Url.Action("gettblshoe","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">get shoe</span></a>
@@ -149,13 +149,13 @@
                         if (Convert.ToInt32(@Session["shoptype"]) == 3)
                         {
                             <li class="nav-item">
-                                <a href=@Url.Action("viewtblsizeshoe", "Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Size shoe</span></a>
+                                <a href=@Url.Action("viewtblsizeshoe", "Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Size shoe</span></a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a href=@Url.Action("viewtblsizeshoefemale", "Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Size shoe</span></a>
+                                <a href=@Url.Action("viewtblsizeshoefemale", "Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Size shoe</span></a>
                             </li>
 
                         }
@@ -213,7 +213,9 @@
                         <li class="nav-item">
                             <a href=@Url.Action("viewtblShoptype","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Shoptype</span></a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href=@Url.Action("riderView","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Show Orders</span></a>
+                        </li>
 
                     }
 

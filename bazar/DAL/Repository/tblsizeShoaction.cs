@@ -7,11 +7,11 @@ using System.Web;
 
 namespace bazar.DAL.Repository
 {
-    public class tblsizeShoaction : IRepository<tblsizeSho>
+    public class tblsizeShoaction : IRepository<tblsizeShoe>
     {
         bazarEntities db = new bazarEntities();
 
-        public string Create(tblsizeSho sizeMale)
+        public string Create(tblsizeShoe sizeMale)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace bazar.DAL.Repository
                 return "failed";
             }
         }
-        public List<tblsizeSho> GetAll()
+        public List<tblsizeShoe> GetAll()
         {
             try
             {
@@ -72,7 +72,7 @@ namespace bazar.DAL.Repository
                 throw;
             }
         }
-        public tblsizeSho GetById(int id)
+        public tblsizeShoe GetById(int id)
         {
             try
             {

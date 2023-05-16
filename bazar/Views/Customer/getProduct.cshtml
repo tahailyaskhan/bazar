@@ -194,15 +194,15 @@
                                     <h2 class="product-name">@Model.maleGarmentObj.clothname</h2>
                                     <h3 class="product-price">@Model.maleGarmentObj.price</h3>
                                     @*<div>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o empty"></i>
-                                            </div>
-                                            <a href="#">3 Review(s) / Add Review</a>
-                                        </div>*@
+                <div class="product-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o empty"></i>
+                </div>
+                <a href="#">3 Review(s) / Add Review</a>
+            </div>*@
                                     <p><strong>Availability:</strong> In Stock</p>
                                     @*<p><strong>Brand:</strong> E-SHOP</p>*@
 
@@ -219,7 +219,7 @@
                                     <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.maleGarmentObj.price>
                                     <div class="radios" id="bodyss">
                                         @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                                            <input label="No" type="radio" id="female" name="gender" value="female">*@
+                <input label="No" type="radio" id="female" name="gender" value="female">*@
 
                                         @if (Model.maleGarmentObj.xsmall == true)
                                         {
@@ -254,15 +254,15 @@
                                     <h2 class="product-name">@Model.femaleGarmentObj.clothname</h2>
                                     <h3 class="product-price">@Model.femaleGarmentObj.price</h3>
                                     @*<div>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o empty"></i>
-                                            </div>
-                                            <a href="#">3 Review(s) / Add Review</a>
-                                        </div>*@
+                <div class="product-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o empty"></i>
+                </div>
+                <a href="#">3 Review(s) / Add Review</a>
+            </div>*@
                                     <p><strong>Availability:</strong> In Stock</p>
                                     @*<p><strong>Brand:</strong> E-SHOP</p>*@
 
@@ -279,7 +279,7 @@
                                     <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.femaleGarmentObj.price>
                                     <div class="radios" id="bodyss">
                                         @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                                            <input label="No" type="radio" id="female" name="gender" value="female">*@
+                <input label="No" type="radio" id="female" name="gender" value="female">*@
 
                                         @if (Model.femaleGarmentObj.xsmall == true)
                                         {
@@ -314,15 +314,15 @@
                                     <h2 class="product-name">@Model.shoeObj.shoename</h2>
                                     <h3 class="product-price">@Model.shoeObj.price</h3>
                                     @*<div>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o empty"></i>
-                                            </div>
-                                            <a href="#">3 Review(s) / Add Review</a>
-                                        </div>*@
+                <div class="product-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o empty"></i>
+                </div>
+                <a href="#">3 Review(s) / Add Review</a>
+            </div>*@
                                     <p><strong>Availability:</strong> In Stock</p>
                                     @*<p><strong>Brand:</strong> E-SHOP</p>*@
 
@@ -339,7 +339,7 @@
                                     <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.shoeObj.price>
                                     <div class="radios" id="bodyss">
                                         @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                                            <input label="No" type="radio" id="female" name="gender" value="female">*@
+                <input label="No" type="radio" id="female" name="gender" value="female">*@
 
                                         @if (Model.shoeObj.xsmall == true)
                                         {
@@ -371,7 +371,7 @@
                                 <h5>SizeChart</h5>
                                 @*<div class="card ">
 
-                                    <div class="card-body table-border-style">*@
+        <div class="card-body table-border-style">*@
                                 @if (Model.maleShirtSizeList != null)
                                 {
                                     <div class="table-responsive ">
@@ -421,7 +421,7 @@
                                 {
                                     <div class="">
 
-                                        <table style="width:10%; border:solid" class="table" >
+                                        <table style="width:10%; border:solid" class="table">
                                             <thead style="color: white; background-color: deepskyblue ">
                                                 <tr style="font-size:10px;">
                                                     <th>Waist</th>
@@ -546,9 +546,47 @@
 
 
                                 }
+                                @if (Model.shoeSizeList != null)
+                                {
+                                    <div class="">
+
+                                        <table style="width:10%; border:solid" class="table">
+                                            <thead style="color: white; background-color: deepskyblue ">
+                                                <tr style="font-size:10px;">
+                                                    <th>Size</th>
+                                                    <th>shoelength</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblfloortime">
+
+                                                @foreach (var row in Model.shoeSizeList)
+                                                {
+
+                                                    <tr style="font-size: 10px;  font-weight: bold; background-color: bisque; ">
+                                                        <td>@Html.DisplayFor(modelItem => row.sizeName)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.sizeNumber)</td>
+
+
+
+
+
+                                                    </tr>
+
+                                                }
+
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+
+                                }
 
                                 @*</div>
-                                    </div>*@
+        </div>*@
 
 
                                 <div class="product-btns">

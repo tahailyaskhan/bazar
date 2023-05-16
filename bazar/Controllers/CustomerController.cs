@@ -312,20 +312,28 @@ namespace bazar.Controllers
         public ActionResult getProduct(int id, int userid,int categoryid)
         {
             viewmodel obj = new viewmodel();
+            List<tblsizeShoe> getsizeshoe = new List<tblsizeShoe>();
             tblmaleGarment getSpecificGarment = new tblmaleGarment();
+            var usercheck = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
             tblfemaleGarment getSpecificfeGarment = new tblfemaleGarment();
-            if (categoryid == 1 || categoryid == 2)
+            //if (categoryid == 1 || categoryid == 2)
+            if (usercheck.shoptypeid==1)
             {
                 obj.maleGarmentObj  = db.tblmaleGarments.Where(x => x.id == id).FirstOrDefault();
             }
-            if (categoryid == 3 || categoryid == 4)
+            //if (categoryid == 3 || categoryid == 4)
+            if (usercheck.shoptypeid == 2)
             {
                obj.femaleGarmentObj = db.tblfemaleGarments.Where(x => x.id == id).FirstOrDefault();
 
             }
-            if (categoryid == 5 || categoryid == 6)
+            if (usercheck.shoptypeid == 3)
+            //if (categoryid == 5 || categoryid == 6)
             {
                 obj.shoeObj = db.tblshoes.Where(x => x.id == id).FirstOrDefault();
+               // getsizeshoe = db.tblsizeShoes.Where(x => x.chartname == getSpecificfeGarment.shirtsizechartnameid).ToList();
+                obj.shoeSizeList = db.tblsizeShoes.Where(x => x.chartname == obj.shoeObj.sizechartname).ToList();
+
             }
             List<tblsizeShirtMale> getsizeshirt = new List<tblsizeShirtMale>();
             List<tblsizePantMale> getsizepant = new List<tblsizePantMale>();
@@ -353,7 +361,7 @@ namespace bazar.Controllers
                 getsizepantfemale = db.tblsizePantFemales.Where(x => x.chartName == getSpecificfeGarment.shirtsizechartnameid).ToList();
                 obj.femalePantSizeList = db.tblsizePantFemales.Where(x => x.chartName == obj.femaleGarmentObj.pantsizechartnameid).ToList();
             }
-
+         
             var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
             ViewBag.categories = db.tblcategories.Where(x => x.shoptypeId == shoptype.shoptypeid).ToList();
             ViewBag.shoplogo = shoptype.logo;

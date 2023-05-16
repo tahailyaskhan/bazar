@@ -17,7 +17,7 @@ namespace bazar.DAL.Data
         public IEnumerable<tblsizeShirtFemale> femaleShirtSizeList { get; set; }
         public IEnumerable<tblsizePantMale> malePantSizeList { get; set; }
         public IEnumerable<tblsizePantFemale> femalePantSizeList { get; set; }
-
+        public IEnumerable<tblsizeShoe> shoeSizeList { get; set; }
         public tblmaleGarment maleGarmentObj { get; set; }
         public tblfemaleGarment femaleGarmentObj { get; set; }
 
