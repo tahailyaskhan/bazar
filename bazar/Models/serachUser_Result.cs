@@ -28,5 +28,6 @@ namespace bazar.Models
         public string shopname { get; set; }
         public string profilepic { get; set; }
         public string logo { get; set; }
+        public Nullable<int> roleid { get; set; }
     }
 }

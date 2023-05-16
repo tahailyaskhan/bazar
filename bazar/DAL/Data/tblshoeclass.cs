@@ -9,6 +9,8 @@ namespace bazar.DAL.Data
     {
         public int id { get; set; }
         public string shoename { get; set; }
+        public string category { get; set; }
+        public string shirtsizechartnameid { get; set; }
         public Nullable<int> categoryid { get; set; }
         public string pic11 { get; set; }
         public string pic22 { get; set; }
@@ -25,6 +27,7 @@ namespace bazar.DAL.Data
         public Nullable<bool> large { get; set; }
         public Nullable<bool> xlarge { get; set; }
         public Nullable<bool> xxlarge { get; set; }
+        public Nullable<bool> xxxlarge { get; set; }
         public string detail { get; set; }
         public Nullable<int> price { get; set; }
         public Nullable<int> createdById { get; set; }

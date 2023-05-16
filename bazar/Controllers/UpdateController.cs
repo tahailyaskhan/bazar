@@ -455,14 +455,15 @@ namespace bazar.Controllers
                 {
                     
                     ci.shoename = data.shoename;
-
+                    ci.categoryid = data.categoryid;
+                    ci.sizechartname = data.shirtsizechartnameid;
                     ci.xsmall = data.xsmall;
                     ci.small = data.small;
                     ci.medium = data.medium;
                     ci.large = data.large;
                     ci.xlarge = data.xlarge;
                     ci.xxlarge = data.xxlarge;
-
+                    ci.xxxlarge = data.xxxlarge;
 
                     string keypath = ConfigurationManager.AppSettings["keypathshoe"];
                     string httpurl = ConfigurationManager.AppSettings["httpurl"];

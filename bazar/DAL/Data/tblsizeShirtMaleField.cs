@@ -48,6 +48,10 @@ namespace bazar.DAL.Data
         public Nullable<int> xlshirtLength { get; set; }
         public string xlsizeNamxle { get; set; }
 
+
+        public Nullable<int> xllcollar { get; set; }
+        public Nullable<int> xlllcollar { get; set; }
+
         public string chartName { get; set; }
         public string unit { get; set; }
         public Nullable<int> createdById { get; set; }

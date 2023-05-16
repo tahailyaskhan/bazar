@@ -19,6 +19,7 @@ namespace bazar.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult addtblsizeShirtMale(tblsizeShirtMaleField data)
         {
@@ -187,7 +188,224 @@ namespace bazar.Controllers
                 return View();
             }
         }
-         public ActionResult addtbluser(userclass data)
+
+        public ActionResult addtblsizeShoeMale(tblsizeShirtMaleField data)
+        {
+            tblsizeShirtMaleaction repo = new tblsizeShirtMaleaction();
+            try
+            {
+                var checkchart = db.tblsizeShirtMales.Where(x => x.chartName == data.chartName.ToString()).FirstOrDefault();
+
+                if (checkchart == null)
+                {
+                    tblsizeShoe ci = new tblsizeShoe();
+                    ci.sizeNumber = Convert.ToString(data.xscollar);
+                   
+                    ci.sizeName = "5";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+                    
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+
+
+
+                    ci.sizeNumber = Convert.ToString(data.scollar);
+
+                    ci.sizeName = "6";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+
+                    ci.sizeNumber = Convert.ToString(data.mcollar);
+
+                    ci.sizeName = "7";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+
+
+                    ci.sizeNumber = Convert.ToString(data.lcollar);
+
+                    ci.sizeName = "8";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+                    ci.sizeNumber = Convert.ToString(data.xlcollar);
+
+                    ci.sizeName = "9";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+
+                    ci.sizeNumber = Convert.ToString(data.xllcollar);
+
+                    ci.sizeName = "10";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+
+                    ci.sizeNumber = Convert.ToString(data.xlllcollar);
+
+                    ci.sizeName = "11";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+                    TempData["successstatusshirt"] = "success";
+                    return Json(new { messege = "success" });
+                    //  return RedirectToAction("Index", "Home");
+                }
+
+                else
+                {
+                    TempData["successstatusshirt"] = "exist";
+                    //return RedirectToAction("Index", "Home");
+                    return Json(new { messege = "exist" });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session["exception"] = ex.InnerException.ToString(); ;
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+
+          public ActionResult addtblsizeShoeFemale(tblsizeShirtMaleField data)
+        {
+            tblsizeShirtMaleaction repo = new tblsizeShirtMaleaction();
+            try
+            {
+                var checkchart = db.tblsizeShirtMales.Where(x => x.chartName == data.chartName.ToString()).FirstOrDefault();
+
+                if (checkchart == null)
+                {
+                    tblsizeShoe ci = new tblsizeShoe();
+                    ci.sizeNumber = Convert.ToString(data.xscollar);
+                   
+                    ci.sizeName = "3";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+                    
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+
+
+
+                    ci.sizeNumber = Convert.ToString(data.scollar);
+
+                    ci.sizeName = "4";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+
+                    ci.sizeNumber = Convert.ToString(data.mcollar);
+
+                    ci.sizeName = "5";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+
+
+                    ci.sizeNumber = Convert.ToString(data.lcollar);
+
+                    ci.sizeName = "6";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+                    ci.sizeNumber = Convert.ToString(data.xlcollar);
+
+                    ci.sizeName = "7";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+
+                    ci.sizeNumber = Convert.ToString(data.xllcollar);
+
+                    ci.sizeName = "8";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+
+                    ci.sizeNumber = Convert.ToString(data.xlllcollar);
+
+                    ci.sizeName = "9";
+                    ci.createdById = Convert.ToInt32(Session["userid"]);
+
+                    ci.chartname = data.chartName;
+                    ci.createdDate = DateTime.Now;
+                    db.tblsizeShoes.Add(ci);
+                    db.SaveChanges();
+
+                    TempData["successstatusshirt"] = "success";
+                    return Json(new { messege = "success" });
+                    //  return RedirectToAction("Index", "Home");
+                }
+
+                else
+                {
+                    TempData["successstatusshirt"] = "exist";
+                    //return RedirectToAction("Index", "Home");
+                    return Json(new { messege = "exist" });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session["exception"] = ex.InnerException.ToString(); ;
+                return RedirectToAction("Index", "Home");
+            }
+        }
+        public ActionResult addtbluser(userclass data)
         {
           
             try
@@ -622,13 +840,15 @@ namespace bazar.Controllers
                 {
                     tblshoe ci = new tblshoe();
                     ci.shoename = data.shoename;
-                
+                    ci.categoryid = data.categoryid;
+                    ci.sizechartname = data.shirtsizechartnameid;
                     ci.xsmall = data.xsmall;
                     ci.small = data.small;
                     ci.medium = data.medium;
                     ci.large = data.large;
                     ci.xlarge = data.xlarge;
                     ci.xxlarge = data.xxlarge;
+                    ci.xxxlarge = data.xxxlarge;
 
 
                     string keypath = ConfigurationManager.AppSettings["keypathshoe"];

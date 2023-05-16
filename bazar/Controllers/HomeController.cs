@@ -21,6 +21,8 @@ namespace bazar.Controllers
             return View();
         }
 
+
+
         public ActionResult viewtblsizePantMale()
         {
             return View();
@@ -54,7 +56,14 @@ namespace bazar.Controllers
         {
             return View();
         }
-
+        public ActionResult viewtblsizeshoe()
+        {
+            return View();
+        }
+        public ActionResult viewtblsizeshoefemale()
+        {
+            return View();
+        }
         public ActionResult viewtbluser()
         {
             return View();

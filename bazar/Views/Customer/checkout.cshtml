@@ -199,7 +199,7 @@
                             </div>
                             <div class="form-group">
                                 @*<input class="input" type="text" id="city" name="city" placeholder="City">*@
-                                <label for="categoryid">Select Category</label>
+                                <label for="categoryid">Select City</label>
 
                                 <select name="categoryid" id="categoryid" class="form-control" require>
                                     <option value="0">-- Please Select --</option>
@@ -507,7 +507,35 @@
         }
 
     }
+     function getCities() {
 
+        debugger
+        $.ajax({
+            url: '@Url.Action("getCities", "Detail")',
+            type: 'POST',
+            data: {
+            },
+            dataType: 'json',
+            success: function (data) {
+                debugger
+                alert
+                console.log(data.CategoryTypes);
+                $('#city').empty();
+
+                var s = ' <option value="">-- Please Select --</option>';
+
+                $.each(data.CategoryTypes, function (data, value) {
+                    //$("#ddlAttributeType").append('<option value="' + value.ID + '">' + value.CategoryType1 + '</option>');
+                    s += '<option value="' + value.id + '">' + value.cityName + '</option>';
+                });
+                $("#city").append(s);
+
+            },
+            error: function (request, error) {
+                console.log(request);
+            }
+        });
+    }
     function isNumber(number) {
         var val = /^923\d{9}$|^03\d{9}$/;
 
@@ -564,6 +592,14 @@
 
     });
 
+
+
+    $(document).ready(function () {
+
+        getCities();
+       
+
+    });
 </script>
 
 

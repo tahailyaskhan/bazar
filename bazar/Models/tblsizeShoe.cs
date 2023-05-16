@@ -12,15 +12,14 @@ namespace bazar.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblsizeSho
+    public partial class tblsizeShoe
     {
         public int id { get; set; }
-        public Nullable<int> sizeNumber { get; set; }
         public string sizeName { get; set; }
-        public string chartName { get; set; }
-        public Nullable<int> createdById { get; set; }
+        public string sizeNumber { get; set; }
+        public string chartname { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
-        public Nullable<bool> isActive { get; set; }
-        public string abbreviation { get; set; }
+        public Nullable<int> createdById { get; set; }
+        public Nullable<bool> isactive { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace bazar.Models
     public partial class bazarEntities : DbContext
     {
         public bazarEntities()
-            : base("name=bazarEntities")
+            : base("name=bazarEntities3")
         {
         }
     
@@ -27,25 +27,34 @@ namespace bazar.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tbl_template> tbl_template { get; set; }
         public virtual DbSet<tblcategory> tblcategories { get; set; }
         public virtual DbSet<tblcity> tblcities { get; set; }
+        public virtual DbSet<tblcreateUser> tblcreateUsers { get; set; }
+        public virtual DbSet<tblcustomerOrder> tblcustomerOrders { get; set; }
         public virtual DbSet<tblfemaleGarment> tblfemaleGarments { get; set; }
+        public virtual DbSet<tblgeneral> tblgenerals { get; set; }
         public virtual DbSet<tblmaleGarment> tblmaleGarments { get; set; }
         public virtual DbSet<tblmarket> tblmarkets { get; set; }
         public virtual DbSet<tblproduct> tblproducts { get; set; }
         public virtual DbSet<tblrole> tblroles { get; set; }
-        public virtual DbSet<tblshoe> tblshoes { get; set; }
         public virtual DbSet<tblshoptype> tblshoptypes { get; set; }
         public virtual DbSet<tblsizechartname> tblsizechartnames { get; set; }
         public virtual DbSet<tblsizePantFemale> tblsizePantFemales { get; set; }
         public virtual DbSet<tblsizePantMale> tblsizePantMales { get; set; }
         public virtual DbSet<tblsizeShirtFemale> tblsizeShirtFemales { get; set; }
         public virtual DbSet<tblsizeShirtMale> tblsizeShirtMales { get; set; }
-        public virtual DbSet<tblsizeSho> tblsizeShoes { get; set; }
-        public virtual DbSet<tblcreateUser> tblcreateUsers { get; set; }
-        public virtual DbSet<tblcustomerOrder> tblcustomerOrders { get; set; }
-        public virtual DbSet<tblgeneral> tblgenerals { get; set; }
-        public virtual DbSet<tbl_template> tbl_template { get; set; }
+        public virtual DbSet<tblsizeShoe> tblsizeShoes { get; set; }
+        public virtual DbSet<tblshoe> tblshoes { get; set; }
+    
+        public virtual ObjectResult<getCustomerReviews_Result> getCustomerReviews(Nullable<int> usersid)
+        {
+            var usersidParameter = usersid.HasValue ?
+                new ObjectParameter("usersid", usersid) :
+                new ObjectParameter("usersid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getCustomerReviews_Result>("getCustomerReviews", usersidParameter);
+        }
     
         public virtual ObjectResult<serachFemaleGarment_Result> serachFemaleGarment(string search)
         {
@@ -65,15 +74,6 @@ namespace bazar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<serachMaleGarment_Result>("serachMaleGarment", searchParameter);
         }
     
-        public virtual ObjectResult<serachShoes_Result> serachShoes(string search)
-        {
-            var searchParameter = search != null ?
-                new ObjectParameter("search", search) :
-                new ObjectParameter("search", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<serachShoes_Result>("serachShoes", searchParameter);
-        }
-    
         public virtual ObjectResult<serachShoe_Result> serachShoe(string search)
         {
             var searchParameter = search != null ?
@@ -83,6 +83,15 @@ namespace bazar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<serachShoe_Result>("serachShoe", searchParameter);
         }
     
+        public virtual ObjectResult<serachShoes_Result> serachShoes(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("search", search) :
+                new ObjectParameter("search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<serachShoes_Result>("serachShoes", searchParameter);
+        }
+    
         public virtual ObjectResult<serachUser_Result> serachUser(string search)
         {
             var searchParameter = search != null ?
@@ -90,15 +99,6 @@ namespace bazar.Models
                 new ObjectParameter("search", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<serachUser_Result>("serachUser", searchParameter);
-        }
-    
-        public virtual ObjectResult<getCustomerReviews_Result> getCustomerReviews(Nullable<int> usersid)
-        {
-            var usersidParameter = usersid.HasValue ?
-                new ObjectParameter("usersid", usersid) :
-                new ObjectParameter("usersid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getCustomerReviews_Result>("getCustomerReviews", usersidParameter);
         }
     }
 }

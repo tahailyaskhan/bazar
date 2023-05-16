@@ -36,6 +36,27 @@ namespace bazar.Controllers
 
 
             }
+
+             public ActionResult getCities()
+            {
+               bazarEntities db = new bazarEntities();
+                //int inputter = Convert.ToInt32(Session["inputterType"]);
+                //var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
+
+                var CategoryTypes = (from pd in db.tblcities
+                                                       
+                                     select new
+                                     {
+                                        pd.id,
+                                        pd.cityName
+                                       
+                                     }).ToList();
+
+               
+                return Json(new { ErrorCode = "000", CategoryTypes= CategoryTypes });
+
+
+            }
          public ActionResult getMarkets()
             {
                
@@ -156,6 +177,25 @@ namespace bazar.Controllers
 
             return Json(new { ErrorCode = "001" });
         }
+
+
+        public ActionResult getSizeShoeList()
+        {
+
+          
+
+                var GetAllBtUserName = (from us in db.tblsizeShoes
+                                        select new
+                                        {
+                                            us.createdById,
+                                            us.chartname
+                                        }).Where(x => x.createdById == userid).Distinct().ToList();
+                return Json(new { ErrorCode = "000", GetAllBtUserName });
+            
+
+              
+           
+        }
         // Views 
         public ActionResult gettblsizeShirtNale()
         {
@@ -188,6 +228,25 @@ namespace bazar.Controllers
                                                     }).Distinct().ToList();
             Session["getchartname"] = getchartname;
             var getsize = db.tblsizePantMales.ToList();
+
+            return View(getsize);
+
+
+
+        }
+
+        public ActionResult gettblsizeShoeMale()
+        {
+            //   int userid = Convert.ToInt32(Session["userid"]);
+            List<getchartnameclass> getchartname = (from us in db.tblsizeShoes
+                                                    where us.createdById == userid
+                                                    select new getchartnameclass
+                                                    {
+                                                        
+                                                        chartname = us.chartname
+                                                    }).Distinct().ToList();
+            TempData["getchartname"] = getchartname;
+            var getsize = db.tblsizeShoes.ToList();
 
             return View(getsize);
 
@@ -331,16 +390,20 @@ namespace bazar.Controllers
         {
 
             List<tblshoeclass> getgarment = (from pd in db.tblshoes
-                                                      select new tblshoeclass
+                                             join sub in db.tblcategories on pd.categoryid equals sub.id
+                                             select new tblshoeclass
                                                       {
                                                           id = pd.id,
                                                           shoename = pd.shoename,
+                                                          category=sub.categoryName,
+                                                          shirtsizechartnameid=pd.sizechartname,
                                                           xsmall = pd.xsmall,
                                                           small = pd.small,
                                                           medium = pd.medium,
                                                           large = pd.large,
                                                           xlarge = pd.xlarge,
                                                           xxlarge = pd.xxlarge,
+                                                          xxxlarge = pd.xxlarge,
                                                           detail = pd.detail,
                                                           price = pd.price,
                                                           pic11 = pd.pic1,

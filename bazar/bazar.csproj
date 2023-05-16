@@ -268,7 +268,7 @@
     <Compile Include="Models\tblsizeShirtMale.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblsizeSho.cs">
+    <Compile Include="Models\tblsizeShoe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_template.cs">
@@ -835,6 +835,9 @@
     <Content Include="Views\Home\viewtblMarket.cshtml" />
     <Content Include="Views\Home\viewtblRole.cshtml" />
     <Content Include="Views\Home\viewtblShoptype.cshtml" />
+    <Content Include="Views\Home\viewtblsizeshoe.cshtml" />
+    <Content Include="Views\Detail\gettblsizeShoeMale.cshtml" />
+    <Content Include="Views\Home\viewtblsizeshoefemale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

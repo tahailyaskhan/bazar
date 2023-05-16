@@ -36,6 +36,19 @@ namespace bazar.Controllers
 
             return RedirectToAction("gettblsizePantMale", "Detail");
         }
+
+         public ActionResult deletetblsizeShoeMale(string chartname)
+        {
+            var todo = db.tblsizeShoes.Where(x => x.chartname == chartname).ToList();
+            foreach (var row in todo)
+            {
+                db.tblsizeShoes.Remove(row);
+                db.SaveChanges();
+            }
+
+
+            return RedirectToAction("gettblsizePantMale", "Detail");
+        }
         public ActionResult deletetblsizeShirtFemale(string chartname)
         {
             var todo = db.tblsizeShirtFemales.Where(x => x.chartName == chartname).ToList();

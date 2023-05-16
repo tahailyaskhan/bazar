@@ -56,17 +56,35 @@
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <form  id="data" enctype="multipart/form-data" method="post">
+                                                <form id="data" enctype="multipart/form-data" method="post">
 
-                                                   
+
                                                     <div class="form-group">
                                                         <label for="shoename">shoename</label>
                                                         <input type="text" class="form-control" name="shoename" id="shoename" placeholder="Enter waist size">
                                                     </div>
-                                           
 
 
-                                           
+                                                    <div class="form-group">
+
+                                                        <label for="categoryid">Select Category</label>
+
+                                                        <select name="categoryid" id="categoryid" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <label for="shirtsizechartnameid">Select Size Chart</label>
+
+                                                        <select name="shirtsizechartnameid" id="shirtsizechartnameid" class="form-control" require>
+                                                            <option value="0">-- Please Select --</option>
+
+                                                        </select>
+                                                    </div>
+
 
                                                     <div class="row" style="padding-left:20px">
                                                         <div class="form-group col-md-2 col-sm-1">
@@ -106,6 +124,19 @@
 
                                                     </div>
 
+                                                    <div class="row" style="padding-left:20px">
+                                                       
+                                                        <div class="form-group col-md-2 col-sm-1">
+                                                            @Html.CheckBox("xxxlarge", new { @id = "xxlarge", @class = "form-check-input" })
+                                                            @*<input type="checkbox" class="form-check-input" name="xxlarge" id="xxlarge">*@
+                                                            <label class="form-check-label" for="xxlarge">XXL</label>
+                                                        </div>
+
+                                                    </div>
+
+
+
+
                                                     <div class="form-group">
                                                         <label for="pic1">Select a file:</label>
                                                         <input type="file" id="pic1" name="pic1">
@@ -128,7 +159,7 @@
 
                                                     <div class="form-group">
                                                         <label for="price">Price</label>
-                                                        <input type="text"  autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="price" id="price" placeholder="Enter Price">
+                                                        <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="price" id="price" placeholder="Enter Price">
                                                     </div>
 
 
@@ -177,11 +208,13 @@
         if ($("#price").val() == "") { document.getElementById('price').style.borderColor = "red"; toastr.error('price required!');  } else { document.getElementById('price').style.borderColor = "#ced4da"; }
         if ($("#detail").val() == "") { document.getElementById('detail').style.borderColor = "red"; toastr.error('detail required!'); } else { document.getElementById('detail').style.borderColor = "#ced4da"; }
 
+         if ($("#shirtsizechartnameid").val() == "0") { document.getElementById('shirtsizechartnameid').style.borderColor = "red"; toastr.error('shirtsizechartnameid required!'); } else { document.getElementById('shirtsizechartnameid').style.borderColor = "#ced4da"; }
+         if ($("#categoryid").val() == "0") { document.getElementById('categoryid').style.borderColor = "red"; toastr.error('categoryid required!'); } else { document.getElementById('categoryid').style.borderColor = "#ced4da"; }
 
 
 
 
-        if($("#shoename").val() == "" || $("#price").val() == "" || $("#detail").val() == ""  )
+         if ($("#shoename").val() == "" || $("#price").val() == "" || $("#detail").val() == "" || $("#shirtsizechartnameid").val() == "0" || $("#categoryid").val() == "0")
         {
             debugger
             toastr.error('All Fields are required!');
@@ -195,6 +228,34 @@
     }
 
 
+    function getSizeMaleShoeList() {
+        $.ajax({
+            url: '@Url.Action("getSizeShoeList", "Detail")',
+            type: 'GET',
+            data: {
+
+            },
+            dataType: 'json',
+            success: function (data) {
+                var s ='<option value="0">-- Please Select --</option>';
+                $('#shirtsizechartnameid').empty();
+                //var s = '<option value="">--Please Select --</option>';
+                //s += '<option value="0">--Select All --</option>';
+                $.each(data.GetAllBtUserName, function (data, value) {
+                    s += '<option value="' + value.chartname + '">' + value.chartname + '</option>';
+
+                });
+
+                $("#shirtsizechartnameid").append(s);
+
+            },
+            error: function (request, error) {
+               /* $('#divLoader').hide();*/
+                console.log(data);
+                //alert("Request: " + JSON.stringify(request));
+            }
+        });
+    }
 
     function isNumber(evt) {
         evt = (evt) ? evt : window.event;
@@ -265,6 +326,41 @@
 
     });
 
+    function getCategories() {
 
+        debugger
+        $.ajax({
+            url: '@Url.Action("getCategories", "Detail")',
+            type: 'POST',
+            data: {
+            },
+            dataType: 'json',
+            success: function (data) {
+                debugger
+                alert
+                console.log(data.CategoryTypes);
+                $('#categoryid').empty();
+
+                var s = ' <option value="0">-- Please Select --</option>';
+
+                $.each(data.CategoryTypes, function (data, value) {
+                    //$("#ddlAttributeType").append('<option value="' + value.ID + '">' + value.CategoryType1 + '</option>');
+                    s += '<option value="' + value.id + '">' + value.categoryName + '</option>';
+                });
+                $("#categoryid").append(s);
+
+            },
+            error: function (request, error) {
+                console.log(request);
+            }
+        });
+    }
+    $(document).ready(function () {
+
+        getCategories();
+        getSizeMaleShoeList();
+
+
+    });
 
 </script>

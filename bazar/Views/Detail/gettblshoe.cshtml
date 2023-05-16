@@ -66,14 +66,16 @@
                                                 <thead style="color:#ff6002">
                                                     <tr>
                                                         <th style="display: none">id</th>
-                                                        <th>Cloth Name</th>
-
+                                                        <th>Shoe Name</th>
+                                                        <th>Category Name</th>
+                                                        <th>SizeChart Name</th>
                                                         <th>Xsmall</th>
                                                         <th>small</th>
                                                         <th>Medium</th>
                                                         <th>Large</th>
                                                         <th>Xlarge</th>
                                                         <th>xxl</th>
+                                                        <th>xxxl</th>
                                                         <th>price</th>
                                                         <th style="display:none">detail</th>
                                                         <th style="display:none">pic22</th>
@@ -91,73 +93,82 @@
                                                     @foreach (var row in Model)
                                                     {
 
-                                                        <tr>
-                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.id)</td>
-                                                            <td>@Html.DisplayFor(modelItem => row.shoename)</td>
+                                                    <tr>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.id)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.shoename)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.category)</td>
+                                                        <td>@Html.DisplayFor(modelItem => row.shirtsizechartnameid)</td>
+
+                                                        @if (row.xsmall == true)
+                                                        {
+                                                            <td>yes</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>no</td>
+                                                        }
+                                                        @if (row.small == true)
+                                                        {
+                                                            <td>yes</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>no</td>
+                                                        }
+                                                        @if (row.medium == true)
+                                                        {
+                                                            <td>yes</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>no</td>
+                                                        }
+                                                        @if (row.large == true)
+                                                        {
+                                                            <td>yes</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>no</td>
+                                                        }
+                                                        @if (row.xlarge == true)
+                                                        {
+                                                            <td>yes</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>no</td>
+                                                        }
+                                                        @if (row.xxlarge == true)
+                                                        {
+                                                            <td>yes</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>no</td>
+                                                        }
+                                                        @if (row.xxxlarge == true)
+                                                        {
+                                                            <td>yes</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>no</td>
+                                                        }
+                                                        <td>@Html.DisplayFor(modelItem => row.price)</td>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.detail)</td>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.pic11)</td>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.pic22)</td>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.pic33)</td>
+                                                        <td><img id="myImg1" src="@row.pic11" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
+                                                        <td><img id="myImg2" src="@row.pic22" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
+                                                        <td><img id="myImg3" src="@row.pic33" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
+                                                        <td><button class='mt-2 btn btn-primary btnEdit' id='btnEdit'>Edit</button>  @Html.ActionLink("Delete", "deletetblshoe", "Delete", new { id = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>
+                                                        @*<td><button class='mt-2 btn btn-primary btnDelete' id='btnDelete'>Deactivate</button></td>*@
+                                                        @*<td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { id = row.id }, new { @class = "btn btn-primary" })</td>*@
 
 
-                                                            @if (row.xsmall == true)
-                                                            {
-                                                                <td>yes</td>
-                                                            }
-                                                            else
-                                                            {
-                                                                <td>no</td>
-                                                            }
-                                                            @if (row.small == true)
-                                                            {
-                                                                <td>yes</td>
-                                                            }
-                                                            else
-                                                            {
-                                                                <td>no</td>
-                                                            }
-                                                            @if (row.medium == true)
-                                                            {
-                                                                <td>yes</td>
-                                                            }
-                                                            else
-                                                            {
-                                                                <td>no</td>
-                                                            }
-                                                            @if (row.large == true)
-                                                            {
-                                                                <td>yes</td>
-                                                            }
-                                                            else
-                                                            {
-                                                                <td>no</td>
-                                                            }
-                                                            @if (row.xlarge == true)
-                                                            {
-                                                                <td>yes</td>
-                                                            }
-                                                            else
-                                                            {
-                                                                <td>no</td>
-                                                            }
-                                                            @if (row.xxlarge == true)
-                                                            {
-                                                                <td>yes</td>
-                                                            }
-                                                            else
-                                                            {
-                                                                <td>no</td>
-                                                            }
-                                                            <td>@Html.DisplayFor(modelItem => row.price)</td>
-                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.detail)</td>
-                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.pic11)</td>
-                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.pic22)</td>
-                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.pic33)</td>
-                                                            <td><img id="myImg1" src="@row.pic11" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
-                                                            <td><img id="myImg2" src="@row.pic22" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
-                                                            <td><img id="myImg3" src="@row.pic33" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
-                                                            <td><button class='mt-2 btn btn-primary btnEdit' id='btnEdit'>Edit</button>  @Html.ActionLink("Delete", "deletetblshoe", "Delete", new { id = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>
-                                                            @*<td><button class='mt-2 btn btn-primary btnDelete' id='btnDelete'>Deactivate</button></td>*@
-                                                            @*<td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { id = row.id }, new { @class = "btn btn-primary" })</td>*@
-
-
-                                                        </tr>
+                                                    </tr>
 
                                                     }
 
@@ -208,6 +219,25 @@
                             <label for="shoename">shoename</label>
                             <input type="text" class="form-control" name="shoename" id="shoename" placeholder="Enter shoename">
                         </div>
+                        <div class="form-group">
+
+                            <label for="categoryid">Select Category</label>
+
+                            <select name="categoryid" id="categoryid" class="form-control" require>
+                                <option value="0">-- Please Select --</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="shirtsizechartnameid">Select Size Chart</label>
+
+                            <select name="shirtsizechartnameid" id="shirtsizechartnameid" class="form-control" require>
+                                <option value="0">-- Please Select --</option>
+
+                            </select>
+                        </div>
 
 
 
@@ -248,7 +278,15 @@
                             </div>
                         </div>
 
-
+                        <div class="row" style="padding-left:20px">
+                           
+                           
+                            <div class="form-group col-md-2 col-sm-1">
+                                @Html.CheckBox("xxxlarge", new { @id = "xxlarge", @class = "form-check-input" })
+                                @*<input type="checkbox" class="form-check-input" name="xxlarge" id="xxlarge">*@
+                                <label class="form-check-label" for="xxlarge">xXXL</label>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <img src="" id="pic1"
                                  class="rounded-square"
@@ -311,11 +349,13 @@
         if ($("#price").val() == "") { document.getElementById('price').style.borderColor = "red"; toastr.error('price required!');  } else { document.getElementById('price').style.borderColor = "#ced4da"; }
         if ($("#detail").val() == "") { document.getElementById('detail').style.borderColor = "red"; toastr.error('detail required!'); } else { document.getElementById('detail').style.borderColor = "#ced4da"; }
 
+        if ($("#shirtsizechartnameid").val() == "0") { document.getElementById('shirtsizechartnameid').style.borderColor = "red"; toastr.error('shirtsizechartnameid required!'); } else { document.getElementById('shirtsizechartnameid').style.borderColor = "#ced4da"; }
+         if ($("#categoryid").val() == "0") { document.getElementById('categoryid').style.borderColor = "red"; toastr.error('categoryid required!'); } else { document.getElementById('categoryid').style.borderColor = "#ced4da"; }
 
 
 
 
-        if($("#shoename").val() == "" || $("#price").val() == "" || $("#detail").val() == ""  )
+              if ($("#shoename").val() == "" || $("#price").val() == "" || $("#detail").val() == "" || $("#shirtsizechartnameid").val() == "0" || $("#categoryid").val() == "0" || $("#shirtsizechartnameid").val() == "0" || $("#categoryid").val() == "0" )
         {
             debugger
             toastr.error('All Fields are required!');
@@ -387,7 +427,10 @@
             $('#xxlarge').attr('checked', false);
             $('#xxlarge').val(false);
         }
-
+        if ($('#xxxlarge').is(':checked') == false) {
+            $('#xxxlarge').attr('checked', false);
+            $('#xxxlarge').val(false);
+        }
         var ch = CheckNull();
         if (ch == false) {
             return false;

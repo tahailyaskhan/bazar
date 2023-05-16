@@ -16,8 +16,9 @@ namespace bazar.Models
     {
         public int id { get; set; }
         public string cityName { get; set; }
-        public Nullable<System.DateTime> createdDate { get; set; }
+        public string province { get; set; }
         public Nullable<int> createdById { get; set; }
         public Nullable<bool> isActive { get; set; }
+        public Nullable<System.DateTime> createdDate { get; set; }
     }
 }
