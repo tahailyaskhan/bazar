@@ -20,5 +20,6 @@ namespace bazar.Models
         public Nullable<int> createdById { get; set; }
         public Nullable<bool> isActive { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
+        public Nullable<int> charges { get; set; }
     }
 }

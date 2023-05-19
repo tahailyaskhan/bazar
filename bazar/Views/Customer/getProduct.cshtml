@@ -219,7 +219,7 @@
                                     <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.maleGarmentObj.price>
                                     <div class="radios" id="bodyss">
                                         @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                <input label="No" type="radio" id="female" name="gender" value="female">*@
+        <input label="No" type="radio" id="female" name="gender" value="female">*@
 
                                         @if (Model.maleGarmentObj.xsmall == true)
                                         {
@@ -244,6 +244,11 @@
                                         @if (Model.maleGarmentObj.xlarge == true)
                                         {
                                             <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                        }
+                                        @if (Model.maleGarmentObj.xxlarge == true)
+                                        {
+                                            <input label="XXL" type="radio" id="xxlarge" name="size" value="xxlarge">
 
                                         }
                                     </div>
@@ -279,7 +284,7 @@
                                     <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.femaleGarmentObj.price>
                                     <div class="radios" id="bodyss">
                                         @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                <input label="No" type="radio" id="female" name="gender" value="female">*@
+        <input label="No" type="radio" id="female" name="gender" value="female">*@
 
                                         @if (Model.femaleGarmentObj.xsmall == true)
                                         {
@@ -304,6 +309,11 @@
                                         @if (Model.femaleGarmentObj.xlarge == true)
                                         {
                                             <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                        }
+                                        @if (Model.femaleGarmentObj.xxlarge == true)
+                                        {
+                                            <input label="XXL" type="radio" id="xxlarge" name="size" value="xxlarge">
 
                                         }
                                     </div>
@@ -339,7 +349,7 @@
                                     <input type="text" style="visibility:hidden" id="price" name="price" value=@Model.shoeObj.price>
                                     <div class="radios" id="bodyss">
                                         @*<input label="ss" type="radio" id="male" name="gender" value="male" checked>
-                <input label="No" type="radio" id="female" name="gender" value="female">*@
+        <input label="No" type="radio" id="female" name="gender" value="female">*@
 
                                         @if (Model.shoeObj.xsmall == true)
                                         {
@@ -364,6 +374,16 @@
                                         @if (Model.shoeObj.xlarge == true)
                                         {
                                             <input label="XL" type="radio" id="xlarge" name="size" value="xlarge">
+
+                                        }
+                                        @if (Model.shoeObj.xxlarge == true)
+                                        {
+                                            <input label="XXL" type="radio" id="xxlarge" name="size" value="xxlarge">
+
+                                        }
+                                        @if (Model.shoeObj.xxxlarge == true)
+                                        {
+                                            <input label="XXXL" type="radio" id="xxxlarge" name="size" value="xxxlarge">
 
                                         }
                                     </div>

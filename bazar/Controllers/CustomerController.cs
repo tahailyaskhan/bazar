@@ -54,6 +54,9 @@ namespace bazar.Controllers
             tblcustomerOrder obj = new tblcustomerOrder();
 
             List<cart> cartlist = Session["cart"] as List<cart>;
+            int cityid = data.city;
+
+            var cityobj = db.tblcities.Where(x => x.id == cityid).FirstOrDefault();
             List<tblcustomerOrder> cart = new List<tblcustomerOrder>();
             if (cartlist != null)
             {
@@ -61,7 +64,7 @@ namespace bazar.Controllers
                 {
                     obj.customername = data.firstname;
                     obj.addresss = data.addresss;
-                    obj.cityname = data.city;
+                    obj.cityname = cityobj.cityName;
                     obj.Email = data.email;
                     obj.mobileNo = data.tel;
                     obj.ownerId = item.userid;
@@ -70,7 +73,7 @@ namespace bazar.Controllers
                     obj.orderId = item.ids;
                     obj.size = item.size;
                     obj.status = "pending";
-
+                    obj.createdDate=DateTime.Now;
                     cart.Add(obj);
 
 
@@ -111,8 +114,8 @@ namespace bazar.Controllers
                 //{
                 //    ViewBag.Error = "Some Error";
                 //}
-                //return RedirectToAction("receipt", "Customer");
-                return Json(new { messege = "success" });
+                return RedirectToAction("receipt", "Customer");
+                //return Json(new { messege = "success" });
             }
             else
             {
@@ -367,7 +370,27 @@ namespace bazar.Controllers
             ViewBag.shoplogo = shoptype.logo;
             return View(obj);
         }
+                [HttpPost]
+             public JsonResult getCities()
+            {
+               bazarEntities db = new bazarEntities();
+                //int inputter = Convert.ToInt32(Session["inputterType"]);
+                //var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
 
+                var CategoryTypes = (from pd in db.tblcities
+                                                       
+                                     select new
+                                     {
+                                        pd.id,
+                                        pd.cityName
+                                       
+                                     }).ToList();
+
+               
+                return Json(new { ErrorCode = "000", CategoryTypes= CategoryTypes });
+
+
+            }
         public ActionResult addCart(cart data)
         {
          
@@ -383,7 +406,7 @@ namespace bazar.Controllers
                 li.Add(data);
                 Session["cart"] = li;
                 Session["itemcount"] = li.Count();
-                Session["total"]= data.price * data.quantity;
+                Session["total"] = data.price;
 
                 Session["count"] = 1;
 
@@ -450,6 +473,11 @@ namespace bazar.Controllers
 
         public ActionResult receipt()
         {
+            if(Session["cart"]==null)
+            {
+
+                return RedirectToAction("customerView", "Customer");
+            }
             string midmesg = "";
             
             var obj=db.tbl_template.FirstOrDefault();
@@ -555,6 +583,7 @@ namespace bazar.Controllers
                     }
                     
                 }
+               
             }
             catch (Exception ex)
             {

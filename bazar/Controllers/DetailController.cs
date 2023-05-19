@@ -37,26 +37,6 @@ namespace bazar.Controllers
 
             }
 
-             public ActionResult getCities()
-            {
-               bazarEntities db = new bazarEntities();
-                //int inputter = Convert.ToInt32(Session["inputterType"]);
-                //var shoptype = db.tblcreateUsers.Where(x => x.id == userid).FirstOrDefault();
-
-                var CategoryTypes = (from pd in db.tblcities
-                                                       
-                                     select new
-                                     {
-                                        pd.id,
-                                        pd.cityName
-                                       
-                                     }).ToList();
-
-               
-                return Json(new { ErrorCode = "000", CategoryTypes= CategoryTypes });
-
-
-            }
          public ActionResult getMarkets()
             {
                
@@ -409,6 +389,9 @@ namespace bazar.Controllers
                                                           pic11 = pd.pic1,
                                                           pic22 = pd.pic2,
                                                           pic33 = pd.pic3,
+                                                          categoryid=sub.id,
+                                                        
+
                                                           createdById = pd.createdById
 
                                                       }).Where(x => x.createdById == userid).ToList();

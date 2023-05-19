@@ -84,6 +84,7 @@
                                                         <th>pic1</th>
                                                         <th>pic2</th>
                                                         <th>pic3</th>
+                                                        <th style="display:none">pic33</th>
                                                         <th>Edit</th>
 
                                                     </tr>
@@ -163,6 +164,7 @@
                                                         <td><img id="myImg1" src="@row.pic11" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
                                                         <td><img id="myImg2" src="@row.pic22" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
                                                         <td><img id="myImg3" src="@row.pic33" alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
+                                                        <td style="display:none">@Html.DisplayFor(modelItem => row.categoryid)</td>
                                                         <td><button class='mt-2 btn btn-primary btnEdit' id='btnEdit'>Edit</button>  @Html.ActionLink("Delete", "deletetblshoe", "Delete", new { id = row.id }, new { @class = "btn btn-primary", style = "margin-top:10px" })</td>
                                                         @*<td><button class='mt-2 btn btn-primary btnDelete' id='btnDelete'>Deactivate</button></td>*@
                                                         @*<td>@Html.ActionLink("Delete", "deletetblsizeShirtMale", "Delete", new { id = row.id }, new { @class = "btn btn-primary" })</td>*@
@@ -503,15 +505,15 @@
             $('#shoename').val($tds.text());
             //AreaName = $('#txtCategoryName').val();
 
-            $tds = $row.find("td:nth-child(3)");
-            $("#price").val($tds.text());
+            $tds = $row.find("td:nth-child(4)");
+            $("#shirtsizechartnameid").val($tds.text());
 
 
 
 
 
 
-         $tds = $row.find("td:nth-child(3)");
+         $tds = $row.find("td:nth-child(5)");
          var xsmall = $tds.text();
          if (xsmall == 'yes') {
              $('#xsmall').attr('checked', 'checked');
@@ -519,9 +521,10 @@
          }
          if (xsmall == 'no') {
              $('#xsmall').val(false);
+             $('#xsmall').attr('checked', false);
          }
 
-         $tds = $row.find("td:nth-child(4)");
+         $tds = $row.find("td:nth-child(6)");
          var small = $tds.text();
          if (small == 'yes') {
              $('#small').attr('checked', 'checked');
@@ -529,9 +532,10 @@
          }
          if (small == 'no') {
              $('#small').val(false);
+             $('#small').attr('checked', false);
          }
 
-         $tds = $row.find("td:nth-child(5)");
+         $tds = $row.find("td:nth-child(7)");
          var medium = $tds.text();
          if (medium == 'yes') {
              $('#medium').attr('checked', 'checked');
@@ -540,9 +544,10 @@
          }
          if (medium == 'no') {
              $('#medium').val(false);
+             $('#medium').attr('checked', false);
          }
 
-         $tds = $row.find("td:nth-child(6)");
+         $tds = $row.find("td:nth-child(8)");
          var large = $tds.text();
          if (large == 'yes') {
              $('#large').attr('checked', 'checked');
@@ -550,9 +555,10 @@
          }
          if (large == 'no') {
              $('#large').val(false);
+             $('#large').attr('checked', false);
          }
 
-         $tds = $row.find("td:nth-child(7)");
+         $tds = $row.find("td:nth-child(9)");
          var xlarge = $tds.text();
          if (xlarge == 'yes') {
              $('#xlarge').attr('checked', 'checked');
@@ -560,9 +566,10 @@
          }
          if (xlarge == 'no') {
              $('#xlarge').val(false);
+             $('#xlarge').attr('checked', false);
          }
 
-         $tds = $row.find("td:nth-child(8)");
+         $tds = $row.find("td:nth-child(10)");
          var xxlarge = $tds.text();
          if (xxlarge == 'yes') {
              $('#xxlarge').attr('checked', 'checked');
@@ -570,21 +577,37 @@
          }
          if (xxlarge == 'no') {
              $('#xxlarge').val(false);
+             $('#xxlarge').attr('checked', false);
          }
-         $tds = $row.find("td:nth-child(9)");
-         $('#price').val($tds.text());
-
-         $tds = $row.find("td:nth-child(10)");
-         $('#detail').val($tds.text());
 
          $tds = $row.find("td:nth-child(11)");
-         $("#pic1").attr("src", $tds.text());
+         var xxlarge = $tds.text();
+         if (xxlarge == 'yes') {
+             $('#xxxlarge').attr('checked', 'checked');
+             $('#xxxlarge').val(true);
+         }
+         if (xxlarge == 'no') {
+             $('#xxxlarge').val(false);
+             $('#xxxlarge').attr('checked', false);
+         }
 
          $tds = $row.find("td:nth-child(12)");
-         $("#pic2").attr("src", $tds.text());
+         $('#price').val($tds.text());
 
          $tds = $row.find("td:nth-child(13)");
+         $('#detail').val($tds.text());
+
+         $tds = $row.find("td:nth-child(14)");
+         $("#pic1").attr("src", $tds.text());
+
+         $tds = $row.find("td:nth-child(15)");
+         $("#pic2").attr("src", $tds.text());
+
+         $tds = $row.find("td:nth-child(16)");
          $("#pic3").attr("src", $tds.text());
+
+         $tds = $row.find("td:nth-child(20)");
+         $("#categoryid").val($tds.text());
      });
 
         function readURL(input) {
@@ -678,9 +701,37 @@
                 }
             });
         })
+     function getSizeMaleShoeList() {
+        $.ajax({
+            url: '@Url.Action("getSizeShoeList", "Detail")',
+            type: 'POST',
+            data: {
+
+            },
+            dataType: 'json',
+            success: function (data) {
+                var s ='<option value="0">-- Please Select --</option>';
+                $('#shirtsizechartnameid').empty();
+                //var s = '<option value="">--Please Select --</option>';
+                //s += '<option value="0">--Select All --</option>';
+                $.each(data.GetAllBtUserName, function (data, value) {
+                    s += '<option value="' + value.chartname + '">' + value.chartname + '</option>';
+
+                });
+
+                $("#shirtsizechartnameid").append(s);
+
+            },
+            error: function (request, error) {
+               /* $('#divLoader').hide();*/
+                console.log(data);
+                //alert("Request: " + JSON.stringify(request));
+            }
+        });
+    }
 
 
-    function getCategories() {
+     function getCategories() {
 
         debugger
         $.ajax({
@@ -709,100 +760,6 @@
             }
         });
     }
-
-
-    function getSizeMaleShirtList(categoryid) {
-        $.ajax({
-            url: '@Url.Action("getSizeList", "Detail")',
-            type: 'POST',
-            data: {
-                'categoryid': categoryid
-            },
-            dataType: 'json',
-            success: function (data) {
-                var s ='<option value="0">-- Please Select --</option>';
-                $('#shirtsizechartid').empty();
-                //var s = '<option value="">--Please Select --</option>';
-                //s += '<option value="0">--Select All --</option>';
-                $.each(data.GetAllBtUserName, function (data, value) {
-                    s += '<option value="' + value.chartName + '">' + value.chartName + '</option>';
-
-                });
-
-                $("#shirtsizechartid").append(s);
-
-            },
-            error: function (request, error) {
-                $('#divLoader').hide();
-                console.log(data);
-                //alert("Request: " + JSON.stringify(request));
-            }
-        });
-    }
-
-      function getSizeMalePantList(categoryid) {
-        $.ajax({
-            url: '@Url.Action("getSizeList", "Detail")',
-            type: 'POST',
-            data: {
-                'categoryid': categoryid
-            },
-            dataType: 'json',
-            success: function (data) {
-                var s ='<option value="0">-- Please Select --</option>';
-                $('#pantsizechartid').empty();
-              //  var s = '<option value="">--Please Select --</option>';
-               // s += '<option value="0">--Select All --</option>';
-                $.each(data.GetAllBtUserName, function (data, value) {
-                    s += '<option value="' + value.chartName + '">' + value.chartName + '</option>';
-
-                });
-
-                $("#pantsizechartid").append(s);
-
-            },
-            error: function (request, error) {
-                $('#divLoader').hide();
-                console.log(data);
-                //alert("Request: " + JSON.stringify(request));
-            }
-        });
-    }
-
-
-    $("#categoryid").change(function () {
-
-        //ShowProgress();
-
-        categoryid = ($(this).val());
-        if (categoryid == 0) {
-            $("#shirtsizechartid").prop("disabled", true);
-            $("#pantsizechartid").prop("disabled", true);
-
-
-
-        }
-        if(categoryid == 1)
-        {
-            $("#shirtsizechartid").prop("disabled", false);
-            $("#pantsizechartid").prop("disabled", true);
-    //        getSizeMalePantList(0);
-            $('#pantsizechartid').empty();
-            getSizeMaleShirtList(categoryid);
-
-        }
-        if (categoryid == 2)
-        {
-            $("#pantsizechartid").prop("disabled", false);
-            $("#shirtsizechartid").prop("disabled", true);
-            $('#shirtsizechartid').empty();
-            getSizeMalePantList(categoryid);
-
-        }
-
-
-    });
-
         $(document).on('click', '#close', function () {
             //$('#modelcontent').empty();
             //$("#modelcontent1").empty();
@@ -819,6 +776,8 @@
     $(document).ready(function () {
 
         let table = new DataTable('#tblshoe');
+        getCategories();
+        getSizeMaleShoeList();
 
 
 

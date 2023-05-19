@@ -401,6 +401,7 @@
     <Content Include="assets\plugins\jquery-ui\js\jquery-ui.js" />
     <Content Include="assets\plugins\jquery\js\jquery.min.js" />
     <Content Include="Content\ajax-loader.gif" />
+    <Content Include="Content\bootstrap-chosen.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -420,6 +421,8 @@
     <Content Include="Content\c3.css" />
     <Content Include="Content\c3.min.css" />
     <Content Include="Content\chart.js" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\DataTables-1.10.18\css\dataTables.bootstrap.css" />
     <Content Include="Content\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
     <Content Include="Content\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
@@ -455,6 +458,8 @@
     <Content Include="Content\ExportoExcel\jquery.table2excel.min.js" />
     <Content Include="Content\Icons\130-1304453_computer-icons-check-mark-royalty-free-true-false.png" />
     <Content Include="Content\Icons\pngtree-wrong-false-icon-design-template-vector-isolated-png-image_711430.jpg" />
+    <Content Include="Content\bootstrap-chosen.scss" />
+    <Content Include="Content\bootstrap-chosen.less" />
     <None Include="Content\jquery-1.8.2.intellisense.js" />
     <Content Include="Content\jquery-1.8.2.js" />
     <Content Include="Content\jquery-1.8.2.min.js" />
@@ -761,6 +766,8 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\c3.js" />
     <Content Include="Scripts\c3.min.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\d3.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

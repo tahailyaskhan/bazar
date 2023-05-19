@@ -58,6 +58,18 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
+
+@{ 
+
+    if (Session["receipt"] == null || Session["cart"] == null)
+    {
+
+        Response.Redirect("~/Customer/customerView");
+    }
+
+
+}
+
 <body id="receipt">
     <div id="top-header">
         <div class="container">
@@ -244,19 +256,9 @@
             </tbody>
         </table>
     </div>
-    <h3>Preview :</h3>
-
-    <div id="previewImage"></div>
+   
 
 
-    <input id="btn-Preview-Image" type="button"
-           value="Preview" />
-
-    <button id="btn-Convert-Html2Image">
-        Download
-    </button>
-
-    <br />
 
 
 </body>
@@ -656,3 +658,12 @@
 </body>
 
 </html>-->
+
+
+@{ 
+
+    Session["receipt"] = null;
+    Session["cart"] = null;
+    Session["itemcount"] = null;
+
+}

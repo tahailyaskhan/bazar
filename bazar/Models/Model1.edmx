@@ -34,6 +34,7 @@
           <Property Name="createdById" Type="int" />
           <Property Name="isActive" Type="bit" />
           <Property Name="createdDate" Type="datetime" />
+          <Property Name="charges" Type="int" />
         </EntityType>
         <EntityType Name="tblcreateUser">
           <Key>
@@ -373,17 +374,6 @@
           <Property Name="createdById" Type="Int32" />
           <Property Name="isActive" Type="Boolean" />
         </EntityType>
-        <EntityType Name="tblcity">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="province" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="createdById" Type="Int32" />
-          <Property Name="isActive" Type="Boolean" />
-          <Property Name="createdDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="tblcreateUser">
           <Key>
             <PropertyRef Name="id" />
@@ -639,7 +629,6 @@
         <EntityContainer Name="bazarEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_template" EntityType="Self.tbl_template" />
           <EntitySet Name="tblcategories" EntityType="Self.tblcategory" />
-          <EntitySet Name="tblcities" EntityType="Self.tblcity" />
           <EntitySet Name="tblcreateUsers" EntityType="Self.tblcreateUser" />
           <EntitySet Name="tblcustomerOrders" EntityType="Self.tblcustomerOrder" />
           <EntitySet Name="tblfemaleGarments" EntityType="Self.tblfemaleGarment" />
@@ -674,6 +663,7 @@
           <Parameter Name="search" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="tblshoes" EntityType="bazarModel.tblshoe" />
+          <EntitySet Name="tblcities" EntityType="bazarModel.tblcity" />
         </EntityContainer>
         <ComplexType Name="getCustomerReviews_Result">
           <Property Type="String" Name="customername" Nullable="true" />
@@ -804,6 +794,18 @@
           <Property Name="xxxlarge" Type="Boolean" />
           <Property Name="sizechartname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="tblcity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="province" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="createdById" Type="Int32" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="charges" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -828,18 +830,6 @@
                 <ScalarProperty Name="createdDate" ColumnName="createdDate" />
                 <ScalarProperty Name="createdById" ColumnName="createdById" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblcities">
-            <EntityTypeMapping TypeName="bazarModel.tblcity">
-              <MappingFragment StoreEntitySet="tblcity">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="cityName" ColumnName="cityName" />
-                <ScalarProperty Name="province" ColumnName="province" />
-                <ScalarProperty Name="createdById" ColumnName="createdById" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1260,6 +1250,19 @@
                 <ScalarProperty Name="pic1" ColumnName="pic1" />
                 <ScalarProperty Name="categoryid" ColumnName="categoryid" />
                 <ScalarProperty Name="shoename" ColumnName="shoename" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblcities">
+            <EntityTypeMapping TypeName="bazarModel.tblcity">
+              <MappingFragment StoreEntitySet="tblcity">
+                <ScalarProperty Name="charges" ColumnName="charges" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="createdById" ColumnName="createdById" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

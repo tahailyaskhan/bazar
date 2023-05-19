@@ -29,7 +29,6 @@ namespace bazar.Models
     
         public virtual DbSet<tbl_template> tbl_template { get; set; }
         public virtual DbSet<tblcategory> tblcategories { get; set; }
-        public virtual DbSet<tblcity> tblcities { get; set; }
         public virtual DbSet<tblcreateUser> tblcreateUsers { get; set; }
         public virtual DbSet<tblcustomerOrder> tblcustomerOrders { get; set; }
         public virtual DbSet<tblfemaleGarment> tblfemaleGarments { get; set; }
@@ -46,6 +45,7 @@ namespace bazar.Models
         public virtual DbSet<tblsizeShirtMale> tblsizeShirtMales { get; set; }
         public virtual DbSet<tblsizeShoe> tblsizeShoes { get; set; }
         public virtual DbSet<tblshoe> tblshoes { get; set; }
+        public virtual DbSet<tblcity> tblcities { get; set; }
     
         public virtual ObjectResult<getCustomerReviews_Result> getCustomerReviews(Nullable<int> usersid)
         {

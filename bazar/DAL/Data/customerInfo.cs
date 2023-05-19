@@ -10,7 +10,7 @@ namespace bazar.DAL.Data
         public string firstname { get; set; }
         public string email { get; set; }
         public string addresss { get; set; }
-        public string city { get; set; }
+        public int city { get; set; }
         public string tel { get; set; }
     }
 }

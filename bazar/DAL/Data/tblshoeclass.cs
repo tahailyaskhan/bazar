@@ -8,6 +8,11 @@ namespace bazar.DAL.Data
     public class tblshoeclass
     {
         public int id { get; set; }
+
+      
+
+
+        public int chartid { get; set; }
         public string shoename { get; set; }
         public string category { get; set; }
         public string shirtsizechartnameid { get; set; }
