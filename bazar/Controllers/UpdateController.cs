@@ -70,6 +70,7 @@ namespace bazar.Controllers
                     ci.email = data.email;
                     ci.cnic = data.cnic;
                     ci.shopname = data.shopname;
+                    ci.name = data.shopname;
                     ci.addresss = data.address;
                     ci.roleid = data.roleid;
                     ci.marketid = data.marketid;
@@ -167,11 +168,11 @@ namespace bazar.Controllers
                 string username = Session["Username"].ToString();
                 var ci = db.tblmaleGarments.Where(x => x.id == data.id).FirstOrDefault();
 
-                //var checkclothname1 = db.tblmaleGarments.Where(x => x.id==data.id && x.clothname == data.clothname.ToString()).ToList();
+                var checkclothname = db.tblmaleGarments.Where(x => x.id!=data.id && x.clothname == data.clothname.ToString()).FirstOrDefault();
 
                 //if(checkclothname > 0 && checkclothname1==null)
                 
-               // if (checkclothname == null)
+                if (checkclothname == null)
                 {
                     
                     ci.clothname = data.clothname;
@@ -250,21 +251,21 @@ namespace bazar.Controllers
 
 
                     TempData["success"] = "success";
-                    return RedirectToAction("gettblmaleGarment", "Detail");
+                    return Json(new { messege = "success" });
                 }
 
-                //else
-                //{
-                //    Session["checkchartname"] = "exist";
-                //    return RedirectToAction("viewtblmaleGarment", "Home");
-
-                //}
+                else
+                {
+                    //Session["checkchartname"] = "exist";
+                    //return RedirectToAction("viewtblmaleGarment", "Home");
+                    return Json(new { messege = "exist" });
+                }
             }
             catch (Exception ex)
             {
 
-                Session["exception"] = ex.InnerException.ToString(); ;
-                return RedirectToAction("gettblmaleGarment", "Detail");
+                Session["exception"] = ex.Message.ToString();
+                return Json(new { messege = "exception", exception = ex.Message.ToString() });
             }
         }
 

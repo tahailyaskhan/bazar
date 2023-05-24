@@ -15,8 +15,8 @@ namespace bazar.Models
     public partial class tblsizePantMale
     {
         public int id { get; set; }
-        public Nullable<int> waist { get; set; }
-        public Nullable<int> pantlength { get; set; }
+        public string waist { get; set; }
+        public string pantlength { get; set; }
         public string sizeName { get; set; }
         public string chartName { get; set; }
         public string unitId { get; set; }

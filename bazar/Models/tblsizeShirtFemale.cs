@@ -15,13 +15,13 @@ namespace bazar.Models
     public partial class tblsizeShirtFemale
     {
         public int id { get; set; }
-        public Nullable<int> shoulder { get; set; }
-        public Nullable<int> chest { get; set; }
-        public Nullable<int> armhole { get; set; }
-        public Nullable<int> sleeveLength { get; set; }
-        public Nullable<int> sleeveopening { get; set; }
-        public Nullable<int> shirtLength { get; set; }
-        public Nullable<int> daman { get; set; }
+        public string shoulder { get; set; }
+        public string chest { get; set; }
+        public string armhole { get; set; }
+        public string sleeveLength { get; set; }
+        public string sleeveopening { get; set; }
+        public string shirtLength { get; set; }
+        public string daman { get; set; }
         public string sizeName { get; set; }
         public string chartName { get; set; }
         public string unitId { get; set; }

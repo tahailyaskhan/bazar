@@ -27,7 +27,7 @@ namespace bazar.Controllers
             Session["market"] = db.tblmarkets.ToList();
             Session["shop"] = db.tblshoptypes.Where(x=>x.id!=1 && x.id != 2 && x.id != 3).ToList();
             //   var getCustomer = db.tblcreateUsers.ToList();
-            get.userList = db.tblcreateUsers.Where(x=>x.roleid!=5 && x.roleid != 1).ToList();
+            get.userList = db.tblcreateUsers.Where(x=>x.roleid!=5 && x.roleid != 1 && x.isActive==true).ToList();
 
             return View(get);
         }
@@ -52,7 +52,7 @@ namespace bazar.Controllers
         public ActionResult checkout(customerInfo data)
         {
             tblcustomerOrder obj = new tblcustomerOrder();
-
+            Session["customeremail"] = data.email;
             List<cart> cartlist = Session["cart"] as List<cart>;
             int cityid = data.city;
 
@@ -398,7 +398,7 @@ namespace bazar.Controllers
             {
                 List<cart> li = new List<cart>();
                 var obj = db.tblcreateUsers.Where(x => x.id == data.userid).FirstOrDefault();
-
+                data.useremail = obj.email;
                 data.brandname = obj.name;
                 data.date = DateTime.Now.ToString();
                 data.price = data.price * data.quantity;
@@ -429,6 +429,7 @@ namespace bazar.Controllers
                     var obj = db.tblcreateUsers.Where(x => x.id == data.userid).FirstOrDefault();
                     data.date = DateTime.Now.ToString();
                     data.brandname = obj.name;
+                    data.useremail = obj.email;
                     data.price = data.price * data.quantity;
                     li.Add(data);
                     Session["cart"] = li;
@@ -479,7 +480,7 @@ namespace bazar.Controllers
                 return RedirectToAction("customerView", "Customer");
             }
             string midmesg = "";
-            
+            string customeremail = Convert.ToString(Session["customeremail"]);
             var obj=db.tbl_template.FirstOrDefault();
 
             string uppermesg =obj.uppermesg;
@@ -489,9 +490,9 @@ namespace bazar.Controllers
             try
             {
 
-                {
+                
                     var senderEmail = new MailAddress("ktahakhan8@gmail.com", "Jamil");
-                    var receiverEmail = new MailAddress("mtk212@yahoo.com", "Receiver");
+                    var receiverEmail = new MailAddress(customeremail, "Receiver");
                     var password = "okoxdnbhxitekqny";
                     var sub = "subject";
                     string table = "<table><tr><td>id</td><td>Name</td><td>Price</td></tr></table>";
@@ -576,14 +577,31 @@ namespace bazar.Controllers
                     //    Body = Convert.ToString(body)
                     //})
                     ListDictionary replacements = new ListDictionary();
-                    MailMessage msg = md.CreateMailMessage("mtk212@yahoo.com", replacements, body, new System.Web.UI.Control());
+                    MailMessage msg = md.CreateMailMessage(customeremail, replacements, body, new System.Web.UI.Control());
                     {
 
                         smtp.Send(msg);
                     }
-                    
+
+                // useremail
+
+                var templist = Session["cart"] as List<cart>;
+                var useremaillist = templist.Distinct().ToList();
+                var userbody = "you have new order, kindly check and refresh your account";
+
+
+                ListDictionary userreplacements = new ListDictionary();
+                foreach (var item in useremaillist)
+                {
+                    MailMessage usermsg = md.CreateMailMessage(item.useremail, userreplacements, userbody, new System.Web.UI.Control());
+                    {
+
+                        smtp.Send(usermsg);
+                    }
                 }
-               
+
+                
+
             }
             catch (Exception ex)
             {

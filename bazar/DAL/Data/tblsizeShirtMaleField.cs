@@ -9,48 +9,48 @@ namespace bazar.DAL.Data
     {
 
         public int id { get; set; }
-        public Nullable<int> xscollar { get; set; }
-        public Nullable<int> xschest { get; set; }
-        public Nullable<int> xssleeveLength { get; set; }
-        public Nullable<int> xsshirtLength { get; set; }
+        public string xscollar { get; set; }
+        public string xschest { get; set; }
+        public string xssleeveLength { get; set; }
+        public string xsshirtLength { get; set; }
         public string xssizeNamxse { get; set; }
 
        
-        public Nullable<int> scollar { get; set; }
-        public Nullable<int> schest { get; set; }
-        public Nullable<int> ssleeveLength { get; set; }
-        public Nullable<int> sshirtLength { get; set; }
+        public string scollar { get; set; }
+        public string schest { get; set; }
+        public string ssleeveLength { get; set; }
+        public string sshirtLength { get; set; }
         public string ssizeNamse { get; set; }
 
 
 
         
-        public Nullable<int> mcollar { get; set; }
-        public Nullable<int> mchest { get; set; }
-        public Nullable<int> msleeveLength { get; set; }
-        public Nullable<int> mshirtLength { get; set; }
+        public string mcollar { get; set; }
+        public string mchest { get; set; }
+        public string msleeveLength { get; set; }
+        public string mshirtLength { get; set; }
         public string msizeNamme { get; set; }
 
         
-        public Nullable<int> lcollar { get; set; }
-        public Nullable<int> lchest { get; set; }
-        public Nullable<int> lsleeveLength { get; set; }
-        public Nullable<int> lshirtLength { get; set; }
+        public string lcollar { get; set; }
+        public string lchest { get; set; }
+        public string lsleeveLength { get; set; }
+        public string lshirtLength { get; set; }
         public string lsizeNamle { get; set; }
 
 
 
 
        
-        public Nullable<int> xlcollar { get; set; }
-        public Nullable<int> xlchest { get; set; }
-        public Nullable<int> xlsleeveLength { get; set; }
-        public Nullable<int> xlshirtLength { get; set; }
+        public string xlcollar { get; set; }
+        public string xlchest { get; set; }
+        public string xlsleeveLength { get; set; }
+        public string xlshirtLength { get; set; }
         public string xlsizeNamxle { get; set; }
 
 
-        public Nullable<int> xllcollar { get; set; }
-        public Nullable<int> xlllcollar { get; set; }
+        public string xllcollar { get; set; }
+        public string xlllcollar { get; set; }
 
         public string chartName { get; set; }
         public string unit { get; set; }

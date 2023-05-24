@@ -48,10 +48,12 @@
 <body>
     <!-- HEADER -->
 
-    <div id="top-header">
-        <div class="container">
-            <div class=" text-center">
-                <span>Welcome to E-shop!</span>
+    <div id="top-header" >
+        <div class="container" style="background-color:orangered; color:white; font-size:20px">
+            <div class=" text-center mt-2 pt-2" >
+             
+                <marquee >Welcome to E-shop!</marquee>
+                @*<span>Welcome to E-shop!</span>*@
             </div>
             @*<div class="pull-right">
                     <ul class="header-top-links">
@@ -127,6 +129,9 @@
                         <!-- Account -->
                         <!-- /Account -->
                         <!-- Cart -->
+                        <li class="nav-toggle">
+                            <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                        </li>
                         <li class="header-cart dropdown default-dropdown">
                             <a href=@Url.Action("getCart", "Customer") class="" aria-expanded="true">
 
@@ -143,9 +148,9 @@
                         </li>
                         <!-- /Cart -->
                         <!-- Mobile nav toggle-->
-                        <li class="nav-toggle">
+                        @*<li class="nav-toggle">
                             <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
-                        </li>
+                        </li>*@
                         <!-- / Mobile nav toggle -->
                     </ul>
                 </div>
@@ -289,6 +294,7 @@
                     {
 
                         <div class="section-title">
+                           
                             <h2 class="title">@TempData["searchedMarket"] Shops</h2>
                         </div>
 
@@ -330,7 +336,8 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star-o empty"></i>
                                             </div>*@
-                                        <h4 style="color:orange">@rows.name </h4>
+                                        @*<h4 style="color:orange">@rows.name </h4>*@
+                                         <h4 style="color:orange">@rows.shopname </h4>
 
                                         @*<h4 class="product-name">@Html.ActionLink(rows.username, "getUsersShop", "Customer", new { id = rows.id }, new { @class = "btn" })</h4>*@
                                         <div class="product-btns">
@@ -366,7 +373,8 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star-o empty"></i>
                                             </div>*@
-                                        <h4 style="color:orange">@rows.name </h4>
+                                        @*<h4 style="color:orange">@rows.name </h4>*@
+                                         <h4 style="color:orange">@rows.shopname </h4>
 
                                         @*<h4 class="product-name">@Html.ActionLink(rows.username, "getUsersShop", "Customer", new { id = rows.id }, new { @class = "btn" })</h4>*@
                                         <div class="product-btns">
@@ -405,7 +413,8 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-o empty"></i>
                                         </div>*@
-                                    <h4 style="color:orange">@rows.name </h4>
+                                    @*<h4 style="color:orange">@rows.name </h4>*@
+                                     <h4 style="color:orange">@rows.shopname </h4>
 
                                     @*<h4 class="product-name">@Html.ActionLink(rows.username, "getUsersShop", "Customer", new { id = rows.id }, new { @class = "btn" })</h4>*@
                                     <div class="product-btns">

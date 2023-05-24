@@ -28,7 +28,7 @@ namespace bazar.DAL.Repository
                     ci.pantlength = data.xspantlength;                 
                     ci.sizeName = "xsmall";
                     ci.createdById = 1;
-                    ci.unitId = data.unitId;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     db.tblsizePantFemales.Add(ci);
@@ -42,7 +42,7 @@ namespace bazar.DAL.Repository
                     ci.pantlength = data.spantlength;
                     ci.sizeName = "small";                  
                     ci.createdById = 1;
-                    ci.unitId = data.unitId;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     db.tblsizePantFemales.Add(ci);
@@ -56,7 +56,7 @@ namespace bazar.DAL.Repository
                     ci.pantlength = data.mpantlength;
                     ci.sizeName = "medium";
                     ci.createdById = 1;
-                    ci.unitId = data.unitId;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     db.tblsizePantFemales.Add(ci);
                     db.SaveChanges();
@@ -70,7 +70,7 @@ namespace bazar.DAL.Repository
                     ci.pantlength = data.lpantlength;
                     ci.sizeName = "large";
                     ci.createdById = 1;
-                    ci.unitId = data.unitId;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     db.tblsizePantFemales.Add(ci);
@@ -86,7 +86,7 @@ namespace bazar.DAL.Repository
                     ci.pantlength = data.xlpantlength;
                     ci.sizeName = "xlarge";                    
                     ci.createdById = 1;
-                    ci.unitId = data.unitId;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     db.tblsizePantFemales.Add(ci);

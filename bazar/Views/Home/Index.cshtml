@@ -54,7 +54,7 @@
                                 <div class="card">
 
                                     <div class="card-body">
-                                        <h1>Size for Shirt form</h1>
+                                        <h1>Size for Shirt (in inches)</h1>
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -168,14 +168,14 @@
                                                         @*<label for="sizename">SizeName</label>*@
                                                         <input type="text" class="form-control" name="chartName" id="chartName" placeholder="Enter Chartname">
                                                     </div>
-                                                    <h4>Unit</h4>
+                                                    @*<h4>Unit</h4>
                                                     <div class="form-group">
                                                         <select name="unit" id="unit" class="form-control" require>
                                                             <option value="0">-- Please Select --</option>
                                                             <option value="centimetre"> centimetre </option>
                                                             <option value="inches"> inches </option>
                                                         </select>
-                                                    </div>
+                                                    </div>*@
 
 
                                                     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
@@ -287,7 +287,8 @@
         if ($("#xlsleevelength").val() == "") { document.getElementById('xlsleevelength').style.borderColor = "red"; toastr.error('Extra Large sleevelength required!'); } else { document.getElementById('xlsleevelength').style.borderColor = "#ced4da"; }
         if ($("#xlshirtlength").val() == "") { document.getElementById('xlshirtlength').style.borderColor = "red"; toastr.error('Extra Large shirtlength Field  required!'); } else { document.getElementById('xlshirtlength').style.borderColor = "#ced4da"; }
 
-        if ($("#unit").val() == "0") { document.getElementById('unit').style.borderColor = "red"; toastr.error('unit  required!'); } else { document.getElementById('unit').style.borderColor = "#ced4da"; }
+        //if ($("#unit").val() == "0") { document.getElementById('unit').style.borderColor = "red"; toastr.error('unit  required!'); } else { document.getElementById('unit').style.borderColor = "#ced4da"; }
+
         if ($("#chartName").val() == "") { document.getElementById('chartName').style.borderColor = "red"; toastr.error('chartName required!'); } else { document.getElementById('chartName').style.borderColor = "#ced4da"; }
 
 
@@ -295,7 +296,7 @@
             || $("#xlcollar").val() == "" || $("#xschest").val() == "" || $("#schest").val() == "" || $("#mchest").val() == "" || $("#lchest").val() == ""
             || $("#xlchest").val() == "" || $("#xssleevelength").val() == "" || $("#ssleevelength").val() == "" || $("#msleevelength").val() == ""
             || $("#lsleevelength").val() == "" || $("#xlsleevelength").val() == "" || $("#xsshirtlength").val() == "" || $("#sshirtlength").val() == "" || $("#mshirtlength").val() == ""
-            || $("#lsleevelength").val() == "" || $("#xlsleevelength").val() == "" || $("#unit").val() == "0" || $("#chartName").val() == ""
+            || $("#lsleevelength").val() == "" || $("#xlsleevelength").val() == "" ||  $("#chartName").val() == ""
         ) {
 
             toastr.error('All Fields are required!');
@@ -308,17 +309,25 @@
         }
 
     }
-
     function isNumber(evt) {
-    evt = (evt) ? evt : window.event;
-    var charCode = (evt.which) ? evt.which : evt.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 46 && charCode > 31
+            && (charCode < 48 || charCode > 57)) {
             toastr.error('write number only');
-        return false;
+            return false;
         }
+        return true;
+    }
+//    function isNumber(evt) {
+//    evt = (evt) ? evt : window.event;
+//    var charCode = (evt.which) ? evt.which : evt.keyCode;
+//        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+//            toastr.error('write number only');
+//        return false;
+//        }
 
-    return true;
-}
+//    return true;
+//}
 
 
         $("form#data").submit(function (e) {
@@ -344,13 +353,17 @@
                     debugger
                     if(data.messege == 'success') {
                         toastr.success('Successfully Submitted');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
                     }
                     else if (data.messege == 'exception') {
-                        alert(data.messege);
+                        alert(data.exception);
                     }
                     else{
                         toastr.error("chartname already exist");
                     }
+                    
                 },
                 cache: false,
                 contentType: false,

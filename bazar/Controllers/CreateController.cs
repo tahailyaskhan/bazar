@@ -27,7 +27,7 @@ namespace bazar.Controllers
             try
             {
                 var checkchart = db.tblsizeShirtMales.Where(x => x.chartName == data.chartName.ToString()).FirstOrDefault();
-
+               
                 if (checkchart == null)
                 {
                     tblsizeShirtMale ci = new tblsizeShirtMale();
@@ -37,7 +37,7 @@ namespace bazar.Controllers
                     ci.shirtLength = data.xsshirtLength;
                     ci.sizeName = "xsmall";
                     ci.createdById = Convert.ToInt32(Session["userid"]);
-                    ci.unitId = data.unit;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
@@ -50,7 +50,7 @@ namespace bazar.Controllers
                     ci.shirtLength = data.sshirtLength;
                     ci.sizeName = "small";
                     ci.createdById = Convert.ToInt32(Session["userid"]);
-                    ci.unitId = data.unit;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
@@ -62,7 +62,7 @@ namespace bazar.Controllers
                     ci.shirtLength = data.mshirtLength;
                     ci.sizeName = "medium";
                     ci.createdById = Convert.ToInt32(Session["userid"]);
-                    ci.unitId = data.unit;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
@@ -75,7 +75,7 @@ namespace bazar.Controllers
                     ci.shirtLength = data.lshirtLength;
                     ci.sizeName = "large";
                     ci.createdById = Convert.ToInt32(Session["userid"]);
-                    ci.unitId = data.unit;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
@@ -86,7 +86,7 @@ namespace bazar.Controllers
                     ci.shirtLength = data.xlshirtLength;
                     ci.sizeName = "xllarge";
                     ci.createdById = Convert.ToInt32(Session["userid"]);
-                    ci.unitId = data.unit;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
@@ -106,8 +106,9 @@ namespace bazar.Controllers
             catch (Exception ex)
             {
 
-                Session["exception"] = ex.InnerException.ToString(); ;
-                return RedirectToAction("Index", "Home");
+                Session["exception"] = ex.Message.ToString(); 
+                //return RedirectToAction("Index", "Home");
+                return Json(new { messege = "exception", exception=ex.Message });
             }
         }
         public ActionResult addtblsizePantMale(tblsizePantMaleclass data)
@@ -124,7 +125,7 @@ namespace bazar.Controllers
                     ci.pantlength = data.xspantlength;
                     ci.sizeName = "xsmall";
                     ci.createdById = Convert.ToInt32(Session["userid"]);
-                    ci.unitId = data.unit;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
@@ -134,7 +135,7 @@ namespace bazar.Controllers
                     ci.sizeName = "small";
                     ci.pantlength = data.spantlength;
                     ci.createdById = Convert.ToInt32(Session["userid"]);
-                    ci.unitId = data.unit;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
@@ -144,7 +145,7 @@ namespace bazar.Controllers
                     ci.pantlength = data.mpantlength;
                     ci.sizeName = "medium";
                     ci.createdById = Convert.ToInt32(Session["userid"]);
-                    ci.unitId = data.unit;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
@@ -154,7 +155,7 @@ namespace bazar.Controllers
                     ci.pantlength = data.lpantlength;
                     ci.sizeName = "large";
                     ci.createdById = Convert.ToInt32(Session["userid"]);
-                    ci.unitId = data.unit;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
@@ -165,7 +166,7 @@ namespace bazar.Controllers
                     ci.sizeName = "xlarge";
                     ci.pantlength = data.xlpantlength;
                     ci.createdById = Convert.ToInt32(Session["userid"]);
-                    ci.unitId = data.unit;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     repo.Create(ci);
@@ -184,8 +185,9 @@ namespace bazar.Controllers
             catch (Exception ex)
 
             {
-                Session["exception"] = ex.InnerException.ToString();
-                return View();
+                Session["exception"] = ex.Message.ToString();
+                return Json(new { messege = "exception", exception=ex.Message.ToString() });
+                //return View();
             }
         }
 
@@ -425,6 +427,7 @@ namespace bazar.Controllers
                     ci.email = data.email;
                     ci.cnic = data.cnic;
                     ci.shopname = data.shopname;
+                    ci.name = data.shopname;
                     ci.addresss = data.address;
                     ci.roleid = data.roleid;
                     ci.marketid = data.marketid;
@@ -611,8 +614,8 @@ namespace bazar.Controllers
             catch (Exception ex)
             {
 
-                Session["exception"] = ex.InnerException.ToString();
-                return Json(new { messege = "exception" });
+                Session["exception"] = ex.Message.ToString();
+                return Json(new { messege = "exception", exception = ex.Message.ToString() });
 
                 //return RedirectToAction("viewtblmaleGarment", "Home");
             }
@@ -653,8 +656,26 @@ namespace bazar.Controllers
         {
             tblsizeShirtFemaleaction ci = new tblsizeShirtFemaleaction();
 
-            ci.Add(data);
-            return RedirectToAction("viewtblsizeShirtFemale", "Home");  
+            string result =ci.Add(data);
+            if (result == "success")
+            {
+                return Json(new { messege = "success" });
+
+
+            }
+            else if (result == "fail")
+            {
+                return Json(new { messege = "exist" });
+
+
+            }
+
+            else 
+            {
+                Session["exception"] = result;
+                return Json(new { messege = "exception", exception = result });
+            }
+           // return RedirectToAction("viewtblsizeShirtFemale", "Home");  
 
         }
 

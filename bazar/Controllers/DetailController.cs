@@ -406,7 +406,9 @@ namespace bazar.Controllers
 
             List<userclass> getgarment = (from pd in db.tblcreateUsers
                                                join sub in db.tblshoptypes on pd.shoptypeid equals sub.id
-                                               join mk in db.tblmarkets on pd.marketid equals mk.id
+                                             //  join mk in db.tblmarkets on pd.marketid equals mk.id
+                                               join mk in db.tblmarkets on pd.marketid equals mk.id into gj
+                                               from x in gj.DefaultIfEmpty()
                                                join rl in db.tblroles on pd.roleid equals rl.id
                                                select new  userclass
                                                {
@@ -419,15 +421,15 @@ namespace bazar.Controllers
                                                    profilepic            =pd.profilepic,
                                                    logo              =pd.logo,
                                                    shoptype       =   sub.shoptypeName,
-                                                   market        =mk.marketName,
+                                                   market        =x.marketName,
                                                    role = rl.roleName,
                                                    address=pd.addresss,
                                                    shoptypeid= sub.id,
                                                    roleid=rl.id,
-                                                   marketid=mk.id
+                                                   marketid=x.id,
+                                                   isActive= pd.isActive
 
-
-                                               }).ToList();
+                                               }).Where(x=>x.isActive==true).ToList();
         
                    //var s=        (from pd in db.tblmaleGarments                                                       
                    //                  select new tblmaleGarmentclass

@@ -8,39 +8,39 @@ namespace bazar.DAL.Data
     public class tblsizePantFemaleclass
     {
         public int id { get; set; }
-        public Nullable<int> xswaist { get; set; }
-        public Nullable<int> xship { get; set; }
-        public Nullable<int> xsthigh { get; set; }
-        public Nullable<int> xsbottom { get; set; }
-        public Nullable<int> xspantlength { get; set; }
+        public string xswaist { get; set; }
+        public string xship { get; set; }
+        public string xsthigh { get; set; }
+        public string xsbottom { get; set; }
+        public string xspantlength { get; set; }
 
-        public Nullable<int> swaist { get; set; }
-        public Nullable<int> ship { get; set; }
-        public Nullable<int> sthigh { get; set; }
-        public Nullable<int> sbottom { get; set; }
-        public Nullable<int> spantlength { get; set; }
-
-
-        public Nullable<int> mwaist { get; set; }
-        public Nullable<int> mhip { get; set; }
-        public Nullable<int> mthigh { get; set; }
-        public Nullable<int> mbottom { get; set; }
-        public Nullable<int> mpantlength { get; set; }
+        public string swaist { get; set; }
+        public string ship { get; set; }
+        public string sthigh { get; set; }
+        public string sbottom { get; set; }
+        public string spantlength { get; set; }
 
 
-        public Nullable<int> lwaist { get; set; }
-        public Nullable<int> lhip { get; set; }
-        public Nullable<int> lthigh { get; set; }
-        public Nullable<int> lbottom { get; set; }
-        public Nullable<int> lpantlength { get; set; }
+        public string mwaist { get; set; }
+        public string mhip { get; set; }
+        public string mthigh { get; set; }
+        public string mbottom { get; set; }
+        public string mpantlength { get; set; }
+
+
+        public string lwaist { get; set; }
+        public string lhip { get; set; }
+        public string lthigh { get; set; }
+        public string lbottom { get; set; }
+        public string lpantlength { get; set; }
 
 
 
-        public Nullable<int> xlwaist { get; set; }
-        public Nullable<int> xlhip { get; set; }
-        public Nullable<int> xlthigh { get; set; }
-        public Nullable<int> xlbottom { get; set; }
-        public Nullable<int> xlpantlength { get; set; }
+        public string xlwaist { get; set; }
+        public string xlhip { get; set; }
+        public string xlthigh { get; set; }
+        public string xlbottom { get; set; }
+        public string xlpantlength { get; set; }
 
 
         public string sizeName { get; set; }

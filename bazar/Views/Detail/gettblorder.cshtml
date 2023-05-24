@@ -38,7 +38,7 @@
                                             <table class="table" id="tblorder" style="width:100%">
                                                 <thead style="color:#ff6002">
                                                     <tr>
-                                                        <th style="display:none">id</th>
+                                                        <th>orderId</th>
                                                         <th>Cloth Name</th>
                                                         <th>image</th>
                                                         <th>Count</th>
@@ -59,7 +59,7 @@
                                                     {
 
                                                         <tr>
-                                                            <td style="display:none">@Html.DisplayFor(modelItem => row.id)</td>
+                                                            <td>@Html.DisplayFor(modelItem => row.id)</td>
                                                             <td>@Html.DisplayFor(modelItem => row.clothname)</td>
                                                             <td><img id="myImg" src=@row.pic alt="Snow" style="width:100px;height:100px;" class="mb-2"></td>
                                                             <td>@Html.DisplayFor(modelItem => row.counts)</td>

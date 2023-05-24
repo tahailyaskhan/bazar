@@ -30,7 +30,7 @@ namespace bazar.DAL.Repository
                     ci.armhole = data.xsarmhole;
                     ci.sizeName = "xsmall";
                     ci.createdById = Convert.ToInt32(System.Web.HttpContext.Current.Session["userid"]);
-                    ci.unitId = data.unitId;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     db.tblsizeShirtFemales.Add(ci);
@@ -46,7 +46,7 @@ namespace bazar.DAL.Repository
                     ci.armhole = data.sarmhole;
                     ci.sizeName = "small";
                     ci.createdById = Convert.ToInt32(System.Web.HttpContext.Current.Session["userid"]);
-                    ci.unitId = data.unitId;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     db.tblsizeShirtFemales.Add(ci);
@@ -62,7 +62,7 @@ namespace bazar.DAL.Repository
                     ci.armhole = data.marmhole;
                     ci.sizeName = "medium";
                     ci.createdById = Convert.ToInt32(System.Web.HttpContext.Current.Session["userid"]);
-                    ci.unitId = data.unitId;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     db.tblsizeShirtFemales.Add(ci);
@@ -79,7 +79,7 @@ namespace bazar.DAL.Repository
                     ci.armhole = data.larmhole;
                     ci.sizeName = "large";
                     ci.createdById = Convert.ToInt32(System.Web.HttpContext.Current.Session["userid"]);
-                    ci.unitId = data.unitId;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     db.tblsizeShirtFemales.Add(ci);
@@ -94,7 +94,7 @@ namespace bazar.DAL.Repository
                     ci.armhole = data.xlarmhole;
                     ci.sizeName = "xlarge";
                     ci.createdById = Convert.ToInt32(System.Web.HttpContext.Current.Session["userid"]);
-                    ci.unitId = data.unitId;
+                    ci.unitId = "inches";
                     ci.chartName = data.chartName;
                     ci.createdDate = DateTime.Now;
                     db.tblsizeShirtFemales.Add(ci);

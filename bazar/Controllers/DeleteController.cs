@@ -59,7 +59,7 @@ namespace bazar.Controllers
             }
 
 
-            return RedirectToAction("gettblsizeShirtNale", "Detail");
+            return RedirectToAction("gettblsizeShirtFemale", "Detail");
         }
 
 
@@ -73,7 +73,7 @@ namespace bazar.Controllers
             }
 
 
-            return RedirectToAction("gettblsizeShirtNale", "Detail");
+            return RedirectToAction("gettblsizePantFemale", "Detail");
         }
 
         public ActionResult deletetblmaleGarment(int id)

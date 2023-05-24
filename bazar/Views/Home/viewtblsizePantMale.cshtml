@@ -56,7 +56,7 @@
                                 <div class="card">
 
                                     <div class="card-body">
-                                        <h1>Size for Shirt form</h1>
+                                        <h1>Size for Pants (in inches)</h1>
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -126,14 +126,14 @@
                                                         @*<label for="sizename">SizeName</label>*@
                                                         <input type="text" class="form-control" name="chartName" id="chartName" placeholder="Enter Chartname">
                                                     </div>
-                                                    <h4>Unit</h4>
+                                                    @*<h4>Unit</h4>
                                                     <div class="form-group">
                                                         <select name="unit" id="unit" class="form-control" require>
                                                             <option value="0">-- Please Select --</option>
                                                             <option value="1"> centimetre </option>
                                                             <option value="2"> inches </option>
                                                         </select>
-                                                    </div>
+                                                    </div>*@
 
 
                                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -237,12 +237,12 @@
         if ($("#xlpantlength").val() == "") { document.getElementById('xlpantlength').style.borderColor = "red"; toastr.error('Extra Large pantlength required!'); } else { document.getElementById('xlpantlength').style.borderColor = "#ced4da"; }
         if ($("#chartName").val() == "") { document.getElementById('chartName').style.borderColor = "red"; toastr.error('chartName  required!'); } else { document.getElementById('chartName').style.borderColor = "#ced4da"; }
 
-        if ($("#unit").val() == '0') { document.getElementById('unit').style.borderColor = "red"; toastr.error('unit  required!'); } else { document.getElementById('unit').style.borderColor = "#ced4da"; }
+        //if ($("#unit").val() == '0') { document.getElementById('unit').style.borderColor = "red"; toastr.error('unit  required!'); } else { document.getElementById('unit').style.borderColor = "#ced4da"; }
 
 
 
 
-        if ($("#xswaist").val() == "" || $("#swaist").val() == "" || $("#mwaist").val() == "" || $("#lwaist").val() == "" || $("#unit").val() == '0'
+        if ($("#xswaist").val() == "" || $("#swaist").val() == "" || $("#mwaist").val() == "" || $("#lwaist").val() == "" 
             || $("#xspantlength").val() == "" || $("#spantlength").val() == "" || $("#mpantlength").val() == "" || $("#lpantlength").val() == "" || $("#xlpantlength").val() == "")
         {
             debugger
@@ -255,17 +255,25 @@
             return true;
         }
     }
-
     function isNumber(evt) {
-        evt = (evt) ? evt : window.event;
         var charCode = (evt.which) ? evt.which : evt.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        if (charCode != 46 && charCode > 31
+            && (charCode < 48 || charCode > 57)) {
             toastr.error('write number only');
             return false;
         }
-
         return true;
     }
+    //function isNumber(evt) {
+    //    evt = (evt) ? evt : window.event;
+    //    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    //    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    //        toastr.error('write number only');
+    //        return false;
+    //    }
+
+    //    return true;
+    //}
 
     $("form#data").submit(function (e) {
         debugger
@@ -286,10 +294,17 @@
                 success: function (data) {
                     if (data.messege == 'success') {
                         toastr.success('Successfully Submitted');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+                    }
+                    else if (data.messege == 'exception') {
+                        alert(data.exception);
                     }
                     else {
                         toastr.error("chartname already exist");
                     }
+                    
                 },
                 cache: false,
                 contentType: false,

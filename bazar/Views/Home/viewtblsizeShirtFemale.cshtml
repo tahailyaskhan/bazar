@@ -47,7 +47,7 @@
                                 <div class="card">
 
                                     <div class="card-body">
-                                        <h1>Size for Shirt form</h1>
+                                        <h1>Size for Shirt (in inches)</h1>
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -56,7 +56,7 @@
                                                     <h4>extra Small</h4>
 
                                                     <div class="form-group">
-                                                        <label for="collar">Collar</label>
+                                                        <label for="collar">shoulder</label>
                                                         <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xsshoulder" id="xsshoulder" placeholder="Enter shoulder">
                                                     </div>
                                                     <div class="form-group">
@@ -64,23 +64,23 @@
                                                         <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xschest" id="xschest" placeholder="Enter chest">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="sleevelength">Sleevelength</label>
+                                                        <label for="sleevelength">armhole</label>
                                                         <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xsarmhole" id="xsarmhole" placeholder="Enter armhole">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="shirtlength">Shirtlength</label>
+                                                        <label for="shirtlength">sleeveLength</label>
                                                         <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xssleeveLength" id="xssleeveLength" placeholder="Enter sleeveLength">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="sizename">SizeName</label>
+                                                        <label for="sizename">shirtLength</label>
                                                         <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xsshirtLength" id="xsshirtLength" placeholder="Enter shirtLength">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="sizename">SizeName</label>
+                                                        <label for="sizename">sleeveopening</label>
                                                         <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xssleeveopening" id="xssleeveopening" placeholder="Enter sleeveopening ">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="sizename">SizeName</label>
+                                                        <label for="sizename">Daman</label>
                                                         <input type="text" autocomplete="off" onkeypress="return isNumber(event)" class="form-control" name="xsdaman" id="xsdaman" placeholder="Enter sizename size">
                                                     </div>
 
@@ -216,14 +216,14 @@
                                                         @*<label for="sizename">SizeName</label>*@
                                                         <input type="text" class="form-control" name="chartName" id="chartName" placeholder="Enter Chartname">
                                                     </div>
-                                                    <h4>Unit</h4>
+                                                    @*<h4>Unit</h4>
                                                     <div class="form-group">
                                                         <select name="unit" id="unit" class="form-control" require>
                                                             <option value="0">-- Please Select --</option>
                                                             <option value="1"> centimetre </option>
                                                             <option value="2"> inches </option>
                                                         </select>
-                                                    </div>
+                                                    </div>*@
 
 
                                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -349,7 +349,8 @@
         if ($("#xldaman").val() == "") { document.getElementById('xldaman').style.borderColor = "red"; toastr.error('Extra large daman Field  required!'); } else { document.getElementById('xldaman').style.borderColor = "#ced4da"; }
         if ($("#xlarmhole").val() == "") { document.getElementById('xlarmhole').style.borderColor = "red"; toastr.error('Extra large armhole Field  required!'); } else { document.getElementById('xlarmhole').style.borderColor = "#ced4da"; }
 
-        if ($("#unit").val() == "0") { document.getElementById('unit').style.borderColor = "red"; toastr.error('unit  required!'); } else { document.getElementById('unit').style.borderColor = "#ced4da"; }
+        //if ($("#unit").val() == "0") { document.getElementById('unit').style.borderColor = "red"; toastr.error('unit  required!'); } else { document.getElementById('unit').style.borderColor = "#ced4da"; }
+
         if ($("#chartName").val() == "") { document.getElementById('chartName').style.borderColor = "red"; toastr.error('chartName required!'); } else { document.getElementById('chartName').style.borderColor = "#ced4da"; }
 
         if ($("#xsshoulder").val() == "" || $("#sshoulder").val() == "" || $("#mshoulder").val() == "" || $("#lshoulder").val() == ""
@@ -358,7 +359,7 @@
             || $("#lsleevelength").val() == "" || $("#xlsleevelength").val() == "" || $("#xsshirtlength").val() == "" || $("#sshirtlength").val() == "" || $("#mshirtlength").val() == ""
             || $("#lsleevelength").val() == "" || $("#xlsleevelength").val() == ""
             || $("#xsarmhole").val() == "" || $("#sarmhole").val() == "" || $("#marmhole").val() == "" || $("#larmhole").val() == ""
-            || $("#xlarmhole").val() == "" || $("#unit").val() == "0" || $("#chartName").val() == ""
+            || $("#xlarmhole").val() == "" ||  $("#chartName").val() == ""
 
         )
         {
@@ -374,17 +375,26 @@
             return true;
         }
     }
-
     function isNumber(evt) {
-        evt = (evt) ? evt : window.event;
         var charCode = (evt.which) ? evt.which : evt.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        if (charCode != 46 && charCode > 31
+            && (charCode < 48 || charCode > 57)) {
             toastr.error('write number only');
             return false;
         }
-
         return true;
     }
+
+    //function isNumber(evt) {
+    //    evt = (evt) ? evt : window.event;
+    //    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    //    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    //        toastr.error('write number only');
+    //        return false;
+    //    }
+
+    //    return true;
+    //}
 
     $("form#data").submit(function (e) {
         debugger
@@ -403,8 +413,19 @@
                 type: 'POST',
                 data: formData,
                 success: function (data) {
-                    toastr.success('Successfully Submitted');
-                    setTimeout(function () { location.reload() }, 1500);
+                    if (data.messege == 'success') {
+                        toastr.success('Successfully Submitted');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
+                    }
+                    else if (data.messege == 'exception') {
+                        alert(data.exception);
+                    }
+                    else {
+                        toastr.error("chartname already exist");
+                    }
+                  
                 },
                 cache: false,
                 contentType: false,

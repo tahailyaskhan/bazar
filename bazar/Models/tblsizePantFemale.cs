@@ -15,11 +15,11 @@ namespace bazar.Models
     public partial class tblsizePantFemale
     {
         public int id { get; set; }
-        public Nullable<int> waist { get; set; }
-        public Nullable<int> hip { get; set; }
-        public Nullable<int> thigh { get; set; }
-        public Nullable<int> bottom { get; set; }
-        public Nullable<int> pantlength { get; set; }
+        public string waist { get; set; }
+        public string hip { get; set; }
+        public string thigh { get; set; }
+        public string bottom { get; set; }
+        public string pantlength { get; set; }
         public string sizeName { get; set; }
         public string chartName { get; set; }
         public string unitId { get; set; }

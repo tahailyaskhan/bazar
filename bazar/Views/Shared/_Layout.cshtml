@@ -88,7 +88,7 @@
                     @*<li class="nav-item pcoded-menu-caption">
             <label>Forms &amp; table</label>
         </li>*@
-                    @if (Convert.ToInt32(@Session["shoptype"]) == 1)
+                    @if (Convert.ToInt32(@Session["shoptype"]) == 1 && Convert.ToInt32(@Session["roleid"]) == 2)
                     {
                         <li class="nav-item">
                             <a href=@Url.Action("Index","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add ShirtSize</span></a>
@@ -113,7 +113,7 @@
                             <a href=@Url.Action("gettblorder","Detail") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Get Order Records</span></a>
                         </li>
                     }
-                    @if (Convert.ToInt32(@Session["shoptype"]) == 2)
+                    @if (Convert.ToInt32(@Session["shoptype"]) == 2 && Convert.ToInt32(@Session["roleid"]) == 3)
                     {
                         <li class="nav-item">
                             <a href=@Url.Action("viewtblsizeShirtFemale","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add Female ShirtSize</span></a>
@@ -138,7 +138,7 @@
                         </li>
                     }
 
-                    @if (Convert.ToInt32(@Session["shoptype"]) == 3 || Convert.ToInt32(@Session["shoptype"]) == 5)
+                    @if (Convert.ToInt32(@Session["shoptype"]) == 3 || Convert.ToInt32(@Session["shoptype"]) == 5 && Convert.ToInt32(@Session["roleid"]) == 4)
                     {
                         <li class="nav-item">
                             <a href=@Url.Action("viewtblshoe","Home") class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add shoe</span></a>

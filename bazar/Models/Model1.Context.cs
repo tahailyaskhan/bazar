@@ -39,13 +39,13 @@ namespace bazar.Models
         public virtual DbSet<tblrole> tblroles { get; set; }
         public virtual DbSet<tblshoptype> tblshoptypes { get; set; }
         public virtual DbSet<tblsizechartname> tblsizechartnames { get; set; }
+        public virtual DbSet<tblsizeShoe> tblsizeShoes { get; set; }
+        public virtual DbSet<tblshoe> tblshoes { get; set; }
+        public virtual DbSet<tblcity> tblcities { get; set; }
         public virtual DbSet<tblsizePantFemale> tblsizePantFemales { get; set; }
         public virtual DbSet<tblsizePantMale> tblsizePantMales { get; set; }
         public virtual DbSet<tblsizeShirtFemale> tblsizeShirtFemales { get; set; }
         public virtual DbSet<tblsizeShirtMale> tblsizeShirtMales { get; set; }
-        public virtual DbSet<tblsizeShoe> tblsizeShoes { get; set; }
-        public virtual DbSet<tblshoe> tblshoes { get; set; }
-        public virtual DbSet<tblcity> tblcities { get; set; }
     
         public virtual ObjectResult<getCustomerReviews_Result> getCustomerReviews(Nullable<int> usersid)
         {

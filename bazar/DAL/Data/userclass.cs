@@ -24,10 +24,10 @@ namespace bazar.DAL.Data
         public string role { get; set; }
         public string logo { get; set; }
 
-
+        public Nullable<Boolean> isActive { get; set; }
         public int shoptypeid { get; set; }
-        public int marketid { get; set; }
-        public int roleid { get; set; }
+        public Nullable<int> marketid { get; set; }
+        public Nullable<int> roleid { get; set; }
         public HttpPostedFileBase pics1 { get; set; }
         public HttpPostedFileBase pics2 { get; set; }
 

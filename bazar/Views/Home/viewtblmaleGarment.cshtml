@@ -53,15 +53,14 @@
                                 <div class="card">
 
                                     <div class="card-body">
-                                        <h1>Size for Shirt form</h1>
+                                        <h1>Add Garments</h1>
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 @*action=@Url.Action("addtblmaleGarment", "Create")*@
                                                 <form id="data" enctype="multipart/form-data" method="post">
 
-                                                    <h4>extra Small</h4>
-
+                                                   
                                                     <div class="form-group">
                                                         <label for="clothname">ClothName</label>
                                                         <input type="text" class="form-control" name="clothname" id="clothname" placeholder="Enter Clothname">
@@ -129,7 +128,7 @@
                                                             @*<input type="checkbox" class="form-check-input" name="xlarge" id="xlarge">*@
                                                             <label class="form-check-label" for="xlarge">Extra Large</label>
                                                         </div>
-                                                        <div class="form-group col-md-2 col-sm-1">
+                                                        <div class="form-group col-md-2 col-sm-1" style="display:none">
                                                             @Html.CheckBox("xxlarge", new { @id = "xxlarge", @class = "form-check-input" })
                                                             @*<input type="checkbox" class="form-check-input" name="xxlarge" id="xxlarge">*@
                                                             <label class="form-check-label" for="xxlarge">XXL</label>
@@ -139,14 +138,22 @@
 
                                                     <div class="form-group">
                                                         <label for="pic1">Select a file:</label>
-                                                        <input type="file" id="pic1" name="pic1">
+                                                        <img src="" id="pic1"
+                                                             class="rounded-square"
+                                                             height="50" width="75"
+                                                             style="border:1px" />
+                                                        <input type="file" id="pics1" name="pic1">
                                                     </div>
 
 
 
                                                     <div class="form-group">
                                                         <label for="pic2">Select a file:</label>
-                                                        <input type="file" id="pic2" name="pic2">
+                                                        <img src="" id="pic2"
+                                                             class="rounded-square"
+                                                             height="50" width="75"
+                                                             style="border:1px" />
+                                                        <input type="file" id="pics2" name="pic2">
                                                     </div>
 
 
@@ -241,8 +248,37 @@
         return true;
     }
 
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#pic1').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function readURL2(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#pic2').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#pics1").change(function () {
+        readURL(this);
+    });
+    $("#pics2").change(function () {
+        readURL2(this);
+    });
+
     $("form#data").submit(function (e) {
-        debugger
+
         e.preventDefault();
         var ch = CheckNull();
         if (ch == false) {
@@ -282,9 +318,15 @@
                     if (data.messege == 'success') {
                         toastr.success('Successfully Submitted');
                     }
-                    else {
-                        toastr.error("chartname already exist");
+                    else if (data.messege == 'exception') {
+                        alert(data.exception);
                     }
+                    else {
+                        toastr.error("clothname already exist");
+                    }
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2500);
                 },
                 cache: false,
                 contentType: false,
